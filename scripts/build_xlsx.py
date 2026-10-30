@@ -36,6 +36,13 @@ for r in rows:
     if r['title'] in FIX:
         r['link'] = FIX[r['title']]
 
+# 把修正后的链接写回 rows.json，保证 Excel / rows.json / 文档三者一致
+with open(os.path.join(BASE, 'docs', '_rows.json'), 'w', encoding='utf-8') as _f:
+    json.dump(rows, _f, ensure_ascii=False, indent=1)
+with open(os.path.join(BASE, 'Embodied-Safety-Benchmark', 'data', 'rows.json'), 'w',
+          encoding='utf-8') as _f:
+    json.dump(rows, _f, ensure_ascii=False, indent=1)
+
 CAT_ORDER = ['VLA 安全 Benchmark', 'VLA 鲁棒性 Benchmark', 'VLA 能力 Benchmark',
              '攻防评测框架', '评测方法与度量', '具身智能体安全 Benchmark', '综述']
 rows.sort(key=lambda r: (CAT_ORDER.index(r['cat']) if r['cat'] in CAT_ORDER else 99,

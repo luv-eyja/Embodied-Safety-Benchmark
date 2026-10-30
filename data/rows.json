@@ -826,7 +826,7 @@
   "obj": "具身智能体（规划层）",
   "dim": "多约束满足、长时程规划、对抗条件下的安全性",
   "summ": "面向「多约束 + 对抗」双重压力下的安全长时程规划评测：在长时程任务中同时施加多条安全约束与环境对抗扰动，检验具身智能体能否在满足约束的前提下完成规划（EMNLP 2025）。",
-  "link": "https://scholar.google.com/scholar?q=VestaBench%3A+An+Embodied+Benchmark+for+Safe+Long-Horizon+Planning",
+  "link": "https://doi.org/10.18653/v1/2025.emnlp-industry.149",
   "tier": null,
   "scope": "VLA 评测",
   "domain": ""
@@ -1018,7 +1018,7 @@
   "obj": "LLM 驱动的具身决策智能体",
   "dim": "目标解释、子目标分解、动作序列化、状态跟踪等环节的统一接口",
   "summ": "把 LLM 具身决策拆成若干可单独评测的环节，用统一接口连接不同仿真环境与模型，从而定位失败究竟出在目标解释、子任务分解、动作接地还是状态跟踪上，而不是只报告端到端成功率（NeurIPS 2024）。",
-  "link": "https://scholar.google.com/scholar?q=Embodied+Agent+Interface%3A+Benchmarking+LLMs+for+Embodied+Decision+Making",
+  "link": "https://doi.org/10.52202/079017-3188",
   "tier": null,
   "scope": "VLA 评测",
   "domain": ""
@@ -2042,7 +2042,7 @@
   "obj": "双臂机器人操作策略",
   "dim": "生成式数字孪生；双臂协同任务与真机迁移",
   "summ": "用生成式数字孪生构建双臂机器人基准：借助生成模型批量生成多样化物体与场景的数字孪生，从而在仿真中大规模构造双臂协同操作任务，并支持向真机迁移的评测。它填补了单臂基准之外的「双臂/高自由度协同」评测空白，也被多篇 VLA 安全基准（如 Trap-RoboTwin、ForesightSafety-VLA）复用为场景底座。",
-  "link": "arXiv:2412.02960",
+  "link": "https://doi.org/10.1109/CVPR52734.2025.02575",
   "tier": "—",
   "scope": "VLA 评测",
   "domain": ""
@@ -2058,7 +2058,7 @@
   "obj": "语言条件操作策略 / VLA",
   "dim": "大规模任务集；长时程推理与组合泛化",
   "summ": "大规模语言条件操作基准，强调「长时程推理」与组合泛化：任务需要多步推理与常识知识才能完成，而不只是把一条指令映射为一次抓取。它把评测重心从单步操作成功率推向「推理—规划—执行」的整链能力，是 VLA 能力评测中较有代表性的高难度基准。",
-  "link": "arXiv:2412.02589",
+  "link": "https://doi.org/10.1109/ICCV51701.2025.01037",
   "tier": "—",
   "scope": "VLA 评测",
   "domain": ""
@@ -2074,7 +2074,7 @@
   "obj": "模仿学习策略（含 VLA）",
   "dim": "20+ 环境扰动因子；泛化边界刻画",
   "summ": "针对「模仿学习策略在训练分布外泛化能力不明」的问题，用 20 余种环境扰动因子（物体、纹理、光照、相机位姿、桌面高度等）系统性评测策略的泛化边界，并给出不同扰动对成功率的影响排序。它把「泛化」从单一数字拆解为可归因的扰动维度，是 VLA 鲁棒性基准（如 LIBERO-Plus、VLA-GAUGE）方法论的直接前身。",
-  "link": "arXiv:2402.08191",
+  "link": "https://arxiv.org/abs/2402.08191",
   "tier": "—",
   "scope": "VLA 评测",
   "domain": ""
@@ -2090,7 +2090,7 @@
   "obj": "多本体操作策略",
   "dim": "跨本体大规模真机数据与统一评测",
   "summ": "面向「多本体」的操作基准与数据集：汇集多种机器人本体的大规模真机示范，并在统一协议下评测策略跨本体的迁移与泛化能力。它把 VLA 评测从单一本体推向跨本体一致性，是判断「策略学到的是任务还是本体特性」的重要工具。",
-  "link": "arXiv:2412.13877",
+  "link": "https://arxiv.org/abs/2412.13877",
   "tier": "—",
   "scope": "VLA 评测",
   "domain": ""
@@ -2106,7 +2106,7 @@
   "obj": "LLM 控制的机器人（自动驾驶 LLM、四足机器人等）",
   "dim": "越狱攻击成功率；攻击在真实物理系统上的可执行性",
   "summ": "首次系统展示「越狱」可以跨越数字边界作用于物理系统：提出 RoboPAIR 攻击算法，通过多轮对话诱导作为机器人控制器的 LLM 输出危险动作，在自动驾驶 LLM 与四足机器人等真实平台上取得很高攻击成功率，并可绕过系统提示与护栏。它确立了「具身越狱」这一评测问题，也成为 RoboJailBench、护栏评测等后续工作的参照点。",
-  "link": "DOI: 10.1109/ICRA55743.2025.11128119",
+  "link": "https://doi.org/10.1109/ICRA55743.2025.11128119",
   "tier": "—",
   "scope": "VLA 评测",
   "domain": ""
@@ -2826,7 +2826,7 @@
   "obj": "端到端自动驾驶智能体",
   "dim": "多能力维度的闭环评测",
   "summ": "面向闭环端到端自动驾驶的多能力基准，把评测从单一开环误差扩展到闭环执行下的多项驾驶能力，是 VLA/端到端驾驶方向常用的评测平台之一（NeurIPS 2024）。",
-  "link": "https://scholar.google.com/scholar?q=Bench2Drive%3A+Towards+Multi-Ability+Benchmarking+of+Closed-Loop+End-to-End+Autonomous+Driving",
+  "link": "https://doi.org/10.52202/079017-0025",
   "tier": null,
   "scope": "具身安全/鲁棒性基准（非 VLA 专项）",
   "domain": "自动驾驶"
@@ -2842,7 +2842,7 @@
   "obj": "端到端驾驶规划器",
   "dim": "基于真实数据的非反应式仿真与统一指标",
   "summ": "提出数据驱动的非反应式仿真基准：用真实驾驶日志构建可复现的仿真评测，避免反应式仿真的域差与不稳定，为端到端规划器提供统一、低成本的比较平台（NeurIPS 2024）。",
-  "link": "https://scholar.google.com/scholar?q=NavSim%3A+Data-Driven+Non-Reactive+Autonomous+Vehicle+Simulation+and+Benchmarking",
+  "link": "https://doi.org/10.52202/079017-0902",
   "tier": null,
   "scope": "具身安全/鲁棒性基准（非 VLA 专项）",
   "domain": "自动驾驶"

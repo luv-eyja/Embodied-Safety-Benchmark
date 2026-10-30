@@ -318,6 +318,31 @@ for tier in ORDER:
         L.append('| %s | %d | %d | [%s](%s) |' % (name, n, o, fn.replace('.md', ''), fn))
     L.append('')
 open(os.path.join(outdir, 'README.md'), 'w', encoding='utf-8').write('\n'.join(L))
+
+# ── 补充：未被任何基准文档覆盖的论文（多为评测方法 / 攻防 / 综述，未提出可复用基准）──
+covered = ''.join(open(os.path.join(outdir, f), encoding='utf-8').read()
+                  for f in os.listdir(outdir) if f.endswith('.md'))
+left = [r for r in ROWBY.values() if r['title'] not in covered]
+if left:
+    left.sort(key=lambda r: (r['cat'], str(r['year'])))
+    M = ['# 评测方法与协议汇总（未绑定单一基准）', '',
+         '本表中以下 **%d 篇**论文，其贡献是**评测协议、度量方法、诊断分析或综述**，'
+         '而不是一个可被反复复用的独立基准（或该基准即为本文自身的一次性评测集）。'
+         '因此没有为它们单独建基准文档，集中在此说明。' % len(left), '',
+         '| 论文（英文原名） | 中文题名 | 年 | 类别 | 评测设计 / 度量 |', '|---|---|---|---|---|']
+    for r in left:
+        M.append('| [%s](%s) | %s | %s | %s | %s |' % (
+            r['title'], r['link'], (r['zh'] or '')[:36], r['year'], r['cat'],
+            (r.get('dim') or '').replace('|', '／')[:76]))
+    M += ['', '## 为什么这些不单独成文', '',
+          '- **评测方法/度量**：提出的是评价方式（如干预式协议、形式化验证、行为级指标），'
+          '本身不附带任务集，无法作为「基准」被他人直接复用。',
+          '- **攻防工作**：主体是攻击或防御方法，评测协议虽可复用但服务于单一方法，覆盖面有限。',
+          '- **综述**：不含实验基准。', '',
+          '> 若需要把其中某个协议提升为独立基准文档，在 `scripts/bench_registry.py` 里加一条正则即可。', '']
+    open(os.path.join(outdir, '0__评测方法与协议汇总.md'), 'w', encoding='utf-8').write('\n'.join(M))
+    print('catch-all doc covers:', len(left))
+
 print('docs written:', sum(len(v) for v in index.values()))
 for t in ORDER:
     if t in index:
