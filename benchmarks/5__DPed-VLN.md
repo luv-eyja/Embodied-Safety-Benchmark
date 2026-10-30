@@ -1,0 +1,37 @@
+# DPed-VLN
+
+> **所属环节**：动态行人 VLN 社会安全  
+> **分类**：具身安全  
+> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
+
+## 1. 测什么问题（内容与所测环节）
+
+动态行人 VLN 社会安全。
+
+该基准由 *DPed-VLN: A Benchmark for Socially Compliant Vision-and-Language Navigation in Dynamic Pedestrian Environments* 提出，其定位为：**DPed-VLN：动态行人环境下的社会合规 VLN 基准**。
+
+## 2. 怎么构建的
+
+构建要点（据原文摘要）：33,093 个导航回合；ORCA 控制的人形行人；社会安全指标。
+
+## 3. 用这个基准测了什么
+
+下表按论文列出：
+
+| 论文 | 年 | 来源 | 角色 | 用途/发现 |
+|---|---|---|---|---|
+| [DPed-VLN：动态行人环境下的社会合规 VLN 基准](https://arxiv.org/abs/2609.21504) | 2026 | arXiv 预印本 (arXiv:2609.21 | **提出** | 33,093 个导航回合；ORCA 控制的人形行人；社会安全指标 |
+
+## 4. 关键结论与改进方向
+
+**要点**：指出 VLN 在静态室内环境进展迅速，但机器人在有人空间里必须一边理解语言、一边应对移动行人与社会安全约束。基准（Habitat 3.0）含 33,093 个导航回合，配成对的全局指令与先验增强指令、ORCA 控制的人形行人、社会约束的专家路径，以及同时评估导航效率与社会安全的指标；通过区分普通目标导向指令与暴露动态行人线索的增强指令实现受控分析。
+
+> 该基准目前仅在其提出论文中出现，尚无其他表内论文复用它，因此横向结论有限。
+
+## 5. 相关论文（均来自本调研表）
+
+- DPed-VLN: A Benchmark for Socially Compliant Vision-and-Language Navigation in Dynamic Pedestrian Environments（2026，arXiv 预印本 (arXiv:2609.21504)）  ← **提出**
+
+---
+
+*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成；第 1、2、4 节的人工解读基于论文摘要，未逐篇精读全文。*

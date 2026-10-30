@@ -1,0 +1,37 @@
+# RoboIRG-Bench
+
+> **所属环节**：隐式指代接地  
+> **分类**：VLA 能力  
+> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
+
+## 1. 测什么问题（内容与所测环节）
+
+隐式指代接地。
+
+该基准由 *RoboIRGBench: Benchmarking Implicit Referential Grounding in Vision-Language-Action Models* 提出，其定位为：**RoboIRG-Bench：隐式指代接地基准**。
+
+## 2. 怎么构建的
+
+构建要点（据原文摘要）：直接 / 推理中介 / 空间 / 语境四类隐式指代。
+
+## 3. 用这个基准测了什么
+
+下表按论文列出：
+
+| 论文 | 年 | 来源 | 角色 | 用途/发现 |
+|---|---|---|---|---|
+| [RoboIRG-Bench：隐式指代接地基准](https://arxiv.org/abs/2609.34384) | 2026 | arXiv 预印本 (arXiv:2609.34 | **提出** | 直接 / 推理中介 / 空间 / 语境四类隐式指代 |
+
+## 4. 关键结论与改进方向
+
+**要点**：既有基准通常假设任务相关信息在指令中被明确给出，而人类常以隐含方式指代物体、数量与关系。该基准把这一能力定义为隐式指代接地（IRG），基于 RoboMME 构建 40 个变体、覆盖 11 个任务与四类挑战，并评测采用不同记忆机制的代表性 VLA 在从语言与感知上下文恢复目标上的表现。
+
+> 该基准目前仅在其提出论文中出现，尚无其他表内论文复用它，因此横向结论有限。
+
+## 5. 相关论文（均来自本调研表）
+
+- RoboIRGBench: Benchmarking Implicit Referential Grounding in Vision-Language-Action Models（2026，arXiv 预印本 (arXiv:2609.34384)）  ← **提出**
+
+---
+
+*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成；第 1、2、4 节的人工解读基于论文摘要，未逐篇精读全文。*

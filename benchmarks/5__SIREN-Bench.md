@@ -1,0 +1,37 @@
+# SIREN-Bench
+
+> **所属环节**：紧急车辆交互  
+> **分类**：具身安全  
+> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
+
+## 1. 测什么问题（内容与所测环节）
+
+紧急车辆交互。
+
+该基准由 *SIREN-Bench: Behavior-Driven Generation and Evaluation of Emergency-Vehicle Interactions* 提出，其定位为：**SIREN-Bench：紧急车辆交互的行为驱动生成与评测**。
+
+## 2. 怎么构建的
+
+构建要点（据原文摘要）：SUMO–CARLA 联合仿真；行为级控制特权与响应。
+
+## 3. 用这个基准测了什么
+
+下表按论文列出：
+
+| 论文 | 年 | 来源 | 角色 | 用途/发现 |
+|---|---|---|---|---|
+| [SIREN-Bench：紧急车辆交互的行为驱动生成与评测](https://arxiv.org/abs/2608.24094) | 2026 | arXiv 预印本 (arXiv:2608.24 | **提出** | SUMO–CARLA 联合仿真；行为级控制特权与响应 |
+
+## 4. 关键结论与改进方向
+
+**要点**：指出紧急车辆（EMV）会重组周边交通——民用车辆刹车、变道或让出救援通道——评测这些安全攸关交互需要对 EMV 特权与民用车辆响应同时具备行为级控制能力，并保持一致感知与真值，而现有数据集与仿真基准并不直接提供这一组合。SIREN 把 SUMO 的网络级交通演化与行为逻辑同 CARLA 的连续车辆控制与同步车载感知耦合起来。
+
+> 该基准目前仅在其提出论文中出现，尚无其他表内论文复用它，因此横向结论有限。
+
+## 5. 相关论文（均来自本调研表）
+
+- SIREN-Bench: Behavior-Driven Generation and Evaluation of Emergency-Vehicle Interactions（2026，arXiv 预印本 (arXiv:2608.24094)）  ← **提出**
+
+---
+
+*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成；第 1、2、4 节的人工解读基于论文摘要，未逐篇精读全文。*

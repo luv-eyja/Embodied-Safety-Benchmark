@@ -1,0 +1,37 @@
+# IndustrialVLA-Bench
+
+> **所属环节**：VLA/WAM 多轴可追溯评测  
+> **分类**：VLA 能力  
+> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
+
+## 1. 测什么问题（内容与所测环节）
+
+VLA/WAM 多轴可追溯评测。
+
+该基准由 *IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models* 提出，其定位为：**IndustrialVLA-Bench：VLA 与 WAM 的多轴可追溯评测**。
+
+## 2. 怎么构建的
+
+构建要点（据原文摘要）：干净能力（LIBERO）/ 非语言鲁棒性（LIBERO-Plus）/ 指令敏感度（LIBERO-Para）/ 执行代价。
+
+## 3. 用这个基准测了什么
+
+下表按论文列出：
+
+| 论文 | 年 | 来源 | 角色 | 用途/发现 |
+|---|---|---|---|---|
+| [IndustrialVLA-Bench：VLA 与 WAM 的多轴可追溯评测](https://arxiv.org/abs/2609.25562) | 2026 | arXiv 预印本 (arXiv:2609.25 | **提出** | 干净能力（LIBERO）/ 非语言鲁棒性（LIBERO-Plus）/ 指令敏感度（LIBERO-Para）/ 执行代价 |
+
+## 4. 关键结论与改进方向
+
+**要点**：VLA 与世界动作模型两条技术路线常在各自不同的评测协议下报告结果，难以比较能力、鲁棒性、语言敏感性与部署成本。该基准在统一上报口径下对 6 个已发布系统分轴评测：LIBERO 上的干净能力、LIBERO-Plus 上的非语言鲁棒性、LIBERO-Para 上的指令敏感度以及实测执行代价，并聚合三个不同随机种子的完整评测。
+
+> 该基准目前仅在其提出论文中出现，尚无其他表内论文复用它，因此横向结论有限。
+
+## 5. 相关论文（均来自本调研表）
+
+- IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models（2026，arXiv 预印本 (arXiv:2609.25562)）  ← **提出**
+
+---
+
+*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成；第 1、2、4 节的人工解读基于论文摘要，未逐篇精读全文。*
