@@ -84,8 +84,8 @@
 | DESPITE | 18 | 18 | [4__DESPITE](4__DESPITE.md) |
 | ORDER | 10 | 9 | [4__ORDER](4__ORDER.md) |
 | AGENTSAFE / SAFE-THOR | 1 | 0 | [4__AGENTSAFE-SAFE-THOR](4__AGENTSAFE-SAFE-THOR.md) |
+| AeroIntent | 1 | 0 | [4__AeroIntent](4__AeroIntent.md) |
 | Agent-SafetyBench | 1 | 0 | [4__Agent-SafetyBench](4__Agent-SafetyBench.md) |
-| BAVO 之外：LABIT | 1 | 0 | [4__BAVO-之外-LABIT](4__BAVO-之外-LABIT.md) |
 | BLINDSPOT | 1 | 0 | [4__BLINDSPOT](4__BLINDSPOT.md) |
 | Bench2Dex | 1 | 0 | [4__Bench2Dex](4__Bench2Dex.md) |
 | CAPSafe | 1 | 0 | [4__CAPSafe](4__CAPSafe.md) |
@@ -100,6 +100,7 @@
 | INFUSE | 1 | 0 | [4__INFUSE](4__INFUSE.md) |
 | IS-Bench | 1 | 0 | [4__IS-Bench](4__IS-Bench.md) |
 | Inspect Robots | 1 | 0 | [4__Inspect-Robots](4__Inspect-Robots.md) |
+| LABIT | 1 | 0 | [4__LABIT](4__LABIT.md) |
 | MAGMA-Bench | 1 | 0 | [4__MAGMA-Bench](4__MAGMA-Bench.md) |
 | MMA-SafetyBench | 1 | 0 | [4__MMA-SafetyBench](4__MMA-SafetyBench.md) |
 | MSK-Bench | 1 | 0 | [4__MSK-Bench](4__MSK-Bench.md) |
@@ -115,7 +116,6 @@
 | REVERSAL-BENCH | 1 | 0 | [4__REVERSAL-BENCH](4__REVERSAL-BENCH.md) |
 | RT-Safe | 1 | 0 | [4__RT-Safe](4__RT-Safe.md) |
 | RoboAbstention | 1 | 1 | [4__RoboAbstention](4__RoboAbstention.md) |
-| RoboChrono 之外：AeroIntent | 1 | 0 | [4__RoboChrono-之外-AeroIntent](4__RoboChrono-之外-AeroIntent.md) |
 | RoboJailBench | 1 | 0 | [4__RoboJailBench](4__RoboJailBench.md) |
 | RoboVAD | 1 | 0 | [4__RoboVAD](4__RoboVAD.md) |
 | STARS | 1 | 0 | [4__STARS](4__STARS.md) |

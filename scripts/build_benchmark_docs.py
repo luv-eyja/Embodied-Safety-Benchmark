@@ -230,24 +230,35 @@ for name, info in reg.items():
     if d:
         L += [d['problem'], '']
     else:
-        row = ROWBY.get(self_paper[0]['title']) if self_paper else None
-        L += ['%s。' % desc, '']
-        if row:
-            L += ['该基准由 *%s* 提出，其定位为：**%s**。' % (row['title'], row['zh'] or desc), '']
+        src = self_paper[0] if self_paper else papers[0]
+        row = ROWBY.get(src['title'])
+        L += ['**定位**：%s。' % desc, '']
+        if row and row.get('summ'):
+            L += [row['summ'], '']
+        L += ['信息取自表内论文 *%s*%s。' % (
+            row['title'] if row else src['title'],
+            '（该基准的提出者）' if self_paper else
+            '（该基准的原始提出论文未单独收录于本表，此处依据使用它的论文转述）'), '']
 
     L += ['## 2. 怎么构建的', '']
     if d:
         L += [d['build'], '']
     else:
-        row = ROWBY.get(self_paper[0]['title']) if self_paper else None
+        src = self_paper[0] if self_paper else papers[0]
+        row = ROWBY.get(src['title'])
         if row and row.get('dim'):
-            L += ['构建要点（据原文摘要）：%s。' % row['dim'], '']
+            L += ['构建要点与评测设计（据原文摘要整理）：%s。' % row['dim'], '']
         else:
             L += ['本表未记录该基准的详细构建方式，需查原文。', '']
 
     L += ['## 3. 用这个基准测了什么', '']
     if d:
         L += [d['models'], '']
+    else:
+        src = self_paper[0] if self_paper else papers[0]
+        row = ROWBY.get(src['title'])
+        if row and row.get('obj'):
+            L += ['**被测对象**：%s。' % row['obj'], '']
     L += ['下表按论文列出：', '',
           '| 论文 | 年 | 来源 | 角色 | 用途/发现 |', '|---|---|---|---|---|']
     for p in papers:
@@ -265,9 +276,22 @@ for name, info in reg.items():
               '**论文提到的改进方向**：%s' % d['improve'], '']
     else:
         row = ROWBY.get(self_paper[0]['title']) if self_paper else None
-        if row and row.get('summ'):
-            L += ['**要点**：%s' % row['summ'], '']
-        L += ['> 该基准目前仅在其提出论文中出现，尚无其他表内论文复用它，因此横向结论有限。', '']
+        if others:
+            L += ['**关键结论**（按使用该基准的论文逐条汇总）：', '']
+            for p in others:
+                r2 = ROWBY.get(p['title'], {})
+                txt = (r2.get('summ') or '').strip()
+                # 取摘要式概要中偏结论的后半句
+                parts = [s for s in re.split(r'(?<=[。；])', txt) if s.strip()]
+                concl = parts[-1] if len(parts) > 1 else (txt or '—')
+                L.append('- **%s**（%s）：%s' % ((r2.get('zh') or p['title'])[:38], p['year'], concl[:150]))
+            L += ['']
+        else:
+            L += ['**关键结论**：见上文第 1 节的概要。', '']
+        L += ['**改进方向**：%s' % (
+            '该基准目前仅在其提出论文中出现，提出者给出的改进方向可参考原文的讨论与未来工作；'
+            '若要形成方向性结论，需等待后续论文复用该基准。' if not others else
+            '上表各论文在使用该基准时指出的短板即为可行改进方向；本表未做统一归纳。'), '']
 
     L += ['## 5. 相关论文（均来自本调研表）', '']
     for p in papers:
