@@ -1,10 +1,10 @@
 # 基准文档索引
 
-本目录为每个基准一份独立文档，共 **121** 份，对应调研表中的 192 篇论文。
+本目录有 **145** 份独立 benchmark 文档，对应 24 个本轮新增 benchmark 项及原有 121 份文档；评测方法条目另列于汇总文档。
 
 文档结构：①测什么问题（含所属具身环节）②怎么构建 ③测了什么模型 ④关键结论与改进方向 ⑤相关论文清单。
 
-## VLA 安全（11 个）
+## VLA 安全（17 个）
 
 | 基准 | 表内论文数 | 其中使用者 | 文档 |
 |---|---|---|---|
@@ -19,6 +19,12 @@
 | SafeVLA-Bench | 1 | 0 | [1__SafeVLA-Bench](1__SafeVLA-Bench.md) |
 | Trap-LIBERO / Trap-RoboTwin | 1 | 1 | [1__Trap-LIBERO-Trap-RoboTwin](1__Trap-LIBERO-Trap-RoboTwin.md) |
 | VLA-Arena | 1 | 0 | [1__VLA-Arena](1__VLA-Arena.md) |
+| ConflictVLA-Bench | 1 | 0 | [1__ConflictVLA-Bench](1__ConflictVLA-Bench.md) |
+| LIBERO-Safety | 1 | 0 | [1__LIBERO-Safety](1__LIBERO-Safety.md) |
+| OopsieVerse | 1 | 0 | [1__OopsieVerse](1__OopsieVerse.md) |
+| RoboTrustBench | 1 | 0 | [1__RoboTrustBench](1__RoboTrustBench.md) |
+| SafeManip | 1 | 0 | [1__SafeManip](1__SafeManip.md) |
+| Safety-CHORES | 1 | 0 | [1__Safety-CHORES](1__Safety-CHORES.md) |
 
 ## VLA 鲁棒性（16 个）
 
@@ -77,7 +83,7 @@
 | VLABench | 1 | 0 | [3__VLABench](3__VLABench.md) |
 | X2Real | 1 | 0 | [3__X2Real](3__X2Real.md) |
 
-## 具身智能体安全（46 个）
+## 具身智能体安全（49 个）
 
 | 基准 | 表内论文数 | 其中使用者 | 文档 |
 |---|---|---|---|
@@ -127,8 +133,11 @@
 | TSHA | 1 | 0 | [4__TSHA](4__TSHA.md) |
 | VestaBench | 1 | 0 | [4__VestaBench](4__VestaBench.md) |
 | Words to World | 1 | 0 | [4__Words-to-World](4__Words-to-World.md) |
+| HomeSafe-Bench | 1 | 0 | [4__HomeSafe-Bench](4__HomeSafe-Bench.md) |
+| TouchSafeBench | 1 | 0 | [4__TouchSafeBench](4__TouchSafeBench.md) |
+| Embodied Red Teaming | 1 | 0 | [4__Embodied-Red-Teaming](4__Embodied-Red-Teaming.md) |
 
-## 具身安全（17 个）
+## 具身安全（32 个）
 
 | 基准 | 表内论文数 | 其中使用者 | 文档 |
 |---|---|---|---|
@@ -149,3 +158,24 @@
 | SafeBench | 1 | 0 | [5__SafeBench](5__SafeBench.md) |
 | TrafficSignBench | 1 | 0 | [5__TrafficSignBench](5__TrafficSignBench.md) |
 | VIPS | 1 | 0 | [5__VIPS](5__VIPS.md) |
+| SinD 2.0 | 1 | 0 | [5__SinD-2-0](5__SinD-2-0.md) |
+| SkyShield | 1 | 0 | [5__SkyShield](5__SkyShield.md) |
+| HA-VLN 2.0 | 1 | 0 | [5__HA-VLN-2-0](5__HA-VLN-2-0.md) |
+| Physical Safety Benchmark for LLMs in Drone Control | 1 | 0 | [5__Physical-Safety-Benchmark-for-LLMs-in-Drone-Control](5__Physical-Safety-Benchmark-for-LLMs-in-Drone-Control.md) |
+| DSRL | 1 | 0 | [5__DSRL](5__DSRL.md) |
+| GUARD | 1 | 0 | [5__GUARD](5__GUARD.md) |
+| Human-Robot Gym | 1 | 0 | [5__Human-Robot-Gym](5__Human-Robot-Gym.md) |
+| OmniSafe | 1 | 0 | [5__OmniSafe](5__OmniSafe.md) |
+| RiskBench | 1 | 0 | [5__RiskBench](5__RiskBench.md) |
+| SafeShift | 1 | 0 | [5__SafeShift](5__SafeShift.md) |
+| Safety-Gymnasium | 1 | 0 | [5__Safety-Gymnasium](5__Safety-Gymnasium.md) |
+| Bullet-Safety-Gym | 1 | 0 | [5__Bullet-Safety-Gym](5__Bullet-Safety-Gym.md) |
+| SocNavBench | 1 | 0 | [5__SocNavBench](5__SocNavBench.md) |
+| safe-control-gym | 1 | 0 | [5__safe-control-gym](5__safe-control-gym.md) |
+| Safety Gym (OpenAI) | 1 | 0 | [5__Safety-Gym-OpenAI](5__Safety-Gym-OpenAI.md) |
+
+## 本轮 Safety 合并
+
+- 本轮新增 **29 条 Safety 记录**，主表合计 **221 条论文记录**。
+- 仓库原有 **121 个 benchmark 文档为混合清单**；本轮新增 24 份文档，文档总数为 **145 份**。
+- 另有 5 条评测方法列入汇总文档。
