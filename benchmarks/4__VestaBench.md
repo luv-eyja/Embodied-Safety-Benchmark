@@ -24,7 +24,7 @@
 
 | 论文 | 年 | 来源 | 角色 | 用途/发现 |
 |---|---|---|---|---|
-| [VestaBench：多约束与对抗下的安全长时程规划基准](https://scholar.google.com/scholar?q=VestaBench%3A+An+Embodied+Benchmark+for+Safe+Long-Horizon+Planning) | 2025 | EMNLP 2025（Industry Trac | **提出** | 多约束满足、长时程规划、对抗条件下的安全性 |
+| [VestaBench：多约束与对抗下的安全长时程规划基准](https://doi.org/10.18653/v1/2025.emnlp-industry.149) | 2025 | EMNLP 2025（Industry Trac | **提出** | 多约束满足、长时程规划、对抗条件下的安全性 |
 
 ## 4. 关键结论与改进方向
 

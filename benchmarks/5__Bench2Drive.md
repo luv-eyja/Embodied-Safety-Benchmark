@@ -24,7 +24,7 @@
 
 | 论文 | 年 | 来源 | 角色 | 用途/发现 |
 |---|---|---|---|---|
-| [Bench2Drive：闭环端到端自动驾驶的多能力基准](https://scholar.google.com/scholar?q=Bench2Drive%3A+Towards+Multi-Ability+Benchmarking+of+Closed-Loop+End-to-End+Autonomous+Driving) | 2024 | NeurIPS 2024（神经信息处理系统大会） | **提出** | 多能力维度的闭环评测 |
+| [Bench2Drive：闭环端到端自动驾驶的多能力基准](https://doi.org/10.52202/079017-0025) | 2024 | NeurIPS 2024（神经信息处理系统大会） | **提出** | 多能力维度的闭环评测 |
 
 ## 4. 关键结论与改进方向
 

@@ -81,14 +81,13 @@
 
 | 基准 | 表内论文数 | 其中使用者 | 文档 |
 |---|---|---|---|
-| DESPITE | 18 | 18 | [4__DESPITE](4__DESPITE.md) |
-| ORDER | 10 | 9 | [4__ORDER](4__ORDER.md) |
 | AGENTSAFE / SAFE-THOR | 1 | 0 | [4__AGENTSAFE-SAFE-THOR](4__AGENTSAFE-SAFE-THOR.md) |
 | AeroIntent | 1 | 0 | [4__AeroIntent](4__AeroIntent.md) |
 | Agent-SafetyBench | 1 | 0 | [4__Agent-SafetyBench](4__Agent-SafetyBench.md) |
 | BLINDSPOT | 1 | 0 | [4__BLINDSPOT](4__BLINDSPOT.md) |
 | Bench2Dex | 1 | 0 | [4__Bench2Dex](4__Bench2Dex.md) |
 | CAPSafe | 1 | 0 | [4__CAPSafe](4__CAPSafe.md) |
+| DESPITE | 1 | 1 | [4__DESPITE](4__DESPITE.md) |
 | DUMA-Bench | 1 | 0 | [4__DUMA-Bench](4__DUMA-Bench.md) |
 | Embodied Agent Interface | 1 | 0 | [4__Embodied-Agent-Interface](4__Embodied-Agent-Interface.md) |
 | EmbodiedBench | 1 | 0 | [4__EmbodiedBench](4__EmbodiedBench.md) |
@@ -109,6 +108,7 @@
 | MineAmongUs | 1 | 1 | [4__MineAmongUs](4__MineAmongUs.md) |
 | MotionForge | 1 | 0 | [4__MotionForge](4__MotionForge.md) |
 | ORBIT | 1 | 0 | [4__ORBIT](4__ORBIT.md) |
+| ORDER | 1 | 0 | [4__ORDER](4__ORDER.md) |
 | PASTABench | 1 | 0 | [4__PASTABench](4__PASTABench.md) |
 | PLCBENCH | 1 | 0 | [4__PLCBENCH](4__PLCBENCH.md) |
 | Peg-in-Bench | 1 | 0 | [4__Peg-in-Bench](4__Peg-in-Bench.md) |
@@ -132,12 +132,12 @@
 
 | 基准 | 表内论文数 | 其中使用者 | 文档 |
 |---|---|---|---|
-| COMPASS / X-Mobility | 6 | 5 | [5__COMPASS-X-Mobility](5__COMPASS-X-Mobility.md) |
 | CARLA / CARLA Leaderboard | 4 | 3 | [5__CARLA-CARLA-Leaderboard](5__CARLA-CARLA-Leaderboard.md) |
 | NAVSIM | 3 | 2 | [5__NAVSIM](5__NAVSIM.md) |
 | nuScenes | 3 | 3 | [5__nuScenes](5__nuScenes.md) |
 | Balanced Multi-Robot Task Allocation Benchmark | 1 | 0 | [5__Balanced-Multi-Robot-Task-Allocation-Benchmark](5__Balanced-Multi-Robot-Task-Allocation-Benchmark.md) |
 | Bench2Drive | 1 | 0 | [5__Bench2Drive](5__Bench2Drive.md) |
+| COMPASS / X-Mobility | 1 | 0 | [5__COMPASS-X-Mobility](5__COMPASS-X-Mobility.md) |
 | DPed-VLN | 1 | 0 | [5__DPed-VLN](5__DPed-VLN.md) |
 | Everyday-Environment Robot Benchmarking | 1 | 0 | [5__Everyday-Environment-Robot-Benchmarking](5__Everyday-Environment-Robot-Benchmarking.md) |
 | ExceptionDrive | 1 | 0 | [5__ExceptionDrive](5__ExceptionDrive.md) |

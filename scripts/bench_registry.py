@@ -163,9 +163,16 @@ BENCH = [
     ('COMPASS / X-Mobility', r'COMPASS', '具身安全', '学习型导航 sim-to-real'),
 ]
 
+CASE_SENSITIVE = {
+    'DESPITE', 'ORDER', 'COMPASS / X-Mobility', 'ORBIT', 'INFUSE', 'STARS',
+    'BLINDSPOT', 'VIPS', 'R2R-CE', 'MineAmongUs', 'RoboHarm',
+}
+
 reg = {}
 for name, pat, tier, desc in BENCH:
-    rx = re.compile(pat, re.I)
+    # 缩写/易撞常用词的名称必须大小写敏感，否则 DESPITE / ORDER 会命中英文常用词
+    flags = 0 if name in CASE_SENSITIVE else re.I
+    rx = re.compile(pat, flags)
     users = []
     for r in rows:
         if rx.search(r['title']) or rx.search(r.get('abstract') or ''):

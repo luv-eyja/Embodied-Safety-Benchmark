@@ -24,7 +24,7 @@
 
 | 论文 | 年 | 来源 | 角色 | 用途/发现 |
 |---|---|---|---|---|
-| [Embodied Agent Interface：具身决策的模块化评测接口](https://scholar.google.com/scholar?q=Embodied+Agent+Interface%3A+Benchmarking+LLMs+for+Embodied+Decision+Making) | 2024 | NeurIPS 2024（神经信息处理系统大会） | **提出** | 目标解释、子目标分解、动作序列化、状态跟踪等环节的统一接口 |
+| [Embodied Agent Interface：具身决策的模块化评测接口](https://doi.org/10.52202/079017-3188) | 2024 | NeurIPS 2024（神经信息处理系统大会） | **提出** | 目标解释、子目标分解、动作序列化、状态跟踪等环节的统一接口 |
 
 ## 4. 关键结论与改进方向
 

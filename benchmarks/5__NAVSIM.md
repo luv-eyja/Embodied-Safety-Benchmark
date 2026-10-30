@@ -26,7 +26,7 @@
 |---|---|---|---|---|
 | [超越排行榜：域偏移下驾驶策略的反事实诊断](https://arxiv.org/abs/2609.22582) | 2026 | arXiv 预印本 (arXiv:2609.22 | 使用 | nuScenes 开环误差与 NAVSIM 排行榜名次 vs 反事实编辑下的轨迹变化 |
 | [DriveDegrade：纯视觉端到端驾驶的图像退化容忍度基准](https://arxiv.org/abs/2608.29005) | 2026 | arXiv 预印本 (arXiv:2608.29 | 使用 | 16 类退化 × 5 个严重度；nuScenes/NAVSIM 开环 + CARLA 闭环锚点 |
-| [NAVSIM：数据驱动的非反应式自动驾驶仿真与基准](https://scholar.google.com/scholar?q=NavSim%3A+Data-Driven+Non-Reactive+Autonomous+Vehicle+Simulation+and+Benchmarking) | 2024 | NeurIPS 2024（神经信息处理系统大会） | **提出** | 基于真实数据的非反应式仿真与统一指标 |
+| [NAVSIM：数据驱动的非反应式自动驾驶仿真与基准](https://doi.org/10.52202/079017-0902) | 2024 | NeurIPS 2024（神经信息处理系统大会） | **提出** | 基于真实数据的非反应式仿真与统一指标 |
 
 ## 4. 关键结论与改进方向
 

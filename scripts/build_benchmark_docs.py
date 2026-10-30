@@ -321,7 +321,8 @@ open(os.path.join(outdir, 'README.md'), 'w', encoding='utf-8').write('\n'.join(L
 
 # ── 补充：未被任何基准文档覆盖的论文（多为评测方法 / 攻防 / 综述，未提出可复用基准）──
 covered = ''.join(open(os.path.join(outdir, f), encoding='utf-8').read()
-                  for f in os.listdir(outdir) if f.endswith('.md'))
+                  for f in os.listdir(outdir)
+                  if f.endswith('.md') and not f.startswith('0__'))
 left = [r for r in ROWBY.values() if r['title'] not in covered]
 if left:
     left.sort(key=lambda r: (r['cat'], str(r['year'])))
