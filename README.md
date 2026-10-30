@@ -15,6 +15,9 @@ benchmarks/
   README.md                                121 个基准的索引，按分类排序
   0__评测方法与协议汇总.md                 38 篇「有评测但不构成独立基准」的论文
   N__<基准名>.md                           每个基准一份文档（共 121 份）
+design/
+  ESB-2设计方案.md                         基于 121 个基准缺口分析的综合基准设计提案
+  coverage-matrix.md                       覆盖矩阵（缺口论证的数据附录）
 scripts/                                   可复现的生成脚本
 docs/                                      方法与说明
 ```
@@ -58,6 +61,19 @@ docs/                                      方法与说明
 - 另有 **38 篇**论文属于「有评测但未提出可复用基准」（评测协议、度量方法、攻防工作、综述），集中在 `benchmarks/0__评测方法与协议汇总.md`
 - 覆盖校验：表中 192 篇论文 **全部**至少出现在一份文档里
 
+## 设计方案：ESB-2
+
+[`design/ESB-2设计方案.md`](design/ESB-2设计方案.md) 是基于本仓库 121 个基准的缺口分析，提出的一套**具身安全综合基准**设计提案。
+
+核心判断（来自 [`design/coverage-matrix.md`](design/coverage-matrix.md) 与 10 篇核心论文全文精读）：
+
+- 121 个基准里**只有 1 个**（EmbodiedGovBench）同时覆盖 4 类以上安全属性，没有任何一个覆盖全部 6 类
+- **终态/后果层只有 8 个**基准触及 —— 而伤害往往发生在「做完之后」
+- **判分口径不统一**（LTL_f / STL / 人工规则 / LLM 裁判），同一句「安全率 78%」不是同一个量
+- **能力与安全不同步**：DESPITE 实测规划能力 0.4→99.3%，安全意识却卡在 38–57%
+
+方案要点：不重造仿真与数据集，而是给已有任务集装一层**可复用的安全测量层** —— (L 层 × A 属性 × S 阶段) 坐标 + 六种配对条件 + 全形式化判分 + 能力/安全双轴报告。
+
 ## 复现
 
 ```bash
@@ -65,6 +81,9 @@ py -3.12 scripts/build_rows.py             # 汇总 → data/rows.json
 py -3.12 scripts/build_xlsx.py             # → Excel
 py -3.12 scripts/bench_registry.py         # 基准 ↔ 论文映射
 py -3.12 scripts/build_benchmark_docs.py   # → benchmarks/*.md
+py -3.12 scripts/coverage.py               # 覆盖矩阵 → docs/_coverage.json
+py -3.12 scripts/coverage_md.py            # → design/coverage-matrix.md
+py -3.12 scripts/fetch_fulltext.py         # 核心论文全文 → docs/_fulltext/
 ```
 
 需要 `openpyxl`。脚本里的路径默认指向 `D:\study\Embodied`，迁移后改 `BASE` 即可。
@@ -72,9 +91,11 @@ py -3.12 scripts/build_benchmark_docs.py   # → benchmarks/*.md
 ## 已知局限
 
 1. **基准归属基于摘要判定**：一篇论文用到的基准若只在实验章节出现、摘要未提，会被漏计。因此「使用者」数量是**下界**。
-2. **文档第 1/2/4 节是人工解读**，依据摘要而非全文精读；第 3 节的论文清单是机械抽取。
-3. **2026 年条目多数只有 arXiv**，是否已被会议接收无法核实。
-4. 106 个单篇基准尚无跨论文证据，横向结论有限。
+2. **文档第 1/2/4 节是人工解读**：仅 10 篇核心基准做了全文精读（SafeStage、ManiGuard、ForesightSafety-VLA、SafeVLA-Bench、LIBERO-RIG、LIBERO-CTRL、LIBERO-VPro、HazardArena、DESPITE、RoboHarm），其余依据摘要。
+3. **覆盖矩阵是关键词匹配的粗略统计**，用于看相对稀疏度，不是精确计量。
+4. **2026 年条目多数只有 arXiv**，是否已被会议接收无法核实。
+5. 106 个单篇基准尚无跨论文证据，横向结论有限。
+6. **ESB-2 目前只是设计提案**，未实现、未验证；其中的数值目标（如 Kendall τ ≥ 0.7）是待实测的假设，不是结论。
 
 ## 许可
 
