@@ -10,6 +10,7 @@ DOC_DIR = REPO / 'benchmarks'
 CARDS = REPO / 'data' / 'benchmark_cards.json'
 INDEX = DOC_DIR / 'README.md'
 COMPARISON = REPO / 'analysis' / 'benchmark-comparison.md'
+PROJECT_AUDIT = REPO / 'data' / 'benchmark_project_audit.json'
 REQUIRED_SECTIONS = [
     '## 0. 评测卡片',
     '## 1. 测什么问题（内容与所测环节）',
@@ -29,6 +30,12 @@ def main():
     assert len(cards) == expected_benchmarks, len(cards)
     assert len({card['name'] for card in cards}) == expected_benchmarks
     assert sum(card['fulltext']['status'] for card in cards) == 10
+    if PROJECT_AUDIT.exists():
+        project_payload = json.loads(PROJECT_AUDIT.read_text(encoding='utf-8'))
+        project_audits = project_payload.get('audits', [])
+        assert len(project_audits) == expected_benchmarks, len(project_audits)
+        assert {a['benchmark'] for a in project_audits} == {card['name'] for card in cards}
+        assert all('project_audit' in card for card in cards)
 
     missing_sections = {}
     missing_docs = []
@@ -39,6 +46,8 @@ def main():
             continue
         text = path.read_text(encoding='utf-8')
         absent = [section for section in REQUIRED_SECTIONS if section not in text]
+        if PROJECT_AUDIT.exists():
+            absent += [] if '**项目地址审计**' in text else ['**项目地址审计**']
         if absent:
             missing_sections[card['name']] = absent
     assert not missing_docs, missing_docs

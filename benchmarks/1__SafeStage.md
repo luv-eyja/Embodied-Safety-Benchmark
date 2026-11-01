@@ -5,6 +5,8 @@
 > **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
 > **证据级别**：A（人工扩写字段 + 表内摘要；另附本地全文核查补录）
 
+> **项目地址审计**：`candidate`；[https://github.com/reeta-042/safestage](https://github.com/reeta-042/safestage)
+
 ## 0. 评测卡片
 
 | 字段 | 当前整理结果 |

@@ -1,0 +1,1248 @@
+{
+  "schema_version": 1,
+  "generated_by": "scripts/build_project_audit.py",
+  "audit_date": "2026-11-01",
+  "scope": "122 benchmark entries in data/benchmark_cards.json",
+  "status_definition": {
+    "found": "论文项目链接或官方项目/代码页已确认",
+    "platform_only": "只确认到依托平台的官方地址，未确认该条目的独立项目页",
+    "candidate": "找到名称匹配的仓库，但尚未确认官方归属",
+    "not_found": "本轮检索未确认项目地址"
+  },
+  "counts": {
+    "found": 47,
+    "platform_only": 12,
+    "candidate": 3,
+    "not_found": 60
+  },
+  "audits": [
+    {
+      "benchmark": "AGENTSAFE / SAFE-THOR",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2506.14697",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "ASIMOV Benchmark",
+      "status": "found",
+      "project_url": "https://asimov-benchmark.github.io/",
+      "project_urls": [
+        "https://asimov-benchmark.github.io/"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2503.08663",
+      "note": "Official ASIMOV Benchmark project page."
+    },
+    {
+      "benchmark": "AeroIntent",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.25869",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "Agent-SafetyBench",
+      "status": "found",
+      "project_url": "https://github.com/thu-coai/Agent-SafetyBench",
+      "project_urls": [
+        "https://github.com/thu-coai/Agent-SafetyBench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2412.14470",
+      "note": "Project/code links extracted from arXiv abs page 2412.14470."
+    },
+    {
+      "benchmark": "AgiBot World",
+      "status": "found",
+      "project_url": "https://agibot-world.com/",
+      "project_urls": [
+        "https://agibot-world.com/",
+        "https://github.com/OpenDriveLab/AgiBot-World"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://doi.org/10.1109/IROS60139.2025.11247088",
+      "note": "Official project site and code repository."
+    },
+    {
+      "benchmark": "BAVO-Bench",
+      "status": "found",
+      "project_url": "https://hcplab-sysu.github.io/BAVO-Bench",
+      "project_urls": [
+        "https://hcplab-sysu.github.io/BAVO-Bench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.37292",
+      "note": "Project/code links extracted from arXiv abs page 2609.37292."
+    },
+    {
+      "benchmark": "BEHAVIOR-1K",
+      "status": "platform_only",
+      "project_url": "https://behavior.stanford.edu/",
+      "project_urls": [
+        "https://behavior.stanford.edu/"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2610.12089",
+      "note": "Canonical BEHAVIOR platform page; no separate project page for the registry entry was confirmed."
+    },
+    {
+      "benchmark": "BLINDSPOT",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.16305",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "Balanced Multi-Robot Task Allocation Benchmark",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.13711",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "Bench2Dex",
+      "status": "found",
+      "project_url": "https://bench2dex.github.io",
+      "project_urls": [
+        "https://bench2dex.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.15726",
+      "note": "Project/code links extracted from arXiv abs page 2609.15726."
+    },
+    {
+      "benchmark": "Bench2Drive",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "not_arxiv",
+      "paper_url": "https://doi.org/10.52202/079017-0025",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "BiDex-100",
+      "status": "found",
+      "project_url": "https://robbyant-research.github.io/BiDex-100",
+      "project_urls": [
+        "https://robbyant-research.github.io/BiDex-100"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.25459",
+      "note": "Project/code links extracted from arXiv abs page 2610.25459."
+    },
+    {
+      "benchmark": "CALVIN",
+      "status": "platform_only",
+      "project_url": "https://calvin-robot.github.io/",
+      "project_urls": [
+        "https://calvin-robot.github.io/",
+        "https://github.com/mees/calvin"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2112.03227",
+      "note": "Canonical CALVIN project/code page."
+    },
+    {
+      "benchmark": "CAPSafe",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.28381",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "CARLA / CARLA Leaderboard",
+      "status": "platform_only",
+      "project_url": "https://carla.org/",
+      "project_urls": [
+        "https://carla.org/",
+        "https://github.com/carla-simulator/carla"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2511.14876",
+      "note": "Canonical CARLA simulator pages; leaderboard-specific project page not confirmed."
+    },
+    {
+      "benchmark": "COLOSSEUM",
+      "status": "found",
+      "project_url": "https://robot-colosseum.github.io",
+      "project_urls": [
+        "https://robot-colosseum.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2402.08191",
+      "note": "Project/code links extracted from arXiv abs page 2402.08191."
+    },
+    {
+      "benchmark": "COMPASS / X-Mobility",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.28432",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "DESPITE",
+      "status": "found",
+      "project_url": "https://despite-safety.github.io",
+      "project_urls": [
+        "https://despite-safety.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2604.18463",
+      "note": "Project/code links extracted from arXiv abs page 2604.18463."
+    },
+    {
+      "benchmark": "DPed-VLN",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.21504",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "DUMA-Bench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.24662",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "DriveDegrade",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2608.29005",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "Embodied Agent Interface",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "not_arxiv",
+      "paper_url": "https://doi.org/10.52202/079017-3188",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "EmbodiedBench",
+      "status": "found",
+      "project_url": "https://embodiedbench.github.io",
+      "project_urls": [
+        "https://embodiedbench.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2502.09560",
+      "note": "Project/code links extracted from arXiv abs page 2502.09560."
+    },
+    {
+      "benchmark": "EmbodiedGovBench",
+      "status": "found",
+      "project_url": "https://github.com/s20sc/embodied-gov-bench",
+      "project_urls": [
+        "https://github.com/s20sc/embodied-gov-bench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2604.11174",
+      "note": "Project/code links extracted from arXiv abs page 2604.11174."
+    },
+    {
+      "benchmark": "Everyday-Environment Robot Benchmarking",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.26490",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "ExceptionDrive",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.37871",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "ForesightSafety-VLA",
+      "status": "found",
+      "project_url": "https://github.com/tuotuoLyu/ForesightSafety-VLA",
+      "project_urls": [
+        "https://github.com/tuotuoLyu/ForesightSafety-VLA"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2606.27079",
+      "note": "GitHub repository found by exact benchmark-title search."
+    },
+    {
+      "benchmark": "GaugeBench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.07597",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "GuardianBench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2608.21928",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "HASARD",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2503.08241",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "HUGE-Bench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "not_arxiv",
+      "paper_url": "https://doi.org/10.1007/978-3-032-37167-6_21",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "HazardArena",
+      "status": "found",
+      "project_url": "https://github.com/HazardArena-Team/HazardArena",
+      "project_urls": [
+        "https://github.com/HazardArena-Team/HazardArena"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2604.12447",
+      "note": "Project/code links extracted from arXiv abs page 2604.12447."
+    },
+    {
+      "benchmark": "HygieneRoboBench",
+      "status": "found",
+      "project_url": "https://euron-zc.github.io/HygieneRoboBench",
+      "project_urls": [
+        "https://euron-zc.github.io/HygieneRoboBench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.08642",
+      "note": "Project/code links extracted from arXiv abs page 2610.08642."
+    },
+    {
+      "benchmark": "INFUSE",
+      "status": "found",
+      "project_url": "https://github.com/judydnguyen/infuse",
+      "project_urls": [
+        "https://github.com/judydnguyen/infuse"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.20776",
+      "note": "Project/code links extracted from arXiv abs page 2610.20776."
+    },
+    {
+      "benchmark": "IS-Bench",
+      "status": "found",
+      "project_url": "https://github.com/AI45Lab/IS-Bench",
+      "project_urls": [
+        "https://github.com/AI45Lab/IS-Bench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2506.16402",
+      "note": "Project/code links extracted from arXiv abs page 2506.16402."
+    },
+    {
+      "benchmark": "ISO-based Humanoid Orchestrator Benchmark",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.07288",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "IndustrialVLA-Bench",
+      "status": "found",
+      "project_url": "https://github.com/xiaoqi-7/IndustrialVLA-Bench",
+      "project_urls": [
+        "https://github.com/xiaoqi-7/IndustrialVLA-Bench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.25562",
+      "note": "Project/code links extracted from arXiv abs page 2609.25562."
+    },
+    {
+      "benchmark": "Inspect Robots",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.06306",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "LABIT",
+      "status": "found",
+      "project_url": "https://irp-hka.github.io/robotic-assembly-benchmark",
+      "project_urls": [
+        "https://irp-hka.github.io/robotic-assembly-benchmark"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.16398",
+      "note": "Project/code links extracted from arXiv abs page 2610.16398."
+    },
+    {
+      "benchmark": "LIBERO-CTRL",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.15940",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "LIBERO-MAX",
+      "status": "found",
+      "project_url": "https://liberomax.github.io",
+      "project_urls": [
+        "https://liberomax.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.36518",
+      "note": "Project/code links extracted from arXiv abs page 2609.36518."
+    },
+    {
+      "benchmark": "LIBERO-Para",
+      "status": "found",
+      "project_url": "https://github.com/xiaoqi-7/IndustrialVLA-Bench",
+      "project_urls": [
+        "https://github.com/xiaoqi-7/IndustrialVLA-Bench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.25562",
+      "note": "Project/code links extracted from arXiv abs page 2609.25562."
+    },
+    {
+      "benchmark": "LIBERO-Plus",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2510.13626",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "LIBERO-Pro2.0",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.24587",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "LIBERO-RECOVER",
+      "status": "found",
+      "project_url": "https://liulin815.github.io/LIBERO-Recovery",
+      "project_urls": [
+        "https://liulin815.github.io/LIBERO-Recovery"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.05178",
+      "note": "Project/code links extracted from arXiv abs page 2609.05178."
+    },
+    {
+      "benchmark": "LIBERO-RIG",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.18843",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "LIBERO-Safety",
+      "status": "found",
+      "project_url": "https://libero-safety.github.io",
+      "project_urls": [
+        "https://libero-safety.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2606.23686",
+      "note": "Project/code links extracted from arXiv abs page 2606.23686."
+    },
+    {
+      "benchmark": "LIBERO-VPro",
+      "status": "found",
+      "project_url": "https://huiqiongli.github.io/LIBERO-VPro",
+      "project_urls": [
+        "https://huiqiongli.github.io/LIBERO-VPro"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.24350",
+      "note": "Project/code links extracted from arXiv abs page 2609.24350."
+    },
+    {
+      "benchmark": "LIBERO-X",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2602.06556",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "LIBERO（基础套件）",
+      "status": "platform_only",
+      "project_url": "https://libero-project.github.io/main.html",
+      "project_urls": [
+        "https://libero-project.github.io/main.html"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2609.03715",
+      "note": "Canonical LIBERO project page."
+    },
+    {
+      "benchmark": "LongBench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2604.16788",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "MAGMA-Bench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.13534",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "MMA-SafetyBench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.19384",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "MSK-Bench",
+      "status": "found",
+      "project_url": "https://zzongzheng0918.github.io/MSK-Bench",
+      "project_urls": [
+        "https://zzongzheng0918.github.io/MSK-Bench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.26872",
+      "note": "Project/code links extracted from arXiv abs page 2609.26872."
+    },
+    {
+      "benchmark": "ManiGuard-Bench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2608.17386",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "ManiPhysicsBench",
+      "status": "candidate",
+      "project_url": "https://github.com/sangwu99/ManiPhysicsBench_Arxiv",
+      "project_urls": [
+        "https://github.com/sangwu99/ManiPhysicsBench_Arxiv"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2610.02802",
+      "note": "Repository matches the benchmark title, but the paper page does not link it explicitly."
+    },
+    {
+      "benchmark": "ManiSkill / ManiSkill2",
+      "status": "platform_only",
+      "project_url": "https://maniskill2.github.io/",
+      "project_urls": [
+        "https://maniskill2.github.io/"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2302.04659",
+      "note": "Canonical ManiSkill2 project page."
+    },
+    {
+      "benchmark": "ManiUnit",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.12089",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "MemForm",
+      "status": "found",
+      "project_url": "https://github.com/opanhw/memform-code",
+      "project_urls": [
+        "https://github.com/opanhw/memform-code"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.14431",
+      "note": "Project/code links extracted from arXiv abs page 2610.14431."
+    },
+    {
+      "benchmark": "MemTransfer",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.32313",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "MineAmongUs",
+      "status": "found",
+      "project_url": "https://junseokim0103.github.io/Lies-We-Can-See",
+      "project_urls": [
+        "https://junseokim0103.github.io/Lies-We-Can-See"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2608.30428",
+      "note": "Project/code links extracted from arXiv abs page 2608.30428."
+    },
+    {
+      "benchmark": "MotionForge",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.25689",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "NAVSIM",
+      "status": "found",
+      "project_url": "https://github.com/autonomousvision/navsim",
+      "project_urls": [
+        "https://github.com/autonomousvision/navsim"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://doi.org/10.52202/079017-0902",
+      "note": "Official NAVSIM repository."
+    },
+    {
+      "benchmark": "ORBIT",
+      "status": "found",
+      "project_url": "https://github.com/wlanderson0/orbit",
+      "project_urls": [
+        "https://github.com/wlanderson0/orbit"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.33102",
+      "note": "Project/code links extracted from arXiv abs page 2609.33102."
+    },
+    {
+      "benchmark": "ORDER",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.22285",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "Open X-Embodiment",
+      "status": "platform_only",
+      "project_url": "https://robotics-transformer-x.github.io/",
+      "project_urls": [
+        "https://robotics-transformer-x.github.io/",
+        "https://github.com/google-deepmind/open_x_embodiment"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://doi.org/10.1109/IROS60139.2025.11247088",
+      "note": "Canonical OXE project/code pages."
+    },
+    {
+      "benchmark": "PASTABench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.28197",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "PLCBENCH",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2608.26882",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "Peg-in-Bench",
+      "status": "found",
+      "project_url": "https://github.com/aistairc/peg-in-bench",
+      "project_urls": [
+        "https://github.com/aistairc/peg-in-bench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.00906",
+      "note": "Project/code links extracted from arXiv abs page 2609.00906."
+    },
+    {
+      "benchmark": "PhysAI-Bench",
+      "status": "found",
+      "project_url": "https://github.com/maferrag/physai-bench",
+      "project_urls": [
+        "https://github.com/maferrag/physai-bench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.23695",
+      "note": "Project/code links extracted from arXiv abs page 2609.23695."
+    },
+    {
+      "benchmark": "Physics-Consistent HRI Benchmark",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.02402",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "PolaRiS",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "not_arxiv",
+      "paper_url": "https://doi.org/10.15607/RSS.2026.XXII.062",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "R2R-CE",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.14682",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "REVERSAL-BENCH",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.17745",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "RT-Safe",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.09294",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "Radar2Plan",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.06121",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "Robo2Process",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2606.13040",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "RoboAbstention",
+      "status": "found",
+      "project_url": "https://purseclab.github.io/RoboAbstention",
+      "project_urls": [
+        "https://purseclab.github.io/RoboAbstention"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2605.20544",
+      "note": "Project/code links extracted from arXiv abs page 2605.20544."
+    },
+    {
+      "benchmark": "RoboCasa",
+      "status": "platform_only",
+      "project_url": "https://robocasa.ai/",
+      "project_urls": [
+        "https://robocasa.ai/"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2610.27861",
+      "note": "Canonical RoboCasa project page."
+    },
+    {
+      "benchmark": "RoboCasa-Shift",
+      "status": "found",
+      "project_url": "https://github.com/HaochengWang23/RoboCasa-Shift",
+      "project_urls": [
+        "https://github.com/HaochengWang23/RoboCasa-Shift"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.27861",
+      "note": "Project/code links extracted from arXiv abs page 2610.27861."
+    },
+    {
+      "benchmark": "RoboCasa365",
+      "status": "platform_only",
+      "project_url": "https://robocasa.ai/",
+      "project_urls": [
+        "https://robocasa.ai/"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2610.27861",
+      "note": "Canonical RoboCasa project page hosts RoboCasa365."
+    },
+    {
+      "benchmark": "RoboChrono",
+      "status": "found",
+      "project_url": "https://continuity3.github.io/robochrono",
+      "project_urls": [
+        "https://continuity3.github.io/robochrono",
+        "https://github.com/mfan-res/ROBOCHRONO"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.36605",
+      "note": "Project/code links extracted from arXiv abs page 2609.36605."
+    },
+    {
+      "benchmark": "RoboColiseum",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.27865",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "RoboComb",
+      "status": "found",
+      "project_url": "https://github.com/AutoLab-SAI-SJTU/RoboCombine",
+      "project_urls": [
+        "https://github.com/AutoLab-SAI-SJTU/RoboCombine"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.15425",
+      "note": "Project/code links extracted from arXiv abs page 2610.15425."
+    },
+    {
+      "benchmark": "RoboDojo",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.24170",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "RoboEval",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "not_arxiv",
+      "paper_url": "https://doi.org/10.1109/ICRA57385.2026.11697082",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "RoboFollow",
+      "status": "found",
+      "project_url": "https://github.com/AutoLab-SAI-SJTU/RoboFollow",
+      "project_urls": [
+        "https://github.com/AutoLab-SAI-SJTU/RoboFollow"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.25636",
+      "note": "Project/code links extracted from arXiv abs page 2609.25636."
+    },
+    {
+      "benchmark": "RoboHarm",
+      "status": "candidate",
+      "project_url": "https://github.com/robocurve/roboharm",
+      "project_urls": [
+        "https://github.com/robocurve/roboharm"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2610.14043",
+      "note": "Repository matches the benchmark title, but authorship/official status needs confirmation."
+    },
+    {
+      "benchmark": "RoboIRG-Bench",
+      "status": "found",
+      "project_url": "https://aernar.github.io/RoboIRGBench",
+      "project_urls": [
+        "https://aernar.github.io/RoboIRGBench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.34384",
+      "note": "Project/code links extracted from arXiv abs page 2609.34384."
+    },
+    {
+      "benchmark": "RoboJailBench",
+      "status": "found",
+      "project_url": "https://purseclab.github.io/benchmark-for-robotics-security",
+      "project_urls": [
+        "https://purseclab.github.io/benchmark-for-robotics-security"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2605.19328",
+      "note": "Project/code links extracted from arXiv abs page 2605.19328."
+    },
+    {
+      "benchmark": "RoboMIND",
+      "status": "found",
+      "project_url": "https://x-humanoid-robomind.github.io",
+      "project_urls": [
+        "https://x-humanoid-robomind.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2412.13877",
+      "note": "Project/code links extracted from arXiv abs page 2412.13877."
+    },
+    {
+      "benchmark": "RoboReel",
+      "status": "found",
+      "project_url": "https://roboreel.github.io",
+      "project_urls": [
+        "https://roboreel.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.08209",
+      "note": "Project/code links extracted from arXiv abs page 2609.08209."
+    },
+    {
+      "benchmark": "RoboStress",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.37334",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "RoboTwin",
+      "status": "platform_only",
+      "project_url": "https://robotwin-platform.github.io/",
+      "project_urls": [
+        "https://robotwin-platform.github.io/",
+        "https://github.com/robotwin-Platform/robotwin"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://doi.org/10.1109/CVPR52734.2025.02575",
+      "note": "Canonical RoboTwin Platform pages."
+    },
+    {
+      "benchmark": "RoboVAD",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.17843",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "RoboVista",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "not_arxiv",
+      "paper_url": "https://doi.org/10.15607/RSS.2026.XXII.095",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "SIREN-Bench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2608.24094",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "STARS",
+      "status": "found",
+      "project_url": "https://larg.github.io/stars",
+      "project_urls": [
+        "https://larg.github.io/stars"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.40245",
+      "note": "Project/code links extracted from arXiv abs page 2609.40245."
+    },
+    {
+      "benchmark": "SafeAgentBench",
+      "status": "found",
+      "project_url": "https://github.com/shengyin1224/SafeAgentBench",
+      "project_urls": [
+        "https://github.com/shengyin1224/SafeAgentBench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2412.13178",
+      "note": "Project/code links extracted from arXiv abs page 2412.13178."
+    },
+    {
+      "benchmark": "SafeBench",
+      "status": "found",
+      "project_url": "https://safebench.github.io",
+      "project_urls": [
+        "https://safebench.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2206.09682",
+      "note": "Project/code links extracted from arXiv abs page 2206.09682."
+    },
+    {
+      "benchmark": "SafeLIBERO",
+      "status": "found",
+      "project_url": "https://vlsa-aegis.github.io",
+      "project_urls": [
+        "https://vlsa-aegis.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2512.11891",
+      "note": "Project/code links extracted from arXiv abs page 2512.11891."
+    },
+    {
+      "benchmark": "SafeMindBench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2509.25885",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "SafePlan-Bench / Safe-Align",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2504.14650",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "SafeStage",
+      "status": "candidate",
+      "project_url": "https://github.com/reeta-042/safestage",
+      "project_urls": [
+        "https://github.com/reeta-042/safestage"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2609.21223",
+      "note": "Repository matches the title but is not confirmed as an official author repository."
+    },
+    {
+      "benchmark": "SafeVLA-Bench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2606.00773",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "SimplerEnv",
+      "status": "platform_only",
+      "project_url": "https://simpler-env.github.io/",
+      "project_urls": [
+        "https://simpler-env.github.io/"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2405.05941",
+      "note": "Canonical SimplerEnv project page."
+    },
+    {
+      "benchmark": "SkillSafetyBench",
+      "status": "found",
+      "project_url": "https://github.com/AI45Lab/skill-safety-bench",
+      "project_urls": [
+        "https://github.com/AI45Lab/skill-safety-bench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2605.12015",
+      "note": "Project/code links extracted from arXiv abs page 2605.12015."
+    },
+    {
+      "benchmark": "Spa-Bench",
+      "status": "found",
+      "project_url": "https://justintiensmith.github.io/Spa-Bench",
+      "project_urls": [
+        "https://justintiensmith.github.io/Spa-Bench"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.12696",
+      "note": "Project/code links extracted from arXiv abs page 2610.12696."
+    },
+    {
+      "benchmark": "TALK-Dem",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.38371",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "TSHA",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2603.29759",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "TrafficSignBench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.38463",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "Trap-LIBERO / Trap-RoboTwin",
+      "status": "found",
+      "project_url": "https://john-liua.github.io/TrapVLA",
+      "project_urls": [
+        "https://john-liua.github.io/TrapVLA"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2608.26578",
+      "note": "Project/code links extracted from arXiv abs page 2608.26578."
+    },
+    {
+      "benchmark": "VIPS",
+      "status": "found",
+      "project_url": "https://vips2026.github.io",
+      "project_urls": [
+        "https://vips2026.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.02462",
+      "note": "Project/code links extracted from arXiv abs page 2609.02462."
+    },
+    {
+      "benchmark": "VLA-Arena",
+      "status": "found",
+      "project_url": "https://vla-arena.github.io",
+      "project_urls": [
+        "https://vla-arena.github.io"
+      ],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2512.22539",
+      "note": "Project/code links extracted from arXiv abs page 2512.22539."
+    },
+    {
+      "benchmark": "VLA-GAUGE",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.16567",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "VLA-Retain",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.27698",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "VLABench",
+      "status": "platform_only",
+      "project_url": "https://vlabench.github.io/",
+      "project_urls": [
+        "https://vlabench.github.io/"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://doi.org/10.1109/ICCV51701.2025.01037",
+      "note": "Canonical VLABench project page."
+    },
+    {
+      "benchmark": "VLN-Safe",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.14682",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "VestaBench",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "not_arxiv",
+      "paper_url": "https://doi.org/10.18653/v1/2025.emnlp-industry.149",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "Words to World",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2610.15228",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "X2Real",
+      "status": "not_found",
+      "project_url": null,
+      "project_urls": [],
+      "discovery": "arxiv_abs",
+      "paper_url": "https://arxiv.org/abs/2609.27449",
+      "note": "截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。"
+    },
+    {
+      "benchmark": "nuScenes",
+      "status": "platform_only",
+      "project_url": "https://www.nuscenes.org/",
+      "project_urls": [
+        "https://www.nuscenes.org/"
+      ],
+      "discovery": "manual_official_or_platform_check",
+      "paper_url": "https://arxiv.org/abs/2609.22582",
+      "note": "Canonical nuScenes dataset/evaluation page."
+    }
+  ]
+}

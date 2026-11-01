@@ -12,6 +12,7 @@ data/
   rows.json                                主表的结构化数据（生成脚本的中间产物）
   benchmark_cards.json                     122 个基准的机器可读卡片与覆盖标签
   benchmark_source_audit.json              benchmark 提出来源审计（表内提出论文 / 表外原始来源）
+  benchmark_project_audit.json             benchmark 项目地址审计（官方项目 / 平台地址 / 候选 / 未找到）
   recent_embodied_benchmark_papers.json    截止 2026-11-01 的近期具身 benchmark 候选
   raw/                                     论文库原始快照（papers / audited / screened）
 benchmarks/
@@ -24,6 +25,7 @@ design/
 analysis/
   基准共同特征.md                          122 个基准的共同结构、手法与十大反模式
   benchmark-comparison.md                  自动生成的跨基准比较与 ESB-2 选型摘要
+  benchmark-project-audit.md               122 个基准的项目地址核验与缺失标记
   benchmark-source-audit.md                未显式标出来源的 benchmark 逐条来源核验
   recent-embodied-benchmark-papers.md      近期具身智能 benchmark 论文补充与纳入建议
 scripts/                                   可复现的生成脚本
@@ -102,6 +104,7 @@ py -3.12 scripts/validate_benchmark_outputs.py # 校验文档、卡片、索引�
 py -3.12 scripts/coverage.py               # 覆盖矩阵 → docs/_coverage.json
 py -3.12 scripts/coverage_md.py            # → design/coverage-matrix.md
 py -3.12 scripts/fetch_fulltext.py         # 核心论文全文 → docs/_fulltext/
+py -3.12 scripts/build_project_audit.py    # 论文项目地址核验 → data/benchmark_project_audit.json + analysis/benchmark-project-audit.md
 ```
 
 需要 `openpyxl`。脚本里的路径默认指向 `D:\study\Embodied`，迁移后改 `BASE` 即可。

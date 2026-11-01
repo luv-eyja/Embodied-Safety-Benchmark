@@ -5,6 +5,8 @@
 > **关联论文**：本表 2 篇（提出者 1 篇，使用者 1 篇）
 > **证据级别**：A（人工扩写字段 + 表内摘要；未逐篇精读全文）
 
+> **项目地址审计**：`platform_only`；[https://maniskill2.github.io/](https://maniskill2.github.io/)
+
 ## 0. 评测卡片
 
 | 字段 | 当前整理结果 |

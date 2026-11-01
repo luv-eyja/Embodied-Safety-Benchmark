@@ -5,6 +5,8 @@
 > **关联论文**：本表 8 篇（提出者 1 篇，使用者 7 篇）
 > **证据级别**：A（人工扩写字段 + 表内摘要；未逐篇精读全文）
 
+> **项目地址审计**：`platform_only`；[https://robotwin-platform.github.io/](https://robotwin-platform.github.io/)；[https://github.com/robotwin-Platform/robotwin](https://github.com/robotwin-Platform/robotwin)
+
 ## 0. 评测卡片
 
 | 字段 | 当前整理结果 |

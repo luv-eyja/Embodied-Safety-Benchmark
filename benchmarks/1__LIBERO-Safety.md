@@ -4,6 +4,8 @@
 > **分类**：VLA 安全  
 > **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
 > **证据级别**：A（论文全文 + 官方项目页 + 官方代码核查）
+
+> **项目地址审计**：`found`；[https://libero-safety.github.io](https://libero-safety.github.io)
 >
 > 具体的任务条目、UBDDL 参数、CuRobo 轨迹生成和运行接口见：[LIBERO-Safety：实现拆解与任务条目](../analysis/LIBERO-Safety-实现拆解.md)。
 

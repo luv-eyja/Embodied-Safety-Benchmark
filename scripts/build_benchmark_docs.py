@@ -13,6 +13,12 @@ REPO = os.path.join(BASE, 'Embodied-Safety-Benchmark')
 reg = json.load(open(os.path.join(BASE, 'docs', '_bench_registry.json'), encoding='utf-8'))
 _audit_path = os.path.join(REPO, 'data', 'benchmark_source_audit.json')
 SOURCE_AUDIT = json.load(open(_audit_path, encoding='utf-8')).get('entries', {}) if os.path.exists(_audit_path) else {}
+_project_audit_path = os.path.join(REPO, 'data', 'benchmark_project_audit.json')
+if os.path.exists(_project_audit_path):
+    _project_audit_data = json.load(open(_project_audit_path, encoding='utf-8'))
+    PROJECT_AUDIT = {a['benchmark']: a for a in _project_audit_data.get('audits', [])}
+else:
+    PROJECT_AUDIT = {}
 
 # 人工撰写的核心内容：(测什么, 怎么构建, 测了什么/关键结论)
 # 只写信息充分的；其余由脚本按论文自身的维度/概要自动成文
@@ -529,6 +535,7 @@ cards = []
 for name, info in reg.items():
     tier, desc, papers = info['tier'], info['desc'], info['papers']
     audit = SOURCE_AUDIT.get(name)
+    project = PROJECT_AUDIT.get(name)
     d = DETAIL.get(name)
     full = FULLTEXT_DETAILS.get(name)
     self_paper = [p for p in papers if p['self']]
@@ -566,6 +573,11 @@ for name, info in reg.items():
          '> **关联论文**：本表 %d 篇（提出者 %d 篇，使用者 %d 篇）' % (
              len(papers), len(self_paper), len(others)),
          '> **证据级别**：%s（%s）' % (evidence_code, evidence_text), '']
+    if project:
+        project_links = '；'.join('[%s](%s)' % (u, u) for u in project.get('project_urls', []))
+        if not project_links:
+            project_links = '未查到可确认的官方项目地址（详见 [项目地址审计](../analysis/benchmark-project-audit.md)）'
+        L += ['> **项目地址审计**：`%s`；%s' % (project.get('status'), project_links), '']
 
     L += ['## 0. 评测卡片', '',
           '| 字段 | 当前整理结果 |', '|---|---|',
@@ -736,6 +748,13 @@ for name, info in reg.items():
         'coverage': {'stages': coverage_stages, 'axes': coverage_axes},
         'papers': paper_cards,
     }
+    if project:
+        card['project_audit'] = {
+            'status': project.get('status'),
+            'project_url': project.get('project_url'),
+            'project_urls': project.get('project_urls', []),
+            'audit_date': _project_audit_data.get('audit_date'),
+        }
     if audit:
         card['source_audit'] = audit
     cards.append(card)

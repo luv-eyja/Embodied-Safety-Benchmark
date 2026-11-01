@@ -5,6 +5,8 @@
 > **关联论文**：本表 1 篇（提出者 0 篇，使用者 1 篇）
 > **证据级别**：C（原始提出论文未单列；依据使用论文的摘要转述）
 
+> **项目地址审计**：`platform_only`；[https://robotics-transformer-x.github.io/](https://robotics-transformer-x.github.io/)；[https://github.com/google-deepmind/open_x_embodiment](https://github.com/google-deepmind/open_x_embodiment)
+
 ## 0. 评测卡片
 
 | 字段 | 当前整理结果 |

@@ -5,6 +5,8 @@
 > **关联论文**：本表 3 篇（提出者 1 篇，使用者 2 篇）
 > **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）
 
+> **项目地址审计**：`found`；[https://github.com/autonomousvision/navsim](https://github.com/autonomousvision/navsim)
+
 ## 0. 评测卡片
 
 | 字段 | 当前整理结果 |

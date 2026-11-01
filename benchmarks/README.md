@@ -6,6 +6,8 @@
 
 证据级别：A=人工扩写字段 + 摘要；B=提出论文摘要；C=使用论文转述。核心条目在此基础上补充 `docs/_fulltext` 的本地全文核查，仍保留原始证据边界。
 
+项目地址审计见 [`analysis/benchmark-project-audit.md`](../analysis/benchmark-project-audit.md) 和 [`data/benchmark_project_audit.json`](../data/benchmark_project_audit.json)。当前 122 个条目中：47 个已确认项目地址，12 个只有依托平台地址，3 个为待确认候选，60 个本轮未查到可确认的官方项目地址。每份 benchmark 文档顶部都有对应状态标记。
+
 ## VLA 安全（12 个）
 
 | 基准 | 表内论文数 | 其中使用者 | 证据级别 | 全文补录 | 文档 |

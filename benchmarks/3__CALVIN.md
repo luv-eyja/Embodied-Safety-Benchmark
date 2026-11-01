@@ -5,6 +5,8 @@
 > **关联论文**：本表 4 篇（提出者 1 篇，使用者 3 篇）
 > **证据级别**：A（人工扩写字段 + 表内摘要；未逐篇精读全文）
 
+> **项目地址审计**：`platform_only`；[https://calvin-robot.github.io/](https://calvin-robot.github.io/)；[https://github.com/mees/calvin](https://github.com/mees/calvin)
+
 ## 0. 评测卡片
 
 | 字段 | 当前整理结果 |

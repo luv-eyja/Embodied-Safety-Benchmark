@@ -5,6 +5,8 @@
 > **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
 > **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）
 
+> **项目地址审计**：`found`；[https://embodiedbench.github.io](https://embodiedbench.github.io)
+
 ## 0. 评测卡片
 
 | 字段 | 当前整理结果 |

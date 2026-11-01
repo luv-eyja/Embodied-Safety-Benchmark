@@ -5,6 +5,8 @@
 > **关联论文**：本表 4 篇（提出者 1 篇，使用者 3 篇）
 > **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）
 
+> **项目地址审计**：`platform_only`；[https://carla.org/](https://carla.org/)；[https://github.com/carla-simulator/carla](https://github.com/carla-simulator/carla)
+
 ## 0. 评测卡片
 
 | 字段 | 当前整理结果 |
