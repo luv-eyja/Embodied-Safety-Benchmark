@@ -20,6 +20,8 @@
 | 基础平台线索 | RoboCasa、RoboCasa365 |
 | 规模线索 | 5 等 VLA 策略 单因子受控偏移 + 干净/扰动配对 rollout；4 个通过干净性能门槛的长时程任务 |
 | 执行环境线索 | 摘要提到仿真/模拟环境。 |
+| 来源审计 | 已核验：[RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots（external_original_paper）](https://arxiv.org/abs/2603.04356) |
+| 来源核验依据 | RoboCasa-Shift 论文明确说明其 benchmark built on RoboCasa365；原始 RoboCasa365 论文不在当前 192 条本库记录中。 |
 
 ## 1. 测什么问题（内容与所测环节）
 

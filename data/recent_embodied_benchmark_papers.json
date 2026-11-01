@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-01",
+  "selection": "2025-11-01 至 2026-11-01 可核验的具身智能 benchmark 论文，优先保留具有明确评测协议、数据/代码或可复现实验描述者。",
+  "papers": [
+    {
+      "title": "EmbodiedLab: Benchmarking Embodied Agents That Act to Know",
+      "authors": "Hongcheng Gao et al.",
+      "year": 2026,
+      "arxiv": "2610.35385",
+      "link": "https://arxiv.org/abs/2610.35385",
+      "benchmark": "EmbodiedLab",
+      "scope": "具身科学发现；30 个实验、5 个学科、14 类仪器平台",
+      "why_relevant": "把‘行动改变世界’扩展为‘行动以获取知识’，评估实验设计、交互、观测读取与结果验证。",
+      "repo_status": "未纳入当前 192 条论文记录",
+      "priority": "高"
+    },
+    {
+      "title": "Behavior Spatial Benchmark: Evaluating Spatial Understanding for Robotics",
+      "authors": "Sirui Chen et al.",
+      "year": 2026,
+      "arxiv": "2610.34051",
+      "link": "https://arxiv.org/abs/2610.34051",
+      "benchmark": "BEHAVIOR-Spatial",
+      "scope": "空间问答、目标接地与动作评估；3,256 个空间问题、1,240 个接地查询",
+      "why_relevant": "直接检验空间理解能否转化为 VLA 行为，补足只看任务成功率的盲区。",
+      "repo_status": "未纳入当前 192 条论文记录",
+      "priority": "高"
+    },
+    {
+      "title": "Rethinking the Practicality of Vision-language-action Model: A Comprehensive Benchmark and An Improved Baseline",
+      "authors": "Wenxuan Song et al.",
+      "year": 2026,
+      "arxiv": "2602.22663",
+      "link": "https://arxiv.org/abs/2602.22663",
+      "benchmark": "CEBench",
+      "scope": "跨本体、仿真与真机、域随机化；14.4k 仿真轨迹与 1.6k 真机轨迹",
+      "why_relevant": "适合补充‘可部署性/跨本体实用性’维度，和本库现有安全、鲁棒性条目形成能力-部署对照。",
+      "repo_status": "未纳入当前 192 条论文记录",
+      "priority": "中高"
+    },
+    {
+      "title": "Benchmarking Vision-Language-Action Models on SO-101: Failure and Recovery Analysis",
+      "authors": "Yi Yu and Xinchuan Qiu",
+      "year": 2026,
+      "arxiv": "2606.08881",
+      "link": "https://arxiv.org/abs/2606.08881",
+      "benchmark": "SO-101 real-world VLA benchmark",
+      "scope": "低成本真机；4 个操作任务、失败 taxonomy、恢复感知指标",
+      "why_relevant": "将失败分解和恢复能力纳入统一真机协议，适合作为安全评测从仿真到低成本实机的桥接条目。",
+      "repo_status": "未纳入当前 192 条论文记录",
+      "priority": "高"
+    },
+    {
+      "title": "RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation",
+      "authors": "Haocheng Wang et al.",
+      "year": 2026,
+      "arxiv": "2610.27861",
+      "link": "https://arxiv.org/abs/2610.27861",
+      "benchmark": "RoboCasa-Shift",
+      "scope": "长时程家务操作；配对 clean/perturbed rollout、4 个扰动因素、1,040 次正式 rollout",
+      "why_relevant": "把总体退化、配对敏感性和阶段失败进度放在同一协议中，和本库的 RoboCasa365 来源审计直接相关。",
+      "repo_status": "已在当前论文表中；来源审计已补 RoboCasa365 原始论文",
+      "priority": "高"
+    },
+    {
+      "title": "Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control",
+      "authors": "Edward Sun et al.",
+      "year": 2026,
+      "arxiv": "2610.14043",
+      "link": "https://arxiv.org/abs/2610.14043",
+      "benchmark": "RoboHarm",
+      "scope": "有害机器人指令；文本、代码策略、末端位姿、关节控制及真机对照",
+      "why_relevant": "直接测量语言拒答迁移到物理控制后的安全断裂，是当前安全基准中最贴近接口迁移的一类。",
+      "repo_status": "已在当前论文表中；来源审计已标为提出论文",
+      "priority": "高"
+    },
+    {
+      "title": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
+      "authors": "Doguhan Yeke et al.",
+      "year": 2026,
+      "arxiv": "2605.20544",
+      "link": "https://arxiv.org/abs/2605.20544",
+      "benchmark": "RoboAbstention",
+      "scope": "不可行、歧义、错误前提和感知不足指令；6,069 条 benchmark 指令",
+      "why_relevant": "把‘应该拒绝什么’从文本安全扩展到感知接地和物理约束下的具身弃权。",
+      "repo_status": "已在当前论文表中；来源审计已标为提出论文",
+      "priority": "高"
+    },
+    {
+      "title": "Using Large Language Models for Embodied Planning Introduces Systematic Safety Risks",
+      "authors": "Tao Zhang et al.",
+      "year": 2026,
+      "arxiv": "2604.18463",
+      "link": "https://arxiv.org/abs/2604.18463",
+      "benchmark": "DESPITE",
+      "scope": "具身任务规划安全；12,279 个确定性验证任务，覆盖物理与规范危险",
+      "why_relevant": "适合补齐规划层安全，且能将规划能力与安全意识分开统计。",
+      "repo_status": "已在当前论文表中；来源审计已标为提出论文",
+      "priority": "高"
+    },
+    {
+      "title": "EmbodiedGovBench: A Benchmark for Governance, Recovery, and Upgrade Safety in Embodied Agent Systems",
+      "authors": "Xue Qin et al.",
+      "year": 2026,
+      "arxiv": "2604.11174",
+      "link": "https://arxiv.org/abs/2604.11174",
+      "benchmark": "EmbodiedGovBench",
+      "scope": "能力边界、运行时漂移、恢复、策略可移植性、升级安全、人类覆盖和审计完整性",
+      "why_relevant": "把治理、可恢复和可审计性提升为具身系统的一等评测目标，适合扩展本库的实时/治理轴。",
+      "repo_status": "已在当前论文表中",
+      "priority": "中高"
+    }
+  ]
+}

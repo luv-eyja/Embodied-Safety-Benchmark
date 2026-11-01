@@ -20,6 +20,8 @@
 | 基础平台线索 | 表内摘要未明确基础平台。 |
 | 规模线索 | 1 等） 100 万+ 轨迹 / 217 个任务 / 5 类部署场景；100 万余条轨迹、217 个任务、5 类部署场景 |
 | 执行环境线索 | 摘要提到真机/实体机器人。 |
+| 来源审计 | 已核验：[Open X-Embodiment: Robotic Learning Datasets and RT-X Models（external_original_paper）](https://arxiv.org/abs/2310.08864) |
+| 来源核验依据 | AgiBot World Colosseo 论文使用 Open X-Embodiment；官方仓库也将该论文列为 Open X-Embodiment 的首篇论文。 |
 
 ## 1. 测什么问题（内容与所测环节）
 

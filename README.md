@@ -11,6 +11,8 @@ data/
   embodied_safety_benchmark_survey.xlsx   主表：192 篇论文 × 14 列（Excel，4 个工作表）
   rows.json                                主表的结构化数据（生成脚本的中间产物）
   benchmark_cards.json                     121 个基准的机器可读卡片与覆盖标签
+  benchmark_source_audit.json              benchmark 提出来源审计（表内提出论文 / 表外原始来源）
+  recent_embodied_benchmark_papers.json    截止 2026-11-01 的近期具身 benchmark 候选
   raw/                                     论文库原始快照（papers / audited / screened）
 benchmarks/
   README.md                                121 个基准的索引，按分类排序
@@ -22,6 +24,8 @@ design/
 analysis/
   基准共同特征.md                          121 个基准的共同结构、手法与十大反模式
   benchmark-comparison.md                  自动生成的跨基准比较与 ESB-2 选型摘要
+  benchmark-source-audit.md                未显式标出来源的 benchmark 逐条来源核验
+  recent-embodied-benchmark-papers.md      近期具身智能 benchmark 论文补充与纳入建议
 scripts/                                   可复现的生成脚本
 docs/                                      方法与说明
 ```
@@ -64,7 +68,8 @@ docs/                                      方法与说明
 - 论文：**192 篇**（论文库 163 + 库外 29），2022–2026
 - 基准：**121 个**
   - VLA 安全 11 · VLA 鲁棒性 16 · VLA 能力 31 · 具身智能体安全 46 · 具身安全 17
-- 其中 **12 个**被 2 篇及以上论文使用（LIBERO 系、RoboTwin、CALVIN、RoboCasa、SimplerEnv、CARLA、NAVSIM、nuScenes、ManiSkill2 等），其余 **109 个**（90%）是论文自建、未被复用
+- 其中 **12 个**在当前表中关联 2 篇及以上论文（LIBERO 系、RoboTwin、CALVIN、RoboCasa、SimplerEnv、CARLA、NAVSIM、nuScenes、ManiSkill2 等）；另有 **5 个**条目已找到表外原始来源，但原始论文尚未并入当前 192 条记录
+- 当前 registry 中 **109 个**基准只关联 1 篇表内论文；这表示当前论文库中的复用证据稀疏，不等同于它们在整个文献中的绝对复用率
 - 另有 **46 篇**论文属于「有评测但未提出可复用基准」（评测协议、度量方法、攻防工作、综述），集中在 `benchmarks/0__评测方法与协议汇总.md`
 - 覆盖校验：表中 192 篇论文 **全部**至少出现在一份文档里
 
@@ -72,7 +77,7 @@ docs/                                      方法与说明
 
 [`analysis/基准共同特征.md`](analysis/基准共同特征.md) 从结构、复用、规模、平台、手法、指标、时间七个切面统计这 121 个基准，并归纳出**十大反模式**与**六条设计公理**。
 
-最刺眼的一条：**安全基准的复用率接近零** —— 46 个具身智能体安全基准**没有一个**被其他论文使用，109/121（90%）只有提出者自己用过一次。
+最刺眼的一条：**安全基准的复用率接近零** —— 46 个具身智能体安全基准当前没有跨论文复用证据；来源审计已将“提出论文未单列”的误报与真正表外原始来源分开。
 
 ## 设计方案：ESB-2
 [`design/ESB-2设计方案.md`](design/ESB-2设计方案.md) 是基于本仓库 121 个基准的缺口分析，提出的一套**具身安全综合基准**设计提案。
@@ -107,7 +112,7 @@ py -3.12 scripts/fetch_fulltext.py         # 核心论文全文 → docs/_fullte
 2. **文档证据深度不同**：15 个基准有人工摘要级扩写；另有 10 个核心基准做了本地全文核查补录（SafeStage、ManiGuard、ForesightSafety-VLA、SafeVLA-Bench、LIBERO-RIG、LIBERO-CTRL、LIBERO-VPro、HazardArena、DESPITE、RoboHarm），其余条目依据摘要和结构化字段。
 3. **覆盖矩阵是关键词匹配的粗略统计**，用于看相对稀疏度，不是精确计量。
 4. **2026 年条目多数只有 arXiv**，是否已被会议接收无法核实。
-5. 106 个单篇基准尚无跨论文证据，横向结论有限。
+5. 当前 registry 中 109 个基准只关联 1 篇表内论文，横向结论有限；其中部分条目可能仍有未收录的外部提出论文。
 6. **ESB-2 目前只是设计提案**，未实现、未验证；其中的数值目标（如 Kendall τ ≥ 0.7）是待实测的假设，不是结论。
 
 ## 许可

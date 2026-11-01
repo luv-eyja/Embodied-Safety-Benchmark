@@ -2,8 +2,8 @@
 
 > **所属环节**：配置化失败后门  
 > **分类**：VLA 安全  
-> **关联论文**：本表 1 篇（提出者 0 篇，使用者 1 篇）
-> **证据级别**：C（原始提出论文未单列；依据使用论文的摘要转述）
+> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
+> **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）
 
 ## 0. 评测卡片
 
@@ -20,6 +20,8 @@
 | 基础平台线索 | LIBERO、RoboTwin |
 | 规模线索 | 表内摘要未明确规模。 |
 | 执行环境线索 | 摘要提到仿真/模拟环境。 |
+| 来源审计 | 已核验：[TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes（same_paper_in_registry）](https://arxiv.org/abs/2608.26578) |
+| 来源核验依据 | 摘要明确写明构建 Trap-LIBERO 与 Trap-RoboTwin。 |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -27,7 +29,7 @@
 
 **摘要级问题描述**：提出 Configured Failure Trapping 这一新的后门攻击任务：以隐秘文本触发器激活，并要求攻击者控制「如何失败」（如以指定位置偏移抓取），比以往「任何失败即算成功」的后门评测更严格也更难检测。为此构建 Trap-LIBERO 与 Trap-RoboTwin 两个基准，覆盖四种代表性失败模式，并提供配置失败保真度的自动评测套件。
 
-信息取自表内论文 *TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes*（该基准的原始提出论文未单独收录于本表，此处依据使用它的论文转述）。
+信息取自表内论文 *TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes*（该基准的提出者）。
 
 **主要测量维度**：配置失败保真度（如何失败）而非仅是否失败；四种失败模式。
 
@@ -60,29 +62,30 @@
 
 | 论文 | 年份 / 来源 | 角色 | 被测对象 | 使用方式 / 指标 | 摘要级发现 |
 |---|---|---|---|---|---|
-| [Trap-LIBERO / Trap-RoboTwin：配置化失败后门基准](https://arxiv.org/abs/2608.26578) | 2026 / arXiv 预印本 (arXiv:2608.26578) | 使用 | VLA 模型 | 配置失败保真度（如何失败）而非仅是否失败；四种失败模式 | 提出 Configured Failure Trapping 这一新的后门攻击任务：以隐秘文本触发器激活，并要求攻击者控制「如何失败」（如以指定位置偏移抓取），比以往「任何失败即算成功」的后门评测更严格也更难检测。 |
+| [Trap-LIBERO / Trap-RoboTwin：配置化失败后门基准](https://arxiv.org/abs/2608.26578) | 2026 / arXiv 预印本 (arXiv:2608.26578) | **提出** | VLA 模型 | 配置失败保真度（如何失败）而非仅是否失败；四种失败模式 | 提出 Configured Failure Trapping 这一新的后门攻击任务：以隐秘文本触发器激活，并要求攻击者控制「如何失败」（如以指定位置偏移抓取），比以往「任何失败即算成功」的后门评测更严格也更难检测。 |
 
 ## 4. 关键结论、改进方向与可复用性
 
 **摘要级发现（按关联论文整理）**：
 
-- **Trap-LIBERO / Trap-RoboTwin：配置化失败后门基准**（2026，使用）：提出 Configured Failure Trapping 这一新的后门攻击任务：以隐秘文本触发器激活，并要求攻击者控制「如何失败」（如以指定位置偏移抓取），比以往「任何失败即算成功」的后门评测更严格也更难检测。为此构建 Trap-LIBERO 与 Trap-RoboTwin 两个基准，覆盖四种代表性失败模式，并提供配置失败保真度的自动评测套件。
+- **Trap-LIBERO / Trap-RoboTwin：配置化失败后门基准**（2026，提出）：提出 Configured Failure Trapping 这一新的后门攻击任务：以隐秘文本触发器激活，并要求攻击者控制「如何失败」（如以指定位置偏移抓取），比以往「任何失败即算成功」的后门评测更严格也更难检测。为此构建 Trap-LIBERO 与 Trap-RoboTwin 两个基准，覆盖四种代表性失败模式，并提供配置失败保真度的自动评测套件。
 
 **基于当前字段的改进提示（不是原文逐字结论）**：
 
 - 按扰动轴、严重度和 clean/OOD 对照分别报告结果，避免只保留聚合成功率。
 - 分别记录攻击成功率、干净任务性能和真实/仿真迁移，避免只报告单一攻击分数。
 - 明确失败注入时刻、失败识别标准和恢复成功判据。
+- 当前尚无跨论文复用证据，需由独立工作复测后再形成稳定的横向结论。
 
-**复用状态**：本表含使用论文，但原始提出论文未单列，暂不能确认是否形成复用链。
+**复用状态**：当前只看到提出论文，尚无跨论文复用证据。
 
 ## 5. 相关论文（均来自本调研表）
 
-- [TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes](https://arxiv.org/abs/2608.26578)（2026，arXiv 预印本 (arXiv:2608.26578)）
+- [TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes](https://arxiv.org/abs/2608.26578)（2026，arXiv 预印本 (arXiv:2608.26578)）  ← **提出**
 
 ## 6. 证据边界与复核建议
 
-- **证据级别**：C（原始提出论文未单列；依据使用论文的摘要转述）。
+- **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）。
 - **主要来源**：[TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes](https://arxiv.org/abs/2608.26578)。
 - **当前限制**：本文档基于调研表、论文摘要和少量人工整理；核心条目另有本地全文核查补录，但仍未替代对全文实验表格、附录、代码仓库和数据下载说明的逐项复核。
 - **建议复核**：优先确认任务/场景划分、样本规模、指标公式、判分阈值、模型清单，以及仿真与真机设置是否一致。

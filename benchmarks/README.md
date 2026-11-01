@@ -10,16 +10,16 @@
 
 | 基准 | 表内论文数 | 其中使用者 | 证据级别 | 全文补录 | 文档 |
 |---|---|---|---|---|---|
-| ASIMOV Benchmark | 2 | 2 | C | — | [1__ASIMOV-Benchmark](1__ASIMOV-Benchmark.md) |
+| ASIMOV Benchmark | 2 | 1 | B | — | [1__ASIMOV-Benchmark](1__ASIMOV-Benchmark.md) |
 | ForesightSafety-VLA | 1 | 0 | A | 是 | [1__ForesightSafety-VLA](1__ForesightSafety-VLA.md) |
 | HazardArena | 1 | 0 | A | 是 | [1__HazardArena](1__HazardArena.md) |
 | ManiGuard-Bench | 1 | 0 | A | 是 | [1__ManiGuard-Bench](1__ManiGuard-Bench.md) |
 | ManiPhysicsBench | 1 | 0 | A | — | [1__ManiPhysicsBench](1__ManiPhysicsBench.md) |
-| RoboHarm | 1 | 1 | C | 是 | [1__RoboHarm](1__RoboHarm.md) |
-| SafeLIBERO | 1 | 1 | A | — | [1__SafeLIBERO](1__SafeLIBERO.md) |
+| RoboHarm | 1 | 0 | B | 是 | [1__RoboHarm](1__RoboHarm.md) |
+| SafeLIBERO | 1 | 0 | A | — | [1__SafeLIBERO](1__SafeLIBERO.md) |
 | SafeStage | 1 | 0 | A | 是 | [1__SafeStage](1__SafeStage.md) |
 | SafeVLA-Bench | 1 | 0 | A | 是 | [1__SafeVLA-Bench](1__SafeVLA-Bench.md) |
-| Trap-LIBERO / Trap-RoboTwin | 1 | 1 | C | — | [1__Trap-LIBERO-Trap-RoboTwin](1__Trap-LIBERO-Trap-RoboTwin.md) |
+| Trap-LIBERO / Trap-RoboTwin | 1 | 0 | B | — | [1__Trap-LIBERO-Trap-RoboTwin](1__Trap-LIBERO-Trap-RoboTwin.md) |
 | VLA-Arena | 1 | 0 | B | — | [1__VLA-Arena](1__VLA-Arena.md) |
 
 ## VLA 鲁棒性（16 个）
@@ -28,20 +28,20 @@
 |---|---|---|---|---|---|
 | LIBERO-Plus | 10 | 9 | A | — | [2__LIBERO-Plus](2__LIBERO-Plus.md) |
 | LIBERO-Pro2.0 | 2 | 1 | A | — | [2__LIBERO-Pro2-0](2__LIBERO-Pro2-0.md) |
-| BAVO-Bench | 1 | 1 | C | — | [2__BAVO-Bench](2__BAVO-Bench.md) |
-| DriveDegrade | 1 | 1 | C | — | [2__DriveDegrade](2__DriveDegrade.md) |
-| LIBERO-CTRL | 1 | 1 | A | 是 | [2__LIBERO-CTRL](2__LIBERO-CTRL.md) |
+| BAVO-Bench | 1 | 0 | B | — | [2__BAVO-Bench](2__BAVO-Bench.md) |
+| DriveDegrade | 1 | 0 | B | — | [2__DriveDegrade](2__DriveDegrade.md) |
+| LIBERO-CTRL | 1 | 0 | A | 是 | [2__LIBERO-CTRL](2__LIBERO-CTRL.md) |
 | LIBERO-MAX | 1 | 0 | A | — | [2__LIBERO-MAX](2__LIBERO-MAX.md) |
-| LIBERO-Para | 1 | 1 | C | — | [2__LIBERO-Para](2__LIBERO-Para.md) |
+| LIBERO-Para | 1 | 0 | B | — | [2__LIBERO-Para](2__LIBERO-Para.md) |
 | LIBERO-RECOVER | 1 | 0 | A | — | [2__LIBERO-RECOVER](2__LIBERO-RECOVER.md) |
 | LIBERO-RIG | 1 | 0 | A | 是 | [2__LIBERO-RIG](2__LIBERO-RIG.md) |
 | LIBERO-VPro | 1 | 0 | A | 是 | [2__LIBERO-VPro](2__LIBERO-VPro.md) |
 | LIBERO-X | 1 | 0 | A | — | [2__LIBERO-X](2__LIBERO-X.md) |
 | RoboCasa-Shift | 1 | 0 | A | — | [2__RoboCasa-Shift](2__RoboCasa-Shift.md) |
-| RoboStress | 1 | 1 | A | — | [2__RoboStress](2__RoboStress.md) |
+| RoboStress | 1 | 0 | A | — | [2__RoboStress](2__RoboStress.md) |
 | VLA-GAUGE | 1 | 0 | A | — | [2__VLA-GAUGE](2__VLA-GAUGE.md) |
 | VLA-Retain | 1 | 0 | A | — | [2__VLA-Retain](2__VLA-Retain.md) |
-| VLN-Safe | 1 | 1 | C | — | [2__VLN-Safe](2__VLN-Safe.md) |
+| VLN-Safe | 1 | 0 | B | — | [2__VLN-Safe](2__VLN-Safe.md) |
 
 ## VLA 能力（31 个）
 
@@ -67,13 +67,13 @@
 | RoboCasa365 | 1 | 1 | C | — | [3__RoboCasa365](3__RoboCasa365.md) |
 | RoboChrono | 1 | 0 | B | — | [3__RoboChrono](3__RoboChrono.md) |
 | RoboColiseum | 1 | 0 | B | — | [3__RoboColiseum](3__RoboColiseum.md) |
-| RoboComb | 1 | 1 | C | — | [3__RoboComb](3__RoboComb.md) |
+| RoboComb | 1 | 0 | B | — | [3__RoboComb](3__RoboComb.md) |
 | RoboDojo | 1 | 0 | B | — | [3__RoboDojo](3__RoboDojo.md) |
 | RoboEval | 1 | 0 | B | — | [3__RoboEval](3__RoboEval.md) |
 | RoboFollow | 1 | 0 | B | — | [3__RoboFollow](3__RoboFollow.md) |
 | RoboIRG-Bench | 1 | 0 | B | — | [3__RoboIRG-Bench](3__RoboIRG-Bench.md) |
 | RoboMIND | 1 | 0 | B | — | [3__RoboMIND](3__RoboMIND.md) |
-| RoboReel | 1 | 1 | C | — | [3__RoboReel](3__RoboReel.md) |
+| RoboReel | 1 | 0 | B | — | [3__RoboReel](3__RoboReel.md) |
 | RoboVista | 1 | 0 | B | — | [3__RoboVista](3__RoboVista.md) |
 | Spa-Bench | 1 | 0 | B | — | [3__Spa-Bench](3__Spa-Bench.md) |
 | VLABench | 1 | 0 | A | — | [3__VLABench](3__VLABench.md) |
@@ -89,7 +89,7 @@
 | BLINDSPOT | 1 | 0 | B | — | [4__BLINDSPOT](4__BLINDSPOT.md) |
 | Bench2Dex | 1 | 0 | B | — | [4__Bench2Dex](4__Bench2Dex.md) |
 | CAPSafe | 1 | 0 | B | — | [4__CAPSafe](4__CAPSafe.md) |
-| DESPITE | 1 | 1 | C | 是 | [4__DESPITE](4__DESPITE.md) |
+| DESPITE | 1 | 0 | B | 是 | [4__DESPITE](4__DESPITE.md) |
 | DUMA-Bench | 1 | 0 | B | — | [4__DUMA-Bench](4__DUMA-Bench.md) |
 | Embodied Agent Interface | 1 | 0 | B | — | [4__Embodied-Agent-Interface](4__Embodied-Agent-Interface.md) |
 | EmbodiedBench | 1 | 0 | B | — | [4__EmbodiedBench](4__EmbodiedBench.md) |
@@ -107,7 +107,7 @@
 | MSK-Bench | 1 | 0 | B | — | [4__MSK-Bench](4__MSK-Bench.md) |
 | MemForm | 1 | 0 | B | — | [4__MemForm](4__MemForm.md) |
 | MemTransfer | 1 | 0 | B | — | [4__MemTransfer](4__MemTransfer.md) |
-| MineAmongUs | 1 | 1 | C | — | [4__MineAmongUs](4__MineAmongUs.md) |
+| MineAmongUs | 1 | 0 | B | — | [4__MineAmongUs](4__MineAmongUs.md) |
 | MotionForge | 1 | 0 | B | — | [4__MotionForge](4__MotionForge.md) |
 | ORBIT | 1 | 0 | B | — | [4__ORBIT](4__ORBIT.md) |
 | ORDER | 1 | 0 | B | — | [4__ORDER](4__ORDER.md) |
@@ -117,13 +117,13 @@
 | PhysAI-Bench | 1 | 0 | B | — | [4__PhysAI-Bench](4__PhysAI-Bench.md) |
 | REVERSAL-BENCH | 1 | 0 | B | — | [4__REVERSAL-BENCH](4__REVERSAL-BENCH.md) |
 | RT-Safe | 1 | 0 | B | — | [4__RT-Safe](4__RT-Safe.md) |
-| RoboAbstention | 1 | 1 | C | — | [4__RoboAbstention](4__RoboAbstention.md) |
+| RoboAbstention | 1 | 0 | B | — | [4__RoboAbstention](4__RoboAbstention.md) |
 | RoboJailBench | 1 | 0 | B | — | [4__RoboJailBench](4__RoboJailBench.md) |
 | RoboVAD | 1 | 0 | B | — | [4__RoboVAD](4__RoboVAD.md) |
 | STARS | 1 | 0 | B | — | [4__STARS](4__STARS.md) |
 | SafeAgentBench | 1 | 0 | B | — | [4__SafeAgentBench](4__SafeAgentBench.md) |
 | SafeMindBench | 1 | 0 | B | — | [4__SafeMindBench](4__SafeMindBench.md) |
-| SafePlan-Bench / Safe-Align | 1 | 1 | C | — | [4__SafePlan-Bench-Safe-Align](4__SafePlan-Bench-Safe-Align.md) |
+| SafePlan-Bench / Safe-Align | 1 | 0 | B | — | [4__SafePlan-Bench-Safe-Align](4__SafePlan-Bench-Safe-Align.md) |
 | SkillSafetyBench | 1 | 0 | B | — | [4__SkillSafetyBench](4__SkillSafetyBench.md) |
 | TALK-Dem | 1 | 0 | B | — | [4__TALK-Dem](4__TALK-Dem.md) |
 | TSHA | 1 | 0 | B | — | [4__TSHA](4__TSHA.md) |

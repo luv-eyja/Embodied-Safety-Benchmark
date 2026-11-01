@@ -2,7 +2,7 @@
 
 > **所属环节**：感知 + 状态（复合扰动）  
 > **分类**：VLA 鲁棒性  
-> **关联论文**：本表 1 篇（提出者 0 篇，使用者 1 篇）
+> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
 > **证据级别**：A（人工扩写字段 + 表内摘要；另附本地全文核查补录）
 
 ## 0. 评测卡片
@@ -20,6 +20,8 @@
 | 基础平台线索 | LIBERO |
 | 规模线索 | 10 个任务、每任务；40×10=400 个匹配 task；2,000 个 nominal rollout |
 | 执行环境线索 | 摘要提到仿真/模拟环境。 |
+| 来源审计 | 已核验：[Beyond Single-Axis Testing: Paired Evaluation of Compound Robustness in Vision-Language-Action Policies（same_paper_in_registry）](https://arxiv.org/abs/2609.15940) |
+| 来源核验依据 | 论文摘要明确将 LIBERO-CTRL 定义为六轴复合鲁棒性 benchmark。 |
 | 全文状态 | 已核查本地全文：`docs/_fulltext/LIBERO-CTRL.txt` |
 
 ## 1. 测什么问题（内容与所测环节）
@@ -55,7 +57,7 @@
 
 | 论文 | 年份 / 来源 | 角色 | 被测对象 | 使用方式 / 指标 | 摘要级发现 |
 |---|---|---|---|---|---|
-| [LIBERO-CTRL：复合鲁棒性配对评测](https://arxiv.org/abs/2609.15940) | 2026 / arXiv 预印本 (arXiv:2609.15940) | 使用 | VLA 策略 | 单轴条件 vs 多轴同时条件的配对对比；涌现失败 / 补偿成功 | 指出现有评测每次只施加一种扰动，而真实部署常同时存在多种偏移。基准给出六轴、每条初始状态都配「单轴条件 + 匹配的多轴同时条件」的配对设计，从而区分两类被总体成功率掩盖的现象：单轴全部成功而复合失败（涌现失败）、至少一个单轴失败而复合成功（补偿成功），说明复合鲁棒性不能由单轴结果简单推断。 |
+| [LIBERO-CTRL：复合鲁棒性配对评测](https://arxiv.org/abs/2609.15940) | 2026 / arXiv 预印本 (arXiv:2609.15940) | **提出** | VLA 策略 | 单轴条件 vs 多轴同时条件的配对对比；涌现失败 / 补偿成功 | 指出现有评测每次只施加一种扰动，而真实部署常同时存在多种偏移。基准给出六轴、每条初始状态都配「单轴条件 + 匹配的多轴同时条件」的配对设计，从而区分两类被总体成功率掩盖的现象：单轴全部成功而复合失败（涌现失败）、至少一个单轴失败而复合成功（补偿成功），说明复合鲁棒性不能由单轴结果简单推断。 |
 
 ## 4. 关键结论、改进方向与可复用性
 
@@ -63,11 +65,11 @@
 
 **论文提到的改进方向**：①评测必须做配对的同时扰动实验；②报告涌现失败与补偿成功的比例，而非只报平均成功率；③鲁棒性训练需覆盖扰动组合。
 
-**复用状态**：本表含使用论文，但原始提出论文未单列，暂不能确认是否形成复用链。
+**复用状态**：当前只看到提出论文，尚无跨论文复用证据。
 
 ## 5. 相关论文（均来自本调研表）
 
-- [Beyond Single-Axis Testing: Paired Evaluation of Compound Robustness in Vision-Language-Action Policies](https://arxiv.org/abs/2609.15940)（2026，arXiv 预印本 (arXiv:2609.15940)）
+- [Beyond Single-Axis Testing: Paired Evaluation of Compound Robustness in Vision-Language-Action Policies](https://arxiv.org/abs/2609.15940)（2026，arXiv 预印本 (arXiv:2609.15940)）  ← **提出**
 
 ## 6. 证据边界与复核建议
 

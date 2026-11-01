@@ -20,6 +20,8 @@
 | 基础平台线索 | nuScenes |
 | 规模线索 | 21 个任务 |
 | 执行环境线索 | 表内摘要未明确执行环境。 |
+| 来源审计 | 已核验：[ExceptionDrive: A Planning-Oriented Counterfactual Corner-Case Benchmark for Autonomous Driving（same_paper_in_registry）](https://arxiv.org/abs/2609.37871) |
+| 来源核验依据 | 摘要明确写明 proposed ExceptionDrive counterfactual planning benchmark。 |
 
 ## 1. 测什么问题（内容与所测环节）
 

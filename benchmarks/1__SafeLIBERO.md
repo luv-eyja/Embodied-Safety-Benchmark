@@ -2,7 +2,7 @@
 
 > **所属环节**：动作控制（碰撞安全）  
 > **分类**：VLA 安全  
-> **关联论文**：本表 1 篇（提出者 0 篇，使用者 1 篇）
+> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
 > **证据级别**：A（人工扩写字段 + 表内摘要；未逐篇精读全文）
 
 ## 0. 评测卡片
@@ -20,6 +20,8 @@
 | 基础平台线索 | LIBERO |
 | 规模线索 | 表内摘要未明确规模。 |
 | 执行环境线索 | 摘要提到仿真/模拟环境。 |
+| 来源审计 | 已核验：[VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer（same_paper_in_registry）](https://arxiv.org/abs/2512.11891) |
+| 来源核验依据 | 摘要明确写明构建 SafeLIBERO safety-critical benchmark。 |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -54,7 +56,7 @@
 
 | 论文 | 年份 / 来源 | 角色 | 被测对象 | 使用方式 / 指标 | 摘要级发现 |
 |---|---|---|---|---|---|
-| [SafeLIBERO：安全关键操作基准（附 AEGIS 安全层）](https://arxiv.org/abs/2512.11891) | 2025 / arXiv 预印本 (arXiv:2512.11891) | 使用 | VLA + 安全约束层 | 碰撞/安全违规率与指令遵循性能的权衡 | 提出基于控制屏障函数的即插即用安全约束层 AEGIS，可与现有 VLA 直接组合并给出理论安全保证；为验证效果构建安全关键基准 SafeLIBERO，覆盖多种存在碰撞风险的操作场景，同时度量安全性与原有指令遵循性能。可作为「防御方法自带评测集」的典型样本。 |
+| [SafeLIBERO：安全关键操作基准（附 AEGIS 安全层）](https://arxiv.org/abs/2512.11891) | 2025 / arXiv 预印本 (arXiv:2512.11891) | **提出** | VLA + 安全约束层 | 碰撞/安全违规率与指令遵循性能的权衡 | 提出基于控制屏障函数的即插即用安全约束层 AEGIS，可与现有 VLA 直接组合并给出理论安全保证；为验证效果构建安全关键基准 SafeLIBERO，覆盖多种存在碰撞风险的操作场景，同时度量安全性与原有指令遵循性能。可作为「防御方法自带评测集」的典型样本。 |
 
 ## 4. 关键结论、改进方向与可复用性
 
@@ -62,11 +64,11 @@
 
 **论文提到的改进方向**：①安全保证应带理论依据（CBF）；②评测需同时报告安全与任务性能；③安全层应即插即用，不依赖重训。
 
-**复用状态**：本表含使用论文，但原始提出论文未单列，暂不能确认是否形成复用链。
+**复用状态**：当前只看到提出论文，尚无跨论文复用证据。
 
 ## 5. 相关论文（均来自本调研表）
 
-- [VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer](https://arxiv.org/abs/2512.11891)（2025，arXiv 预印本 (arXiv:2512.11891)）
+- [VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer](https://arxiv.org/abs/2512.11891)（2025，arXiv 预印本 (arXiv:2512.11891)）  ← **提出**
 
 ## 6. 证据边界与复核建议
 

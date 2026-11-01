@@ -20,6 +20,8 @@
 | 基础平台线索 | CARLA、nuScenes、NAVSIM |
 | 规模线索 | 21 个任务 |
 | 执行环境线索 | 摘要提到仿真/模拟环境。 |
+| 来源审计 | 已核验：[nuScenes: A Multimodal Dataset for Autonomous Driving（external_original_paper）](https://arxiv.org/abs/1903.11027) |
+| 来源核验依据 | nuScenes 是当前 DriveDegrade、ExceptionDrive 等条目的底层数据集；原始数据集论文不在当前 192 条本库记录中。 |
 
 ## 1. 测什么问题（内容与所测环节）
 

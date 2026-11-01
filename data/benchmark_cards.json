@@ -9,9 +9,9 @@
       "document": "1__ASIMOV-Benchmark.md",
       "tier": "VLA 安全",
       "stage_label": "语义安全与机器人宪法",
-      "problem": "指出既有安全基准危险范围窄、只看最终结果，忽略智能体完整的感知-规划-执行过程，从而掩盖关键失败模式。SAFE 含三部分：可扩展的对抗仿真沙箱 SAFE-THOR（通用适配器把 VLM 高层输出映射为底层具身控制，支持多种智能体工作流接入）、风险感知的 SAFE-VERSE 等，用于系统评估具身 VLM 智能体执行危险指令时的安全性。",
-      "build": "本仓库当前保存的是摘要级构建信息：感知-规划-执行全过程；危险指令下的违规与失败模式",
-      "finding": "指出既有安全基准危险范围窄、只看最终结果，忽略智能体完整的感知-规划-执行过程，从而掩盖关键失败模式。SAFE 含三部分：可扩展的对抗仿真沙箱 SAFE-THOR（通用适配器把 VLM 高层输出映射为底层具身控制，支持多种智能体工作流接入）、风险感知的 SAFE-VERSE 等，用于系统评估具身 VLM 智能体执行危险指令时的安全性。",
+      "problem": "指出机器人安全研究长期聚焦碰撞回避与近身危害，而视觉语言模型使机器人具备高层语义理解与自然语言交互能力，其幻觉与被越狱等已知脆弱性一旦被交予可产生物理接触的机器人即形成直接危险。工作有两点贡献：给出可规模化生成「机器人宪法」的数据配方，并发布 ASIMOV Benchmark——用于评测与提升机器人基础模型语义安全的大规模数据集集合。",
+      "build": "本仓库当前保存的是摘要级构建信息：语义安全；大规模情景化安全判断数据集",
+      "finding": "指出机器人安全研究长期聚焦碰撞回避与近身危害，而视觉语言模型使机器人具备高层语义理解与自然语言交互能力，其幻觉与被越狱等已知脆弱性一旦被交予可产生物理接触的机器人即形成直接危险。工作有两点贡献：给出可规模化生成「机器人宪法」的数据配方，并发布 ASIMOV Benchmark——用于评测与提升机器人基础模型语义安全的大规模数据集集合。",
       "improve": null,
       "tags": [
         "语义/指令安全",
@@ -23,22 +23,22 @@
       "platform_hint": "表内摘要未明确基础平台。",
       "scale_hint": "表内摘要未明确规模。",
       "execution_hint": "摘要提到仿真/模拟环境。",
-      "dimension": "感知-规划-执行全过程；危险指令下的违规与失败模式",
+      "dimension": "语义安全；大规模情景化安全判断数据集",
       "years": [
         "2025"
       ],
       "sources": [
         "本论文库"
       ],
-      "source_link": "https://arxiv.org/abs/2506.14697",
-      "primary_paper": "AGENTSAFE: Benchmarking the Safety of Embodied Agents on Hazardous Instructions",
+      "source_link": "https://arxiv.org/abs/2503.08663",
+      "primary_paper": "Generating Robot Constitutions & Benchmarks for Semantic Safety",
       "paper_count": 2,
-      "user_count": 2,
-      "reuser_count": 0,
-      "has_self_paper": false,
+      "user_count": 1,
+      "reuser_count": 1,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -52,14 +52,12 @@
       "coverage": {
         "stages": [
           "感知层",
-          "认知/语义层",
-          "规划层",
-          "动作控制层"
+          "认知/语义层"
         ],
         "axes": [
           "语义/指令安全",
-          "对抗/后门安全",
-          "失败恢复"
+          "物理/接触安全",
+          "对抗/后门安全"
         ]
       },
       "papers": [
@@ -78,12 +76,20 @@
           "display_title": "ASIMOV Benchmark：语义安全基准与机器人宪法",
           "year": "2025",
           "venue": "arXiv 预印本 (arXiv:2503.08663)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2503.08663",
           "dimension": "语义安全；大规模情景化安全判断数据集",
           "summary": "指出机器人安全研究长期聚焦碰撞回避与近身危害，而视觉语言模型使机器人具备高层语义理解与自然语言交互能力，其幻觉与被越狱等已知脆弱性一旦被交予可产生物理接触的机器人即形成直接危险。工作有两点贡献：给出可规模化生成「机器人宪法」的数据配方，并发布 ASIMOV Benchmark——用于评测与提升机器人基础模型语义安全的大规模数据集集合。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "Generating Robot Constitutions & Benchmarks for Semantic Safety",
+        "source_link": "https://arxiv.org/abs/2503.08663",
+        "source_year": 2025,
+        "source_basis": "摘要明确写明发布 ASIMOV Benchmark；AGENTSAFE 是本库中的使用论文。"
+      }
     },
     {
       "name": "ForesightSafety-VLA",
@@ -383,12 +389,12 @@
       "source_link": "https://arxiv.org/abs/2610.14043",
       "primary_paper": "Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述；另附本地全文核查补录"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；另附本地全文核查补录"
       },
       "fulltext": {
         "status": true,
@@ -418,12 +424,20 @@
           "display_title": "RoboHarm：LLM 拒答在机器人控制下是否幸存",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2610.14043)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2610.14043",
           "dimension": "接口变量受控；MuJoCo 双臂 YAM 仿真 + 真机 612 次试验",
           "summary": "追问一个尖锐问题：前沿语言模型在纯文本下会可靠拒绝解释如何造成人身伤害，但当同一个模型控制机器人时，这种拒绝是否还在？基准含一组有害机器人指令，固定模型、只改变接口（文本→Code as Policies→命令末端位姿或关节角的视觉智能体）。在双臂 YAM 的 MuJoCo 仿真孪生中，拒绝率从文本请求的 73% 降到模型控制机器人后的 18–25%；真机上六个末端控制的模型在 612 次试验中拒绝率约 18%。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control",
+        "source_link": "https://arxiv.org/abs/2610.14043",
+        "source_year": 2026,
+        "source_basis": "摘要明确写明 introduce RoboHarm。"
+      }
     },
     {
       "name": "SafeLIBERO",
@@ -452,9 +466,9 @@
       "source_link": "https://arxiv.org/abs/2512.11891",
       "primary_paper": "VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
         "code": "A",
         "description": "人工扩写字段 + 表内摘要；未逐篇精读全文"
@@ -484,12 +498,20 @@
           "display_title": "SafeLIBERO：安全关键操作基准（附 AEGIS 安全层）",
           "year": "2025",
           "venue": "arXiv 预印本 (arXiv:2512.11891)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2512.11891",
           "dimension": "碰撞/安全违规率与指令遵循性能的权衡",
           "summary": "提出基于控制屏障函数的即插即用安全约束层 AEGIS，可与现有 VLA 直接组合并给出理论安全保证；为验证效果构建安全关键基准 SafeLIBERO，覆盖多种存在碰撞风险的操作场景，同时度量安全性与原有指令遵循性能。可作为「防御方法自带评测集」的典型样本。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer",
+        "source_link": "https://arxiv.org/abs/2512.11891",
+        "source_year": 2025,
+        "source_basis": "摘要明确写明构建 SafeLIBERO safety-critical benchmark。"
+      }
     },
     {
       "name": "SafeStage",
@@ -657,12 +679,12 @@
       "source_link": "https://arxiv.org/abs/2608.26578",
       "primary_paper": "TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -689,12 +711,20 @@
           "display_title": "Trap-LIBERO / Trap-RoboTwin：配置化失败后门基准",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2608.26578)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2608.26578",
           "dimension": "配置失败保真度（如何失败）而非仅是否失败；四种失败模式",
           "summary": "提出 Configured Failure Trapping 这一新的后门攻击任务：以隐秘文本触发器激活，并要求攻击者控制「如何失败」（如以指定位置偏移抓取），比以往「任何失败即算成功」的后门评测更严格也更难检测。为此构建 Trap-LIBERO 与 Trap-RoboTwin 两个基准，覆盖四种代表性失败模式，并提供配置失败保真度的自动评测套件。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes",
+        "source_link": "https://arxiv.org/abs/2608.26578",
+        "source_year": 2026,
+        "source_basis": "摘要明确写明构建 Trap-LIBERO 与 Trap-RoboTwin。"
+      }
     },
     {
       "name": "VLA-Arena",
@@ -790,12 +820,12 @@
       "source_link": "https://arxiv.org/abs/2609.37292",
       "primary_paper": "Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -823,12 +853,20 @@
           "display_title": "BAVO-Bench：遮挡恢复的双臂主动视觉基准",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2609.37292)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2609.37292",
           "dimension": "Clean / 阶段遮挡 / 随机时刻遮挡；操作性能 + 主动视觉恢复",
           "summary": "指出物理主动视觉允许机器人在任务相关观测不可靠时改变视角，但现有操作基准对「策略如何在执行中从遮挡恢复」支持有限。BAVO-Bench 通过 Clean、Stage Occlusion 与 Random-time Occlusion 三种条件系统控制外部可见性，同时评测操作性能与主动视觉恢复能力；作者据此提出联合视角与操作控制的 A-FAR 策略。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation",
+        "source_link": "https://arxiv.org/abs/2609.37292",
+        "source_year": 2026,
+        "source_basis": "摘要明确写明 introduce BAVO-Bench。"
+      }
     },
     {
       "name": "DriveDegrade",
@@ -859,12 +897,12 @@
       "source_link": "https://arxiv.org/abs/2608.29005",
       "primary_paper": "A Degradation-Tolerance Benchmark for Camera-Only End-to-End Driving",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -892,12 +930,20 @@
           "display_title": "DriveDegrade：纯视觉端到端驾驶的图像退化容忍度基准",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2608.29005)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2608.29005",
           "dimension": "16 类退化 × 5 个严重度；nuScenes/NAVSIM 开环 + CARLA 闭环锚点",
           "summary": "指出纯视觉端到端驾驶模型正接近部署，而部署中相机流会被模糊、噪声、低照度、天气、丢帧与内存故障破坏，但策略在驾驶能力崩溃前能容忍多少尚不清楚；已有的损坏鲁棒性基准针对检测或鸟瞰图感知，而非真正驱动车辆的计划输出。基准把 16 类退化在 5 个严重度下于图像加载器内即时注入，单一算子即可触达 15 个策略。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "A Degradation-Tolerance Benchmark for Camera-Only End-to-End Driving",
+        "source_link": "https://arxiv.org/abs/2608.29005",
+        "source_year": 2026,
+        "source_basis": "arXiv 页面完整标题为 When Does Corruption Break the Plan? A Degradation-Tolerance Benchmark for Camera-Only End-to-End Driving，摘要明确写明 present DriveDegrade benchmark。"
+      }
     },
     {
       "name": "LIBERO-CTRL",
@@ -926,9 +972,9 @@
       "source_link": "https://arxiv.org/abs/2609.15940",
       "primary_paper": "Beyond Single-Axis Testing: Paired Evaluation of Compound Robustness in Vision-Language-Action Policies",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
         "code": "A",
         "description": "人工扩写字段 + 表内摘要；另附本地全文核查补录"
@@ -960,12 +1006,20 @@
           "display_title": "LIBERO-CTRL：复合鲁棒性配对评测",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2609.15940)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2609.15940",
           "dimension": "单轴条件 vs 多轴同时条件的配对对比；涌现失败 / 补偿成功",
           "summary": "指出现有评测每次只施加一种扰动，而真实部署常同时存在多种偏移。基准给出六轴、每条初始状态都配「单轴条件 + 匹配的多轴同时条件」的配对设计，从而区分两类被总体成功率掩盖的现象：单轴全部成功而复合失败（涌现失败）、至少一个单轴失败而复合成功（补偿成功），说明复合鲁棒性不能由单轴结果简单推断。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "Beyond Single-Axis Testing: Paired Evaluation of Compound Robustness in Vision-Language-Action Policies",
+        "source_link": "https://arxiv.org/abs/2609.15940",
+        "source_year": 2026,
+        "source_basis": "论文摘要明确将 LIBERO-CTRL 定义为六轴复合鲁棒性 benchmark。"
+      }
     },
     {
       "name": "LIBERO-MAX",
@@ -1061,12 +1115,12 @@
       "source_link": "https://arxiv.org/abs/2609.25562",
       "primary_paper": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -1094,12 +1148,20 @@
           "display_title": "IndustrialVLA-Bench：VLA 与 WAM 的多轴可追溯评测",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2609.25562)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2609.25562",
           "dimension": "干净能力（LIBERO）/ 非语言鲁棒性（LIBERO-Plus）/ 指令敏感度（LIBERO-Para）/ 执行代价",
           "summary": "VLA 与世界动作模型两条技术路线常在各自不同的评测协议下报告结果，难以比较能力、鲁棒性、语言敏感性与部署成本。该基准在统一上报口径下对 6 个已发布系统分轴评测：LIBERO 上的干净能力、LIBERO-Plus 上的非语言鲁棒性、LIBERO-Para 上的指令敏感度以及实测执行代价，并聚合三个不同随机种子的完整评测。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
+        "source_link": "https://arxiv.org/abs/2609.25562",
+        "source_year": 2026,
+        "source_basis": "摘要明确说明在 LIBERO-Para 上评估 instruction sensitivity。"
+      }
     },
     {
       "name": "LIBERO-Plus",
@@ -1701,9 +1763,9 @@
       "source_link": "https://arxiv.org/abs/2609.37334",
       "primary_paper": "Taming VLAs under Robot Execution Errors: Self-Compensation and Stress Testing",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
         "code": "A",
         "description": "人工扩写字段 + 表内摘要；未逐篇精读全文"
@@ -1734,12 +1796,20 @@
           "display_title": "RoboStress：执行误差压力测试基准",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2609.37334)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2609.37334",
           "dimension": "7 种部署场景的执行误差；执行条件鲁棒性",
           "summary": "针对执行动作偏离指令（机械磨损、负载变化等导致）这一实际失效来源，提出部署期自补偿 VLA（无需任务奖励或标签，用指令动作与实际执行的残差在线更新策略）；并构建受控仿真基准 RoboStress，把摩擦、间隙、柔顺与重力补偿误差等关节级模型组合成 7 种部署场景，用于在物理机器人难以覆盖的执行条件下做鲁棒性压力测试。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "Taming VLAs under Robot Execution Errors: Self-Compensation and Stress Testing",
+        "source_link": "https://arxiv.org/abs/2609.37334",
+        "source_year": 2026,
+        "source_basis": "摘要明确写明 introduce RoboStress controlled simulation benchmark。"
+      }
     },
     {
       "name": "VLA-GAUGE",
@@ -1895,12 +1965,12 @@
       "source_link": "https://arxiv.org/abs/2610.14682",
       "primary_paper": "Successful but Unsafe: An Analytical Benchmark for Revealing Collisions in Vision-and-Language Navigation",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -1925,12 +1995,20 @@
           "display_title": "VLN-Safe：视觉语言导航碰撞安全基准",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2610.14682)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2610.14682",
           "dimension": "滑行 vs 阻塞两种评测机制下的成功率与接触率",
           "summary": "VLN 智能体通常只按「是否到达」与「路径效率」评测，几乎不反映碰撞行为；且连续 VLN 评测常用滑行机制，碰撞后可沿障碍滑动，掩盖不安全动作的后果。该基准在滑行与阻塞（碰撞动作禁止前进）两种机制下对比六个已发表智能体：R2R-CE 上 38.5–56.8% 的成功回合存在接触，改用阻塞机制后成功率下降 11.7–36.1 个百分点。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "Successful but Unsafe: An Analytical Benchmark for Revealing Collisions in Vision-and-Language Navigation",
+        "source_link": "https://arxiv.org/abs/2610.14682",
+        "source_year": 2026,
+        "source_basis": "摘要明确写明 introduce VLN-Safe，并在 R2R-CE 上评估。"
+      }
     },
     {
       "name": "AgiBot World",
@@ -2058,7 +2136,15 @@
           "dimension": "21 类技能 / 417 子任务 / 137,899 片段；技能级诊断",
           "summary": "长时程移动操作要求机器人按单条自然语言指令跨房间导航并连续执行多个操作技能，评测上有三个难点：同一指令下相似观测使技能选择歧义；前序技能虽成功，但继承的机器人状态可能偏离下一技能的示范起点；任务级指标无法做技能级诊断，且早期失败会让后续技能根本没被测到。ManiUnit 基于 BEHAVIOR-1K 的 50 个活动构建数据集（21 类技能、417 个子任务、137,899 个片段）与相应基准。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "external_original_paper",
+        "source_title": "BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation",
+        "source_link": "https://arxiv.org/abs/2403.09227",
+        "source_year": 2024,
+        "source_basis": "ManiUnit 论文明确说明其数据与 benchmark built from 50 BEHAVIOR-1K activities；BEHAVIOR-1K 原始论文不在当前 192 条本库记录中。"
+      }
     },
     {
       "name": "BiDex-100",
@@ -3062,7 +3148,15 @@
           "dimension": "100 万+ 轨迹 / 217 个任务 / 5 类部署场景；数据规模与质量",
           "summary": "以「可扩展的机器人数据」回应通用操作的真机挑战：AgiBot World 是含 100 万余条轨迹、217 个任务、5 类部署场景的大规模平台，数据规模比既有数据集高一个数量级；标准化采集流水线配合人在环校验保证质量与分布多样性，并可从夹爪扩展到灵巧手与视触觉传感器以获取细粒度技能。在数据之上提出通用策略 Genie Operator-1（GO-1）。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "external_original_paper",
+        "source_title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+        "source_link": "https://arxiv.org/abs/2310.08864",
+        "source_year": 2023,
+        "source_basis": "AgiBot World Colosseo 论文使用 Open X-Embodiment；官方仓库也将该论文列为 Open X-Embodiment 的首篇论文。"
+      }
     },
     {
       "name": "PolaRiS",
@@ -3359,7 +3453,15 @@
           "dimension": "单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度",
           "summary": "针对「总体成功率掩盖了单次执行如何变化、失败出现在长时程哪一阶段」的问题，在 RoboCasa365 上构建诊断型鲁棒性基准：干净与扰动 rollout 严格配对（仅目标偏移不同），并给出仿真支撑的阶段感知诊断。对 4 个通过干净性能门槛的长时程任务做 4 种扰动因子 × 3 个校准严重度共 1040 次正式评测，发现鲁棒性响应在因子与任务间差异很大、且不随严重度单调变化。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "external_original_paper",
+        "source_title": "RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots",
+        "source_link": "https://arxiv.org/abs/2603.04356",
+        "source_year": 2026,
+        "source_basis": "RoboCasa-Shift 论文明确说明其 benchmark built on RoboCasa365；原始 RoboCasa365 论文不在当前 192 条本库记录中。"
+      }
     },
     {
       "name": "RoboChrono",
@@ -3519,12 +3621,12 @@
       "source_link": "https://arxiv.org/abs/2610.15425",
       "primary_paper": "Exploring the Limits of Combinatorial Generalization in Embodied Manipulation",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -3552,12 +3654,20 @@
           "display_title": "RoboComb：组合泛化的极限与技能重组诊断",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2610.15425)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2610.15425",
           "dimension": "有序成功率（覆盖组合 vs 重组组合）；HSE 诊断框架",
           "summary": "在受控研究中，让完整指令训练只在有限的技能组合序列上进行，结果覆盖组合的有序成功率为 40.0%，而重组组合仅 7.7%——说明模型记忆了序列模板而非真正重组技能。作者提出分层子任务执行（HSE）诊断框架，通过规划器、触发器与策略共享的模块化接口暴露技能重组问题，把长时程失败分解为可分离的失败模式，并构建 RoboComb 基准。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "Exploring the Limits of Combinatorial Generalization in Embodied Manipulation",
+        "source_link": "https://arxiv.org/abs/2610.15425",
+        "source_year": 2026,
+        "source_basis": "摘要实际使用名称 RoboCombine；本库正则将其收录为 RoboComb，属于名称缩写/变体。"
+      }
     },
     {
       "name": "RoboDojo",
@@ -3913,12 +4023,12 @@
       "source_link": "https://arxiv.org/abs/2609.08209",
       "primary_paper": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -3943,12 +4053,20 @@
           "display_title": "RoboReel：从观察学习（LfO）统一基准",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2609.08209)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2609.08209",
           "dimension": "10 个操作任务；真机人类示范视频 + 仿真轨迹 + 评测环境",
           "summary": "从观察学习是机器人数据规模化的重要途径，但既有方法在假设、硬件与环境设置上差异很大，难以比较。该基准捆绑真机人类示范视频、仿真机器人轨迹与统一评测环境，覆盖 10 个操作任务，为「从人类视频学习操作技能」提供可比的评测底座。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
+        "source_link": "https://arxiv.org/abs/2609.08209",
+        "source_year": 2026,
+        "source_basis": "摘要明确写明 introduce RoboReel unified benchmark。"
+      }
     },
     {
       "name": "RoboTwin",
@@ -4845,12 +4963,12 @@
       "source_link": "https://arxiv.org/abs/2604.18463",
       "primary_paper": "Using Large Language Models for Embodied Planning Introduces Systematic Safety Risks",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述；另附本地全文核查补录"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；另附本地全文核查补录"
       },
       "fulltext": {
         "status": true,
@@ -4878,12 +4996,20 @@
           "display_title": "DESPITE：具身规划的系统性安全风险基准",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2604.18463)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2604.18463",
           "dimension": "12,279 个任务；物理与规范两类危险；确定性验证",
           "summary": "为系统评估规划安全性，基准含 12,279 个跨物理与规范危险的**完全确定性验证**任务。对 23 个模型的评测给出核心结论：规划能力接近完美并不保证安全——规划最好的模型只在 0.4% 任务上未能产出有效计划，却有 28.3% 的任务产出危险计划；18 个开源模型（3B 到 671B）的规划能力随规模从 0.4% 提升到 99.3%，而安全意识基本持平（38–57%）。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "Using Large Language Models for Embodied Planning Introduces Systematic Safety Risks",
+        "source_link": "https://arxiv.org/abs/2604.18463",
+        "source_year": 2026,
+        "source_basis": "摘要明确写明 introduce DESPITE benchmark。"
+      }
     },
     {
       "name": "DUMA-Bench",
@@ -6006,12 +6132,12 @@
       "source_link": "https://arxiv.org/abs/2608.30428",
       "primary_paper": "Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -6035,12 +6161,20 @@
           "display_title": "MineAmongUs：具身社交中的言语与非言语联合欺骗",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2608.30428)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2608.30428",
           "dimension": "3D 多模态 Among Us 沙盒；言语 + 非言语感觉运动通道",
           "summary": "指出 LLM/VLM 智能体的策略性欺骗已成为 AI 对齐与安全的核心议题，社交推理游戏是典型试验台；但现有试验台是纯文本的、且只跑单一固定智能体配置，漏掉了欺骗分类学视为核心的非言语感觉运动通道，也让人无法判断观察到的行为到底反映底层模型还是外围执行框架。该基准是一个 3D 多模态 Among Us 沙盒。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions",
+        "source_link": "https://arxiv.org/abs/2608.30428",
+        "source_year": 2026,
+        "source_basis": "摘要明确写明 introduce MineAmongUs 3D multimodal sandbox。"
+      }
     },
     {
       "name": "MotionForge",
@@ -6647,12 +6781,12 @@
       "source_link": "https://arxiv.org/abs/2605.20544",
       "primary_paper": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -6680,12 +6814,20 @@
           "display_title": "RoboAbstention：具身机器人智能体的弃权评测",
           "year": "2026",
           "venue": "arXiv 预印本 (arXiv:2605.20544)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2605.20544",
           "dimension": "弃权分类法；歧义、物理不可行、错误前提、传感器不足四类情形",
           "summary": "指出已有弃权研究多针对纯文本 LLM，无法刻画具身机器人环境固有的感知接地与物理约束。工作在具身语境下给出弃权分类法，并构建可扩展、可审计的 RoboAbstention 框架，用来自五个机器人数据集的图像生成弃权指令，要求智能体识别指令歧义、物理上不可行、基于错误前提或受限于可用传感模态与上下文而无法解决的情形。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
+        "source_link": "https://arxiv.org/abs/2605.20544",
+        "source_year": 2026,
+        "source_basis": "摘要明确写明 introduce RoboAbstention。"
+      }
     },
     {
       "name": "RoboJailBench",
@@ -7034,12 +7176,12 @@
       "source_link": "https://arxiv.org/abs/2504.14650",
       "primary_paper": "A Framework for Benchmarking and Aligning Task-Planning Safety in LLM-Based Embodied Agents",
       "paper_count": 1,
-      "user_count": 1,
+      "user_count": 0,
       "reuser_count": 0,
-      "has_self_paper": false,
+      "has_self_paper": true,
       "evidence": {
-        "code": "C",
-        "description": "原始提出论文未单列；依据使用论文的摘要转述"
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
       },
       "fulltext": {
         "status": false,
@@ -7065,12 +7207,20 @@
           "display_title": "SafePlan-Bench / Safe-Align：任务规划安全的测量与对齐",
           "year": "2025",
           "venue": "arXiv 预印本 (arXiv:2504.14650)",
-          "role": "使用",
+          "role": "提出",
           "link": "https://arxiv.org/abs/2504.14650",
           "dimension": "2027 个日常任务、8 类危险（如火灾）；规划安全性",
           "summary": "提出测量与对齐一体的框架 Safe-BeAl：SafePlan-Bench 建立任务规划安全的综合基准，覆盖 2027 个日常任务及其对应环境，分布于 8 类危险之中；实证分析表明即便没有对抗输入或恶意意图，LLM 智能体也会表现出不安全行为。随后提出 Safe-Align，把物理世界安全知识注入智能体以缓解这些危险。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "A Framework for Benchmarking and Aligning Task-Planning Safety in LLM-Based Embodied Agents",
+        "source_link": "https://arxiv.org/abs/2504.14650",
+        "source_year": 2025,
+        "source_basis": "摘要明确将 SafePlan-Bench 定义为测量框架、Safe-Align 定义为对齐方法。"
+      }
     },
     {
       "name": "SkillSafetyBench",
@@ -7870,7 +8020,15 @@
           "dimension": "21 个任务 / 6 个安全族；无参考评测协议（UR/HCC/HPR）",
           "summary": "指出在常规驾驶基准上的平均表现无法证明规划器在稀有且安全攸关的危险情形下可靠。基准用 VLM 辅助筛选、局部多视角编辑与质量审计，把危险插入真实 nuScenes 场景并保留其上下文；21 个任务跨六个安全族，定义危险/冲突区域、局部安全约束与可接受响应。由于插入危险会使记录的人类轨迹失效，采用无参考协议，用不安全率（UR）、危险避让合规（HCC）、危险接近响应（HPR）等指标评估编辑后的预测。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "same_paper_in_registry",
+        "source_title": "ExceptionDrive: A Planning-Oriented Counterfactual Corner-Case Benchmark for Autonomous Driving",
+        "source_link": "https://arxiv.org/abs/2609.37871",
+        "source_year": 2026,
+        "source_basis": "摘要明确写明 proposed ExceptionDrive counterfactual planning benchmark。"
+      }
     },
     {
       "name": "ISO-based Humanoid Orchestrator Benchmark",
@@ -8150,7 +8308,15 @@
           "dimension": "滑行 vs 阻塞两种评测机制下的成功率与接触率",
           "summary": "VLN 智能体通常只按「是否到达」与「路径效率」评测，几乎不反映碰撞行为；且连续 VLN 评测常用滑行机制，碰撞后可沿障碍滑动，掩盖不安全动作的后果。该基准在滑行与阻塞（碰撞动作禁止前进）两种机制下对比六个已发表智能体：R2R-CE 上 38.5–56.8% 的成功回合存在接触，改用阻塞机制后成功率下降 11.7–36.1 个百分点。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "external_original_paper",
+        "source_title": "Bridging the Gap Between Learning in Discrete and Continuous Environments for Vision-and-Language Navigation",
+        "source_link": "https://openaccess.thecvf.com/content/CVPR2022/html/Hong_Bridging_the_Gap_Between_Learning_in_Discrete_and_Continuous_Environments_for_Vision-and-Language_Navigation_CVPR_2022_paper.html",
+        "source_year": 2022,
+        "source_basis": "该工作将 R2R 路径转换到连续环境并构造 VLN-CE/R2R-CE 评测设置；当前表中的 VLN-Safe 是使用论文。"
+      }
     },
     {
       "name": "Radar2Plan",
@@ -8560,7 +8726,15 @@
           "dimension": "21 个任务 / 6 个安全族；无参考评测协议（UR/HCC/HPR）",
           "summary": "指出在常规驾驶基准上的平均表现无法证明规划器在稀有且安全攸关的危险情形下可靠。基准用 VLM 辅助筛选、局部多视角编辑与质量审计，把危险插入真实 nuScenes 场景并保留其上下文；21 个任务跨六个安全族，定义危险/冲突区域、局部安全约束与可接受响应。由于插入危险会使记录的人类轨迹失效，采用无参考协议，用不安全率（UR）、危险避让合规（HCC）、危险接近响应（HPR）等指标评估编辑后的预测。"
         }
-      ]
+      ],
+      "source_audit": {
+        "status": "confirmed",
+        "kind": "external_original_paper",
+        "source_title": "nuScenes: A Multimodal Dataset for Autonomous Driving",
+        "source_link": "https://arxiv.org/abs/1903.11027",
+        "source_year": 2019,
+        "source_basis": "nuScenes 是当前 DriveDegrade、ExceptionDrive 等条目的底层数据集；原始数据集论文不在当前 192 条本库记录中。"
+      }
     }
   ]
 }

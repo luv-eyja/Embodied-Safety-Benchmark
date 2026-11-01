@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-01",
+  "method": "逐条核对 benchmark 名称在本库论文标题/摘要中的出现位置，并以论文摘要、arXiv 元数据或官方项目页确认提出关系。same_paper_in_registry 表示提出论文已在本库，但标题未包含 benchmark 名称；external_original_paper 表示提出论文不在本库当前 192 条记录中。",
+  "entries": {
+    "SafeLIBERO": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer",
+      "source_link": "https://arxiv.org/abs/2512.11891",
+      "source_year": 2025,
+      "source_basis": "摘要明确写明构建 SafeLIBERO safety-critical benchmark。"
+    },
+    "ASIMOV Benchmark": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "Generating Robot Constitutions & Benchmarks for Semantic Safety",
+      "source_link": "https://arxiv.org/abs/2503.08663",
+      "source_year": 2025,
+      "source_basis": "摘要明确写明发布 ASIMOV Benchmark；AGENTSAFE 是本库中的使用论文。"
+    },
+    "RoboHarm": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control",
+      "source_link": "https://arxiv.org/abs/2610.14043",
+      "source_year": 2026,
+      "source_basis": "摘要明确写明 introduce RoboHarm。"
+    },
+    "Trap-LIBERO / Trap-RoboTwin": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes",
+      "source_link": "https://arxiv.org/abs/2608.26578",
+      "source_year": 2026,
+      "source_basis": "摘要明确写明构建 Trap-LIBERO 与 Trap-RoboTwin。"
+    },
+    "LIBERO-CTRL": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "Beyond Single-Axis Testing: Paired Evaluation of Compound Robustness in Vision-Language-Action Policies",
+      "source_link": "https://arxiv.org/abs/2609.15940",
+      "source_year": 2026,
+      "source_basis": "论文摘要明确将 LIBERO-CTRL 定义为六轴复合鲁棒性 benchmark。"
+    },
+    "LIBERO-Para": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
+      "source_link": "https://arxiv.org/abs/2609.25562",
+      "source_year": 2026,
+      "source_basis": "摘要明确说明在 LIBERO-Para 上评估 instruction sensitivity。"
+    },
+    "RoboStress": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "Taming VLAs under Robot Execution Errors: Self-Compensation and Stress Testing",
+      "source_link": "https://arxiv.org/abs/2609.37334",
+      "source_year": 2026,
+      "source_basis": "摘要明确写明 introduce RoboStress controlled simulation benchmark。"
+    },
+    "BAVO-Bench": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation",
+      "source_link": "https://arxiv.org/abs/2609.37292",
+      "source_year": 2026,
+      "source_basis": "摘要明确写明 introduce BAVO-Bench。"
+    },
+    "DriveDegrade": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "A Degradation-Tolerance Benchmark for Camera-Only End-to-End Driving",
+      "source_link": "https://arxiv.org/abs/2608.29005",
+      "source_year": 2026,
+      "source_basis": "arXiv 页面完整标题为 When Does Corruption Break the Plan? A Degradation-Tolerance Benchmark for Camera-Only End-to-End Driving，摘要明确写明 present DriveDegrade benchmark。"
+    },
+    "VLN-Safe": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "Successful but Unsafe: An Analytical Benchmark for Revealing Collisions in Vision-and-Language Navigation",
+      "source_link": "https://arxiv.org/abs/2610.14682",
+      "source_year": 2026,
+      "source_basis": "摘要明确写明 introduce VLN-Safe，并在 R2R-CE 上评估。"
+    },
+    "RoboCasa365": {
+      "status": "confirmed",
+      "kind": "external_original_paper",
+      "source_title": "RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots",
+      "source_link": "https://arxiv.org/abs/2603.04356",
+      "source_year": 2026,
+      "source_basis": "RoboCasa-Shift 论文明确说明其 benchmark built on RoboCasa365；原始 RoboCasa365 论文不在当前 192 条本库记录中。"
+    },
+    "BEHAVIOR-1K": {
+      "status": "confirmed",
+      "kind": "external_original_paper",
+      "source_title": "BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation",
+      "source_link": "https://arxiv.org/abs/2403.09227",
+      "source_year": 2024,
+      "source_basis": "ManiUnit 论文明确说明其数据与 benchmark built from 50 BEHAVIOR-1K activities；BEHAVIOR-1K 原始论文不在当前 192 条本库记录中。"
+    },
+    "Open X-Embodiment": {
+      "status": "confirmed",
+      "kind": "external_original_paper",
+      "source_title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+      "source_link": "https://arxiv.org/abs/2310.08864",
+      "source_year": 2023,
+      "source_basis": "AgiBot World Colosseo 论文使用 Open X-Embodiment；官方仓库也将该论文列为 Open X-Embodiment 的首篇论文。"
+    },
+    "RoboComb": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "Exploring the Limits of Combinatorial Generalization in Embodied Manipulation",
+      "source_link": "https://arxiv.org/abs/2610.15425",
+      "source_year": 2026,
+      "source_basis": "摘要实际使用名称 RoboCombine；本库正则将其收录为 RoboComb，属于名称缩写/变体。"
+    },
+    "RoboReel": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
+      "source_link": "https://arxiv.org/abs/2609.08209",
+      "source_year": 2026,
+      "source_basis": "摘要明确写明 introduce RoboReel unified benchmark。"
+    },
+    "SafePlan-Bench / Safe-Align": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "A Framework for Benchmarking and Aligning Task-Planning Safety in LLM-Based Embodied Agents",
+      "source_link": "https://arxiv.org/abs/2504.14650",
+      "source_year": 2025,
+      "source_basis": "摘要明确将 SafePlan-Bench 定义为测量框架、Safe-Align 定义为对齐方法。"
+    },
+    "RoboAbstention": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
+      "source_link": "https://arxiv.org/abs/2605.20544",
+      "source_year": 2026,
+      "source_basis": "摘要明确写明 introduce RoboAbstention。"
+    },
+    "DESPITE": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "Using Large Language Models for Embodied Planning Introduces Systematic Safety Risks",
+      "source_link": "https://arxiv.org/abs/2604.18463",
+      "source_year": 2026,
+      "source_basis": "摘要明确写明 introduce DESPITE benchmark。"
+    },
+    "MineAmongUs": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions",
+      "source_link": "https://arxiv.org/abs/2608.30428",
+      "source_year": 2026,
+      "source_basis": "摘要明确写明 introduce MineAmongUs 3D multimodal sandbox。"
+    },
+    "nuScenes": {
+      "status": "confirmed",
+      "kind": "external_original_paper",
+      "source_title": "nuScenes: A Multimodal Dataset for Autonomous Driving",
+      "source_link": "https://arxiv.org/abs/1903.11027",
+      "source_year": 2019,
+      "source_basis": "nuScenes 是当前 DriveDegrade、ExceptionDrive 等条目的底层数据集；原始数据集论文不在当前 192 条本库记录中。"
+    },
+    "ExceptionDrive": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "ExceptionDrive: A Planning-Oriented Counterfactual Corner-Case Benchmark for Autonomous Driving",
+      "source_link": "https://arxiv.org/abs/2609.37871",
+      "source_year": 2026,
+      "source_basis": "摘要明确写明 proposed ExceptionDrive counterfactual planning benchmark。"
+    },
+    "R2R-CE": {
+      "status": "confirmed",
+      "kind": "external_original_paper",
+      "source_title": "Bridging the Gap Between Learning in Discrete and Continuous Environments for Vision-and-Language Navigation",
+      "source_link": "https://openaccess.thecvf.com/content/CVPR2022/html/Hong_Bridging_the_Gap_Between_Learning_in_Discrete_and_Continuous_Environments_for_Vision-and-Language_Navigation_CVPR_2022_paper.html",
+      "source_year": 2022,
+      "source_basis": "该工作将 R2R 路径转换到连续环境并构造 VLN-CE/R2R-CE 评测设置；当前表中的 VLN-Safe 是使用论文。"
+    }
+  }
+}

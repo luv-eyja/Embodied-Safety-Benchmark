@@ -2,8 +2,8 @@
 
 > **所属环节**：任务规划安全测量与对齐  
 > **分类**：具身智能体安全  
-> **关联论文**：本表 1 篇（提出者 0 篇，使用者 1 篇）
-> **证据级别**：C（原始提出论文未单列；依据使用论文的摘要转述）
+> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
+> **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）
 
 ## 0. 评测卡片
 
@@ -20,6 +20,8 @@
 | 基础平台线索 | 表内摘要未明确基础平台。 |
 | 规模线索 | 2027 个日常任务 |
 | 执行环境线索 | 表内摘要未明确执行环境。 |
+| 来源审计 | 已核验：[A Framework for Benchmarking and Aligning Task-Planning Safety in LLM-Based Embodied Agents（same_paper_in_registry）](https://arxiv.org/abs/2504.14650) |
+| 来源核验依据 | 摘要明确将 SafePlan-Bench 定义为测量框架、Safe-Align 定义为对齐方法。 |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -27,7 +29,7 @@
 
 **摘要级问题描述**：提出测量与对齐一体的框架 Safe-BeAl：SafePlan-Bench 建立任务规划安全的综合基准，覆盖 2027 个日常任务及其对应环境，分布于 8 类危险之中；实证分析表明即便没有对抗输入或恶意意图，LLM 智能体也会表现出不安全行为。随后提出 Safe-Align，把物理世界安全知识注入智能体以缓解这些危险。
 
-信息取自表内论文 *A Framework for Benchmarking and Aligning Task-Planning Safety in LLM-Based Embodied Agents*（该基准的原始提出论文未单独收录于本表，此处依据使用它的论文转述）。
+信息取自表内论文 *A Framework for Benchmarking and Aligning Task-Planning Safety in LLM-Based Embodied Agents*（该基准的提出者）。
 
 **主要测量维度**：2027 个日常任务、8 类危险（如火灾）；规划安全性。
 
@@ -60,28 +62,29 @@
 
 | 论文 | 年份 / 来源 | 角色 | 被测对象 | 使用方式 / 指标 | 摘要级发现 |
 |---|---|---|---|---|---|
-| [SafePlan-Bench / Safe-Align：任务规划安全的测量与对齐](https://arxiv.org/abs/2504.14650) | 2025 / arXiv 预印本 (arXiv:2504.14650) | 使用 | LLM 驱动的具身智能体 | 2027 个日常任务、8 类危险（如火灾）；规划安全性 | 提出测量与对齐一体的框架 Safe-BeAl：SafePlan-Bench 建立任务规划安全的综合基准，覆盖 2027 个日常任务及其对应环境，分布于 8 类危险之中；实证分析表明即便没有对抗输入或恶意意图，LLM 智能体也会表现出不安全行为。 |
+| [SafePlan-Bench / Safe-Align：任务规划安全的测量与对齐](https://arxiv.org/abs/2504.14650) | 2025 / arXiv 预印本 (arXiv:2504.14650) | **提出** | LLM 驱动的具身智能体 | 2027 个日常任务、8 类危险（如火灾）；规划安全性 | 提出测量与对齐一体的框架 Safe-BeAl：SafePlan-Bench 建立任务规划安全的综合基准，覆盖 2027 个日常任务及其对应环境，分布于 8 类危险之中；实证分析表明即便没有对抗输入或恶意意图，LLM 智能体也会表现出不安全行为。 |
 
 ## 4. 关键结论、改进方向与可复用性
 
 **摘要级发现（按关联论文整理）**：
 
-- **SafePlan-Bench / Safe-Align：任务规划安全的测量与对齐**（2025，使用）：提出测量与对齐一体的框架 Safe-BeAl：SafePlan-Bench 建立任务规划安全的综合基准，覆盖 2027 个日常任务及其对应环境，分布于 8 类危险之中；实证分析表明即便没有对抗输入或恶意意图，LLM 智能体也会表现出不安全行为。随后提出 Safe-Align，把物理世界安全知识注入智能体以缓解这些危险。
+- **SafePlan-Bench / Safe-Align：任务规划安全的测量与对齐**（2025，提出）：提出测量与对齐一体的框架 Safe-BeAl：SafePlan-Bench 建立任务规划安全的综合基准，覆盖 2027 个日常任务及其对应环境，分布于 8 类危险之中；实证分析表明即便没有对抗输入或恶意意图，LLM 智能体也会表现出不安全行为。随后提出 Safe-Align，把物理世界安全知识注入智能体以缓解这些危险。
 
 **基于当前字段的改进提示（不是原文逐字结论）**：
 
 - 补充约束定义、违规阈值和过程/终态指标，确认安全成功与任务成功是否分开统计。
 - 分别记录攻击成功率、干净任务性能和真实/仿真迁移，避免只报告单一攻击分数。
+- 当前尚无跨论文复用证据，需由独立工作复测后再形成稳定的横向结论。
 
-**复用状态**：本表含使用论文，但原始提出论文未单列，暂不能确认是否形成复用链。
+**复用状态**：当前只看到提出论文，尚无跨论文复用证据。
 
 ## 5. 相关论文（均来自本调研表）
 
-- [A Framework for Benchmarking and Aligning Task-Planning Safety in LLM-Based Embodied Agents](https://arxiv.org/abs/2504.14650)（2025，arXiv 预印本 (arXiv:2504.14650)）
+- [A Framework for Benchmarking and Aligning Task-Planning Safety in LLM-Based Embodied Agents](https://arxiv.org/abs/2504.14650)（2025，arXiv 预印本 (arXiv:2504.14650)）  ← **提出**
 
 ## 6. 证据边界与复核建议
 
-- **证据级别**：C（原始提出论文未单列；依据使用论文的摘要转述）。
+- **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）。
 - **主要来源**：[A Framework for Benchmarking and Aligning Task-Planning Safety in LLM-Based Embodied Agents](https://arxiv.org/abs/2504.14650)。
 - **当前限制**：本文档基于调研表、论文摘要和少量人工整理；核心条目另有本地全文核查补录，但仍未替代对全文实验表格、附录、代码仓库和数据下载说明的逐项复核。
 - **建议复核**：优先确认任务/场景划分、样本规模、指标公式、判分阈值、模型清单，以及仿真与真机设置是否一致。

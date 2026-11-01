@@ -20,6 +20,8 @@
 | 基础平台线索 | BEHAVIOR-1K |
 | 规模线索 | 21 类技能 / 417 子任务；1K 的 50 个活动构建数据集（21 类技能、417 个子任务 |
 | 执行环境线索 | 表内摘要未明确执行环境。 |
+| 来源审计 | 已核验：[BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation（external_original_paper）](https://arxiv.org/abs/2403.09227) |
+| 来源核验依据 | ManiUnit 论文明确说明其数据与 benchmark built from 50 BEHAVIOR-1K activities；BEHAVIOR-1K 原始论文不在当前 192 条本库记录中。 |
 
 ## 1. 测什么问题（内容与所测环节）
 

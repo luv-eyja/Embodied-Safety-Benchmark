@@ -3,7 +3,16 @@
 import json, os, re, collections
 
 BASE = r'D:\study\Embodied'
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 rows = json.load(open(os.path.join(BASE, 'docs', '_rows.json'), encoding='utf-8'))
+
+# 人工核验的提出来源。对于“提出论文已在本库、但 benchmark 名称只出现在摘要中”的条目，
+# 用 source_title 补足 self 角色，避免把提出论文误报成仅使用论文。
+_audit_path = os.path.join(REPO, 'data', 'benchmark_source_audit.json')
+SOURCE_AUDIT = {}
+if os.path.exists(_audit_path):
+    with open(_audit_path, encoding='utf-8') as _f:
+        SOURCE_AUDIT = json.load(_f).get('entries', {})
 
 # 论文全文语料（用于判定「用到了哪个基准」）
 lib = {}
@@ -174,11 +183,14 @@ for name, pat, tier, desc in BENCH:
     flags = 0 if name in CASE_SENSITIVE else re.I
     rx = re.compile(pat, flags)
     users = []
+    audit = SOURCE_AUDIT.get(name, {})
+    source_title = audit.get('source_title') if audit.get('kind') == 'same_paper_in_registry' else None
     for r in rows:
         if rx.search(r['title']) or rx.search(r.get('abstract') or ''):
             users.append({'title': r['title'], 'zh': r['zh'], 'year': r['year'],
                           'venue': r['venue'], 'cat': r['cat'], 'link': r['link'],
-                          'src': r['src'], 'self': bool(rx.search(r['title']))})
+                          'src': r['src'],
+                          'self': bool(rx.search(r['title'])) or bool(source_title and r['title'] == source_title)})
     if users:
         reg[name] = {'tier': tier, 'desc': desc, 'papers': users}
 

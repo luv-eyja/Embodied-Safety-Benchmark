@@ -2,7 +2,7 @@
 
 > **所属环节**：执行（机械误差）  
 > **分类**：VLA 鲁棒性  
-> **关联论文**：本表 1 篇（提出者 0 篇，使用者 1 篇）
+> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
 > **证据级别**：A（人工扩写字段 + 表内摘要；未逐篇精读全文）
 
 ## 0. 评测卡片
@@ -20,6 +20,8 @@
 | 基础平台线索 | 表内摘要未明确基础平台。 |
 | 规模线索 | 7 种部署场景 |
 | 执行环境线索 | 摘要提到仿真/模拟环境。 |
+| 来源审计 | 已核验：[Taming VLAs under Robot Execution Errors: Self-Compensation and Stress Testing（same_paper_in_registry）](https://arxiv.org/abs/2609.37334) |
+| 来源核验依据 | 摘要明确写明 introduce RoboStress controlled simulation benchmark。 |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -54,7 +56,7 @@
 
 | 论文 | 年份 / 来源 | 角色 | 被测对象 | 使用方式 / 指标 | 摘要级发现 |
 |---|---|---|---|---|---|
-| [RoboStress：执行误差压力测试基准](https://arxiv.org/abs/2609.37334) | 2026 / arXiv 预印本 (arXiv:2609.37334) | 使用 | VLA 策略 | 7 种部署场景的执行误差；执行条件鲁棒性 | 针对执行动作偏离指令（机械磨损、负载变化等导致）这一实际失效来源，提出部署期自补偿 VLA（无需任务奖励或标签，用指令动作与实际执行的残差在线更新策略）； |
+| [RoboStress：执行误差压力测试基准](https://arxiv.org/abs/2609.37334) | 2026 / arXiv 预印本 (arXiv:2609.37334) | **提出** | VLA 策略 | 7 种部署场景的执行误差；执行条件鲁棒性 | 针对执行动作偏离指令（机械磨损、负载变化等导致）这一实际失效来源，提出部署期自补偿 VLA（无需任务奖励或标签，用指令动作与实际执行的残差在线更新策略）； |
 
 ## 4. 关键结论、改进方向与可复用性
 
@@ -62,11 +64,11 @@
 
 **论文提到的改进方向**：①把机械退化建模进评测；②部署期在线自适应优于离线重训；③压力测试应覆盖组合工况。
 
-**复用状态**：本表含使用论文，但原始提出论文未单列，暂不能确认是否形成复用链。
+**复用状态**：当前只看到提出论文，尚无跨论文复用证据。
 
 ## 5. 相关论文（均来自本调研表）
 
-- [Taming VLAs under Robot Execution Errors: Self-Compensation and Stress Testing](https://arxiv.org/abs/2609.37334)（2026，arXiv 预印本 (arXiv:2609.37334)）
+- [Taming VLAs under Robot Execution Errors: Self-Compensation and Stress Testing](https://arxiv.org/abs/2609.37334)（2026，arXiv 预印本 (arXiv:2609.37334)）  ← **提出**
 
 ## 6. 证据边界与复核建议
 

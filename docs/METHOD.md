@@ -48,6 +48,15 @@
 
 **这是下界**：一篇论文用到的基准若只在实验章节出现、摘要未提，会被漏计。因此文档里「使用者 N 篇」应理解为「至少 N 篇」。
 
+### 3.1 提出来源审计
+
+仅按标题匹配会把“摘要明确提出 benchmark、但标题没有 benchmark 名称”的论文误报为使用者。`data/benchmark_source_audit.json` 保存人工核验的来源关系，分为：
+
+- `same_paper_in_registry`：提出论文已在当前表内，由 registry 按来源标题补标为“提出”；
+- `external_original_paper`：当前 192 条记录只有使用论文，原始论文在卡片的“来源审计”字段中外链标注，不把使用论文冒充提出论文。
+
+当前审计覆盖 22 个条目；其中 17 个补回表内提出论文，5 个关联到表外原始论文或连续环境来源。人工核验详情见 [`analysis/benchmark-source-audit.md`](../analysis/benchmark-source-audit.md)。
+
 ## 4. 文档生成
 
 `scripts/build_benchmark_docs.py` 为 121 个基准各生成一份 Markdown。每份文档统一包含评测卡片、问题定义、构建要素、逐篇论文证据、结论与改进方向、相关论文、证据边界七个部分。其中 15 个核心基准（LIBERO 族、RoboTwin、CALVIN、SimplerEnv、COLOSSEUM 等）的核心问题/构建/结论字段由人工依据摘要撰写；SafeStage、ManiGuard、ForesightSafety-VLA、SafeVLA-Bench、LIBERO-RIG、LIBERO-CTRL、LIBERO-VPro、HazardArena、DESPITE、RoboHarm 另有 `docs/_fulltext/` 本地全文核查补录，包含协议、定量结果和适用边界；其余基准由脚本根据论文自身的「评测维度」「内容概要」「被测对象」和来源字段组装，避免虚构细节。
@@ -55,6 +64,8 @@
 文档使用三级证据标记：A 为人工扩写字段加表内摘要，B 为提出论文的结构化摘要记录，C 为原始提出论文未单列、仅依据使用论文转述。核心条目会在原有级别上追加本地全文核查，但仍保留原始证据边界。脚本还会生成“基础平台、规模、执行环境、配对方式”的线索字段；若摘要没有明确记录，会显式写为“未明确”，而不补猜测。
 
 同一脚本还生成 `data/benchmark_cards.json` 和 `analysis/benchmark-comparison.md`。前者保存每个基准的分类、平台、规模、证据、全文状态、论文和覆盖标签；后者提供分类汇总、环节 × 安全属性矩阵、10 个核心基准对照和 ESB-2 复用建议。
+
+近期补充检索结果单独保存在 [`analysis/recent-embodied-benchmark-papers.md`](../analysis/recent-embodied-benchmark-papers.md) 与 `data/recent_embodied_benchmark_papers.json`，避免把尚未完成字段核对的新论文直接混入主表。
 
 `scripts/validate_benchmark_outputs.py` 检查 121 个文档、10 个全文标记、索引条目、机器可读卡片和比较报告，作为生成后的快速回归检查。
 

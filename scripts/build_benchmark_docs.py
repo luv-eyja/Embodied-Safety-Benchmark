@@ -11,6 +11,8 @@ from benchmark_ontology import (
 BASE = r'D:\study\Embodied'
 REPO = os.path.join(BASE, 'Embodied-Safety-Benchmark')
 reg = json.load(open(os.path.join(BASE, 'docs', '_bench_registry.json'), encoding='utf-8'))
+_audit_path = os.path.join(REPO, 'data', 'benchmark_source_audit.json')
+SOURCE_AUDIT = json.load(open(_audit_path, encoding='utf-8')).get('entries', {}) if os.path.exists(_audit_path) else {}
 
 # 人工撰写的核心内容：(测什么, 怎么构建, 测了什么/关键结论)
 # 只写信息充分的；其余由脚本按论文自身的维度/概要自动成文
@@ -457,7 +459,7 @@ def write_comparison_outputs(cards):
         '- 全文核查补录：**%d** 个；至少有一篇后续使用论文：**%d** 个。' % (
             sum(c['fulltext']['status'] for c in ordered), sum(c['reuser_count'] > 0 for c in ordered)),
         '- “后续使用”只计同时有提出论文和非提出论文的条目；若本表只有使用论文，则保留为“原始提出论文未单列”。',
-        '- `data/benchmark_cards.json` 是机器可读入口；本文件保留分类口径、核心对照和选型建议。', '',
+        '- `data/benchmark_cards.json` 是机器可读入口；`data/benchmark_source_audit.json` 记录提出来源核验；本文件保留分类口径、核心对照和选型建议。', '',
         '## 2. 按分类汇总', '',
         '| 分类 | 基准数 | 全文补录 | 有后续使用 | 覆盖至少 2 类安全属性 |',
         '|---|---:|---:|---:|---:|',
@@ -526,6 +528,7 @@ cards = []
 
 for name, info in reg.items():
     tier, desc, papers = info['tier'], info['desc'], info['papers']
+    audit = SOURCE_AUDIT.get(name)
     d = DETAIL.get(name)
     full = FULLTEXT_DETAILS.get(name)
     self_paper = [p for p in papers if p['self']]
@@ -577,6 +580,10 @@ for name, info in reg.items():
           '| 基础平台线索 | %s |' % infer_platform(hint_blob),
           '| 规模线索 | %s |' % infer_scale(hint_blob),
           '| 执行环境线索 | %s |' % infer_execution(hint_blob)]
+    if audit:
+        source_label = '%s（%s）' % (audit.get('source_title'), audit.get('kind'))
+        L += ['| 来源审计 | 已核验：[%s](%s) |' % (compact(source_label, 180), audit.get('source_link') or ''),
+              '| 来源核验依据 | %s |' % compact(audit.get('source_basis') or '已核对论文元数据与摘要。', 220)]
     if full:
         L += ['| 全文状态 | 已核查本地全文：`docs/_fulltext/%s` |' % full['source']]
     L += ['']
@@ -687,7 +694,7 @@ for name, info in reg.items():
             'summary': row.get('summ') or '',
         })
     role = ESB2_ROLE.get(name)
-    cards.append({
+    card = {
         'name': name,
         'document': fn,
         'tier': tier,
@@ -728,7 +735,10 @@ for name, info in reg.items():
         'esb2_role': ({'label': role[0], 'use': role[1]} if role else None),
         'coverage': {'stages': coverage_stages, 'axes': coverage_axes},
         'papers': paper_cards,
-    })
+    }
+    if audit:
+        card['source_audit'] = audit
+    cards.append(card)
 
 # 索引
 L = ['# 基准文档索引', '',

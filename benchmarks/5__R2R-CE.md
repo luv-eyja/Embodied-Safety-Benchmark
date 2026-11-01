@@ -20,6 +20,8 @@
 | 基础平台线索 | 表内摘要未明确基础平台。 |
 | 规模线索 | 38.5–56.8% 的成功回合 |
 | 执行环境线索 | 表内摘要未明确执行环境。 |
+| 来源审计 | 已核验：[Bridging the Gap Between Learning in Discrete and Continuous Environments for Vision-and-Language Navigation（external_original_paper）](https://openaccess.thecvf.com/content/CVPR2022/html/Hong_Bridging_the_Gap_Between_Learning_in_Discrete_and_Continuous_Environments_for_Vision-and-Language_Navigation_CVPR_2022_paper.html) |
+| 来源核验依据 | 该工作将 R2R 路径转换到连续环境并构造 VLN-CE/R2R-CE 评测设置；当前表中的 VLN-Safe 是使用论文。 |
 
 ## 1. 测什么问题（内容与所测环节）
 
