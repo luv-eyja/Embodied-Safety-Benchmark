@@ -10,6 +10,7 @@
 data/
   embodied_safety_benchmark_survey.xlsx   主表：192 篇论文 × 14 列（Excel，4 个工作表）
   rows.json                                主表的结构化数据（生成脚本的中间产物）
+  benchmark_cards.json                     121 个基准的机器可读卡片与覆盖标签
   raw/                                     论文库原始快照（papers / audited / screened）
 benchmarks/
   README.md                                121 个基准的索引，按分类排序
@@ -20,6 +21,7 @@ design/
   coverage-matrix.md                       覆盖矩阵（缺口论证的数据附录）
 analysis/
   基准共同特征.md                          121 个基准的共同结构、手法与十大反模式
+  benchmark-comparison.md                  自动生成的跨基准比较与 ESB-2 选型摘要
 scripts/                                   可复现的生成脚本
 docs/                                      方法与说明
 ```
@@ -43,16 +45,19 @@ docs/                                      方法与说明
 | 内容概要 | 中文 2–4 句，含关键数字 |
 | 链接 | arXiv 或出版社 DOI |
 
-## 基准文档的四个问题
+## 基准文档的统一结构
 
-每份 `benchmarks/N__*.md` 都回答：
+每份 `benchmarks/N__*.md` 都按同一模板整理，便于横向比较：
 
-1. **测什么问题** —— 针对具身的哪个环节：认知 / 规划 / 动作控制 / 感知 / 全栈
-2. **怎么构建的** —— 任务集、场景、规模、指标、控制了哪些变量
-3. **用这个基准测了什么** —— 被测模型清单，逐篇标注「提出」还是「使用」
-4. **关键结论与论文提到的改进方向**
+1. **评测卡片** —— 年份、来源、论文库分区、被测对象、平台、规模和指标线索
+2. **测什么问题** —— 针对具身的哪个环节和安全属性
+3. **怎么构建的** —— 任务/场景、风险或扰动、配对方式、执行环境
+4. **逐篇论文证据** —— 被测对象、使用方式、角色和摘要级发现
+5. **关键结论、改进方向与可复用性**
+6. **相关论文与来源链接**
+7. **证据边界与复核建议** —— 区分人工扩写、提出论文摘要和使用论文转述；10 个核心条目在此处附本地全文核查补录
 
-外加第 5 节：该基准涉及的全部相关论文（均来自主表，带链接）。
+文档索引中的证据级别为：A（人工扩写字段 + 摘要）、B（提出论文摘要）、C（使用论文转述）。10 个核心条目另引用 `docs/_fulltext/` 的本地全文材料，补充评测协议、定量结果和适用边界；这些文档仍不能替代对原文、代码和数据协议的逐项复核。
 
 ## 统计
 
@@ -87,7 +92,8 @@ docs/                                      方法与说明
 py -3.12 scripts/build_rows.py             # 汇总 → data/rows.json
 py -3.12 scripts/build_xlsx.py             # → Excel
 py -3.12 scripts/bench_registry.py         # 基准 ↔ 论文映射
-py -3.12 scripts/build_benchmark_docs.py   # → benchmarks/*.md
+py -3.12 scripts/build_benchmark_docs.py   # → benchmarks/*.md + data/benchmark_cards.json + analysis/benchmark-comparison.md
+py -3.12 scripts/validate_benchmark_outputs.py # 校验文档、卡片、索引和比较报告
 py -3.12 scripts/coverage.py               # 覆盖矩阵 → docs/_coverage.json
 py -3.12 scripts/coverage_md.py            # → design/coverage-matrix.md
 py -3.12 scripts/fetch_fulltext.py         # 核心论文全文 → docs/_fulltext/
@@ -98,7 +104,7 @@ py -3.12 scripts/fetch_fulltext.py         # 核心论文全文 → docs/_fullte
 ## 已知局限
 
 1. **基准归属基于摘要判定**：一篇论文用到的基准若只在实验章节出现、摘要未提，会被漏计。因此「使用者」数量是**下界**。
-2. **文档第 1/2/4 节是人工解读**：仅 10 篇核心基准做了全文精读（SafeStage、ManiGuard、ForesightSafety-VLA、SafeVLA-Bench、LIBERO-RIG、LIBERO-CTRL、LIBERO-VPro、HazardArena、DESPITE、RoboHarm），其余依据摘要。
+2. **文档证据深度不同**：15 个基准有人工摘要级扩写；另有 10 个核心基准做了本地全文核查补录（SafeStage、ManiGuard、ForesightSafety-VLA、SafeVLA-Bench、LIBERO-RIG、LIBERO-CTRL、LIBERO-VPro、HazardArena、DESPITE、RoboHarm），其余条目依据摘要和结构化字段。
 3. **覆盖矩阵是关键词匹配的粗略统计**，用于看相对稀疏度，不是精确计量。
 4. **2026 年条目多数只有 arXiv**，是否已被会议接收无法核实。
 5. 106 个单篇基准尚无跨论文证据，横向结论有限。

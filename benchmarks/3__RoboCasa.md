@@ -3,41 +3,84 @@
 > **所属环节**：动作控制（日常场景规模化）  
 > **分类**：VLA 能力  
 > **关联论文**：本表 4 篇（提出者 2 篇，使用者 2 篇）
+> **证据级别**：A（人工扩写字段 + 表内摘要；未逐篇精读全文）
+
+## 0. 评测卡片
+
+| 字段 | 当前整理结果 |
+|---|---|
+| 首发/代表论文 | RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipula… |
+| 年份 | 2024、2026 |
+| 数据来源 | 库外补充、本论文库 |
+| 论文库分区 | Perception › Visual Perception |
+| 应用领域 | 未标注 |
+| 被测对象 | 通用操作策略（含 VLA）。 |
+| 关注属性 | 语义/指令安全、物理/接触安全、分布偏移鲁棒性、失败恢复、任务能力 |
+| 评测维度/指标 | 单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度 |
+| 基础平台线索 | RoboCasa、RoboCasa365 |
+| 规模线索 | 5 等 VLA 策略 单因子受控偏移 + 干净/扰动配对 rollout；4 个通过干净性能门槛的长时程任务 |
+| 执行环境线索 | 摘要提到仿真/模拟环境。 |
 
 ## 1. 测什么问题（内容与所测环节）
 
-机器人规模化受制于缺乏大规模数据集；主张用高保真物理仿真来扩展环境、任务与数据。
+**核心问题**：机器人规模化受制于缺乏大规模数据集；主张用高保真物理仿真来扩展环境、任务与数据。
+
+**主要测量维度**：单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度。
 
 ## 2. 怎么构建的
+
+### 2.1 构建要素
+
+| 要素 | 摘要级记录 |
+|---|---|
+| 基础平台 | RoboCasa、RoboCasa365 |
+| 任务/场景规模 | 5 等 VLA 策略 单因子受控偏移 + 干净/扰动配对 rollout；4 个通过干净性能门槛的长时程任务 |
+| 扰动、风险或约束 | 单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度 |
+| 对照/配对方式 | 摘要提到配对、孪生或受控对照。 |
+| 指标与判分线索 | 单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度 |
+| 执行设置 | 摘要提到仿真/模拟环境。 |
+
+### 2.2 详细说明
 
 以厨房为主的大规模日常场景，提供**数千个场景与大量人类示范**，用于训练与评测通用操作策略。
 
 ## 3. 用这个基准测了什么
 
-通用操作策略（含 VLA）。
+**被测对象**：通用操作策略（含 VLA）。
 
-下表按论文列出：
+**结果应如何读取**：先按“评测维度/指标”字段区分主指标、辅助指标和对照条件；若论文同时报告任务成功与安全/鲁棒性结果，应将二者分开阅读。
 
-| 论文 | 年 | 来源 | 角色 | 用途/发现 |
-|---|---|---|---|---|
-| [RoboCasa-Shift：长时程操作的阶段感知鲁棒性评测](https://arxiv.org/abs/2610.27861) | 2026 | arXiv 预印本 (arXiv:2610.27 | **提出** | 单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度 |
-| [世界动作模型需要什么样的视觉表示](https://arxiv.org/abs/2610.13024) | 2026 | arXiv 预印本 (arXiv:2610.13 | 使用 | 视觉表示 × 集成机制 × 特征组合的受控对比；鲁棒性 |
-| [RoboCasa：大规模日常任务仿真与评测底座](https://arxiv.org/abs/2406.02523) | 2024 | arXiv 预印本 (arXiv:2406.02 | **提出** | 大规模日常场景（以厨房为主）、数千场景与大量演示数据 |
-| [SafeVLA-Bench：VLA 的「成功-安全」落差基准](https://arxiv.org/abs/2606.00773) | 2026 | arXiv 预印本 (arXiv:2606.00 | 使用 | 信号时序逻辑（STL）不变式 + 定量鲁棒性；安全率、成功但不安全率 |
+下表按论文列出；“摘要级发现”保留调研表中的概要，不等同于全文实验结论。
 
-## 4. 关键结论与改进方向
+| 论文 | 年份 / 来源 | 角色 | 被测对象 | 使用方式 / 指标 | 摘要级发现 |
+|---|---|---|---|---|---|
+| [RoboCasa-Shift：长时程操作的阶段感知鲁棒性评测](https://arxiv.org/abs/2610.27861) | 2026 / arXiv 预印本 (arXiv:2610.27861) | **提出** | GR00T N1.5 等 VLA 策略 | 单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度 | 针对「总体成功率掩盖了单次执行如何变化、失败出现在长时程哪一阶段」的问题，在 RoboCasa365 上构建诊断型鲁棒性基准：干净与扰动 rollout 严格配对（仅目标偏移不同），并给出仿真支撑的阶段感知诊断。 |
+| [世界动作模型需要什么样的视觉表示](https://arxiv.org/abs/2610.13024) | 2026 / arXiv 预印本 (arXiv:2610.13024) | 使用 | 世界动作模型（WAM）；5 种集成机制 | 视觉表示 × 集成机制 × 特征组合的受控对比；鲁棒性 | WAM 从预训练视频生成模型继承强先验，但其 VAE 表示是为视觉重建而非操作优化；外部视觉表示能提升操作，但既有方法把表示选择与集成机制绑在一起，掩盖了各自的作用。 |
+| [RoboCasa：大规模日常任务仿真与评测底座](https://arxiv.org/abs/2406.02523) | 2024 / arXiv 预印本 (arXiv:2406.02523) | **提出** | 通用机器人操作策略 | 大规模日常场景（以厨房为主）、数千场景与大量演示数据 | 主张用高保真物理仿真来扩展机器人的环境、任务与数据规模，提供以厨房为主的大量日常场景与数千条演示，用于训练与评测通用操作策略。它把评测从「少数桌面任务」推向「日常环境中的大规模任务」，是长时程、多任务 VLA 评测的重要底座（RoboCasa365、RoboCasa-Shift 等即建立在其上）。 |
+| [SafeVLA-Bench：VLA 的「成功-安全」落差基准](https://arxiv.org/abs/2606.00773) | 2026 / arXiv 预印本 (arXiv:2606.00773) | 使用 | 现有仿真 VLA 基准（事后安全评估） | 信号时序逻辑（STL）不变式 + 定量鲁棒性；安全率、成功但不安全率 | 指出二元成功率会掩盖轨迹上的安全违规：策略可能到达目标，却施加过度接触、扰动旁观物体、使手中物体失稳或进入机器人自碰撞。SafeVLA-Bench 是一个「事后」安全评估框架，可直接套在现有基于仿真的 VLA 基准上，把任务相关的安全要求编码为信号时序逻辑（STL）不变式并给出定量鲁棒性语义； |
+
+## 4. 关键结论、改进方向与可复用性
 
 **关键结论**：仿真规模化可显著扩展任务与数据；但场景真实性仍需校验，其扩展版 RoboCasa365 进一步扩大了任务规模。
 
 **论文提到的改进方向**：①把家居长时程任务纳入标准评测；②场景多样性需与真实世界分布对齐；③作为安全评测底座时可叠加阶段感知诊断（RoboCasa-Shift）。
 
+**复用状态**：已有至少一篇后续论文使用，具备初步跨论文证据。
+
 ## 5. 相关论文（均来自本调研表）
 
-- RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation（2026，arXiv 预印本 (arXiv:2610.27861)）  ← **提出**
-- What Visual Representations Do World Action Models Need?（2026，arXiv 预印本 (arXiv:2610.13024)）
-- RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots（2024，arXiv 预印本 (arXiv:2406.02523)）  ← **提出**
-- SafeVLA-Bench: A Benchmark for the Success-Safety Gap in Vision-Language-Action Models（2026，arXiv 预印本 (arXiv:2606.00773)）
+- [RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation](https://arxiv.org/abs/2610.27861)（2026，arXiv 预印本 (arXiv:2610.27861)）  ← **提出**
+- [What Visual Representations Do World Action Models Need?](https://arxiv.org/abs/2610.13024)（2026，arXiv 预印本 (arXiv:2610.13024)）
+- [RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots](https://arxiv.org/abs/2406.02523)（2024，arXiv 预印本 (arXiv:2406.02523)）  ← **提出**
+- [SafeVLA-Bench: A Benchmark for the Success-Safety Gap in Vision-Language-Action Models](https://arxiv.org/abs/2606.00773)（2026，arXiv 预印本 (arXiv:2606.00773)）
+
+## 6. 证据边界与复核建议
+
+- **证据级别**：A（人工扩写字段 + 表内摘要；未逐篇精读全文）。
+- **主要来源**：[RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipula…](https://arxiv.org/abs/2610.27861)。
+- **当前限制**：本文档基于调研表、论文摘要和少量人工整理；核心条目另有本地全文核查补录，但仍未替代对全文实验表格、附录、代码仓库和数据下载说明的逐项复核。
+- **建议复核**：优先确认任务/场景划分、样本规模、指标公式、判分阈值、模型清单，以及仿真与真机设置是否一致。
 
 ---
 
-*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成；第 1、2、4 节的人工解读基于论文摘要，未逐篇精读全文。*
+*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成。 A 级文档含人工扩写字段；核心条目附本地全文核查补录；B/C 级文档主要依赖摘要级结构化记录。*

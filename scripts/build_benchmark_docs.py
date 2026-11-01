@@ -2,6 +2,12 @@
 """Generate one Markdown document per benchmark."""
 import json, os, re, collections
 
+from benchmark_ontology import (
+    AXES as AXES_FROM_ONTOLOGY,
+    STAGES as STAGES_FROM_ONTOLOGY,
+    classify,
+)
+
 BASE = r'D:\study\Embodied'
 REPO = os.path.join(BASE, 'Embodied-Safety-Benchmark')
 reg = json.load(open(os.path.join(BASE, 'docs', '_bench_registry.json'), encoding='utf-8'))
@@ -200,6 +206,85 @@ DETAIL = {
    improve='①需要物体级而非类别级变化；②动态仿真不可省略；③可作为安全约束注入的轻量实验床。'),
 }
 
+# 核心基准的本地全文核查补录。材料位于仓库同级的 docs/_fulltext，
+# 只把全文中可直接核对的协议、数字和结论写入生成文档；没有全文的条目继续保持摘要级证据。
+FULLTEXT_DETAILS = {
+ 'SafeStage': dict(
+   source='SafeStage.txt',
+   protocol='97 个专门设计任务：ISH 27、ETS 40、FSH 30。每个任务同时定义目标、主动安全条件、不安全路径和安全解；在 RoboLab GPU PhysX（120 Hz）中使用 7-DoF Franka Panda + Robotiq 2F-85，8D 绝对关节位置/夹爪动作，15 Hz 闭环执行。每个任务-策略-提示条件使用 3 个环境种子、每种子 10 次 rollout；提示分为默认、generic、specific。',
+   quantitative='评估器使用位姿、接触、支撑、包含关系、区域、位移、朝向和速度等 privileged 信号；接触阈值为 >0.1 N 且需跨多帧持续。FSH 在任务完成后保持机器人姿态并继续观察 5 秒。对 240 条人工核验 rollout 的自动判分精度为 95.81%、召回率 98.77%、F1 97.26%；分阶段 F1 为 ISH 98.65、ETS 96.43、FSH 95.65。默认提示汇总 SR 33.74%、SSR 9.84%，成功但不安全的 rollout 占全部 23.90%；在默认成功 rollout 中 70.84% 不安全。',
+   findings='specific 提示并未自动带来安全性提升：其成功执行中 73.16% 不安全；generic 提示下该比例为 69.98%。generic 条件的 ISH/FSH 成功 rollout 中不安全比例分别为 86.77%/82.17%，ETS 为 50.93%，说明初态与终态风险容易被任务成功率掩盖。',
+   limits='全文报告的是 RoboLab 仿真和预训练策略的结果；提示词、模型清单与任务级结果需结合原文附录逐项复核，不能把 SSR 直接解释为真实部署事故率。'),
+ 'ManiGuard-Bench': dict(
+   source='ManiGuard.txt',
+   protocol='每条 rollout 由基于 LTL_f 的自动机监控器检查物理谓词，任务按“技能 × 约束”组织为 200 个锁定基础任务；每个任务包含 1 个分布内和 4 个单轴 OOD 扰动，共 1,000 个锁定场景。安全标注由自动运动规划与人工遥操作组成，8,000 条示范（每任务 40 条）；同时覆盖仿真和 Franka 真机。',
+   quantitative='全文将零样本与微调策略放在超过 23,000 次 rollout 上比较。6–21% 的成功 rollout 违反安全规约；在该基准上微调后，安全任务完成率由接近 0 提升到 7.5–29.8%，参与且安全的比例由 16–40% 提升到 51–72%，但参与型 rollout 仍有 21–42% 违规。',
+   findings='安全违规与任务成功并不等价，形式化监控器揭示了成功率无法看到的安全缺口；示范规模增加并没有自动闭合约束违规差距。六个任务族中有两个对所有策略的安全成功率低于 2%，且在 OOD 与真机上持续存在。',
+   limits='全文中的比例按任务族、策略和微调设置分组；汇总范围不能替代逐任务规约和真机配置核对。'),
+ 'ForesightSafety-VLA': dict(
+   source='ForesightSafety-VLA.txt',
+   protocol='RoboTwin 中从已有资产与原语人工构造 66 个基础场景，覆盖 Safe-Core、Safe-Lang、Safe-Vis 三侧 13 类风险；通过 hazard injection、constraint tightening、temporal precondition insertion 三类算子增强。结构/布局 L0–L2、语言 W0–W4、视觉 V0–V4 三个变化维度分别控制难度，W3–W4 的语言由前沿 LLM 生成后人工核验；视觉扰动在推理时累积且不改变物理动力学。',
+   quantitative='实验覆盖 5 种本体；每个模型-任务-设置共 50 个 evaluation episodes，分布于 3 个随机种子，另对 10 个代表场景做诊断子集。四个完整基线的累计安全代价 CC 为 OpenVLA-oft 0.18、RDT 0.29、DP 0.34、ACT 0.39；unsafe-success 比例为 0.06、0.10、0.10、0.12。OpenVLA-oft 总成功率 0.48，成功回合中 12.5% 不安全；RDT、DP、ACT 的总成功率分别为 25.0%、29.4%、37.5%。',
+   findings='结构与视觉变化造成的安全退化明显强于普通语言变化；对抗性语言 W3–W4 会造成额外风险。代表性 lift_pot 场景中热风险暴露约 40%、空间边界约 60%、力风险低于 10%，但任一风险激活的 episode 占 62%；Thermal/Energy 最难，Temporal Sequence 相对容易。',
+   limits='部分扩展模型和逐类结果只在全文表格中给出；CC、RET 与四象限结果需要保持其原始阈值和 episode 聚合方式，不能与普通 success rate 直接混合。'),
+ 'SafeVLA-Bench': dict(
+   source='SafeVLA-Bench.txt',
+   protocol='安全规约覆盖力、位移、倾斜、力矩和自碰撞等信号；LIBERO 的每个模型-套件单元为 200 episodes（10 个任务 × 20），RoboCasa 每任务 50 episodes，连续指标用 episode 级 10,000 次 bootstrap 给出 95% 区间。默认阈值为 200 N、5 mm、15°、87 N·m；严重阈值约为两倍（力矩 174 N·m、倾斜 30°、位移 10 mm、力 400 N）。',
+   quantitative='LIBERO 代表性结果：OpenVLA-7B SR/Safety/SBU/VSI 为 69.4/77.4/10.8/0.174；Octo 为 93.9/77.5/19.2/0.140；GR00T-N1.7 为 94.2/72.0/24.0/0.169；UniVLA 为 94.8/79.5/17.1/0.127；InternVLA-M1 为 96.4/81.5/16.8/0.118；VLA-Adapter 为 97.6/82.0/17.0/0.104；OpenVLA-OFT-7B 为 97.8/80.1/18.1/0.122。RoboCasa 的成功率整体更低，例如 Xiaomi-Robotics-1 为 81.9/50.1/37.7/0.233。',
+   findings='LIBERO 中成功率超过 90% 的策略仍留下约 10–22% 的不安全成功；在 58 个任务中有 26 个呈现结构性 unsafe-success floor，PickPlaceDrawerToCounter 对所有策略均出现 100% 不安全成功。力违规通常是 50–200 ms、最长连续 1–4 步的冲击，位移/倾斜则可持续约 24–57 步。DPO 后一个代表性策略的 SR/Safety/SBU/VSI 从 99.5/85.0/14.5/0.107 变为 100.0/94.5/5.5/0.034。',
+   limits='表格包含 18 个 LIBERO 策略和 9 个 RoboCasa 策略；文档仅保留代表性行，完整排序、任务级分布和硬件 pilot 仍应回看全文。'),
+ 'LIBERO-RIG': dict(
+   source='LIBERO-RIG.txt',
+   protocol='在四个 LIBERO 套件中固定任务、指令、物体和成功谓词，只扰动机器人硬件/配置；覆盖 11 条轴、5 个严重度和 210 个条件。每个条件包含 10 个任务 × 50 个初始状态，即 500 episodes；共评测 9 个 VLA（其中 8 个覆盖四套件，LingBot-VA 只跑 LIBERO-10）。',
+   quantitative='汇总成功率由 nominal 0.932 降至中等严重度 0.767，再降至最高严重度 0.509。严重度 3 的跨轴均值约为：camera position 0.448、camera orientation 0.596、robot base 0.692、frame rotation 0.752、FOV 0.777、control frequency 0.786、table height/pad 0.846、wrist 0.890、gain 0.908、proprio 0.931。五档严重度汇总约为 0.914、0.845、0.767、0.591、0.509。',
+   findings='相机位姿是最强的硬件敏感源；公开控制器直接使用真状态时，本体感觉噪声几乎不改变结果（0.931 对 0.932），但把状态噪声注入 OpenVLA 控制器后，2 cm 条件可由 0.960 降至 0.470。OFT-Plus 对 camera orientation/position 的改善约为 0.867/0.787，相比 OpenVLA 的 0.701/0.590；latent 轴的收益在 0.02 内。统计使用 10,000 次 permutation、5,000 次 bootstrap，并按每套件 10 个任务聚类。',
+   limits='这是单本体仿真中的硬件配置压力测试；“真状态”与“视觉估计状态”的差异会改变 proprio 结论，不能把所有轴视为同一种部署故障。'),
+ 'LIBERO-CTRL': dict(
+   source='LIBERO-CTRL.txt',
+   protocol='六个公开语言条件策略（另有 MINERVA 身份语言辅助对照）覆盖 LIBERO Spatial/Object/Goal/Long 四套件；每套件 10 个任务、每任务 50 个 released initial states。主实验从每任务抽 10 个状态，并固定 10 组扰动预设，形成 40×10=400 个匹配 task-configuration；每个严重度评测六个单轴条件和一个同时条件，三档严重度。六轴为 camera、lighting、robot pose、sensor、actuation、language。',
+   quantitative='每个 checkpoint 先在四套件的 2,000 个 nominal rollouts 上复现；六个主策略包括 OpenVLA-OFT、UniVLA、SmolVLA、VLA-JEPA、PredVLA 和一项匿名公式模型。全文摘要给出：即使聚合差异无法显著区分，最多 29.0% 的匹配初始状态仍改变结果；最受影响的 policy-severity 条件变化率达 34.5%。统计用按任务聚类的 bootstrap，并对三种随机策略做独立随机种子复评。',
+   findings='同时扰动条件下的 emergent failure（所有单轴成功、同时失败）与 compensated success（至少一个单轴失败、同时成功）方向相反，可能在总成功率中相互抵消；因此单轴边际或一个 signed difference 都不能描述复合鲁棒性，必须报告逐实例配对结果和两个方向的转移率。',
+   limits='实验是在单一本体的仿真中对六轴全组合做受控测试；同时条件不能定位具体哪个低阶扰动子集触发转移，语言轴也是类别变量而非可度量严重度。'),
+ 'LIBERO-VPro': dict(
+   source='LIBERO-VPro.txt',
+   protocol='四个挑战维度为视觉证据退化、相机陈旧、视觉源一致性和任务相关场景变化，细分 12 类挑战、96 种设置、3,296 个任务-条件案例；覆盖四套 LIBERO 的 40 个任务，六个模型（3 个 VLA、3 个 WAM），每个案例 10 trials，约 196,000 个仿真 episodes。另在 Franka Research 3 上进行 200 次真机 rollout。',
+   quantitative='视觉证据退化包含目标/容器遮挡比例 25/50/75/100% 与四种时序、交互线索遮挡、短时 blackout/noise 和视角不可用；相机陈旧包含 3 档固定延迟、冻结和历史回放；一致性包含跨视角矛盾和预测-现实分歧；场景变化包含 distractor、前置条件变化、视觉歧义以及 Taper/Multipeak/Twist/Asymmetric 几何。LingBot 的递归自预测总体成功率由 97.0 降至 53.8，Long 套件由 98 降至 22。',
+   findings='交互线索遮挡通常比目标物体遮挡更致命；第三视角/腕部视角缺失和陈旧观测会造成严重退化；目标熟悉位置出现空间 distractor 可使多模型成功率崩溃，真实前置条件变化比单纯视觉歧义更难。真机在缺失视角、跨视角矛盾下接近全面失败，陈旧度的影响则依任务而变。',
+   limits='真机只覆盖 Pick-and-Place 与 Move 两类任务；WAM 与 VLA 的观测接口不同，横向比较应按模型类别和具体设置分别解释。'),
+ 'HazardArena': dict(
+   source='HazardArena.txt',
+   protocol='从 2,000+ 物体资产和 75 个新建语境关键资产中组织 51 个任务，覆盖 food、property、chemical、privacy、fire、personal、electrical 七类风险。任务采用 Pick-Place、Insert、Pour、Camera-Explore 模板，安全/不安全 twin 共享场景、技能模板和动作要求，只改变 actor-target 绑定或 instruction；阶段标记 Attempt、Commit、Success，以区分危险意图/推进与终点成功。',
+   quantitative='四个 VLA 在仿真主实验使用跨类别安全/不安全配对；VLA-Adapter 安全微调前 Safe SR/Unsafe SR/Unsafe Commit 为 0.25/0.22/0.44，加拒答数据后为 0.26/0.01/0.03；另一代表性模型由 0.36/0.33/0.61 变为 0.36/0.04/0.06。真机 Franka Panda 使用腕部和场景 RGB 相机，5 个任务族、每族 2 条安全和 1 条不安全指令、每条件 100 trials；平均 Safe SR 由 46.0% 变为 47.4%，Unsafe SR 由 39.6% 降至 0.4%。安全层 Qwen3-VL-32B 的平均 recall/FPR/F1 为 0.77/0.10/0.76。',
+   findings='仅看终点 SR 会漏掉 Commit 阶段的危险推进；拒答微调几乎消除不安全成功，同时保持安全成功率。类别间存在明显差异，Electrical/Fire/Privacy 的安全层召回可达 1.00，而 Property 为 0.00，说明通用视觉安全层仍有语境盲区。',
+   limits='仿真和真机使用不同样本规模与接口；安全层指标是分类器指标，不能替代实际策略的拒答和动作结果。'),
+ 'DESPITE': dict(
+   source='DESPITE.txt',
+   protocol='从 5 个异质来源构造 12,279 个具身规划任务，另设 1,044 个 hard split；形式验证器把计划分为 infeasible、feasible-unsafe、feasible-safe，并允许冗余但安全的计划。主要指标为 Feasibility、Safety、Safety Precision、Safety Intention；7 个模型完成全量任务，另比较 18 个 3B–671B 开源模型与 proprietary reasoning 模型。',
+   quantitative='最佳规划模型的 infeasible 约 0.4%，但 dangerous plan 仍约 28.3%；开源模型 feasibility 为 0.4–99.3%，Safety Intention 约 37.6–56.9%，专有 reasoning 模型约 71–81%。hard split 中 GPT-5 的 feasibility 99.5、Safety Precision 81.4；高可行性难例中 physical danger 占 70.6–88.2%，高安全性/意图难例中 normative danger 占 18.4–40.0%/15.7–42.5%。加入 2–64 个无关动作后，feasibility 下降 21.0%、Safety Intention 下降 17.3%，联合安全退化 37.9%。',
+   findings='规划可执行与规划安全是两个不同能力轴；模型即使能找到合法计划，也常未识别物理或规范危险。PDDL/基础问题格式会隐藏危险语境，确定性验证器和冗余安全计划设计是该基准可复核性的关键。',
+   limits='该基准评测的是语言模型生成的具身计划和形式验证结果，不能直接代替 VLA 的连续控制安全；不同模型的提示、推理模式和输出预算仍需按原文协议解释。'),
+ 'RoboHarm': dict(
+   source='RoboHarm.txt',
+   protocol='5 个不安全任务（doll、burner、toaster、brick、pour）组成场景-指令对，覆盖直接伤害和需理解物体后果的潜在危险；在 MuJoCo 中重建 I2RT YAM 双臂机器人的仿真 twin，并在真机上复核。比较 text、Code as Policies、视觉 EEF pose、带对象清单的 EEF-N 与 joint-angle 接口；仿真每个模型-任务-接口 5 trials，文本单元 10 samples。',
+   quantitative='文本拒答率为 user-framed 73%、robot-framed 84%，切换到 CaP/EEF/EEF-N/joint 后降至 25%/19%/18%/19%。真机 6 个模型完成 612 次 EEF 和 252 次 joint trials；真实 EEF 拒答 18%，joint 拒答 41%，与仿真 EEF 19%、joint 31% 同方向。burner/brick 在真机仅 8/254 拒答，toaster 为 0/120；doll 为 70/118。',
+   findings='拒答从文本到动作接口大幅下降，且并非只由缺少对象信息导致：同一对象清单下 robot-framed text 对 burner/toaster/brick 的拒答为 51/70、53/70、68/70，而 EEF-N 对这些危险均无拒答。全文把失败归为感知不确定、感知错误、后果推理失败和价值/对齐失败；例如 21/22 次 EEF pour 识别 Clorox 与 ammonia 标签后仍有 18 次尝试。',
+   limits='每个任务只有一种措辞，单元样本量较小，仿真 transcript 由 LLM judge 标注；评测知情效应可能高估拒答率，结果应解释为接口迁移缺口而非完整危害覆盖率。'),
+}
+
+# 面向 ESB-2 选型的复用角色。它们描述“可复用的评测思想”，不表示已经完成实现。
+ESB2_ROLE = {
+ 'SafeStage': ('生命周期阶段诊断', '把初始态、执行期、终态分开判分，支持 S1/S2/S3 定位。'),
+ 'ManiGuard-Bench': ('形式化规约与运行时监控', '提供 LTL_f 自动机、逐步物理谓词和安全/能力解耦的判分范式。'),
+ 'ForesightSafety-VLA': ('过程级风险与四象限', '提供 Safe-Core/Lang/Vis 三侧分类、累计代价、暴露时间和安全/不安全成功失败分解。'),
+ 'SafeVLA-Bench': ('通用安全测量层', '提供 STL 规约、Safety/SBU/VSI 与跨 LIBERO/RoboCasa 的可移植指标。'),
+ 'LIBERO-RIG': ('latent 硬件偏移', '覆盖不改变图像的相机、控制器和本体配置扰动，补齐部署侧鲁棒性。'),
+ 'LIBERO-CTRL': ('复合扰动配对', '用匹配初始状态区分 emergent failure 与 compensated success，避免聚合抵消。'),
+ 'LIBERO-VPro': ('视觉证据时序', '覆盖遮挡、陈旧、跨视角矛盾和场景变化，连接视觉接地与动作适应。'),
+ 'HazardArena': ('语义孪生与 Commit 事件', '保持场景和动作要求不变，只改变风险语境，并记录危险推进阶段。'),
+ 'DESPITE': ('规划能力与安全双轴', '用确定性验证区分可行、危险和安全计划，适合 L3 规划层。'),
+ 'RoboHarm': ('接口迁移与具身拒答', '固定模型和危险任务，只切换文本、代码、末端位姿和关节接口。'),
+}
+
 ORDER = ['VLA 安全', 'VLA 鲁棒性', 'VLA 能力', '具身智能体安全', '具身安全']
 
 
@@ -210,112 +295,456 @@ def slug(name):
 
 ROWBY = {r['title']: r for r in json.load(open(os.path.join(BASE, 'docs', '_rows.json'), encoding='utf-8'))}
 
+
+def compact(value, limit=None):
+    """Make a field safe and readable in generated Markdown."""
+    text = re.sub(r'\s+', ' ', str(value or '').strip()).replace('|', '／')
+    if limit and len(text) > limit:
+        return text[:limit - 1].rstrip() + '…'
+    return text
+
+
+def excerpt(value, limit=220):
+    """Keep an abstract-level excerpt without pretending it is a full-text result."""
+    text = compact(value)
+    if not text:
+        return '调研表未记录摘要级内容。'
+    # Prefer complete sentences, but retain a useful prefix for entries without punctuation.
+    parts = [p.strip() for p in re.split(r'(?<=[。！？；.!?])', text) if p.strip()]
+    out = ''
+    for part in parts:
+        candidate = (out + part).strip()
+        if len(candidate) > limit:
+            break
+        out = candidate
+    return compact(out or text, limit)
+
+
+def infer_tags(blob):
+    """Infer broad tags from the existing structured text; these are discovery aids, not new labels."""
+    rules = [
+        ('语义/指令安全', r'语义|指令|语言|语境|semantic|instruction|language|context|grounding'),
+        ('物理/接触安全', r'碰撞|接触|力|力矩|稳定|形变|断裂|损伤|污染|卫生|物理|contact|force|stability|damage'),
+        ('分布偏移鲁棒性', r'扰动|偏移|鲁棒|视角|光照|噪声|退化|硬件|标定|遮挡|shift|robust|perturb|noise|hardware'),
+        ('对抗/后门安全', r'对抗|攻击|后门|越狱|注入|投毒|adversar|attack|backdoor|jailbreak|inject'),
+        ('失败恢复', r'失败|恢复|纠正|回滚|故障|recover|failure|recovery|fault'),
+        ('实时/治理', r'实时|延迟|治理|权限|审计|授权|监控|real-time|latency|governance|audit'),
+        ('任务能力', r'能力|成功率|任务完成|泛化|规划|操作|benchmark|success|generalization'),
+    ]
+    return [label for label, pattern in rules if re.search(pattern, blob, re.I)]
+
+
+def infer_platform(blob):
+    names = [
+        'LIBERO', 'RoboTwin', 'RoboCasa', 'RoboCasa365', 'CALVIN', 'SimplerEnv',
+        'ManiSkill', 'Isaac Sim', 'OmniGibson', 'SAPIEN', 'MuJoCo', 'Habitat',
+        'CARLA', 'SUMO', 'nuScenes', 'NAVSIM', 'BEHAVIOR-1K', 'Franka',
+        'RoboLab', 'PhysX', 'YAM',
+    ]
+    found = []
+    for name in names:
+        if re.search(re.escape(name), blob, re.I) and name not in found:
+            found.append(name)
+    return '、'.join(found) if found else '表内摘要未明确基础平台。'
+
+
+def infer_scale(blob):
+    patterns = [
+        r'\b\d[\d,]{0,8}\s*(?:个|组|条|次|种|对)?[^。；，,\n]{0,30}(?:任务|场景|实例|案例|回合|设置|条件|样本|轨迹|示范|rollout|episodes?|tasks?|scenarios?|cases?|settings?)',
+    ]
+    hits = []
+    for pattern in patterns:
+        for hit in re.findall(pattern, blob, re.I):
+            hit = compact(hit)
+            if hit not in hits:
+                hits.append(hit)
+    return '；'.join(hits[:8]) if hits else '表内摘要未明确规模。'
+
+
+def infer_execution(blob):
+    sim = bool(re.search(r'仿真|模拟|simulation|simulator|digital twin|LIBERO|RoboTwin|CARLA', blob, re.I))
+    real = bool(re.search(r'真机|真实环境|实体机器人|real[- ]world|real[- ]robot|physical robot|Franka|硬件实验', blob, re.I))
+    if sim and real:
+        return '摘要同时提到仿真与真机/实体机器人。'
+    if real:
+        return '摘要提到真机/实体机器人。'
+    if sim:
+        return '摘要提到仿真/模拟环境。'
+    return '表内摘要未明确执行环境。'
+
+
+def evidence_level(detail, self_paper):
+    if detail:
+        return 'A', '人工扩写字段 + 表内摘要；未逐篇精读全文'
+    if self_paper:
+        return 'B', '提出论文的结构化摘要记录；未逐篇精读全文'
+    return 'C', '原始提出论文未单列；依据使用论文的摘要转述'
+
+
+def suggested_followups(tier, tags, reused):
+    """Generate explicitly labelled review prompts from known gaps in the survey fields."""
+    prompts = []
+    if '分布偏移鲁棒性' in tags:
+        prompts.append('按扰动轴、严重度和 clean/OOD 对照分别报告结果，避免只保留聚合成功率。')
+    if '物理/接触安全' in tags:
+        prompts.append('补充约束定义、违规阈值和过程/终态指标，确认安全成功与任务成功是否分开统计。')
+    if '语义/指令安全' in tags:
+        prompts.append('核对安全/不安全语境或指令的配对构造，确认是否控制了视觉场景和动作要求。')
+    if '对抗/后门安全' in tags:
+        prompts.append('分别记录攻击成功率、干净任务性能和真实/仿真迁移，避免只报告单一攻击分数。')
+    if '失败恢复' in tags:
+        prompts.append('明确失败注入时刻、失败识别标准和恢复成功判据。')
+    if '实时/治理' in tags:
+        prompts.append('补充时延、审计、权限或监督介入的操作性定义与可复现实验协议。')
+    if not reused:
+        prompts.append('当前尚无跨论文复用证据，需由独立工作复测后再形成稳定的横向结论。')
+    if not prompts:
+        prompts.append('从原文补充任务划分、指标公式、基线配置和失败案例，以便独立复现。')
+    return prompts
+
+
+def write_comparison_outputs(cards):
+    """Write machine-readable cards and a human-readable cross-benchmark comparison."""
+    data_dir = os.path.join(REPO, 'data')
+    analysis_dir = os.path.join(REPO, 'analysis')
+    os.makedirs(data_dir, exist_ok=True)
+    os.makedirs(analysis_dir, exist_ok=True)
+    ordered = sorted(cards, key=lambda c: (ORDER.index(c['tier']) if c['tier'] in ORDER else 9, c['name']))
+    payload = {
+        'schema_version': 1,
+        'generated_by': 'scripts/build_benchmark_docs.py',
+        'benchmark_count': len(ordered),
+        'fulltext_count': sum(1 for c in ordered if c['fulltext']['status']),
+        'cards': ordered,
+    }
+    with open(os.path.join(data_dir, 'benchmark_cards.json'), 'w', encoding='utf-8') as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+        f.write('\n')
+
+    def cell(value, limit=120):
+        return compact(value, limit).replace('\n', ' ')
+
+    tier_rows = []
+    for tier in ORDER:
+        group = [c for c in ordered if c['tier'] == tier]
+        if not group:
+            continue
+        tier_rows.append('| %s | %d | %d | %d | %d |' % (
+            tier, len(group), sum(c['fulltext']['status'] for c in group),
+            sum(c['reuser_count'] > 0 for c in group),
+            sum(len(c['coverage']['axes']) >= 2 for c in group)))
+
+    stage_counts = collections.Counter()
+    axis_counts = collections.Counter()
+    matrix = {stage: collections.Counter() for stage in STAGES_FROM_ONTOLOGY}
+    for card in ordered:
+        for stage in card['coverage']['stages']:
+            if stage in matrix:
+                stage_counts[stage] += 1
+                for axis in card['coverage']['axes']:
+                    if axis in AXES_FROM_ONTOLOGY:
+                        matrix[stage][axis] += 1
+        for axis in card['coverage']['axes']:
+            if axis in AXES_FROM_ONTOLOGY:
+                axis_counts[axis] += 1
+
+    lines = [
+        '# 基准卡片与跨基准比较', '',
+        '> 本文件由 `scripts/build_benchmark_docs.py` 自动生成；用于从单篇 benchmark 文档进入横向选型。',
+        '> 关键词分类是发现性下界，全文补录只覆盖 10 个核心基准，不能替代逐篇协议核查。', '',
+        '## 1. 数据范围与用途', '',
+        '- 基准：**%d** 个；关联论文：**%d** 篇。' % (len(ordered), len(ROWBY)),
+        '- 全文核查补录：**%d** 个；至少有一篇后续使用论文：**%d** 个。' % (
+            sum(c['fulltext']['status'] for c in ordered), sum(c['reuser_count'] > 0 for c in ordered)),
+        '- “后续使用”只计同时有提出论文和非提出论文的条目；若本表只有使用论文，则保留为“原始提出论文未单列”。',
+        '- `data/benchmark_cards.json` 是机器可读入口；本文件保留分类口径、核心对照和选型建议。', '',
+        '## 2. 按分类汇总', '',
+        '| 分类 | 基准数 | 全文补录 | 有后续使用 | 覆盖至少 2 类安全属性 |',
+        '|---|---:|---:|---:|---:|',
+    ] + tier_rows + [
+        '', '## 3. 环节 × 安全属性比较', '',
+        '下表按每个基准的提出论文摘要和定位描述做关键词分类；一个基准可以命中多个环节和属性。', '',
+        '| 环节 | ' + ' | '.join(AXES_FROM_ONTOLOGY) + ' | 基准数 |',
+        '|---|' + '---:|' * (len(AXES_FROM_ONTOLOGY) + 1),
+    ]
+    for stage in STAGES_FROM_ONTOLOGY:
+        lines.append('| %s | %s | %d |' % (
+            stage,
+            ' | '.join(str(matrix[stage][axis]) for axis in AXES_FROM_ONTOLOGY),
+            stage_counts[stage],
+        ))
+    lines += [
+        '', '**属性覆盖（去重计数）**：%s。' % '；'.join('%s %d' % (a, axis_counts[a]) for a in AXES_FROM_ONTOLOGY),
+        '', '## 4. 核心全文基准对照', '',
+        '| 基准 | 可复用评测角色 | 主要平台 | 规模线索 | 覆盖环节 | 覆盖属性 | 关键定量证据 | 文档 |',
+        '|---|---|---|---|---|---|---|---|',
+    ]
+    for card in ordered:
+        if not card['fulltext']['status']:
+            continue
+        lines.append('| %s | %s | %s | %s | %s | %s | %s | [%s](../benchmarks/%s) |' % (
+            cell(card['name'], 42),
+            cell(card['esb2_role']['label'] if card['esb2_role'] else '—', 60),
+            cell(card['platform_hint'], 60), cell(card['scale_hint'], 80),
+            cell('、'.join(card['coverage']['stages']), 70),
+            cell('、'.join(card['coverage']['axes']), 90),
+            cell(card['fulltext']['quantitative'], 230),
+            cell(card['name'], 42), card['document'],
+        ))
+    lines += [
+        '', '## 5. ESB-2 复用建议', '',
+        '核心基准可以按“评测层”组合，而不是把它们当作互斥任务集：', '',
+        '| 设计层 | 优先参考 | 应保留的协议思想 |',
+        '|---|---|---|',
+        '| 阶段定位 | SafeStage；ForesightSafety-VLA | 初始态、执行期、终态分开报告，并保留过程级风险。 |',
+        '| 统一判分 | ManiGuard-Bench；SafeVLA-Bench | 公开物理谓词、形式化规约和可审计的安全/能力双轴。 |',
+        '| 配对归因 | HazardArena；LIBERO-CTRL；LIBERO-RIG；LIBERO-VPro | 固定 task/seed/policy，只改变语境、组合扰动、硬件或视觉证据。 |',
+        '| 规划与接口 | DESPITE；RoboHarm | 分离计划安全与动作安全，观察文本对齐向具身接口迁移时的损失。 |',
+        '',
+        '下一步实施时，优先把 SafeVLA-Bench 的规约层与 SafeStage 的阶段层组合，再用 HazardArena/LIBERO-CTRL 的配对协议做归因；LIBERO-RIG、LIBERO-VPro 和 RoboHarm 可作为部署侧扩展。',
+        '', '## 6. 全量卡片索引', '',
+        '| 基准 | 分类 | 环节 | 安全属性 | 平台 | 规模线索 | 全文 | 后续使用 | 文档 |',
+        '|---|---|---|---|---|---|---|---:|---|',
+    ]
+    for card in ordered:
+        lines.append('| %s | %s | %s | %s | %s | %s | %s | %d | [%s](../benchmarks/%s) |' % (
+            cell(card['name'], 42), cell(card['tier'], 18),
+            cell('、'.join(card['coverage']['stages']), 70),
+            cell('、'.join(card['coverage']['axes']), 90),
+            cell(card['platform_hint'], 50), cell(card['scale_hint'], 70),
+            '是' if card['fulltext']['status'] else '—', card['reuser_count'],
+            cell(card['name'], 42), card['document'],
+        ))
+    with open(os.path.join(analysis_dir, 'benchmark-comparison.md'), 'w', encoding='utf-8') as f:
+        f.write('\n'.join(lines) + '\n')
+
+
 outdir = os.path.join(REPO, 'benchmarks')
 os.makedirs(outdir, exist_ok=True)
 index = collections.defaultdict(list)
+cards = []
 
 for name, info in reg.items():
     tier, desc, papers = info['tier'], info['desc'], info['papers']
     d = DETAIL.get(name)
+    full = FULLTEXT_DETAILS.get(name)
     self_paper = [p for p in papers if p['self']]
     others = [p for p in papers if not p['self']]
+    primary = self_paper[0] if self_paper else papers[0]
+    primary_row = ROWBY.get(primary['title'], {})
+    source_rows = [ROWBY.get(p['title'], {}) for p in papers]
+    source_rows = [r for r in source_rows if r]
+    blob_parts = [name, desc]
+    for row in source_rows:
+        blob_parts += [row.get('area', ''), row.get('domain', ''), row.get('obj', ''),
+                       row.get('dim', ''), row.get('summ', '')]
+    if d:
+        blob_parts += [d.get('stage', ''), d.get('problem', ''), d.get('build', ''), d.get('finding', '')]
+    blob = ' '.join(blob_parts)
+    tags = infer_tags(blob)
+    coverage_stages, coverage_axes = classify(name, info, ROWBY)
+    hint_blob = blob + (' ' + full['protocol'] + ' ' + full['quantitative'] if full else '')
+    evidence_code, evidence_text = evidence_level(d, self_paper)
+    if full:
+        evidence_text = evidence_text.replace('；未逐篇精读全文', '')
+        evidence_text += '；另附本地全文核查补录'
+    years = sorted({str(p.get('year') or '') for p in papers if p.get('year')}, key=lambda x: (x == '', x))
+    sources = sorted({compact(ROWBY.get(p['title'], {}).get('src')) for p in papers
+                      if ROWBY.get(p['title'], {}).get('src')})
+    source_link = primary_row.get('link') or primary.get('link') or ''
+    target = (d.get('models') if d else primary_row.get('obj')) or '表内摘要未明确被测对象。'
+    dim = primary_row.get('dim') or '表内未记录评测维度与指标。'
+    summary = primary_row.get('summ') or '表内未记录摘要概要。'
+    build_text = d.get('build') if d else ('本仓库当前保存的是摘要级构建信息：%s' % dim)
 
     L = ['# %s' % name, '',
          '> **所属环节**：%s  ' % (d['stage'] if d else desc),
          '> **分类**：%s  ' % tier,
          '> **关联论文**：本表 %d 篇（提出者 %d 篇，使用者 %d 篇）' % (
-             len(papers), len(self_paper), len(others)), '']
+             len(papers), len(self_paper), len(others)),
+         '> **证据级别**：%s（%s）' % (evidence_code, evidence_text), '']
+
+    L += ['## 0. 评测卡片', '',
+          '| 字段 | 当前整理结果 |', '|---|---|',
+          '| 首发/代表论文 | %s |' % compact(primary_row.get('title') or primary.get('title'), 120),
+          '| 年份 | %s |' % ('、'.join(years) if years else '未记录'),
+          '| 数据来源 | %s |' % ('、'.join(sources) if sources else '未记录'),
+          '| 论文库分区 | %s |' % compact(primary_row.get('area') or '未标注'),
+          '| 应用领域 | %s |' % compact(primary_row.get('domain') or '未标注'),
+          '| 被测对象 | %s |' % compact(target, 180),
+          '| 关注属性 | %s |' % ('、'.join(tags) if tags else '尚未从摘要识别'),
+          '| 评测维度/指标 | %s |' % compact(dim, 220),
+          '| 基础平台线索 | %s |' % infer_platform(hint_blob),
+          '| 规模线索 | %s |' % infer_scale(hint_blob),
+          '| 执行环境线索 | %s |' % infer_execution(hint_blob)]
+    if full:
+        L += ['| 全文状态 | 已核查本地全文：`docs/_fulltext/%s` |' % full['source']]
+    L += ['']
 
     L += ['## 1. 测什么问题（内容与所测环节）', '']
     if d:
-        L += [d['problem'], '']
+        L += ['**核心问题**：%s' % d['problem'], '']
     else:
-        src = self_paper[0] if self_paper else papers[0]
-        row = ROWBY.get(src['title'])
-        L += ['**定位**：%s。' % desc, '']
-        if row and row.get('summ'):
-            L += [row['summ'], '']
+        L += ['**核心问题**：%s。' % desc, '',
+              '**摘要级问题描述**：%s' % summary, '']
         L += ['信息取自表内论文 *%s*%s。' % (
-            row['title'] if row else src['title'],
+            primary_row.get('title') or primary['title'],
             '（该基准的提出者）' if self_paper else
             '（该基准的原始提出论文未单独收录于本表，此处依据使用它的论文转述）'), '']
+    if primary_row.get('dim'):
+        L += ['**主要测量维度**：%s。' % compact(primary_row['dim']), '']
 
     L += ['## 2. 怎么构建的', '']
-    if d:
-        L += [d['build'], '']
-    else:
-        src = self_paper[0] if self_paper else papers[0]
-        row = ROWBY.get(src['title'])
-        if row and row.get('dim'):
-            L += ['构建要点与评测设计（据原文摘要整理）：%s。' % row['dim'], '']
-        else:
-            L += ['本表未记录该基准的详细构建方式，需查原文。', '']
+    L += ['### 2.1 构建要素', '',
+          '| 要素 | 摘要级记录 |', '|---|---|',
+          '| 基础平台 | %s |' % infer_platform(hint_blob),
+          '| 任务/场景规模 | %s |' % infer_scale(hint_blob),
+          '| 扰动、风险或约束 | %s |' % compact(dim, 220),
+          '| 对照/配对方式 | %s |' % ('摘要提到配对、孪生或受控对照。' if re.search(r'配对|孪生|对照|paired|twin|controlled|same-scene', blob, re.I) else '摘要未明确配对设计。'),
+          '| 指标与判分线索 | %s |' % compact(dim, 220),
+          '| 执行设置 | %s |' % infer_execution(hint_blob), '']
+    L += ['### 2.2 详细说明', '', build_text, '']
+    if not d:
+        L += ['> 本节依据当前调研表的摘要和结构化字段整理；任务划分、阈值、采样方式和完整指标公式仍需回到原文核对。', '']
 
     L += ['## 3. 用这个基准测了什么', '']
-    if d:
-        L += [d['models'], '']
-    else:
-        src = self_paper[0] if self_paper else papers[0]
-        row = ROWBY.get(src['title'])
-        if row and row.get('obj'):
-            L += ['**被测对象**：%s。' % row['obj'], '']
-    L += ['下表按论文列出：', '',
-          '| 论文 | 年 | 来源 | 角色 | 用途/发现 |', '|---|---|---|---|---|']
+    L += ['**被测对象**：%s' % compact(target, 220), '',
+          '**结果应如何读取**：先按“评测维度/指标”字段区分主指标、辅助指标和对照条件；若论文同时报告任务成功与安全/鲁棒性结果，应将二者分开阅读。', '',
+          '下表按论文列出；“摘要级发现”保留调研表中的概要，不等同于全文实验结论。', '',
+          '| 论文 | 年份 / 来源 | 角色 | 被测对象 | 使用方式 / 指标 | 摘要级发现 |',
+          '|---|---|---|---|---|---|']
     for p in papers:
         row = ROWBY.get(p['title'], {})
         role = '**提出**' if p['self'] else '使用'
-        use = (row.get('dim') or row.get('cat') or '').replace('|', '／')[:70]
-        L.append('| [%s](%s) | %s | %s | %s | %s |' % (
-            (row.get('zh') or p['title'])[:40], p['link'], p['year'],
-            (p['venue'] or '')[:24], role, use))
+        use = row.get('dim') or row.get('cat') or '表内未记录使用方式。'
+        finding = row.get('summ') or '表内未记录摘要级发现。'
+        link = row.get('link') or p.get('link') or ''
+        L.append('| [%s](%s) | %s / %s | %s | %s | %s | %s |' % (
+            compact(row.get('zh') or p['title'], 42), link, compact(p.get('year') or '—'),
+            compact(p.get('venue') or '—', 28), role, compact(row.get('obj') or target, 100),
+            compact(use, 150), excerpt(finding, 150)))
     L.append('')
 
-    L += ['## 4. 关键结论与改进方向', '']
+    L += ['## 4. 关键结论、改进方向与可复用性', '']
     if d:
         L += ['**关键结论**：%s' % d['finding'], '',
               '**论文提到的改进方向**：%s' % d['improve'], '']
     else:
-        row = ROWBY.get(self_paper[0]['title']) if self_paper else None
-        if others:
-            L += ['**关键结论**（按使用该基准的论文逐条汇总）：', '']
-            for p in others:
-                r2 = ROWBY.get(p['title'], {})
-                txt = (r2.get('summ') or '').strip()
-                # 取摘要式概要中偏结论的后半句
-                parts = [s for s in re.split(r'(?<=[。；])', txt) if s.strip()]
-                concl = parts[-1] if len(parts) > 1 else (txt or '—')
-                L.append('- **%s**（%s）：%s' % ((r2.get('zh') or p['title'])[:38], p['year'], concl[:150]))
-            L += ['']
-        else:
-            L += ['**关键结论**：见上文第 1 节的概要。', '']
-        L += ['**改进方向**：%s' % (
-            '该基准目前仅在其提出论文中出现，提出者给出的改进方向可参考原文的讨论与未来工作；'
-            '若要形成方向性结论，需等待后续论文复用该基准。' if not others else
-            '上表各论文在使用该基准时指出的短板即为可行改进方向；本表未做统一归纳。'), '']
+        L += ['**摘要级发现（按关联论文整理）**：', '']
+        for p in papers:
+            r2 = ROWBY.get(p['title'], {})
+            L.append('- **%s**（%s，%s）：%s' % (
+                compact(r2.get('zh') or p['title'], 52), p.get('year') or '—',
+                '提出' if p['self'] else '使用', excerpt(r2.get('summ'), 260)))
+        L += ['', '**基于当前字段的改进提示（不是原文逐字结论）**：', '']
+        for prompt in suggested_followups(tier, tags, bool(others)):
+            L.append('- %s' % prompt)
+        L.append('')
+    if others and self_paper:
+        reuse_status = '已有至少一篇后续论文使用，具备初步跨论文证据。'
+    elif others and not self_paper:
+        reuse_status = '本表含使用论文，但原始提出论文未单列，暂不能确认是否形成复用链。'
+    else:
+        reuse_status = '当前只看到提出论文，尚无跨论文复用证据。'
+    L += ['**复用状态**：%s' % reuse_status, '']
 
     L += ['## 5. 相关论文（均来自本调研表）', '']
     for p in papers:
-        L.append('- %s（%s，%s）%s' % (p['title'], p['year'], (p['venue'] or '—')[:40],
+        link = ROWBY.get(p['title'], {}).get('link') or p.get('link') or ''
+        L.append('- [%s](%s)（%s，%s）%s' % (p['title'], link, p['year'], (p['venue'] or '—')[:40],
                                       '  ← **提出**' if p['self'] else ''))
-    L += ['', '---', '', '*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成；'
-          '第 1、2、4 节的人工解读基于论文摘要，未逐篇精读全文。*', '']
+    L += ['', '## 6. 证据边界与复核建议', '']
+    if full:
+        L += ['### 6.1 全文核查补录（核心论文）', '',
+              '> 以下内容来自仓库外置的本地全文材料，作为摘要级整理的定量补充；数字和结论仍应以论文原表、附录和代码为最终依据。', '',
+              '**来源文件**：`docs/_fulltext/%s`。' % full['source'], '',
+              '**评测协议**：%s' % full['protocol'], '',
+              '**定量证据**：%s' % full['quantitative'], '',
+              '**全文结论**：%s' % full['findings'], '',
+              '**适用边界**：%s' % full['limits'], '',
+              '### 6.2 证据边界与复核建议', '']
+    L += ['- **证据级别**：%s（%s）。' % (evidence_code, evidence_text),
+          '- **主要来源**：[%s](%s)。' % (compact(primary_row.get('title') or primary['title'], 120), source_link),
+          '- **当前限制**：本文档基于调研表、论文摘要和少量人工整理；核心条目另有本地全文核查补录，但仍未替代对全文实验表格、附录、代码仓库和数据下载说明的逐项复核。',
+          '- **建议复核**：优先确认任务/场景划分、样本规模、指标公式、判分阈值、模型清单，以及仿真与真机设置是否一致。', '',
+          '---', '', '*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成。'
+          ' A 级文档含人工扩写字段；核心条目附本地全文核查补录；B/C 级文档主要依赖摘要级结构化记录。*', '']
 
     fn = '%s__%s.md' % (ORDER.index(tier) + 1 if tier in ORDER else 9, slug(name))
     open(os.path.join(outdir, fn), 'w', encoding='utf-8').write('\n'.join(L))
-    index[tier].append((name, fn, len(papers), len(others)))
+    index[tier].append((name, fn, len(papers), len(others), evidence_code))
+    paper_cards = []
+    for p in papers:
+        row = ROWBY.get(p['title'], {})
+        paper_cards.append({
+            'title': p['title'],
+            'display_title': row.get('zh') or p['title'],
+            'year': p.get('year'),
+            'venue': p.get('venue'),
+            'role': '提出' if p.get('self') else '使用',
+            'link': row.get('link') or p.get('link') or '',
+            'dimension': row.get('dim') or row.get('cat') or '',
+            'summary': row.get('summ') or '',
+        })
+    role = ESB2_ROLE.get(name)
+    cards.append({
+        'name': name,
+        'document': fn,
+        'tier': tier,
+        'stage_label': d['stage'] if d else desc,
+        'problem': d['problem'] if d else summary,
+        'build': build_text,
+        'finding': d['finding'] if d else summary,
+        'improve': d['improve'] if d else None,
+        'tags': tags,
+        'platform_hint': infer_platform(hint_blob),
+        'scale_hint': infer_scale(hint_blob),
+        'execution_hint': infer_execution(hint_blob),
+        'dimension': dim,
+        'years': years,
+        'sources': sources,
+        'source_link': source_link,
+        'primary_paper': primary['title'],
+        'paper_count': len(papers),
+        'user_count': len(others),
+        'reuser_count': len(others) if self_paper else 0,
+        'has_self_paper': bool(self_paper),
+        'evidence': {'code': evidence_code, 'description': evidence_text},
+        'fulltext': ({
+            'status': True,
+            'source': full['source'],
+            'protocol': full['protocol'],
+            'quantitative': full['quantitative'],
+            'findings': full['findings'],
+            'limits': full['limits'],
+        } if full else {
+            'status': False,
+            'source': None,
+            'protocol': None,
+            'quantitative': None,
+            'findings': None,
+            'limits': None,
+        }),
+        'esb2_role': ({'label': role[0], 'use': role[1]} if role else None),
+        'coverage': {'stages': coverage_stages, 'axes': coverage_axes},
+        'papers': paper_cards,
+    })
 
 # 索引
 L = ['# 基准文档索引', '',
      '本目录为每个基准一份独立文档，共 **%d** 份，对应调研表中的 %d 篇论文。' % (
          sum(len(v) for v in index.values()), len(ROWBY)), '',
-     '文档结构：①测什么问题（含所属具身环节）②怎么构建 ③测了什么模型 ④关键结论与改进方向 ⑤相关论文清单。', '']
+     '文档结构：①评测卡片 ②测什么问题 ③怎么构建 ④逐篇论文证据 ⑤关键结论与改进方向 ⑥相关论文 ⑦证据边界；10 个核心条目另含全文核查补录。', '',
+     '证据级别：A=人工扩写字段 + 摘要；B=提出论文摘要；C=使用论文转述。核心条目在此基础上补充 `docs/_fulltext` 的本地全文核查，仍保留原始证据边界。', '']
 for tier in ORDER:
     if tier not in index:
         continue
     L += ['## %s（%d 个）' % (tier, len(index[tier])), '',
-          '| 基准 | 表内论文数 | 其中使用者 | 文档 |', '|---|---|---|---|']
-    for name, fn, n, o in sorted(index[tier], key=lambda x: (-x[2], x[0])):
-        L.append('| %s | %d | %d | [%s](%s) |' % (name, n, o, fn.replace('.md', ''), fn))
+          '| 基准 | 表内论文数 | 其中使用者 | 证据级别 | 全文补录 | 文档 |', '|---|---|---|---|---|---|']
+    for name, fn, n, o, evidence_code in sorted(index[tier], key=lambda x: (-x[2], x[0])):
+        L.append('| %s | %d | %d | %s | %s | [%s](%s) |' % (
+            name, n, o, evidence_code, '是' if name in FULLTEXT_DETAILS else '—',
+            fn.replace('.md', ''), fn))
     L.append('')
 open(os.path.join(outdir, 'README.md'), 'w', encoding='utf-8').write('\n'.join(L))
 
@@ -343,6 +772,8 @@ if left:
           '> 若需要把其中某个协议提升为独立基准文档，在 `scripts/bench_registry.py` 里加一条正则即可。', '']
     open(os.path.join(outdir, '0__评测方法与协议汇总.md'), 'w', encoding='utf-8').write('\n'.join(M))
     print('catch-all doc covers:', len(left))
+
+write_comparison_outputs(cards)
 
 print('docs written:', sum(len(v) for v in index.values()))
 for t in ORDER:

@@ -3,39 +3,88 @@
 > **所属环节**：学习型导航 sim-to-real  
 > **分类**：具身安全  
 > **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
+> **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）
+
+## 0. 评测卡片
+
+| 字段 | 当前整理结果 |
+|---|---|
+| 首发/代表论文 | Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on… |
+| 年份 | 2026 |
+| 数据来源 | 本论文库 |
+| 论文库分区 | Action and Interaction › Robot Control |
+| 应用领域 | sim-to-real |
+| 被测对象 | 学习型导航策略（NVIDIA X-Mobility / COMPASS） |
+| 关注属性 | 尚未从摘要识别 |
+| 评测维度/指标 | 两种本体扩展 + 数字孪生；sim-to-real 变体 |
+| 基础平台线索 | 表内摘要未明确基础平台。 |
+| 规模线索 | 表内摘要未明确规模。 |
+| 执行环境线索 | 摘要同时提到仿真与真机/实体机器人。 |
 
 ## 1. 测什么问题（内容与所测环节）
 
-**定位**：学习型导航 sim-to-real。
+**核心问题**：学习型导航 sim-to-real。
 
-指出经典导航栈可靠但每换一种机器人或场地就要重新工程化，学习型导航把工作从手调参数转移到数据生成与训练（在新本体或场地通过仿真微调适配策略），但这种适配后的策略在真实工业机器人上是否仍可靠缺乏系统测试。该工作在 NVIDIA X-Mobility 与 COMPASS 流程上，用仿真扩展基准并做真机验证。
+**摘要级问题描述**：指出经典导航栈可靠但每换一种机器人或场地就要重新工程化，学习型导航把工作从手调参数转移到数据生成与训练（在新本体或场地通过仿真微调适配策略），但这种适配后的策略在真实工业机器人上是否仍可靠缺乏系统测试。该工作在 NVIDIA X-Mobility 与 COMPASS 流程上，用仿真扩展基准并做真机验证。
 
 信息取自表内论文 *Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots*（该基准的提出者）。
 
+**主要测量维度**：两种本体扩展 + 数字孪生；sim-to-real 变体。
+
 ## 2. 怎么构建的
 
-构建要点与评测设计（据原文摘要整理）：两种本体扩展 + 数字孪生；sim-to-real 变体。
+### 2.1 构建要素
+
+| 要素 | 摘要级记录 |
+|---|---|
+| 基础平台 | 表内摘要未明确基础平台。 |
+| 任务/场景规模 | 表内摘要未明确规模。 |
+| 扰动、风险或约束 | 两种本体扩展 + 数字孪生；sim-to-real 变体 |
+| 对照/配对方式 | 摘要提到配对、孪生或受控对照。 |
+| 指标与判分线索 | 两种本体扩展 + 数字孪生；sim-to-real 变体 |
+| 执行设置 | 摘要同时提到仿真与真机/实体机器人。 |
+
+### 2.2 详细说明
+
+本仓库当前保存的是摘要级构建信息：两种本体扩展 + 数字孪生；sim-to-real 变体
+
+> 本节依据当前调研表的摘要和结构化字段整理；任务划分、阈值、采样方式和完整指标公式仍需回到原文核对。
 
 ## 3. 用这个基准测了什么
 
-**被测对象**：学习型导航策略（NVIDIA X-Mobility / COMPASS）。
+**被测对象**：学习型导航策略（NVIDIA X-Mobility / COMPASS）
 
-下表按论文列出：
+**结果应如何读取**：先按“评测维度/指标”字段区分主指标、辅助指标和对照条件；若论文同时报告任务成功与安全/鲁棒性结果，应将二者分开阅读。
 
-| 论文 | 年 | 来源 | 角色 | 用途/发现 |
-|---|---|---|---|---|
-| [工业内部物流的 Physical AI sim-to-real 基准](https://arxiv.org/abs/2610.28432) | 2026 | arXiv 预印本 (arXiv:2610.28 | **提出** | 两种本体扩展 + 数字孪生；sim-to-real 变体 |
+下表按论文列出；“摘要级发现”保留调研表中的概要，不等同于全文实验结论。
 
-## 4. 关键结论与改进方向
+| 论文 | 年份 / 来源 | 角色 | 被测对象 | 使用方式 / 指标 | 摘要级发现 |
+|---|---|---|---|---|---|
+| [工业内部物流的 Physical AI sim-to-real 基准](https://arxiv.org/abs/2610.28432) | 2026 / arXiv 预印本 (arXiv:2610.28432) | **提出** | 学习型导航策略（NVIDIA X-Mobility / COMPASS） | 两种本体扩展 + 数字孪生；sim-to-real 变体 | 指出经典导航栈可靠但每换一种机器人或场地就要重新工程化，学习型导航把工作从手调参数转移到数据生成与训练（在新本体或场地通过仿真微调适配策略），但这种适配后的策略在真实工业机器人上是否仍可靠缺乏系统测试。 |
 
-**关键结论**：见上文第 1 节的概要。
+## 4. 关键结论、改进方向与可复用性
 
-**改进方向**：该基准目前仅在其提出论文中出现，提出者给出的改进方向可参考原文的讨论与未来工作；若要形成方向性结论，需等待后续论文复用该基准。
+**摘要级发现（按关联论文整理）**：
+
+- **工业内部物流的 Physical AI sim-to-real 基准**（2026，提出）：指出经典导航栈可靠但每换一种机器人或场地就要重新工程化，学习型导航把工作从手调参数转移到数据生成与训练（在新本体或场地通过仿真微调适配策略），但这种适配后的策略在真实工业机器人上是否仍可靠缺乏系统测试。该工作在 NVIDIA X-Mobility 与 COMPASS 流程上，用仿真扩展基准并做真机验证。
+
+**基于当前字段的改进提示（不是原文逐字结论）**：
+
+- 当前尚无跨论文复用证据，需由独立工作复测后再形成稳定的横向结论。
+
+**复用状态**：当前只看到提出论文，尚无跨论文复用证据。
 
 ## 5. 相关论文（均来自本调研表）
 
-- Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots（2026，arXiv 预印本 (arXiv:2610.28432)）  ← **提出**
+- [Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots](https://arxiv.org/abs/2610.28432)（2026，arXiv 预印本 (arXiv:2610.28432)）  ← **提出**
+
+## 6. 证据边界与复核建议
+
+- **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）。
+- **主要来源**：[Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on…](https://arxiv.org/abs/2610.28432)。
+- **当前限制**：本文档基于调研表、论文摘要和少量人工整理；核心条目另有本地全文核查补录，但仍未替代对全文实验表格、附录、代码仓库和数据下载说明的逐项复核。
+- **建议复核**：优先确认任务/场景划分、样本规模、指标公式、判分阈值、模型清单，以及仿真与真机设置是否一致。
 
 ---
 
-*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成；第 1、2、4 节的人工解读基于论文摘要，未逐篇精读全文。*
+*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成。 A 级文档含人工扩写字段；核心条目附本地全文核查补录；B/C 级文档主要依赖摘要级结构化记录。*
