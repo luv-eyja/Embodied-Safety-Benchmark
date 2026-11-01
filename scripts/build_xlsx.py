@@ -166,7 +166,7 @@ intro = [
     ('p', '  · 若要补空白：现有基准普遍缺「实时性约束下的安全」（RT-Safe 之外很少）、缺「跨本体安全」（CrossSafe 类工作仍少）、'
           '缺「安全-有用性联合指标」（多数只报 ASR）。'),
     ('blank', ''),
-    ('note', '数据抓取时间：2026-10-30；论文库源站：https://x-zheng16.github.io/Awesome-Embodied-AI-Safety/screened.html'),
+    ('note', '数据抓取时间：2026-11-01；论文库源站：https://x-zheng16.github.io/Awesome-Embodied-AI-Safety/screened.html'),
 ]
 
 r = 1
@@ -317,4 +317,5 @@ ws3.freeze_panes = 'C2'
 ws3.auto_filter.ref = 'A1:%s%d' % (LAST, len(ext) + 1)
 
 wb.save(os.path.join(BASE, 'VLA_benchmark_survey.xlsx'))
+wb.save(os.path.join(BASE, 'Embodied-Safety-Benchmark', 'data', 'embodied_safety_benchmark_survey.xlsx'))
 print('saved', len(rows), 'rows;', n_lib, 'lib,', n_ext, 'ext')

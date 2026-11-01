@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Coverage matrix over the 121 benchmarks: stage x safety-property."""
+"""Coverage matrix over the generated benchmark set: stage x safety-property."""
 import json, os, collections
 
 from benchmark_ontology import AXES, STAGES, classify

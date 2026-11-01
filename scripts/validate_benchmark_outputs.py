@@ -24,9 +24,10 @@ REQUIRED_SECTIONS = [
 def main():
     payload = json.loads(CARDS.read_text(encoding='utf-8'))
     cards = payload['cards']
-    assert payload['benchmark_count'] == 121, payload['benchmark_count']
-    assert len(cards) == 121, len(cards)
-    assert len({card['name'] for card in cards}) == 121
+    expected_benchmarks = payload['benchmark_count']
+    assert expected_benchmarks > 0, expected_benchmarks
+    assert len(cards) == expected_benchmarks, len(cards)
+    assert len({card['name'] for card in cards}) == expected_benchmarks
     assert sum(card['fulltext']['status'] for card in cards) == 10
 
     missing_sections = {}
@@ -45,17 +46,17 @@ def main():
 
     index_lines = [line for line in INDEX.read_text(encoding='utf-8').splitlines()
                    if re.match(r'^\| [^|]+ \| \d+ \| \d+ \| [ABC] \| (是|—) \| \[', line)]
-    assert len(index_lines) == 121, len(index_lines)
+    assert len(index_lines) == expected_benchmarks, len(index_lines)
     assert INDEX.read_text(encoding='utf-8').count('| 是 |') == 10
 
     comparison = COMPARISON.read_text(encoding='utf-8')
     for heading in ('## 3. 环节 × 安全属性比较', '## 4. 核心全文基准对照', '## 6. 全量卡片索引'):
         assert heading in comparison, heading
-    assert comparison.count('../benchmarks/') >= 131
-    print('benchmark cards: 121')
+    assert comparison.count('../benchmarks/') >= expected_benchmarks + 10
+    print('benchmark cards:', expected_benchmarks)
     print('fulltext cards: 10')
     print('document sections: complete')
-    print('index entries: 121; fulltext markers: 10')
+    print('index entries: %d; fulltext markers: 10' % expected_benchmarks)
     print('comparison report: complete')
 
 

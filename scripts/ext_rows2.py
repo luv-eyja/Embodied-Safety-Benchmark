@@ -2,6 +2,11 @@
 """Second batch of external benchmarks discovered via OpenAlex."""
 
 EXT_ROWS_2 = [
+    ('LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models', 2026,
+     'ECCV 2026（欧洲计算机视觉会议）；arXiv 预印本 (arXiv:2606.23686)', 'https://arxiv.org/abs/2606.23686',
+     'VLA 安全 Benchmark', 'VLA 与具身基础模型',
+     '五类安全套件 × L0–L2 难度；物理安全成功率/违规率、语义安全拒答率、环境随机性鲁棒性',
+     '提出 LIBERO-Safety，面向 VLA 的物理与语义安全进行统一评测。基准包含 affordance-aware grasping、human-robot interaction、tabletop spatial avoidance、free-space hand-object avoidance 与 semantic safety reasoning 五类套件，每类含 L0–L2 三档难度；通过 keypose-driven pipeline 生成 19,664 条严格无碰撞示范，并同时报告物理安全、语义安全和环境随机性下的鲁棒性。官方项目页注明已被 ECCV 2026 接收。'),
     ('SafeVLA-Bench: A Benchmark for the Success-Safety Gap in Vision-Language-Action Models', 2026,
      'arXiv 预印本 (arXiv:2606.00773)', 'https://arxiv.org/abs/2606.00773',
      'VLA 安全 Benchmark', '现有仿真 VLA 基准（事后安全评估）',

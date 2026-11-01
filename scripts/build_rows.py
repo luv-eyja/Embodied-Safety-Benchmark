@@ -646,6 +646,8 @@ ZH_EXT = {
         'BadRobot：越狱物理世界中的具身 LLM 智能体',
     'SafeVLA-Bench: A Benchmark for the Success-Safety Gap in Vision-Language-Action Models':
         'SafeVLA-Bench：VLA 的「成功-安全」落差基准',
+    'LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models':
+        'LIBERO-Safety：VLA 物理与语义安全综合基准',
     'PolaRiS: Scalable Real-to-Sim Evaluations for Generalist Robot Policies':
         'PolaRiS：通用策略的可扩展 real-to-sim 评测',
     'RoboWorld: Fast and Reliable Neural Simulators for Generalist Robot Policy Evaluation':
@@ -742,4 +744,5 @@ for r in rows:
 
 json.dump(rows, open(os.path.join(BASE, 'docs', '_rows.json'), 'w', encoding='utf-8'),
           ensure_ascii=False, indent=1)
-print('rows:', len(rows), '| lib:', len(LIB_ROWS), '| ext:', len(EXT_ROWS))
+print('rows:', len(rows), '| lib:', sum(1 for r in rows if r['src'].startswith('本论文库')),
+      '| ext:', sum(1 for r in rows if r['src'] == '库外补充'))

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "scripts/build_benchmark_docs.py",
-  "benchmark_count": 121,
+  "benchmark_count": 122,
   "fulltext_count": 10,
   "cards": [
     {
@@ -228,6 +228,74 @@
           "link": "https://arxiv.org/abs/2604.12447",
           "dimension": "语义安全；安全/不安全孪生场景下的动作选择正确率",
           "summary": "针对「动作执行正确但语义语境危险」这一系统性漏洞，构造物体、布局与动作要求完全一致、仅语义语境不同的安全/不安全孪生场景。发现仅在安全场景上训练的 VLA 在语义风险下往往无法保持安全，说明 VLA 的动作策略与视觉-语言语义耦合松散。"
+        }
+      ]
+    },
+    {
+      "name": "LIBERO-Safety",
+      "document": "1__LIBERO-Safety.md",
+      "tier": "VLA 安全",
+      "stage_label": "物理与语义安全；五类套件 × L0-L2 难度",
+      "problem": "提出 LIBERO-Safety，面向 VLA 的物理与语义安全进行统一评测。基准包含 affordance-aware grasping、human-robot interaction、tabletop spatial avoidance、free-space hand-object avoidance 与 semantic safety reasoning 五类套件，每类含 L0–L2 三档难度；通过 keypose-driven pipeline 生成 19,664 条严格无碰撞示范，并同时报告物理安全、语义安全和环境随机性下的鲁棒性。官方项目页注明已被 ECCV 2026 接收。",
+      "build": "本仓库当前保存的是摘要级构建信息：五类安全套件 × L0–L2 难度；物理安全成功率/违规率、语义安全拒答率、环境随机性鲁棒性",
+      "finding": "提出 LIBERO-Safety，面向 VLA 的物理与语义安全进行统一评测。基准包含 affordance-aware grasping、human-robot interaction、tabletop spatial avoidance、free-space hand-object avoidance 与 semantic safety reasoning 五类套件，每类含 L0–L2 三档难度；通过 keypose-driven pipeline 生成 19,664 条严格无碰撞示范，并同时报告物理安全、语义安全和环境随机性下的鲁棒性。官方项目页注明已被 ECCV 2026 接收。",
+      "improve": null,
+      "tags": [
+        "语义/指令安全",
+        "物理/接触安全",
+        "分布偏移鲁棒性",
+        "任务能力"
+      ],
+      "platform_hint": "LIBERO",
+      "scale_hint": "19,664 条严格无碰撞示范",
+      "execution_hint": "摘要提到仿真/模拟环境。",
+      "dimension": "五类安全套件 × L0–L2 难度；物理安全成功率/违规率、语义安全拒答率、环境随机性鲁棒性",
+      "years": [
+        "2026"
+      ],
+      "sources": [
+        "库外补充"
+      ],
+      "source_link": "https://arxiv.org/abs/2606.23686",
+      "primary_paper": "LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models",
+      "paper_count": 1,
+      "user_count": 0,
+      "reuser_count": 0,
+      "has_self_paper": true,
+      "evidence": {
+        "code": "B",
+        "description": "提出论文的结构化摘要记录；未逐篇精读全文"
+      },
+      "fulltext": {
+        "status": false,
+        "source": null,
+        "protocol": null,
+        "quantitative": null,
+        "findings": null,
+        "limits": null
+      },
+      "esb2_role": null,
+      "coverage": {
+        "stages": [
+          "认知/语义层",
+          "动作控制层"
+        ],
+        "axes": [
+          "语义/指令安全",
+          "物理/接触安全",
+          "分布偏移鲁棒性"
+        ]
+      },
+      "papers": [
+        {
+          "title": "LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models",
+          "display_title": "LIBERO-Safety：VLA 物理与语义安全综合基准",
+          "year": "2026",
+          "venue": "ECCV 2026（欧洲计算机视觉会议）；arXiv 预印本 (arXiv:2606.23686)",
+          "role": "提出",
+          "link": "https://arxiv.org/abs/2606.23686",
+          "dimension": "五类安全套件 × L0–L2 难度；物理安全成功率/违规率、语义安全拒答率、环境随机性鲁棒性",
+          "summary": "提出 LIBERO-Safety，面向 VLA 的物理与语义安全进行统一评测。基准包含 affordance-aware grasping、human-robot interaction、tabletop spatial avoidance、free-space hand-object avoidance 与 semantic safety reasoning 五类套件，每类含 L0–L2 三档难度；通过 keypose-driven pipeline 生成 19,664 条严格无碰撞示范，并同时报告物理安全、语义安全和环境随机性下的鲁棒性。官方项目页注明已被 ECCV 2026 接收。"
         }
       ]
     },

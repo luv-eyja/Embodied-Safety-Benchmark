@@ -16,7 +16,7 @@
 
 去重后合计 2,633 篇。
 
-### 1.2 库外补充（29 篇）
+### 1.2 库外补充（30 篇）
 
 通过 OpenAlex 检索 + arXiv 摘要页核实补充，覆盖三类：
 
@@ -53,13 +53,13 @@
 仅按标题匹配会把“摘要明确提出 benchmark、但标题没有 benchmark 名称”的论文误报为使用者。`data/benchmark_source_audit.json` 保存人工核验的来源关系，分为：
 
 - `same_paper_in_registry`：提出论文已在当前表内，由 registry 按来源标题补标为“提出”；
-- `external_original_paper`：当前 192 条记录只有使用论文，原始论文在卡片的“来源审计”字段中外链标注，不把使用论文冒充提出论文。
+- `external_original_paper`：当前 193 条记录只有使用论文，原始论文在卡片的“来源审计”字段中外链标注，不把使用论文冒充提出论文。
 
 当前审计覆盖 22 个条目；其中 17 个补回表内提出论文，5 个关联到表外原始论文或连续环境来源。人工核验详情见 [`analysis/benchmark-source-audit.md`](../analysis/benchmark-source-audit.md)。
 
 ## 4. 文档生成
 
-`scripts/build_benchmark_docs.py` 为 121 个基准各生成一份 Markdown。每份文档统一包含评测卡片、问题定义、构建要素、逐篇论文证据、结论与改进方向、相关论文、证据边界七个部分。其中 15 个核心基准（LIBERO 族、RoboTwin、CALVIN、SimplerEnv、COLOSSEUM 等）的核心问题/构建/结论字段由人工依据摘要撰写；SafeStage、ManiGuard、ForesightSafety-VLA、SafeVLA-Bench、LIBERO-RIG、LIBERO-CTRL、LIBERO-VPro、HazardArena、DESPITE、RoboHarm 另有 `docs/_fulltext/` 本地全文核查补录，包含协议、定量结果和适用边界；其余基准由脚本根据论文自身的「评测维度」「内容概要」「被测对象」和来源字段组装，避免虚构细节。
+`scripts/build_benchmark_docs.py` 为 122 个基准各生成一份 Markdown。每份文档统一包含评测卡片、问题定义、构建要素、逐篇论文证据、结论与改进方向、相关论文、证据边界七个部分。其中 15 个核心基准（LIBERO 族、RoboTwin、CALVIN、SimplerEnv、COLOSSEUM 等）的核心问题/构建/结论字段由人工依据摘要撰写；SafeStage、ManiGuard、ForesightSafety-VLA、SafeVLA-Bench、LIBERO-RIG、LIBERO-CTRL、LIBERO-VPro、HazardArena、DESPITE、RoboHarm 另有 `docs/_fulltext/` 本地全文核查补录，包含协议、定量结果和适用边界；其余基准由脚本根据论文自身的「评测维度」「内容概要」「被测对象」和来源字段组装，避免虚构细节。
 
 文档使用三级证据标记：A 为人工扩写字段加表内摘要，B 为提出论文的结构化摘要记录，C 为原始提出论文未单列、仅依据使用论文转述。核心条目会在原有级别上追加本地全文核查，但仍保留原始证据边界。脚本还会生成“基础平台、规模、执行环境、配对方式”的线索字段；若摘要没有明确记录，会显式写为“未明确”，而不补猜测。
 
@@ -67,13 +67,13 @@
 
 近期补充检索结果单独保存在 [`analysis/recent-embodied-benchmark-papers.md`](../analysis/recent-embodied-benchmark-papers.md) 与 `data/recent_embodied_benchmark_papers.json`，避免把尚未完成字段核对的新论文直接混入主表。
 
-`scripts/validate_benchmark_outputs.py` 检查 121 个文档、10 个全文标记、索引条目、机器可读卡片和比较报告，作为生成后的快速回归检查。
+`scripts/validate_benchmark_outputs.py` 检查当前全部 122 个文档、10 个全文标记、索引条目、机器可读卡片和比较报告，作为生成后的快速回归检查。
 
 ## 5. 已验证与未验证
 
 **已验证**
 - 全部 arXiv 编号逐条与 arXiv 摘要页标题比对：131 条中 125 条逐字一致；6 条差异为 HTML 转义符（2）、已改用出版社 DOI（2）、标题介词差异（1）、DOI 字符串（1）
-- 全部 192 行链接均为 `arxiv.org` 或 `doi.org`，无裸编号
+- 全部 193 行链接均为 `arxiv.org` 或 `doi.org`，无裸编号
 - 会议/期刊条目（NeurIPS、ICLR、ICCV、CVPR、AAAI、EMNLP、ICRA、IROS、RSS、RA-L）均带正式 DOI
 - Excel 文件用 Excel 16.0 实际打开验证，无修复提示；下拉与条件格式生效
 

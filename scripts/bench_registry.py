@@ -47,6 +47,7 @@ BENCH = [
     ('ForesightSafety-VLA', r'ForesightSafety-VLA', 'VLA 安全', '13 类安全 taxonomy 诊断基准'),
     ('ManiGuard-Bench', r'ManiGuard', 'VLA 安全', 'LTL_f 规约接地的操作安全'),
     ('SafeLIBERO', r'SafeLIBERO', 'VLA 安全', '安全关键操作（碰撞风险）'),
+    ('LIBERO-Safety', r'LIBERO-Safety', 'VLA 安全', '物理与语义安全；五类套件 × L0-L2 难度'),
     ('ManiPhysicsBench', r'ManiPhysicsBench', 'VLA 安全', '物体保全的物理损伤评估'),
     ('VLA-Arena', r'VLA-Arena', 'VLA 安全', '四维任务结构的难度梯度（含 Safety 套件）'),
     ('ASIMOV Benchmark', r'ASIMOV', 'VLA 安全', '语义安全与机器人宪法'),

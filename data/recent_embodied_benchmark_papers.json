@@ -4,6 +4,18 @@
   "selection": "2025-11-01 至 2026-11-01 可核验的具身智能 benchmark 论文，优先保留具有明确评测协议、数据/代码或可复现实验描述者。",
   "papers": [
     {
+      "title": "LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models",
+      "authors": "Rongxu Cui et al.",
+      "year": 2026,
+      "arxiv": "2606.23686",
+      "link": "https://arxiv.org/abs/2606.23686",
+      "benchmark": "LIBERO-Safety",
+      "scope": "物理与语义安全；五类套件、L0-L2 难度、19,664 条严格无碰撞示范",
+      "why_relevant": "把碰撞安全、人机交互、空间避障、手-物避障和语义安全推理放进同一 LIBERO 风格评测框架。",
+      "repo_status": "已加入主表、registry、benchmark cards 和独立文档；官方项目页显示已接收 ECCV 2026",
+      "priority": "高"
+    },
+    {
       "title": "EmbodiedLab: Benchmarking Embodied Agents That Act to Know",
       "authors": "Hongcheng Gao et al.",
       "year": 2026,

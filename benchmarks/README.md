@@ -1,18 +1,19 @@
 # 基准文档索引
 
-本目录为每个基准一份独立文档，共 **121** 份，对应调研表中的 192 篇论文。
+本目录为每个基准一份独立文档，共 **122** 份，对应调研表中的 193 篇论文。
 
 文档结构：①评测卡片 ②测什么问题 ③怎么构建 ④逐篇论文证据 ⑤关键结论与改进方向 ⑥相关论文 ⑦证据边界；10 个核心条目另含全文核查补录。
 
 证据级别：A=人工扩写字段 + 摘要；B=提出论文摘要；C=使用论文转述。核心条目在此基础上补充 `docs/_fulltext` 的本地全文核查，仍保留原始证据边界。
 
-## VLA 安全（11 个）
+## VLA 安全（12 个）
 
 | 基准 | 表内论文数 | 其中使用者 | 证据级别 | 全文补录 | 文档 |
 |---|---|---|---|---|---|
 | ASIMOV Benchmark | 2 | 1 | B | — | [1__ASIMOV-Benchmark](1__ASIMOV-Benchmark.md) |
 | ForesightSafety-VLA | 1 | 0 | A | 是 | [1__ForesightSafety-VLA](1__ForesightSafety-VLA.md) |
 | HazardArena | 1 | 0 | A | 是 | [1__HazardArena](1__HazardArena.md) |
+| LIBERO-Safety | 1 | 0 | B | — | [1__LIBERO-Safety](1__LIBERO-Safety.md) |
 | ManiGuard-Bench | 1 | 0 | A | 是 | [1__ManiGuard-Bench](1__ManiGuard-Bench.md) |
 | ManiPhysicsBench | 1 | 0 | A | — | [1__ManiPhysicsBench](1__ManiPhysicsBench.md) |
 | RoboHarm | 1 | 0 | B | 是 | [1__RoboHarm](1__RoboHarm.md) |
