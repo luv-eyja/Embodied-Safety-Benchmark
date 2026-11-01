@@ -13,7 +13,7 @@
 | ASIMOV Benchmark | 2 | 1 | B | — | [1__ASIMOV-Benchmark](1__ASIMOV-Benchmark.md) |
 | ForesightSafety-VLA | 1 | 0 | A | 是 | [1__ForesightSafety-VLA](1__ForesightSafety-VLA.md) |
 | HazardArena | 1 | 0 | A | 是 | [1__HazardArena](1__HazardArena.md) |
-| LIBERO-Safety | 1 | 0 | B | — | [1__LIBERO-Safety](1__LIBERO-Safety.md) |
+| LIBERO-Safety | 1 | 0 | A | — | [1__LIBERO-Safety](1__LIBERO-Safety.md)；[实现拆解](../analysis/LIBERO-Safety-实现拆解.md) |
 | ManiGuard-Bench | 1 | 0 | A | 是 | [1__ManiGuard-Bench](1__ManiGuard-Bench.md) |
 | ManiPhysicsBench | 1 | 0 | A | — | [1__ManiPhysicsBench](1__ManiPhysicsBench.md) |
 | RoboHarm | 1 | 0 | B | 是 | [1__RoboHarm](1__RoboHarm.md) |
