@@ -529,6 +529,7 @@ def write_comparison_outputs(cards):
 
 outdir = os.path.join(REPO, 'benchmarks')
 os.makedirs(outdir, exist_ok=True)
+no_project_dir = os.path.join(outdir, 'no-project')
 index = collections.defaultdict(list)
 cards = []
 
@@ -576,7 +577,8 @@ for name, info in reg.items():
     if project:
         project_links = '；'.join('[%s](%s)' % (u, u) for u in project.get('project_urls', []))
         if not project_links:
-            project_links = '未查到可确认的官方项目地址（详见 [项目地址审计](../analysis/benchmark-project-audit.md)）'
+            audit_link = '../../analysis/benchmark-project-audit.md' if project.get('status') == 'not_found' else '../analysis/benchmark-project-audit.md'
+            project_links = '未查到可确认的官方项目地址（详见 [项目地址审计](%s)）' % audit_link
         L += ['> **项目地址审计**：`%s`；%s' % (project.get('status'), project_links), '']
 
     L += ['## 0. 评测卡片', '',
@@ -689,8 +691,11 @@ for name, info in reg.items():
           '---', '', '*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成。'
           ' A 级文档含人工扩写字段；核心条目附本地全文核查补录；B/C 级文档主要依赖摘要级结构化记录。*', '']
 
-    fn = '%s__%s.md' % (ORDER.index(tier) + 1 if tier in ORDER else 9, slug(name))
-    open(os.path.join(outdir, fn), 'w', encoding='utf-8').write('\n'.join(L))
+    base_fn = '%s__%s.md' % (ORDER.index(tier) + 1 if tier in ORDER else 9, slug(name))
+    fn = 'no-project/%s' % base_fn if project and project.get('status') == 'not_found' else base_fn
+    doc_path = os.path.join(outdir, *fn.split('/'))
+    os.makedirs(os.path.dirname(doc_path), exist_ok=True)
+    open(doc_path, 'w', encoding='utf-8').write('\n'.join(L))
     index[tier].append((name, fn, len(papers), len(others), evidence_code))
     paper_cards = []
     for p in papers:
@@ -764,7 +769,8 @@ L = ['# 基准文档索引', '',
      '本目录为每个基准一份独立文档，共 **%d** 份，对应调研表中的 %d 篇论文。' % (
          sum(len(v) for v in index.values()), len(ROWBY)), '',
      '文档结构：①评测卡片 ②测什么问题 ③怎么构建 ④逐篇论文证据 ⑤关键结论与改进方向 ⑥相关论文 ⑦证据边界；10 个核心条目另含全文核查补录。', '',
-     '证据级别：A=人工扩写字段 + 摘要；B=提出论文摘要；C=使用论文转述。核心条目在此基础上补充 `docs/_fulltext` 的本地全文核查，仍保留原始证据边界。', '']
+     '证据级别：A=人工扩写字段 + 摘要；B=提出论文摘要；C=使用论文转述。核心条目在此基础上补充 `docs/_fulltext` 的本地全文核查，仍保留原始证据边界。', '',
+     '项目地址审计见 [`analysis/benchmark-project-audit.md`](../analysis/benchmark-project-audit.md)。项目地址状态为 `not_found` 的条目统一放在 `benchmarks/no-project/`，暂不作为重点复现对象。', '']
 for tier in ORDER:
     if tier not in index:
         continue
@@ -778,9 +784,12 @@ for tier in ORDER:
 open(os.path.join(outdir, 'README.md'), 'w', encoding='utf-8').write('\n'.join(L))
 
 # ── 补充：未被任何基准文档覆盖的论文（多为评测方法 / 攻防 / 综述，未提出可复用基准）──
-covered = ''.join(open(os.path.join(outdir, f), encoding='utf-8').read()
-                  for f in os.listdir(outdir)
-                  if f.endswith('.md') and not f.startswith('0__'))
+covered = ''.join(
+    open(os.path.join(root, f), encoding='utf-8').read()
+    for root, _, files in os.walk(outdir)
+    for f in files
+    if f.endswith('.md') and not f.startswith('0__')
+)
 left = [r for r in ROWBY.values() if r['title'] not in covered]
 if left:
     left.sort(key=lambda r: (r['cat'], str(r['year'])))

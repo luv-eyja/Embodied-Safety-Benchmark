@@ -17,6 +17,7 @@ data/
   raw/                                     论文库原始快照（papers / audited / screened）
 benchmarks/
   README.md                                122 个基准的索引，按分类排序
+  no-project/                              本轮未确认到官方项目地址的 60 个条目（暂不重点关注）
   0__评测方法与协议汇总.md                 38 篇「有评测但不构成独立基准」的论文
   N__<基准名>.md                           每个基准一份文档（共 122 份）
 design/

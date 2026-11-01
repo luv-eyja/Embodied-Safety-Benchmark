@@ -36,6 +36,18 @@ def main():
         assert len(project_audits) == expected_benchmarks, len(project_audits)
         assert {a['benchmark'] for a in project_audits} == {card['name'] for card in cards}
         assert all('project_audit' in card for card in cards)
+        no_project_names = {
+            a['benchmark'] for a in project_audits if a.get('status') == 'not_found'
+        }
+        no_project_cards = {
+            card['name'] for card in cards
+            if card.get('project_audit', {}).get('status') == 'not_found'
+        }
+        assert no_project_names == no_project_cards
+        assert all(
+            card['document'].startswith('no-project/')
+            for card in cards if card['name'] in no_project_names
+        )
 
     missing_sections = {}
     missing_docs = []

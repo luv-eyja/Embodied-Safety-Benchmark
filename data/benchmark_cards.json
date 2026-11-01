@@ -333,7 +333,7 @@
     },
     {
       "name": "ManiGuard-Bench",
-      "document": "1__ManiGuard-Bench.md",
+      "document": "no-project/1__ManiGuard-Bench.md",
       "tier": "VLA 安全",
       "stage_label": "动作控制（接触密集操作的安全规约）",
       "problem": "基础模型策略在任务成功率上进步很快，但「是否安全地成功」缺乏严格评估；学习分类器或 LLM 裁判判定安全不可靠。",
@@ -721,7 +721,7 @@
     },
     {
       "name": "SafeVLA-Bench",
-      "document": "1__SafeVLA-Bench.md",
+      "document": "no-project/1__SafeVLA-Bench.md",
       "tier": "VLA 安全",
       "stage_label": "动作控制（轨迹级安全）",
       "problem": "二元成功率会掩盖轨迹上的安全违规：策略可能到达目标，却沿路施加过度接触、扰动旁观物体、使手中物体失稳或进入机器人自碰撞。",
@@ -1038,7 +1038,7 @@
     },
     {
       "name": "DriveDegrade",
-      "document": "2__DriveDegrade.md",
+      "document": "no-project/2__DriveDegrade.md",
       "tier": "VLA 鲁棒性",
       "stage_label": "图像退化容忍度（驾驶）",
       "problem": "指出纯视觉端到端驾驶模型正接近部署，而部署中相机流会被模糊、噪声、低照度、天气、丢帧与内存故障破坏，但策略在驾驶能力崩溃前能容忍多少尚不清楚；已有的损坏鲁棒性基准针对检测或鸟瞰图感知，而非真正驱动车辆的计划输出。基准把 16 类退化在 5 个严重度下于图像加载器内即时注入，单一算子即可触达 15 个策略。",
@@ -1121,7 +1121,7 @@
     },
     {
       "name": "LIBERO-CTRL",
-      "document": "2__LIBERO-CTRL.md",
+      "document": "no-project/2__LIBERO-CTRL.md",
       "tier": "VLA 鲁棒性",
       "stage_label": "感知 + 状态（复合扰动）",
       "problem": "VLA 策略通常一次只被施加一种扰动，这能诊断对单一分布偏移的敏感性；但真实部署常同时存在多种偏移，而单轴鲁棒性测量是否能组合仍是未知。",
@@ -1361,7 +1361,7 @@
     },
     {
       "name": "LIBERO-Plus",
-      "document": "2__LIBERO-Plus.md",
+      "document": "no-project/2__LIBERO-Plus.md",
       "tier": "VLA 鲁棒性",
       "stage_label": "感知 + 状态（分布偏移下的动作控制）",
       "problem": "VLA 在 LIBERO 上报出很高的成功率，但这些数字可能掩盖鲁棒性的根本弱点。",
@@ -1527,7 +1527,7 @@
     },
     {
       "name": "LIBERO-Pro2.0",
-      "document": "2__LIBERO-Pro2-0.md",
+      "document": "no-project/2__LIBERO-Pro2-0.md",
       "tier": "VLA 鲁棒性",
       "stage_label": "条件/环境/观测/执行/状态/语言（六维）",
       "problem": "LIBERO 高分不等于鲁棒：模型可能利用基准特定规律，而非真正泛化到多样运行条件。",
@@ -1684,7 +1684,7 @@
     },
     {
       "name": "LIBERO-RIG",
-      "document": "2__LIBERO-RIG.md",
+      "document": "no-project/2__LIBERO-RIG.md",
       "tier": "VLA 鲁棒性",
       "stage_label": "执行（硬件与部署配置）",
       "problem": "部署环境变化不只是场景变化，还包括机器人自身的硬件漂移：相机被碰动并重新安装、标定漂移、控制器频率不同、末端垫片磨损。",
@@ -1832,7 +1832,7 @@
     },
     {
       "name": "LIBERO-X",
-      "document": "2__LIBERO-X.md",
+      "document": "no-project/2__LIBERO-X.md",
       "tier": "VLA 鲁棒性",
       "stage_label": "感知 + 认知（空间/物体/指令）",
       "problem": "现有基准常因评测协议不足而给出有限甚至误导性的评估，无法充分刻画真实世界分布偏移。",
@@ -1981,7 +1981,7 @@
     },
     {
       "name": "RoboStress",
-      "document": "2__RoboStress.md",
+      "document": "no-project/2__RoboStress.md",
       "tier": "VLA 鲁棒性",
       "stage_label": "执行（机械误差）",
       "problem": "VLA 在机器人**执行动作偏离其指令**时常失败——这类偏差来自机械磨损与工况（负载变化等），而物理机器人难以系统覆盖这些条件。",
@@ -2063,7 +2063,7 @@
     },
     {
       "name": "VLA-GAUGE",
-      "document": "2__VLA-GAUGE.md",
+      "document": "no-project/2__VLA-GAUGE.md",
       "tier": "VLA 鲁棒性",
       "stage_label": "认知 + 感知（泛化与鲁棒性统一诊断）",
       "problem": "VLA 在熟悉任务上成功率高，但这些分数是否反映真正的零样本泛化与扰动鲁棒性并不清楚；现有框架缺乏能力级诊断与组合扰动覆盖，且不把诊断与针对性改进连起来。",
@@ -2134,7 +2134,7 @@
     },
     {
       "name": "VLA-Retain",
-      "document": "2__VLA-Retain.md",
+      "document": "no-project/2__VLA-Retain.md",
       "tier": "VLA 鲁棒性",
       "stage_label": "感知（视觉微调的副作用）",
       "problem": "为提升观测条件适应性而微调视觉模块是常见做法，但这种适配**在目标条件之外**如何影响鲁棒性并不清楚：现有鲁棒性基准只测未微调模型，适配研究又只报目标增益。",
@@ -2202,7 +2202,7 @@
     },
     {
       "name": "VLN-Safe",
-      "document": "2__VLN-Safe.md",
+      "document": "no-project/2__VLN-Safe.md",
       "tier": "VLA 鲁棒性",
       "stage_label": "VLN 碰撞安全（滑行/阻塞）",
       "problem": "VLN 智能体通常只按「是否到达」与「路径效率」评测，几乎不反映碰撞行为；且连续 VLN 评测常用滑行机制，碰撞后可沿障碍滑动，掩盖不安全动作的后果。该基准在滑行与阻塞（碰撞动作禁止前进）两种机制下对比六个已发表智能体：R2R-CE 上 38.5–56.8% 的成功回合存在接触，改用阻塞机制后成功率下降 11.7–36.1 个百分点。",
@@ -2694,7 +2694,7 @@
     },
     {
       "name": "HUGE-Bench",
-      "document": "3__HUGE-Bench.md",
+      "document": "no-project/3__HUGE-Bench.md",
       "tier": "VLA 能力",
       "stage_label": "无人机高层 VLA 任务",
       "problem": "面向无人机的高层视觉-语言-动作任务基准：把 VLA 评测从桌面/地面操作扩展到空中平台，考察 UAV 在高层语义指令下的任务理解与执行能力。",
@@ -3212,7 +3212,7 @@
     },
     {
       "name": "LongBench",
-      "document": "3__LongBench.md",
+      "document": "no-project/3__LongBench.md",
       "tier": "VLA 能力",
       "stage_label": "真机长时程操作",
       "problem": "真机长时程操作基准，含 1000 余个真实回合，分两个互补区间：完全可观测的 Context-Independent 与由歧义驱动的 Context-Dependent。任务被组织为能力子集与歧义子集，从而支持对执行鲁棒性、时间一致性与上下文依赖推理做机制感知的评测。评测 6 个 SOTA 策略显示长时程性能并非由单一因素决定：完全可观测设定下的表现与执行鲁棒性关联更强，而上下文难度因任务而异，且记忆类方法并未带来一致提升。",
@@ -3370,7 +3370,7 @@
     },
     {
       "name": "ManiUnit",
-      "document": "3__ManiUnit.md",
+      "document": "no-project/3__ManiUnit.md",
       "tier": "VLA 能力",
       "stage_label": "长时程移动操作技能",
       "problem": "长时程移动操作要求机器人按单条自然语言指令跨房间导航并连续执行多个操作技能，评测上有三个难点：同一指令下相似观测使技能选择歧义；前序技能虽成功，但继承的机器人状态可能偏离下一技能的示范起点；任务级指标无法做技能级诊断，且早期失败会让后续技能根本没被测到。ManiUnit 基于 BEHAVIOR-1K 的 50 个活动构建数据集（21 类技能、417 个子任务、137,899 个片段）与相应基准。",
@@ -3521,7 +3521,7 @@
     },
     {
       "name": "PolaRiS",
-      "document": "3__PolaRiS.md",
+      "document": "no-project/3__PolaRiS.md",
       "tier": "VLA 能力",
       "stage_label": "real-to-sim 可扩展评测",
       "problem": "直指机器人评测的老问题——真机 rollout 随机、难复现且耗时，而通用策略需要跨大量场景与任务评测，这一问题被进一步放大。仿真提供了可扩展的补充，但现有仿真基准与真机之间的视觉与物理域差异使其成为不可靠的改进信号，而构建真实多样的仿真场景本身又极其昂贵。PolaRiS 用 real-to-sim 的方式构建可扩展评测，使仿真结果能可靠反映真机表现。",
@@ -3587,7 +3587,7 @@
     },
     {
       "name": "Robo2Process",
-      "document": "3__Robo2Process.md",
+      "document": "no-project/3__Robo2Process.md",
       "tier": "VLA 能力",
       "stage_label": "过程感知理解",
       "problem": "指出被用作机器人评审、奖励生成器与失败检测器的视觉语言模型，必须理解操作「如何展开」而不只是「是否成功」，但细粒度的过程监督没有统一形式，现有评测也无法系统诊断这类能力。Robo2Process 是轨迹接地的框架：把视觉观测与来源原生的信号和标注对齐，抽取局部过程单元（LPU），再经任务特定采样、确定性标签构造与歧义处理生成结构化的 QA 监督。",
@@ -3925,7 +3925,7 @@
     },
     {
       "name": "RoboColiseum",
-      "document": "3__RoboColiseum.md",
+      "document": "no-project/3__RoboColiseum.md",
       "tier": "VLA 能力",
       "stage_label": "前沿模型四条赛道评测",
       "problem": "在 RoboColiseum 上做多维对比评测，并实现 Agent2Act 控制框架，把四个前沿模型通过共享的观测、动作执行与反馈接口接入评测环境。统一任务设置与评分标准下，四个模型呈现一致的能力画像：指令遵循得分很高（其中三个接近满分）、空间推理较强，而通用操作得分明显低于其余三条赛道。",
@@ -4083,7 +4083,7 @@
     },
     {
       "name": "RoboDojo",
-      "document": "3__RoboDojo.md",
+      "document": "no-project/3__RoboDojo.md",
       "tier": "VLA 能力",
       "stage_label": "42 任务真机评测",
       "problem": "追问「不做任务微调，LLM 能否直接充当机器人操作策略」。在 RoboDojo 全部 42 个任务、总计 2100 次试验上，GPT-6 Astra 取得 22.48% 平均成功率与 28.97 Score，超过所有公开条目；而同样后处理下 GPT-5.5 与 DeepSeek-Flash 仅 0.88% 与 1.92%。作者进一步指出 Astra 呈现高度两极化的能力分布。",
@@ -4152,7 +4152,7 @@
     },
     {
       "name": "RoboEval",
-      "document": "3__RoboEval.md",
+      "document": "no-project/3__RoboEval.md",
       "tier": "VLA 能力",
       "stage_label": "结构化行为指标（双臂）",
       "problem": "指出现有评测常把性能压缩为结果计数，掩盖了执行质量的差异与失败结构。RoboEval 是结构化的操作评测框架与基准，用有原则的行为指标与结果指标补充二元成功率：提供 8 个系统控制变化条件的双臂任务、3000 余条专家示范与可复现的模块化仿真平台，所有任务都装了标准化指标以量化效率、协调性与安全/稳定性，并用结果指标追踪阶段进度、定位失败发生的位置。",
@@ -4672,7 +4672,7 @@
     },
     {
       "name": "RoboVista",
-      "document": "3__RoboVista.md",
+      "document": "no-project/3__RoboVista.md",
       "tier": "VLA 能力",
       "stage_label": "VLM 空间理解 VQA",
       "problem": "面向未来机器人应用，为视觉语言模型提供细粒度空间理解与具身决策的挑战。RoboVista 是专家标注的视觉问答（VQA）数据集，扎根于 6 个机器人应用域与 39 个多样任务，重点覆盖可变机器人本体、与可变形物体的交互、复杂杂乱场景，以及长时程上下文理解。",
@@ -4983,7 +4983,7 @@
     },
     {
       "name": "X2Real",
-      "document": "3__X2Real.md",
+      "document": "no-project/3__X2Real.md",
       "tier": "VLA 能力",
       "stage_label": "可演化仿真基准",
       "problem": "指出现有仿真基准有三个根本缺陷——显著的 sim-to-real 差距、任务覆盖窄、训练-测试流水线含糊导致评测不公；既有工作只部分解决、无法同时满足忠实性、多样性与公平性，且静态基准设计难以支撑策略的长期迭代。X2Real 是基于 Nvidia Isaac Lab-Arena 的可演化仿真基准，通过校准仿真的视觉与物理属性对齐真机来评测策略的真实性能。",
@@ -5050,7 +5050,7 @@
     },
     {
       "name": "AGENTSAFE / SAFE-THOR",
-      "document": "4__AGENTSAFE-SAFE-THOR.md",
+      "document": "no-project/4__AGENTSAFE-SAFE-THOR.md",
       "tier": "具身智能体安全",
       "stage_label": "危险指令下的智能体安全",
       "problem": "指出既有安全基准危险范围窄、只看最终结果，忽略智能体完整的感知-规划-执行过程，从而掩盖关键失败模式。SAFE 含三部分：可扩展的对抗仿真沙箱 SAFE-THOR（通用适配器把 VLM 高层输出映射为底层具身控制，支持多种智能体工作流接入）、风险感知的 SAFE-VERSE 等，用于系统评估具身 VLM 智能体执行危险指令时的安全性。",
@@ -5126,7 +5126,7 @@
     },
     {
       "name": "AeroIntent",
-      "document": "4__AeroIntent.md",
+      "document": "no-project/4__AeroIntent.md",
       "tier": "具身智能体安全",
       "stage_label": "UAV 任务意图识别",
       "problem": "指出从多模态观测可靠识别任务级 UAV 意图对低空空域监视与安全至关重要，而现有 UAV 多模态数据集主要支持检测、跟踪与定位，对跨留出轨迹程序与不完整雷达历史的意图识别支持有限。基准含 990 条同步多模态序列，并提供程序不相交、雷达缺失与观测前缀三类评测协议。",
@@ -5261,7 +5261,7 @@
     },
     {
       "name": "BLINDSPOT",
-      "document": "4__BLINDSPOT.md",
+      "document": "no-project/4__BLINDSPOT.md",
       "tier": "具身智能体安全",
       "stage_label": "轨迹级安全与拒答校准",
       "problem": "指出 LLM 智能体越来越多地在涉及工具使用、持久状态、动态授权与外部环境反馈的长时程交互中运行，安全失败可能要到多轮之后才出现；而现有评测常把智能体行为简化为任务或攻击成功率，掩盖了智能体随交互演进而「行动、拒绝还是保持适当校准」这一关键问题。Blindspot 评测完整的用户-智能体-环境轨迹。",
@@ -5409,7 +5409,7 @@
     },
     {
       "name": "CAPSafe",
-      "document": "4__CAPSafe.md",
+      "document": "no-project/4__CAPSafe.md",
       "tier": "具身智能体安全",
       "stage_label": "动作级 + 计划级安全推理",
       "problem": "面向 LLM 驱动的具身智能体，构建两个层次的安全推理评测：动作级数据集判断单个动作在给定环境语境下是否安全，计划级数据集考察智能体能否为复杂危险家务任务生成安全的长时程计划。基准显式建模「危害依赖物体属性而情境化」「同一环境中多危害可共存」「每类危害标注相对严重度」三种情形，对 9 个模型的评测显示危害识别与安全长时程规划之间存在明显落差。",
@@ -5562,7 +5562,7 @@
     },
     {
       "name": "DUMA-Bench",
-      "document": "4__DUMA-Bench.md",
+      "document": "no-project/4__DUMA-Bench.md",
       "tier": "具身智能体安全",
       "stage_label": "双控多智能体安全",
       "problem": "指出多数安全评测假设「被动用户 + 静态控制」，忽略了塑造真实智能体行为的交互动态。基准与评测协议测量双控交互下的智能体安全性——智能体与用户都能影响共享环境状态；它在 τ²-bench 基础上扩展出对抗环境，覆盖 RAG 投毒、跨智能体操纵与不安全输出处理等八类漏洞。",
@@ -5630,7 +5630,7 @@
     },
     {
       "name": "Embodied Agent Interface",
-      "document": "4__Embodied-Agent-Interface.md",
+      "document": "no-project/4__Embodied-Agent-Interface.md",
       "tier": "具身智能体安全",
       "stage_label": "具身决策模块化接口",
       "problem": "把 LLM 具身决策拆成若干可单独评测的环节，用统一接口连接不同仿真环境与模型，从而定位失败究竟出在目标解释、子任务分解、动作接地还是状态跟踪上，而不是只报告端到端成功率（NeurIPS 2024）。",
@@ -5853,7 +5853,7 @@
     },
     {
       "name": "GaugeBench",
-      "document": "4__GaugeBench.md",
+      "document": "no-project/4__GaugeBench.md",
       "tier": "具身智能体安全",
       "stage_label": "表示鲁棒性（形态描述）",
       "problem": "指出机器人描述不只规定物理机构，还编码了任意约定——关节轴方向、关节角零点、连杆与关节的顺序与命名；形态感知策略消费由这些描述构建的接口，而跨本体评测通常改变机器人却固定这些约定，于是「机器人不变、描述改变时行为是否存活」这一问题始终未被回答。基准在物理等价约定下重写固定机构，并验证物理与策略接口保持后再评测同一策略权重。",
@@ -5922,7 +5922,7 @@
     },
     {
       "name": "GuardianBench",
-      "document": "4__GuardianBench.md",
+      "document": "no-project/4__GuardianBench.md",
       "tier": "具身智能体安全",
       "stage_label": "同场景指令对比的潜在风险",
       "problem": "指出具身场景中的风险可以是潜在的：一条良性指令与一个安全场景组合之后才变得危险。既有工作或改变视觉上下文、或评测执行期动态，而「固定场景、只改指令」这一互补轴向此前研究不足。基准以国际安全标准为依据构造 3024 组同场景安全/不安全对比样本，发现 VLM 的判定对指令不敏感（同场景两条指令常常都被批准），主模型平均配对准确率仅 24.1%。",
@@ -5992,7 +5992,7 @@
     },
     {
       "name": "HASARD",
-      "document": "4__HASARD.md",
+      "document": "no-project/4__HASARD.md",
       "tier": "具身智能体安全",
       "stage_label": "视觉安全强化学习",
       "problem": "指出既有基于视觉的 3D 基准只考虑简单导航任务，因而基于 Doom 构建多样化、复杂的任务套件，要求策略做策略性决策、理解空间关系并预测短期未来。基准含 3 个难度等级与 2 种动作空间，对主流基线方法的实证评估显示了其复杂度、独特挑战与奖励-代价权衡（ICLR 2025）。",
@@ -6277,7 +6277,7 @@
     },
     {
       "name": "Inspect Robots",
-      "document": "4__Inspect-Robots.md",
+      "document": "no-project/4__Inspect-Robots.md",
       "tier": "具身智能体安全",
       "stage_label": "能力与安全评测框架",
       "problem": "通用语言模型越来越多地直接控制机器人硬件，因而需要系统理解其「具身之后」的能力与安全。该框架把物理评测的规格描述与结果分析抽象为可复用组件，并用基础设施自动化评测的搭建、执行与终止；作者用它评测了 6 个基于前沿语言模型的策略，发布三个月下载量接近 10 万次。",
@@ -6420,7 +6420,7 @@
     },
     {
       "name": "MAGMA-Bench",
-      "document": "4__MAGMA-Bench.md",
+      "document": "no-project/4__MAGMA-Bench.md",
       "tier": "具身智能体安全",
       "stage_label": "动态多机器人长时程推理",
       "problem": "面向长时程具身智能体在动态多机器人环境中的「持续任务推理」：既考察随任务时程增长的信息保持与异构机器人协同，也考察受控在线扰动（执行失败、任务中断、任务更新）下的决策调整。基准采用结构化技能级接口，把任务层推理与感知、底层控制分离，便于公平比较不同架构的规划器。",
@@ -6494,7 +6494,7 @@
     },
     {
       "name": "MMA-SafetyBench",
-      "document": "4__MMA-SafetyBench.md",
+      "document": "no-project/4__MMA-SafetyBench.md",
       "tier": "具身智能体安全",
       "stage_label": "视觉语义劫持",
       "problem": "研究「视觉语义劫持」：伪造系统告警等语义合理但具欺骗性的界面元素使智能体偏离授权任务。提出轨迹引导流程定位候选注入点并把可复现的视觉载荷插入观测流，据此构建 1083 条对抗轨迹，覆盖 web 自动化、桌面 GUI 控制、移动导航、文档理解与视频处理；9 个模型上 ASR 达 87.96%、语义妥协率 98.09%，并用 1–3–5 打分区分目标匹配输出。",
@@ -6712,7 +6712,7 @@
     },
     {
       "name": "MemTransfer",
-      "document": "4__MemTransfer.md",
+      "document": "no-project/4__MemTransfer.md",
       "tier": "具身智能体安全",
       "stage_label": "记忆迁移",
       "problem": "指出记忆让智能体复用过去经验，但「保留住有用信息」不等于「条件变化时能用上」。基准在共享的冻结视觉语言模型策略下比较六种记忆表示（含一个工作记忆基线与五种过去经验表示），含仿真仓库中 10 类任务的 100 个导航案例，专家示范提供历史；三类比较分别改变起始位姿、路线可用性与历史的数量及任务相关性。",
@@ -6853,7 +6853,7 @@
     },
     {
       "name": "MotionForge",
-      "document": "4__MotionForge.md",
+      "document": "no-project/4__MotionForge.md",
       "tier": "具身智能体安全",
       "stage_label": "动态物体长时程操作",
       "problem": "指出学习型机器人策略虽进展显著，但几乎都在静态或准静态环境中评测；动态操作中物体与场景在机器人感知、推理与行动的同时持续演化。现有动态仿真基准多聚焦短时程反应式交互与简单运动模式，对系统性的域偏移评测与模型无关的实时执行协议支持有限。",
@@ -6998,7 +6998,7 @@
     },
     {
       "name": "ORDER",
-      "document": "4__ORDER.md",
+      "document": "no-project/4__ORDER.md",
       "tier": "具身智能体安全",
       "stage_label": "虚构世界领域适配",
       "problem": "指出现有持续预训练评测的基本问题：若训练语料与模型已知内容重叠，性能提升无法干净归因于新学习。这在「知识密集、任务轻」的机器人部署中最关键——如药品分发、危险品处理、场地专有规程，物理任务简单但治理规则专有且安全攸关，且大量实机测试既昂贵又不安全。ORDER 建立在任何模型预训练数据中都不存在的虚构世界之上。",
@@ -7067,7 +7067,7 @@
     },
     {
       "name": "PASTABench",
-      "document": "4__PASTABench.md",
+      "document": "no-project/4__PASTABench.md",
       "tier": "具身智能体安全",
       "stage_label": "序贯轨迹主动安全监控",
       "problem": "指出随着 LLM 演化为会改变真实世界状态的自主智能体，跨多步工作流的运行安全成为关键挑战；既有工作虽已从单轮走向多轮，但仍有两个局限：步骤级方法孤立看待单个动作、错过风险累积，轨迹级评测则是事后进行、没有及时干预的机会。基准把「解耦的主动安全监控」形式化为三个维度并给出 1139 个多轮轨迹。",
@@ -7135,7 +7135,7 @@
     },
     {
       "name": "PLCBENCH",
-      "document": "4__PLCBENCH.md",
+      "document": "no-project/4__PLCBENCH.md",
       "tier": "具身智能体安全",
       "stage_label": "PLC 到物理影响（HIL）",
       "problem": "指出工业控制系统依赖 PLC 连接网络化计算与物理控制，而工具使用型 LLM 智能体构成新兴攻击威胁：自主智能体能否把网络可达的 PLC 转化为持续的负面物理影响？现有评测多聚焦数字任务或 PLC 测试的单个阶段，停留在「软件漏洞利用成功」「写入被接受」或「获得工具访问」就下结论，会错误刻画物理风险。该基准是首个真实 PLC 硬件在环框架。",
@@ -7349,7 +7349,7 @@
     },
     {
       "name": "REVERSAL-BENCH",
-      "document": "4__REVERSAL-BENCH.md",
+      "document": "no-project/4__REVERSAL-BENCH.md",
       "tier": "具身智能体安全",
       "stage_label": "无重置 RL 可逆性",
       "problem": "指出自主 RL 的核心目标是无需外部重置的持续训练，但现有范式大多依赖环境的可逆性，而真实操作中「把物体推下桌子」「洒出颗粒物」等事件不可撤销。基准用连续参数控制可逆性并提供重置预言机（真值验证状态可恢复性），在五个物理引擎的八种操作设置上评测一系列策略架构。",
@@ -7419,7 +7419,7 @@
     },
     {
       "name": "RT-Safe",
-      "document": "4__RT-Safe.md",
+      "document": "no-project/4__RT-Safe.md",
       "tier": "具身智能体安全",
       "stage_label": "实时约束下的具身安全",
       "problem": "指出具身安全不只是「选对安全动作」，还要在实时约束下做到——物理世界不会为推理暂停，推理期间行人移动、车辆逼近，观测时看似安全的动作在执行前可能已不安全。该仿真城市基准把导航任务与移动角色、环境危险和交通规则结合，同时度量决策质量与决策时延。",
@@ -7649,7 +7649,7 @@
     },
     {
       "name": "RoboVAD",
-      "document": "4__RoboVAD.md",
+      "document": "no-project/4__RoboVAD.md",
       "tier": "具身智能体安全",
       "stage_label": "机械臂操作视频异常检测",
       "problem": "指出视频异常检测在监控与交通安全等领域研究活跃，对机械臂交互同样重要（可用于提升交互与操作能力、在异常发生时触发恢复流程等），但该方向受限于可用资源稀少。RoboVAD 是大规模机械臂操作视频异常检测基准，包含具有挑战性的跨域评测场景。",
@@ -7863,7 +7863,7 @@
     },
     {
       "name": "SafeMindBench",
-      "document": "4__SafeMindBench.md",
+      "document": "no-project/4__SafeMindBench.md",
       "tier": "具身智能体安全",
       "stage_label": "四阶段安全推理",
       "problem": "识别危险可能产生的四个关键推理阶段（任务理解、环境感知、高层计划生成、底层动作生成），并形式化三类正交的安全约束（事实性、因果性、时序性）以刻画潜在违规。据此构建 5558 个样本的多模态基准，覆盖 Instr-Risk、Env-Risk、Order-Fix、Req-Align 四类任务与破坏、伤害、隐私、违法等高风险场景；实验显示主流 LLM 与广泛使用的具身智能体仍存在显著风险。",
@@ -7930,7 +7930,7 @@
     },
     {
       "name": "SafePlan-Bench / Safe-Align",
-      "document": "4__SafePlan-Bench-Safe-Align.md",
+      "document": "no-project/4__SafePlan-Bench-Safe-Align.md",
       "tier": "具身智能体安全",
       "stage_label": "任务规划安全测量与对齐",
       "problem": "提出测量与对齐一体的框架 Safe-BeAl：SafePlan-Bench 建立任务规划安全的综合基准，覆盖 2027 个日常任务及其对应环境，分布于 8 类危险之中；实证分析表明即便没有对抗输入或恶意意图，LLM 智能体也会表现出不安全行为。随后提出 Safe-Align，把物理世界安全知识注入智能体以缓解这些危险。",
@@ -8079,7 +8079,7 @@
     },
     {
       "name": "TALK-Dem",
-      "document": "4__TALK-Dem.md",
+      "document": "no-project/4__TALK-Dem.md",
       "tier": "具身智能体安全",
       "stage_label": "痴呆症沟通模式下的规划",
       "problem": "指出既有 LLM 机器人任务规划器建立在「理想用户」的假设上——指令清晰、完整且聚焦任务；但与真实用户交互时，尤其面对认知障碍者（如痴呆症患者），规划器常出错甚至造成人身安全风险。TALK-Dem 是首个评测该类沟通模式下规划行为的基准，含 4800 条指令，覆盖指代不精确、物体替换等五类沟通模式。",
@@ -8149,7 +8149,7 @@
     },
     {
       "name": "TSHA",
-      "document": "4__TSHA.md",
+      "document": "no-project/4__TSHA.md",
       "tier": "具身智能体安全",
       "stage_label": "家庭安全隐患评估",
       "problem": "指出室内安全隐患评估领域的现有基准有三个根本局限：过度依赖仿真软件构造的合成数据集、与真实环境存在显著域差；安全任务被过度简化（对危害与场景类型加了人为约束）从而限制泛化；缺乏严格评测协议来充分评估模型在复杂家庭安全场景中的能力。TSHA 针对这三点构建可信安全隐患评估基准。",
@@ -8219,7 +8219,7 @@
     },
     {
       "name": "VestaBench",
-      "document": "4__VestaBench.md",
+      "document": "no-project/4__VestaBench.md",
       "tier": "具身智能体安全",
       "stage_label": "多约束与对抗下的安全长时程规划",
       "problem": "面向「多约束 + 对抗」双重压力下的安全长时程规划评测：在长时程任务中同时施加多条安全约束与环境对抗扰动，检验具身智能体能否在满足约束的前提下完成规划（EMNLP 2025）。",
@@ -8292,7 +8292,7 @@
     },
     {
       "name": "Words to World",
-      "document": "4__Words-to-World.md",
+      "document": "no-project/4__Words-to-World.md",
       "tier": "具身智能体安全",
       "stage_label": "真实物理闭环交互",
       "problem": "指出语言正成为行动的接口：LLM 可以调用工具、操作设备并做出影响物理世界的决策；但现有基准多通过静态文本回答、离线工具调用或仿真任务评估 LLM，其在真实物理环境中的行动能力仍属未知。该基准在闭环物理交互中测量 LLM——模型控制连接真实机械臂、相机与传感器的执行系统，必须发指令、接收物理反馈并解释产生的状态。",
@@ -8366,7 +8366,7 @@
     },
     {
       "name": "Balanced Multi-Robot Task Allocation Benchmark",
-      "document": "5__Balanced-Multi-Robot-Task-Allocation-Benchmark.md",
+      "document": "no-project/5__Balanced-Multi-Robot-Task-Allocation-Benchmark.md",
       "tier": "具身安全",
       "stage_label": "通信退化下 MRTA",
       "problem": "指出为嵌入式部署选择去中心化多机器人任务分配方法时，不能只看路径性能。基准在 Collaborative Visit 场景下对比六种分配器（CBAA、ACBBA、PI、HIPC、DMCHBA、DGA），覆盖 MinMax/MinSum 旅行代价、通信鲁棒性与需求、分配可靠性、计算负担与规模敏感性，核心研究使用 500 组配对十目标任务、25 种理想与退化通信条件（伯努利丢包、Gilbert–Elliott 丢包与瑞利衰落）。",
@@ -8437,7 +8437,7 @@
     },
     {
       "name": "Bench2Drive",
-      "document": "5__Bench2Drive.md",
+      "document": "no-project/5__Bench2Drive.md",
       "tier": "具身安全",
       "stage_label": "闭环端到端驾驶多能力",
       "problem": "面向闭环端到端自动驾驶的多能力基准，把评测从单一开环误差扩展到闭环执行下的多项驾驶能力，是 VLA/端到端驾驶方向常用的评测平台之一（NeurIPS 2024）。",
@@ -8615,7 +8615,7 @@
     },
     {
       "name": "COMPASS / X-Mobility",
-      "document": "5__COMPASS-X-Mobility.md",
+      "document": "no-project/5__COMPASS-X-Mobility.md",
       "tier": "具身安全",
       "stage_label": "学习型导航 sim-to-real",
       "problem": "指出经典导航栈可靠但每换一种机器人或场地就要重新工程化，学习型导航把工作从手调参数转移到数据生成与训练（在新本体或场地通过仿真微调适配策略），但这种适配后的策略在真实工业机器人上是否仍可靠缺乏系统测试。该工作在 NVIDIA X-Mobility 与 COMPASS 流程上，用仿真扩展基准并做真机验证。",
@@ -8679,7 +8679,7 @@
     },
     {
       "name": "DPed-VLN",
-      "document": "5__DPed-VLN.md",
+      "document": "no-project/5__DPed-VLN.md",
       "tier": "具身安全",
       "stage_label": "动态行人 VLN 社会安全",
       "problem": "指出 VLN 在静态室内环境进展迅速，但机器人在有人空间里必须一边理解语言、一边应对移动行人与社会安全约束。基准（Habitat 3.0）含 33,093 个导航回合，配成对的全局指令与先验增强指令、ORCA 控制的人形行人、社会约束的专家路径，以及同时评估导航效率与社会安全的指标；通过区分普通目标导向指令与暴露动态行人线索的增强指令实现受控分析。",
@@ -8748,7 +8748,7 @@
     },
     {
       "name": "Everyday-Environment Robot Benchmarking",
-      "document": "5__Everyday-Environment-Robot-Benchmarking.md",
+      "document": "no-project/5__Everyday-Environment-Robot-Benchmarking.md",
       "tier": "具身安全",
       "stage_label": "公共环境真实部署",
       "problem": "指出现有基准存在「实验室指标」与「真实部署需求」之间的落差。该研究提出面向公共环境部署机器人的跨学科框架，评估三类不同用途的机器人（户外公园清洁、人行地下通道清洁、图书馆交互协助），在 2023–2025 三年间通过七次基准活动、一次共识研讨会与六次现场评估，既评技术性能也评更广泛的社会影响。",
@@ -8814,7 +8814,7 @@
     },
     {
       "name": "ExceptionDrive",
-      "document": "5__ExceptionDrive.md",
+      "document": "no-project/5__ExceptionDrive.md",
       "tier": "具身安全",
       "stage_label": "反事实边角案例",
       "problem": "指出在常规驾驶基准上的平均表现无法证明规划器在稀有且安全攸关的危险情形下可靠。基准用 VLM 辅助筛选、局部多视角编辑与质量审计，把危险插入真实 nuScenes 场景并保留其上下文；21 个任务跨六个安全族，定义危险/冲突区域、局部安全约束与可接受响应。由于插入危险会使记录的人类轨迹失效，采用无参考协议，用不安全率（UR）、危险避让合规（HCC）、危险接近响应（HPR）等指标评估编辑后的预测。",
@@ -8894,7 +8894,7 @@
     },
     {
       "name": "ISO-based Humanoid Orchestrator Benchmark",
-      "document": "5__ISO-based-Humanoid-Orchestrator-Benchmark.md",
+      "document": "no-project/5__ISO-based-Humanoid-Orchestrator-Benchmark.md",
       "tier": "具身安全",
       "stage_label": "人形协作 LLM 编排器",
       "problem": "指出 LLM 越来越多地通过自然语言接口编排机器人行为，但其作为人机协作中安全感知决策者的可靠性没有任何基准可测；与执行二值允许/拒绝的确定性安全系统不同，LLM 编排器表现出从「过度合规」（拒绝安全动作）到完全安全违规的连续谱。该工作是首个面向人形协作 LLM 编排器的安全评测环境。",
@@ -9058,7 +9058,7 @@
     },
     {
       "name": "Physics-Consistent HRI Benchmark",
-      "document": "5__Physics-Consistent-HRI-Benchmark.md",
+      "document": "no-project/5__Physics-Consistent-HRI-Benchmark.md",
       "tier": "具身安全",
       "stage_label": "接触密集人机交互（助浴）",
       "problem": "指出传统的任务级评测只问策略是否完成指定动作，会漏掉只有在与人体物理接触时才出现的失败——这在接触密集的辅助任务中尤其致命，因为这类场景需要真正会响应的人体、超越任务成功率的交互质量评估，以及无泄漏的观察者-评分者协议。该基准在机器人辅助沐浴场景中实例化上述三点。",
@@ -9130,7 +9130,7 @@
     },
     {
       "name": "R2R-CE",
-      "document": "5__R2R-CE.md",
+      "document": "no-project/5__R2R-CE.md",
       "tier": "具身安全",
       "stage_label": "连续环境 VLN",
       "problem": "VLN 智能体通常只按「是否到达」与「路径效率」评测，几乎不反映碰撞行为；且连续 VLN 评测常用滑行机制，碰撞后可沿障碍滑动，掩盖不安全动作的后果。该基准在滑行与阻塞（碰撞动作禁止前进）两种机制下对比六个已发表智能体：R2R-CE 上 38.5–56.8% 的成功回合存在接触，改用阻塞机制后成功率下降 11.7–36.1 个百分点。",
@@ -9208,7 +9208,7 @@
     },
     {
       "name": "Radar2Plan",
-      "document": "5__Radar2Plan.md",
+      "document": "no-project/5__Radar2Plan.md",
       "tier": "具身安全",
       "stage_label": "4D 雷达开环轨迹规划",
       "problem": "指出恶劣天气与低照度仍是移动自主中稳健自车轨迹规划的主要挑战；4D 雷达在恶劣条件下提供可靠感知与直接径向速度测量，但感知鲁棒性未必转化为下游规划的鲁棒性，而现有 4D 雷达基准主要关注感知而非轨迹规划。基准用真实 4D 雷达数据做开环自车轨迹规划，通过公共接口连接传感器编码器、场景表示与规划头，支持对不同传感器与规划器配置做受控比较。",
@@ -9279,7 +9279,7 @@
     },
     {
       "name": "SIREN-Bench",
-      "document": "5__SIREN-Bench.md",
+      "document": "no-project/5__SIREN-Bench.md",
       "tier": "具身安全",
       "stage_label": "紧急车辆交互",
       "problem": "指出紧急车辆（EMV）会重组周边交通——民用车辆刹车、变道或让出救援通道——评测这些安全攸关交互需要对 EMV 特权与民用车辆响应同时具备行为级控制能力，并保持一致感知与真值，而现有数据集与仿真基准并不直接提供这一组合。SIREN 把 SUMO 的网络级交通演化与行为逻辑同 CARLA 的连续车辆控制与同步车载感知耦合起来。",
@@ -9421,7 +9421,7 @@
     },
     {
       "name": "TrafficSignBench",
-      "document": "5__TrafficSignBench.md",
+      "document": "no-project/5__TrafficSignBench.md",
       "tier": "具身安全",
       "stage_label": "交通标志合规闭环",
       "problem": "指出自动驾驶规划器通常用驾驶分数、到达率与碰撞率等聚合指标评测，这些指标并不直接测量对交通规则的遵守程度，导致规划器可以在基准上取得高分却仍表现出不安全或违规行为，限制其真实部署适用性。基准以交通标志为中心，把真实地图仿真与规则定向的程序化场景生成结合，实现系统且可解释的规则合规评测。",

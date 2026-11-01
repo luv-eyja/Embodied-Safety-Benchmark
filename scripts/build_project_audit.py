@@ -218,7 +218,8 @@ def main() -> None:
         if a["project_urls"]:
             project_text = "；".join(f"[{u}]({u})" for u in a["project_urls"])
         elif a["status"] == "not_found":
-            project_text = "未查到可确认的官方项目地址（详见 [项目地址审计](../analysis/benchmark-project-audit.md)）"
+            audit_link = "../../analysis/benchmark-project-audit.md" if str(filename).startswith("no-project/") else "../analysis/benchmark-project-audit.md"
+            project_text = f"未查到可确认的官方项目地址（详见 [项目地址审计]({audit_link})）"
         else:
             project_text = "—"
         insert = f"\n> **项目地址审计**：`{a['status']}`；{project_text}\n"
