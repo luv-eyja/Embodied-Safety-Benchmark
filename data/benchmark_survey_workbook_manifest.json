@@ -1,0 +1,30 @@
+{
+  "generated_from_as_of": "2026-11-03",
+  "engine": "@oai/artifact-tool",
+  "inputs": {
+    "data/benchmark_survey.json": "55603041939fade2a44c066963f5929da6a8aaf6772a42d4febcd03348e8ba91",
+    "data/survey_paper_registry.json": "38ccc2001f6e4a2e931783ceab6856baaa2431773a7fe68546cedd626862a55c"
+  },
+  "output_sha256": "59b23db988af2a825b00df700ed79921c841dbf80b414622723de9a1c8c2213e",
+  "sheets": {
+    "调研概览": "formula summary",
+    "条目分类": 122,
+    "评测协议": 62,
+    "论文证据": 199
+  },
+  "checked_summary_values": [
+    122,
+    62,
+    60,
+    48,
+    59,
+    18
+  ],
+  "live_formula_dependency_check": "passed",
+  "rendered_sheets": [
+    "调研概览",
+    "条目分类",
+    "评测协议",
+    "论文证据"
+  ]
+}

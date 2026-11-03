@@ -1,9 +1,15 @@
 # MineAmongUs
 
+<!-- survey-classification:start -->
+> **统一调研分类**：评测任务集；直接具身评测；目标：安全。
+> **分类依据**：具身游戏中的行为安全研究沙盒；不能推断现实自发意图。
+> **比较口径**：[统一比较矩阵](../analysis/benchmark-comparison.md)。原“分类”及历史关键词标签保留为旧索引，不能用于新的安全覆盖统计。
+<!-- survey-classification:end -->
+
 > **所属环节**：具身社交欺骗  
 > **分类**：具身智能体安全  
-> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
-> **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）
+> **关联论文**：本表 1 篇（提出 1、使用 0；方法参考另标）
+> **证据级别**：原表 B；另有 2026-11-03 原论文重点章节核查（第 1–4、7 节）
 
 > **项目地址审计**：`found`；[https://junseokim0103.github.io/Lies-We-Can-See](https://junseokim0103.github.io/Lies-We-Can-See)
 
@@ -12,83 +18,68 @@
 | 字段 | 当前整理结果 |
 |---|---|
 | 首发/代表论文 | Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions |
-| 年份 | 2026 |
+| 年份 | 2026（所读来源首次 arXiv 提交年） |
 | 数据来源 | 本论文库 |
 | 论文库分区 | Action and Interaction › Human-Agent Interaction |
 | 应用领域 | 具身欺骗 |
-| 被测对象 | 多模态 VLM 智能体 |
-| 关注属性 | 尚未从摘要识别 |
+| 被测对象 | 三维多代理社会行为沙盒 |
+| 历史关键词标签（未重新统计） | 尚未从摘要识别 |
 | 评测维度/指标 | 3D 多模态 Among Us 沙盒；言语 + 非言语感觉运动通道 |
 | 基础平台线索 | 表内摘要未明确基础平台。 |
-| 规模线索 | 表内摘要未明确规模。 |
-| 执行环境线索 | 表内摘要未明确执行环境。 |
-| 来源审计 | 已核验：[Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions（same_paper_in_registry）](https://arxiv.org/abs/2608.30428) |
+| 规模线索 | 三维 Among Us 风格隐藏角色游戏，包含第一人称 RGB、聊天、位置和游戏状态，代理通过具身行动与其他玩家互动。 |
+| 执行环境线索 | 三维多代理社会行为沙盒 |
+| 来源审计 | [Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions](https://arxiv.org/abs/2608.30428)；same_paper_in_registry |
 | 来源核验依据 | 摘要明确写明 introduce MineAmongUs 3D multimodal sandbox。 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7204938515)；2026-11-03 |
 
 ## 1. 测什么问题（内容与所测环节）
 
-**核心问题**：具身社交欺骗。
+**核心问题**：多模态代理的社会策略是否同时依赖语言和非语言行动，结果有多少来自模型、有多少来自代理框架？
 
-**摘要级问题描述**：指出 LLM/VLM 智能体的策略性欺骗已成为 AI 对齐与安全的核心议题，社交推理游戏是典型试验台；但现有试验台是纯文本的、且只跑单一固定智能体配置，漏掉了欺骗分类学视为核心的非言语感觉运动通道，也让人无法判断观察到的行为到底反映底层模型还是外围执行框架。该基准是一个 3D 多模态 Among Us 沙盒。
-
-信息取自表内论文 *Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions*（该基准的提出者）。
-
-**主要测量维度**：3D 多模态 Among Us 沙盒；言语 + 非言语感觉运动通道。
+**评测层级**：三维多代理社会行为沙盒。
 
 ## 2. 怎么构建的
 
-### 2.1 构建要素
+**核心场景与条目**：三维 Among Us 风格隐藏角色游戏，包含第一人称 RGB、聊天、位置和游戏状态，代理通过具身行动与其他玩家互动。
 
-| 要素 | 摘要级记录 |
-|---|---|
-| 基础平台 | 表内摘要未明确基础平台。 |
-| 任务/场景规模 | 表内摘要未明确规模。 |
-| 扰动、风险或约束 | 3D 多模态 Among Us 沙盒；言语 + 非言语感觉运动通道 |
-| 对照/配对方式 | 摘要未明确配对设计。 |
-| 指标与判分线索 | 3D 多模态 Among Us 沙盒；言语 + 非言语感觉运动通道 |
-| 执行设置 | 表内摘要未明确执行环境。 |
-
-### 2.2 详细说明
-
-本仓库当前保存的是摘要级构建信息：3D 多模态 Among Us 沙盒；言语 + 非言语感觉运动通道
-
-> 本节依据当前调研表的摘要和结构化字段整理；任务划分、阈值、采样方式和完整指标公式仍需回到原文核对。
+**实现与判分**：Minecraft／Mineflayer 沙盒与 Aria 框架分离，固定模型做认知组件消融、固定框架比较模型；将行为标注为 23 类原子及跨时刻行为弧。
 
 ## 3. 用这个基准测了什么
 
-**被测对象**：多模态 VLM 智能体
+下表为原调研表收录关系；它不是完整引文网络。外部补回的提出论文见第 7 节。
 
-**结果应如何读取**：先按“评测维度/指标”字段区分主指标、辅助指标和对照条件；若论文同时报告任务成功与安全/鲁棒性结果，应将二者分开阅读。
-
-下表按论文列出；“摘要级发现”保留调研表中的概要，不等同于全文实验结论。
-
-| 论文 | 年份 / 来源 | 角色 | 被测对象 | 使用方式 / 指标 | 摘要级发现 |
-|---|---|---|---|---|---|
-| [MineAmongUs：具身社交中的言语与非言语联合欺骗](https://arxiv.org/abs/2608.30428) | 2026 / arXiv 预印本 (arXiv:2608.30428) | **提出** | 多模态 VLM 智能体 | 3D 多模态 Among Us 沙盒；言语 + 非言语感觉运动通道 | 指出 LLM/VLM 智能体的策略性欺骗已成为 AI 对齐与安全的核心议题，社交推理游戏是典型试验台；但现有试验台是纯文本的、且只跑单一固定智能体配置，漏掉了欺骗分类学视为核心的非言语感觉运动通道，也让人无法判断观察到的行为到底反映底层模型还是外围执行框架。 |
+| 论文 | 年份 | 与本条目的关系 | 原表评测线索 | 历史摘要记录 |
+|---|---|---|---|---|
+| [Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions](https://arxiv.org/abs/2608.30428) | 2026 | 提出 | 3D 多模态 Among Us 沙盒；言语 + 非言语感觉运动通道 | 指出 LLM/VLM 智能体的策略性欺骗已成为 AI 对齐与安全的核心议题，社交推理游戏是典型试验台；但现有试验台是纯文本的、且只跑单一固定智能体配置，漏掉了欺骗分类学视为核心的非言语感觉运动通道，也让人无法判断观察到的行为到底反映底层模型还是外围执行框架。该基准是一个 3D 多模态 Among Us 沙盒。 |
 
 ## 4. 关键结论、改进方向与可复用性
 
-**摘要级发现（按关联论文整理）**：
+**原论文结果与成果**：论文发现非语言行为对游戏胜负的贡献在多个设置中更突出，并提供接近人工一致性的自动行为标注验证。成果是可配置沙盒与多模态行为分析协议。
 
-- **MineAmongUs：具身社交中的言语与非言语联合欺骗**（2026，提出）：指出 LLM/VLM 智能体的策略性欺骗已成为 AI 对齐与安全的核心议题，社交推理游戏是典型试验台；但现有试验台是纯文本的、且只跑单一固定智能体配置，漏掉了欺骗分类学视为核心的非言语感觉运动通道，也让人无法判断观察到的行为到底反映底层模型还是外围执行框架。该基准是一个 3D 多模态 Among Us 沙盒。
-
-**基于当前字段的改进提示（不是原文逐字结论）**：
-
-- 当前尚无跨论文复用证据，需由独立工作复测后再形成稳定的横向结论。
-
-**复用状态**：当前只看到提出论文，尚无跨论文复用证据。
+**适用边界**：有明确隐藏角色目标的游戏行为不能直接证明模型在现实部署中自发产生恶意意图；胜率、行为标签一致率和现实安全性是不同概念。
 
 ## 5. 相关论文（均来自本调研表）
 
-- [Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions](https://arxiv.org/abs/2608.30428)（2026，arXiv 预印本 (arXiv:2608.30428)）  ← **提出**
+- [Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions](https://arxiv.org/abs/2608.30428)（2026；提出）
 
 ## 6. 证据边界与复核建议
 
-- **证据级别**：B（提出论文的结构化摘要记录；未逐篇精读全文）。
-- **主要来源**：[Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions](https://arxiv.org/abs/2608.30428)。
-- **当前限制**：本文档基于调研表、论文摘要和少量人工整理；核心条目另有本地全文核查补录，但仍未替代对全文实验表格、附录、代码仓库和数据下载说明的逐项复核。
-- **建议复核**：优先确认任务/场景划分、样本规模、指标公式、判分阈值、模型清单，以及仿真与真机设置是否一致。
+本轮已核查下列来源的研究问题、方法、评测与结果重点章节；未声称逐页审完全部附录，未运行原实验。上方第 1–4 节使用本轮正文核查结果；历史摘要字段与早期全文补录仍须结合版本理解。
 
----
+有明确隐藏角色目标的游戏行为不能直接证明模型在现实部署中自发产生恶意意图；胜率、行为标签一致率和现实安全性是不同概念。
 
-*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成。 A 级文档含人工扩写字段；核心条目附本地全文核查补录；B/C 级文档主要依赖摘要级结构化记录。*
+<!-- paper-review:start -->
+## 7. 原始来源、引用量与可复用成果（2026-11-03）
+
+**本次核查来源**：[1] Jaewoo Ahn, Junseo Kim, Hyunseo Kim, et al., ‘Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions,’ arXiv preprint, 2026, arXiv:2608.30428v1. [论文](https://arxiv.org/abs/2608.30428)；[核查正文](https://arxiv.org/html/2608.30428v1)。
+
+**重点核查位置（章节主题）**：3.2 Sandbox；3.3 Aria；3.4 Evaluation；4 Experiments。
+
+OpenAlex 被引次数：**[0](https://openalex.org/W7204938515)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+
+**项目与成果入口**：[https://junseokim0103.github.io/Lies-We-Can-See](https://junseokim0103.github.io/Lies-We-Can-See)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
+
+**后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
+
+完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
+<!-- paper-review:end -->

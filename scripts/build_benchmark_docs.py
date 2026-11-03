@@ -19,6 +19,15 @@ if os.path.exists(_project_audit_path):
     PROJECT_AUDIT = {a['benchmark']: a for a in _project_audit_data.get('audits', [])}
 else:
     PROJECT_AUDIT = {}
+_citation_snapshot_path = os.path.join(REPO, 'data', 'benchmark_citation_snapshot.json')
+if os.path.exists(_citation_snapshot_path):
+    _citation_snapshot_data = json.load(open(_citation_snapshot_path, encoding='utf-8'))
+    CITATION_SNAPSHOT = {
+        e['benchmark']: e for e in _citation_snapshot_data.get('entries', [])
+    }
+else:
+    _citation_snapshot_data = {}
+    CITATION_SNAPSHOT = {}
 
 # 人工撰写的核心内容：(测什么, 怎么构建, 测了什么/关键结论)
 # 只写信息充分的；其余由脚本按论文自身的维度/概要自动成文
@@ -600,6 +609,14 @@ for name, info in reg.items():
               '| 来源核验依据 | %s |' % compact(audit.get('source_basis') or '已核对论文元数据与摘要。', 220)]
     if full:
         L += ['| 全文状态 | 已核查本地全文：`docs/_fulltext/%s` |' % full['source']]
+    citation = CITATION_SNAPSHOT.get(name)
+    if citation:
+        oa = citation.get('openalex') or {}
+        count = oa.get('cited_by_count')
+        count_text = str(count) if count is not None else '未匹配'
+        snapshot_date = _citation_snapshot_data.get('generated_at', '未记录')
+        L += ['| OpenAlex 引用快照 | %s（查询日期：%s；来源论文口径：%s） |' % (
+            count_text, snapshot_date, compact(citation.get('paper') or primary['title'], 100))]
     L += ['']
 
     L += ['## 1. 测什么问题（内容与所测环节）', '']
@@ -753,6 +770,19 @@ for name, info in reg.items():
         'coverage': {'stages': coverage_stages, 'axes': coverage_axes},
         'papers': paper_cards,
     }
+    if citation:
+        oa = citation.get('openalex') or {}
+        card['citation_snapshot'] = {
+            'source': 'OpenAlex',
+            'snapshot_date': _citation_snapshot_data.get('generated_at'),
+            'paper': citation.get('paper'),
+            'source_link': citation.get('source_link'),
+            'source_kind': citation.get('source_kind'),
+            'status': oa.get('status'),
+            'cited_by_count': oa.get('cited_by_count'),
+            'openalex_id': oa.get('id'),
+            'match_score': oa.get('match_score'),
+        }
     if project:
         card['project_audit'] = {
             'status': project.get('status'),
@@ -812,6 +842,12 @@ if left:
     print('catch-all doc covers:', len(left))
 
 write_comparison_outputs(cards)
+
+# Apply the source-verified reading layer after the legacy summary generator.
+# This also keeps citation counts and corrected paper roles from being overwritten.
+if os.path.exists(os.path.join(REPO, 'data', 'benchmark_paper_reviews.json')):
+    from build_benchmark_paper_report import main as apply_paper_reviews
+    apply_paper_reviews()
 
 print('docs written:', sum(len(v) for v in index.values()))
 for t in ORDER:

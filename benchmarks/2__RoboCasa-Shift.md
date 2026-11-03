@@ -1,9 +1,15 @@
 # RoboCasa-Shift
 
+<!-- survey-classification:start -->
+> **统一调研分类**：评测任务集；直接具身评测；目标：鲁棒性。
+> **分类依据**：已有平台上的阶段鲁棒性测试协议。
+> **比较口径**：[统一比较矩阵](../analysis/benchmark-comparison.md)。原“分类”及历史关键词标签保留为旧索引，不能用于新的安全覆盖统计。
+<!-- survey-classification:end -->
+
 > **所属环节**：感知 + 长时程控制（阶段感知诊断）  
 > **分类**：VLA 鲁棒性  
-> **关联论文**：本表 1 篇（提出者 1 篇，使用者 0 篇）
-> **证据级别**：A（人工扩写字段 + 表内摘要；未逐篇精读全文）
+> **关联论文**：本表 1 篇（提出 1、使用 0；方法参考另标）
+> **证据级别**：原表 A；另有 2026-11-03 原论文重点章节核查（第 1–4、7 节）
 
 > **项目地址审计**：`found`；[https://github.com/HaochengWang23/RoboCasa-Shift](https://github.com/HaochengWang23/RoboCasa-Shift)
 
@@ -11,72 +17,67 @@
 
 | 字段 | 当前整理结果 |
 |---|---|
-| 首发/代表论文 | RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipula… |
-| 年份 | 2026 |
+| 首发/代表论文 | RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation |
+| 年份 | 2026（所读来源首次 arXiv 提交年） |
 | 数据来源 | 本论文库 |
 | 论文库分区 | Perception › Visual Perception |
 | 应用领域 | 未标注 |
-| 被测对象 | GR00T N1.5。 |
-| 关注属性 | 分布偏移鲁棒性、失败恢复、任务能力 |
+| 被测对象 | 长时程操作阶段鲁棒性 |
+| 历史关键词标签（未重新统计） | 分布偏移鲁棒性、失败恢复、任务能力 |
 | 评测维度/指标 | 单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度 |
 | 基础平台线索 | RoboCasa、RoboCasa365 |
-| 规模线索 | 5 等 VLA 策略 单因子受控偏移 + 干净/扰动配对 rollout；4 个通过干净性能门槛的长时程任务；4 个通过预设干净性能门槛的长时程任务；4 种扰动因子 × 3 个校准严重度（含使策略完全失败的条件；1,040 次正式 rollout |
-| 执行环境线索 | 摘要提到仿真/模拟环境。 |
+| 规模线索 | 从 16 个候选任务筛出 4 个干净条件至少成功 12/20 的任务；4 种视觉扰动、3 档强度加干净条件，4×20×13=1,040 rollout。 |
+| 执行环境线索 | 长时程操作阶段鲁棒性 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7223122581)；2026-11-03 |
 
 ## 1. 测什么问题（内容与所测环节）
 
-**核心问题**：VLA 鲁棒性通常被**聚合任务成功率**概括，这掩盖了两件事：单次执行在分布偏移下如何变化，以及失败出现在长时程任务的哪个阶段。
+**核心问题**：同样的总成功率下降，是否来自长任务中完全不同阶段的失误？
 
-**主要测量维度**：单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度。
+**评测层级**：长时程操作阶段鲁棒性。
 
 ## 2. 怎么构建的
 
-### 2.1 构建要素
+**核心场景与条目**：从 16 个候选任务筛出 4 个干净条件至少成功 12/20 的任务；4 种视觉扰动、3 档强度加干净条件，4×20×13=1,040 rollout。
 
-| 要素 | 摘要级记录 |
-|---|---|
-| 基础平台 | RoboCasa、RoboCasa365 |
-| 任务/场景规模 | 5 等 VLA 策略 单因子受控偏移 + 干净/扰动配对 rollout；4 个通过干净性能门槛的长时程任务；4 个通过预设干净性能门槛的长时程任务；4 种扰动因子 × 3 个校准严重度（含使策略完全失败的条件；1,040 次正式 rollout |
-| 扰动、风险或约束 | 单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度 |
-| 对照/配对方式 | 摘要提到配对、孪生或受控对照。 |
-| 指标与判分线索 | 单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度 |
-| 执行设置 | 摘要提到仿真/模拟环境。 |
-
-### 2.2 详细说明
-
-建立在 RoboCasa365 之上的诊断型鲁棒性基准，三个设计要点：①**受控单因子偏移**；②**干净-扰动配对 rollout**（每对共享相同底层设置，仅目标偏移不同）；③**仿真支撑的阶段感知诊断**。对 4 个通过预设干净性能门槛的长时程任务，在 4 种扰动因子 × 3 个校准严重度（含使策略完全失败的条件）下共 **1,040 次正式 rollout**。
+**实现与判分**：固定初始状态、指令和策略种子作配对，记录子目标及首次失败阶段。另做零变化相机控制，用于量化运行中的非确定性。
 
 ## 3. 用这个基准测了什么
 
-**被测对象**：GR00T N1.5。
+下表为原调研表收录关系；它不是完整引文网络。外部补回的提出论文见第 7 节。
 
-**结果应如何读取**：先按“评测维度/指标”字段区分主指标、辅助指标和对照条件；若论文同时报告任务成功与安全/鲁棒性结果，应将二者分开阅读。
-
-下表按论文列出；“摘要级发现”保留调研表中的概要，不等同于全文实验结论。
-
-| 论文 | 年份 / 来源 | 角色 | 被测对象 | 使用方式 / 指标 | 摘要级发现 |
-|---|---|---|---|---|---|
-| [RoboCasa-Shift：长时程操作的阶段感知鲁棒性评测](https://arxiv.org/abs/2610.27861) | 2026 / arXiv 预印本 (arXiv:2610.27861) | **提出** | GR00T N1.5 等 VLA 策略 | 单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度 | 针对「总体成功率掩盖了单次执行如何变化、失败出现在长时程哪一阶段」的问题，在 RoboCasa365 上构建诊断型鲁棒性基准：干净与扰动 rollout 严格配对（仅目标偏移不同），并给出仿真支撑的阶段感知诊断。 |
+| 论文 | 年份 | 与本条目的关系 | 原表评测线索 | 历史摘要记录 |
+|---|---|---|---|---|
+| [RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation](https://arxiv.org/abs/2610.27861) | 2026 | 提出 | 单因子受控偏移 + 干净/扰动配对 rollout + 阶段级诊断；4 因子 × 3 严重度 | 针对「总体成功率掩盖了单次执行如何变化、失败出现在长时程哪一阶段」的问题，在 RoboCasa365 上构建诊断型鲁棒性基准：干净与扰动 rollout 严格配对（仅目标偏移不同），并给出仿真支撑的阶段感知诊断。对 4 个通过干净性能门槛的长时程任务做 4 种扰动因子 × 3 个校准严重度共 1040 次正式评测，发现鲁棒性响应在因子与任务间差异很大、且不随严重度单调变化。 |
 
 ## 4. 关键结论、改进方向与可复用性
 
-**关键结论**：鲁棒性响应**在因子与任务之间差异很大**，且**提高严重度并不单调恶化**——聚合分数会把这些异质性抹平。
+**原论文结果与成果**：相机 L2 与模糊 L1 的成功下降同为 0.188，首次阶段失败比例却为 19% 与 36.4%；零变化相机控制仍有 8/80 次结果翻转。
 
-**论文提到的改进方向**：①必须做阶段级诊断，定位失败发生在哪一步；②配对 rollout 控制混杂变量；③严重度需要校准，而非等距假设。
-
-**复用状态**：当前只看到提出论文，尚无跨论文复用证据。
+**适用边界**：仅分析 GR00T-N1.5 和干净条件可完成的四个任务，存在明确的筛选边界。零扰动的非确定性必须从扰动效应中区分。
 
 ## 5. 相关论文（均来自本调研表）
 
-- [RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation](https://arxiv.org/abs/2610.27861)（2026，arXiv 预印本 (arXiv:2610.27861)）  ← **提出**
+- [RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation](https://arxiv.org/abs/2610.27861)（2026；提出）
 
 ## 6. 证据边界与复核建议
 
-- **证据级别**：A（人工扩写字段 + 表内摘要；未逐篇精读全文）。
-- **主要来源**：[RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipula…](https://arxiv.org/abs/2610.27861)。
-- **当前限制**：本文档基于调研表、论文摘要和少量人工整理；核心条目另有本地全文核查补录，但仍未替代对全文实验表格、附录、代码仓库和数据下载说明的逐项复核。
-- **建议复核**：优先确认任务/场景划分、样本规模、指标公式、判分阈值、模型清单，以及仿真与真机设置是否一致。
+本轮已核查下列来源的研究问题、方法、评测与结果重点章节；未声称逐页审完全部附录，未运行原实验。上方第 1–4 节使用本轮正文核查结果；历史摘要字段与早期全文补录仍须结合版本理解。
 
----
+仅分析 GR00T-N1.5 和干净条件可完成的四个任务，存在明确的筛选边界。零扰动的非确定性必须从扰动效应中区分。
 
-*文档由 `scripts/build_benchmark_docs.py` 依据调研表自动生成。 A 级文档含人工扩写字段；核心条目附本地全文核查补录；B/C 级文档主要依赖摘要级结构化记录。*
+<!-- paper-review:start -->
+## 7. 原始来源、引用量与可复用成果（2026-11-03）
+
+**本次核查来源**：[1] Haocheng Wang, Youquan Liu, Weiyu Guo, et al., ‘RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation,’ arXiv preprint, 2026, arXiv:2610.27861v1. [论文](https://arxiv.org/abs/2610.27861)；[核查正文](https://arxiv.org/html/2610.27861v1)。
+
+**重点核查位置（章节主题）**：III-A Task Selection；III-C Evaluation；IV-A；IV-B；IV-D。
+
+OpenAlex 被引次数：**[0](https://openalex.org/W7223122581)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+
+**项目与成果入口**：[https://github.com/HaochengWang23/RoboCasa-Shift](https://github.com/HaochengWang23/RoboCasa-Shift)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
+
+**后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
+
+完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
+<!-- paper-review:end -->

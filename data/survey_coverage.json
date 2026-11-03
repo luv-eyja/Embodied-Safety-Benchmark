@@ -1,0 +1,386 @@
+{
+  "as_of": "2026-11-03",
+  "denominator": 62,
+  "unknown_entries": 60,
+  "cells": [
+    {
+      "domain": "主动感知",
+      "entries": [
+        "BAVO-Bench",
+        "LIBERO-VPro"
+      ],
+      "objective_members": {
+        "capability": [
+          "BAVO-Bench"
+        ],
+        "robustness": [
+          "BAVO-Bench",
+          "LIBERO-VPro"
+        ],
+        "safety": []
+      }
+    },
+    {
+      "domain": "人机交互",
+      "entries": [
+        "LIBERO-Safety",
+        "STARS"
+      ],
+      "objective_members": {
+        "capability": [
+          "LIBERO-Safety",
+          "STARS"
+        ],
+        "robustness": [],
+        "safety": [
+          "LIBERO-Safety"
+        ]
+      }
+    },
+    {
+      "domain": "全身控制",
+      "entries": [
+        "MSK-Bench"
+      ],
+      "objective_members": {
+        "capability": [
+          "MSK-Bench"
+        ],
+        "robustness": [
+          "MSK-Bench"
+        ],
+        "safety": []
+      }
+    },
+    {
+      "domain": "具身感知理解",
+      "entries": [
+        "RoboChrono",
+        "nuScenes"
+      ],
+      "objective_members": {
+        "capability": [
+          "RoboChrono",
+          "nuScenes"
+        ],
+        "robustness": [],
+        "safety": []
+      }
+    },
+    {
+      "domain": "多主体社会行为",
+      "entries": [
+        "MineAmongUs"
+      ],
+      "objective_members": {
+        "capability": [],
+        "robustness": [],
+        "safety": [
+          "MineAmongUs"
+        ]
+      }
+    },
+    {
+      "domain": "多机器人",
+      "entries": [
+        "EmbodiedGovBench"
+      ],
+      "objective_members": {
+        "capability": [],
+        "robustness": [],
+        "safety": [
+          "EmbodiedGovBench"
+        ]
+      }
+    },
+    {
+      "domain": "导航",
+      "entries": [
+        "EmbodiedBench",
+        "STARS"
+      ],
+      "objective_members": {
+        "capability": [
+          "EmbodiedBench",
+          "STARS"
+        ],
+        "robustness": [],
+        "safety": []
+      }
+    },
+    {
+      "domain": "工业装配",
+      "entries": [
+        "LABIT",
+        "Peg-in-Bench"
+      ],
+      "objective_members": {
+        "capability": [
+          "LABIT",
+          "Peg-in-Bench"
+        ],
+        "robustness": [
+          "Peg-in-Bench"
+        ],
+        "safety": []
+      }
+    },
+    {
+      "domain": "无人机",
+      "entries": [
+        "PhysAI-Bench"
+      ],
+      "objective_members": {
+        "capability": [
+          "PhysAI-Bench"
+        ],
+        "robustness": [],
+        "safety": []
+      }
+    },
+    {
+      "domain": "机器人语义决策",
+      "entries": [
+        "ASIMOV Benchmark",
+        "RoboHarm",
+        "DESPITE",
+        "EmbodiedBench",
+        "HygieneRoboBench",
+        "IS-Bench",
+        "RoboAbstention",
+        "RoboJailBench",
+        "SafeAgentBench"
+      ],
+      "objective_members": {
+        "capability": [
+          "DESPITE",
+          "EmbodiedBench",
+          "HygieneRoboBench",
+          "IS-Bench",
+          "SafeAgentBench"
+        ],
+        "robustness": [],
+        "safety": [
+          "ASIMOV Benchmark",
+          "RoboHarm",
+          "DESPITE",
+          "HygieneRoboBench",
+          "IS-Bench",
+          "RoboAbstention",
+          "RoboJailBench",
+          "SafeAgentBench"
+        ]
+      }
+    },
+    {
+      "domain": "机器人运行治理",
+      "entries": [
+        "EmbodiedGovBench"
+      ],
+      "objective_members": {
+        "capability": [],
+        "robustness": [],
+        "safety": [
+          "EmbodiedGovBench"
+        ]
+      }
+    },
+    {
+      "domain": "机械臂操作",
+      "entries": [
+        "ForesightSafety-VLA",
+        "HazardArena",
+        "LIBERO-Safety",
+        "ManiPhysicsBench",
+        "RoboHarm",
+        "SafeLIBERO",
+        "SafeStage",
+        "Trap-LIBERO / Trap-RoboTwin",
+        "VLA-Arena",
+        "BAVO-Bench",
+        "LIBERO-MAX",
+        "LIBERO-Para",
+        "LIBERO-RECOVER",
+        "LIBERO-VPro",
+        "AgiBot World",
+        "CALVIN",
+        "COLOSSEUM",
+        "IndustrialVLA-Bench",
+        "LIBERO（基础套件）",
+        "ManiSkill / ManiSkill2",
+        "Open X-Embodiment",
+        "RoboComb",
+        "RoboFollow",
+        "RoboIRG-Bench",
+        "RoboMIND",
+        "RoboReel",
+        "RoboTwin",
+        "SimplerEnv",
+        "Spa-Bench",
+        "VLABench",
+        "EmbodiedBench",
+        "IS-Bench",
+        "SafeAgentBench"
+      ],
+      "objective_members": {
+        "capability": [
+          "ForesightSafety-VLA",
+          "HazardArena",
+          "LIBERO-Safety",
+          "ManiPhysicsBench",
+          "SafeLIBERO",
+          "SafeStage",
+          "Trap-LIBERO / Trap-RoboTwin",
+          "VLA-Arena",
+          "BAVO-Bench",
+          "LIBERO-Para",
+          "LIBERO-RECOVER",
+          "AgiBot World",
+          "CALVIN",
+          "IndustrialVLA-Bench",
+          "LIBERO（基础套件）",
+          "ManiSkill / ManiSkill2",
+          "Open X-Embodiment",
+          "RoboComb",
+          "RoboFollow",
+          "RoboIRG-Bench",
+          "RoboMIND",
+          "RoboReel",
+          "RoboTwin",
+          "SimplerEnv",
+          "Spa-Bench",
+          "VLABench",
+          "EmbodiedBench",
+          "IS-Bench",
+          "SafeAgentBench"
+        ],
+        "robustness": [
+          "ForesightSafety-VLA",
+          "VLA-Arena",
+          "BAVO-Bench",
+          "LIBERO-MAX",
+          "LIBERO-Para",
+          "LIBERO-RECOVER",
+          "LIBERO-VPro",
+          "CALVIN",
+          "COLOSSEUM",
+          "IndustrialVLA-Bench",
+          "RoboComb",
+          "RoboFollow",
+          "RoboIRG-Bench",
+          "RoboReel",
+          "SimplerEnv",
+          "Spa-Bench"
+        ],
+        "safety": [
+          "ForesightSafety-VLA",
+          "HazardArena",
+          "LIBERO-Safety",
+          "ManiPhysicsBench",
+          "RoboHarm",
+          "SafeLIBERO",
+          "SafeStage",
+          "Trap-LIBERO / Trap-RoboTwin",
+          "VLA-Arena",
+          "IS-Bench",
+          "SafeAgentBench"
+        ]
+      }
+    },
+    {
+      "domain": "灵巧操作",
+      "entries": [
+        "BiDex-100",
+        "Bench2Dex"
+      ],
+      "objective_members": {
+        "capability": [
+          "BiDex-100",
+          "Bench2Dex"
+        ],
+        "robustness": [
+          "BiDex-100",
+          "Bench2Dex"
+        ],
+        "safety": []
+      }
+    },
+    {
+      "domain": "移动操作",
+      "entries": [
+        "RoboCasa-Shift",
+        "AgiBot World",
+        "BEHAVIOR-1K",
+        "ManiSkill / ManiSkill2",
+        "RoboCasa",
+        "RoboCasa365"
+      ],
+      "objective_members": {
+        "capability": [
+          "AgiBot World",
+          "BEHAVIOR-1K",
+          "ManiSkill / ManiSkill2",
+          "RoboCasa",
+          "RoboCasa365"
+        ],
+        "robustness": [
+          "RoboCasa-Shift"
+        ],
+        "safety": []
+      }
+    },
+    {
+      "domain": "自动驾驶",
+      "entries": [
+        "CARLA / CARLA Leaderboard",
+        "NAVSIM",
+        "SafeBench",
+        "VIPS",
+        "nuScenes"
+      ],
+      "objective_members": {
+        "capability": [
+          "CARLA / CARLA Leaderboard",
+          "NAVSIM",
+          "SafeBench",
+          "VIPS",
+          "nuScenes"
+        ],
+        "robustness": [
+          "CARLA / CARLA Leaderboard",
+          "SafeBench",
+          "VIPS"
+        ],
+        "safety": [
+          "NAVSIM",
+          "SafeBench",
+          "VIPS"
+        ]
+      }
+    },
+    {
+      "domain": "软件代理",
+      "entries": [
+        "Agent-SafetyBench",
+        "INFUSE",
+        "MemForm",
+        "ORBIT",
+        "SkillSafetyBench"
+      ],
+      "objective_members": {
+        "capability": [
+          "ORBIT",
+          "SkillSafetyBench"
+        ],
+        "robustness": [],
+        "safety": [
+          "Agent-SafetyBench",
+          "INFUSE",
+          "MemForm",
+          "ORBIT",
+          "SkillSafetyBench"
+        ]
+      }
+    }
+  ]
+}

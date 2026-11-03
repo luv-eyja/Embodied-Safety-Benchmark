@@ -191,7 +191,9 @@ for name, pat, tier, desc in BENCH:
             users.append({'title': r['title'], 'zh': r['zh'], 'year': r['year'],
                           'venue': r['venue'], 'cat': r['cat'], 'link': r['link'],
                           'src': r['src'],
-                          'self': bool(rx.search(r['title'])) or bool(source_title and r['title'] == source_title)})
+                          'self': (bool(source_title and r['title'] == source_title)
+                                   if audit.get('exclusive_source') else
+                                   bool(rx.search(r['title'])) or bool(source_title and r['title'] == source_title))})
     if users:
         reg[name] = {'tier': tier, 'desc': desc, 'papers': users}
 

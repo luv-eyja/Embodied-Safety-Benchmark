@@ -1,11 +1,11 @@
 # Benchmark 来源审计
 
-> 更新时间：2026-11-01。本文档针对当前调研表中“论文使用了 benchmark，但标题没有出现该 benchmark 名称”的条目，区分“提出论文已在表内但名称只在摘要中出现”和“提出论文确实不在当前表内”两种情况。
+> 更新时间：2026-11-03。核查来源归属，包括名称只在摘要中出现的提出论文，以及标题含有基准名却只是使用者的论文。当前 25 条明确来源关系包含 18 个表内来源和 7 个表外来源。
 
 ## 判定口径
 
 - **表内提出论文**：核对论文摘要或正文摘要信息，确认论文明确使用 `introduce / construct / release / benchmark` 等提出性措辞；在 registry 中把该论文补标为“提出”。
-- **表外原始论文**：当前 192 条论文记录没有收录原始 benchmark 论文，只在后续使用论文中看到该名称；记录原始论文链接，但不把使用论文冒充提出论文。
+- **表外原始论文**：当前 193 条论文记录没有收录原始 benchmark 论文，只在后续使用论文中看到该名称；记录原始论文链接，但不把使用论文冒充提出论文。
 - **名称变体**：RoboComb 是本库正则对 RoboCombine 的简称归并；R2R-CE 是连续环境 VLN 设置，和原始 R2R 数据集的来源需要分开理解。
 
 ## 已核验来源
@@ -17,7 +17,10 @@
 | RoboHarm | 表内提出论文 | [Refuses in Chat, Complies with Arms](https://arxiv.org/abs/2610.14043) | 补标提出论文 |
 | Trap-LIBERO / Trap-RoboTwin | 表内提出论文 | [TrapVLA](https://arxiv.org/abs/2608.26578) | 补标提出论文 |
 | LIBERO-CTRL | 表内提出论文 | [Beyond Single-Axis Testing](https://arxiv.org/abs/2609.15940) | 补标提出论文 |
-| LIBERO-Para | 表内提出论文 | [IndustrialVLA-Bench](https://arxiv.org/abs/2609.25562) | 补标提出论文 |
+| LIBERO-Para | 表外原始论文 | [LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models](https://arxiv.org/abs/2603.28301) | 沿 IndustrialVLA-Bench 参考文献 [15] 找到；后者改标使用者，项目改为 cau-hai-lab/LIBERO-Para |
+| LIBERO（基础套件） | 表内提出论文 | [LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning](https://arxiv.org/abs/2306.03310) | MINERVA 等后续使用者不再标为提出 |
+| RoboCasa | 表内提出论文 | [RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots](https://arxiv.org/abs/2406.02523) | 区分原版、RoboCasa365 与 RoboCasa-Shift |
+| CARLA / CARLA Leaderboard | 表外原始平台论文 | [CARLA: An Open Urban Driving Simulator](https://arxiv.org/abs/1711.03938) | 模拟器来源与后来的 Leaderboard 协议分开；攻击评测论文为使用者 |
 | RoboStress | 表内提出论文 | [Taming VLAs under Robot Execution Errors](https://arxiv.org/abs/2609.37334) | 补标提出论文 |
 | BAVO-Bench | 表内提出论文 | [Recovering the View](https://arxiv.org/abs/2609.37292) | 补标提出论文 |
 | DriveDegrade | 表内提出论文 | [When Does Corruption Break the Plan?](https://arxiv.org/abs/2608.29005) | 补标提出论文 |
@@ -37,7 +40,7 @@
 
 ## 对原统计的影响
 
-此前 registry 只把“标题包含 benchmark 名称”的论文标为提出，因此会把 SafeLIBERO、RoboHarm、RoboStress 等误判为“只有使用论文”。现在 `data/benchmark_source_audit.json` 被 `scripts/bench_registry.py` 读取，表内提出论文会按来源审计补标；真正表外的 5 个来源则在各基准卡片中显示为外部原始来源，不虚构本库内的提出记录。
+标题启发式既会漏标提出者，也会误标使用者。现在 `data/benchmark_source_audit.json` 被 `scripts/bench_registry.py` 读取，`exclusive_source=true` 的明确归属优先于标题匹配；7 个表外来源在卡片中单独挂接，不虚构原始 193 条记录中的提出论文。STARS 另在精读层标为方法参考，不按新增 benchmark 解释。
 
 机器可读来源表：[`data/benchmark_source_audit.json`](../data/benchmark_source_audit.json)。生成后的基准卡片会在“来源审计”字段显示来源论文和核验依据。
 

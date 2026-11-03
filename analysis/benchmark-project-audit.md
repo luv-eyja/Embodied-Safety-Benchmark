@@ -1,6 +1,6 @@
 # Benchmark 项目地址审计
 
-审计范围：`data/benchmark_cards.json` 中的 122 个 benchmark；审计日期：2026-11-01。
+审计范围：`data/benchmark_cards.json` 中的 122 个 benchmark；基础审计日期：2026-11-01；LIBERO-Para 来源和项目于 2026-11-03 更正。
 本表区分 benchmark 自己的项目地址和它依托的平台地址，避免把 LIBERO、CARLA、nuScenes 等基础平台误当成每个派生 benchmark 的独立项目。
 
 | 状态 | 含义 | 数量 |
@@ -55,7 +55,7 @@
 | LABIT | `found` | [https://irp-hka.github.io/robotic-assembly-benchmark](https://irp-hka.github.io/robotic-assembly-benchmark) | [论文](https://arxiv.org/abs/2610.16398) | arxiv_abs；Project/code links extracted from arXiv abs page 2610.16398. |
 | LIBERO-CTRL | `not_found` | — | [论文](https://arxiv.org/abs/2609.15940) | arxiv_abs；截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。 |
 | LIBERO-MAX | `found` | [https://liberomax.github.io](https://liberomax.github.io) | [论文](https://arxiv.org/abs/2609.36518) | arxiv_abs；Project/code links extracted from arXiv abs page 2609.36518. |
-| LIBERO-Para | `found` | [https://github.com/xiaoqi-7/IndustrialVLA-Bench](https://github.com/xiaoqi-7/IndustrialVLA-Bench) | [论文](https://arxiv.org/abs/2609.25562) | arxiv_abs；Project/code links extracted from arXiv abs page 2609.25562. |
+| LIBERO-Para | `found` | [https://github.com/cau-hai-lab/LIBERO-Para](https://github.com/cau-hai-lab/LIBERO-Para)、[https://cau-hai-lab.github.io/LIBERO-Para/](https://cau-hai-lab.github.io/LIBERO-Para/) | [原始论文](https://arxiv.org/abs/2603.28301) | 2026-11-03 核查原始论文与官方 README，修正误指 IndustrialVLA-Bench 的项目地址。 |
 | LIBERO-Plus | `not_found` | — | [论文](https://arxiv.org/abs/2510.13626) | arxiv_abs；截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。 |
 | LIBERO-Pro2.0 | `not_found` | — | [论文](https://arxiv.org/abs/2610.24587) | arxiv_abs；截至审计日期，未从论文项目链接中确认独立项目地址；需后续继续检索作者主页、代码仓库和数据发布页。 |
 | LIBERO-RECOVER | `found` | [https://liulin815.github.io/LIBERO-Recovery](https://liulin815.github.io/LIBERO-Recovery) | [论文](https://arxiv.org/abs/2609.05178) | arxiv_abs；Project/code links extracted from arXiv abs page 2609.05178. |

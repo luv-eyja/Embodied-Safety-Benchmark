@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-11-03",
+  "scope": "active_only",
+  "reading_level": "方法、评测协议与结果重点章节核查；不等同于逐页审完全部附录，也未复现实验",
+  "entries": [
+    {
+      "benchmark": "ASIMOV Benchmark",
+      "kind": "机器人语义安全判断／数据与方法",
+      "question": "机器人能否判断某个动作在具体情境下是否合宜，并将这种判断落实为可修订的安全准则？",
+      "scenarios": "多模态场景、伤害事件描述和伦理困境三个子集；既包含明显危险，也包含依赖人、物和情境的灰区。表 1 合计约 294 万动作／指令、51 万上下文，不是同等数量的人类标注。",
+      "implementation": "将情境与候选动作转成可判别的问答，用模型生成和增补机器人 constitution，再与人类判断比较；验证集包括 2,273 个问题，其中 1,140 个有人类标签。",
+      "results": "论文报告自动生成准则可达到 84.3% 的人类判断一致率，并给出有限机器人场景的防护验证。主要成果是语义安全数据与准则生成流程。",
+      "limits": "一致率不等于闭环动作安全率；自动扩增规模不代表人工审查覆盖率。机器人案例数量小，不能据此声称对所有物理危险有保证。",
+      "sections": ["3 ASIMOV Datasets", "4 Generating Constitutions", "6 Empirical Evaluation"]
+    },
+    {
+      "benchmark": "ForesightSafety-VLA",
+      "kind": "仿真 VLA 安全控制",
+      "question": "VLA 能否在行动前预见后果，处理危险物、动作约束和时序前置条件，而不只完成任务？",
+      "scenarios": "基于 RoboTwin 的 66 个场景、5 种本体、13 类风险；Safe-Core、Safe-Lang、Safe-Vis 分别诊断核心风险、语言变化和视觉变化。",
+      "implementation": "用层级任务难度及语言／视觉扰动构造可控测试，结合任务完成与约束违反信号，报告 SR、CC、RET 及安全／不安全成功和失败的四象限。",
+      "results": "原文示例中 OpenVLA-oft 的 SR 为 0.48、不安全成功为 0.06，即成功轨迹中 12.5% 不安全；常规措辞变化与结构性风险的影响不同。成果包括场景、风险 taxonomy 和统一评分协议。",
+      "limits": "四象限的分母是全部 episode，不能把不安全成功率直接当成成功中的违规比例。仿真中的风险触发与真实损伤之间仍有距离。",
+      "sections": ["III Benchmark", "IV Evaluation", "V Experiments"]
+    },
+    {
+      "benchmark": "HazardArena",
+      "kind": "仿真及真机语义安全",
+      "question": "当操作技能相似但对象、接触关系和意图不同，模型能否区分该做与不该做？",
+      "scenarios": "51 个任务覆盖食物、财产、化学、隐私、火灾、人身、电气七类风险；复用 2,000 余物体并补充 75 个情境资产。安全／危险任务成对构造。",
+      "implementation": "配对保持场景和操作模板的可比性，同时改变动作参与者、目标关系及指令。分别判断 Attempt、Commit、Success，检查模型是否具备安全对应任务的执行能力。",
+      "results": "拒绝示范训练的 VLA-Adapter 在报告设置中将危险任务成功率从 0.22 降到 0.01，Commit 从 0.44 降到 0.03，安全任务成功率由 0.25 到 0.26；另有真机验证。",
+      "limits": "安全／危险配对并非只替换一个文本标签；Attempt、Commit 与实际完成危险行为不可混用。改进只对应文中训练和评测分布。",
+      "sections": ["3.2 Task Design", "3.4 Evaluation", "4 Experiments"]
+    },
+    {
+      "benchmark": "LIBERO-Safety",
+      "kind": "仿真 VLA 物理与语义安全",
+      "question": "传统 LIBERO 成功标准遗漏哪些物理与语义风险，如何将风险变成逐步可检查的任务约束？",
+      "scenarios": "AAG、HRI、TSA、FSHOA、SSR 五套任务，每套 5 个任务、3 档难度，共 75 个测试配置；另有 40 个训练任务和 19,664 条无碰撞示范。",
+      "implementation": "用 UBDDL 扩展 BDDL 的随机化、动态交互和逐步安全检查；关键姿态与 CuRobo 用于示范生成。除终点成功，还记录碰撞和场景风险。",
+      "results": "表 3 中 OpenVLA-OFT 在 AAG 的 L0／L1／L2 成功率为 50.0%／79.3%／1.3%，说明训练分布和风险形态会造成非单调表现。成果为可复用的安全任务描述与评测扩展。",
+      "limits": "不能把 L1 的高成功率解释为安全性全面更好；须同时看安全指标。部分数据生成组件的公开状态仍以仓库实现审计为准，论文描述不等于全部代码已可运行。",
+      "sections": ["3.1 Benchmark Design", "3.2 Data Generation", "4.2 Main Results", "4.3 Analysis"]
+    },
+    {
+      "benchmark": "ManiPhysicsBench",
+      "kind": "仿真轨迹＋离线物理损伤评估",
+      "question": "把物体成功搬到目标位置时，物体是否已经被夹碎或压坏？",
+      "scenarios": "91 个对象的 ManiPhysicsZoo 支撑脆性断裂、软物体变形、薄壁变形三条轴；鸡蛋／核桃、土豆／水果、纸杯／塑料容器等分难度部署到 LIBERO 与 SimplerEnv。",
+      "implementation": "刚体仿真记录接触位置、方向和力，外部力学求解器结合几何与材料阈值判定每次抓握损伤，再汇总整段轨迹。SR 为完成率，Safe SR 为无损完成率，PR=Safe SR/SR。",
+      "results": "SimplerEnv 的高、中难对象上，公共 checkpoint 平均 SR 为 48.3%、Safe SR 为 13.5%，PR 为 27.9%；多数模型完成搬运却不能保护对象。",
+      "limits": "损伤由求解器事后判断，并非仿真中直接产生真实断裂。材料、接触模型及连续夹爪设置影响结论；SR 为零时 PR 未定义。",
+      "sections": ["4 Solver-based Assessment", "5.1 Benchmark Construction", "5.2 Evaluation Protocol and Metrics", "6.1 Main Results"]
+    },
+    {
+      "benchmark": "RoboHarm",
+      "kind": "模拟与真机机器人接口安全",
+      "question": "同一模型从文字回答切换到生成机器人动作后，拒绝危险指令的能力是否保留？",
+      "scenarios": "五类不安全场景，使用 YAM 机械臂及 MuJoCo 孪生；比较文本、代码式计划、末端执行器及关节等动作接口。",
+      "implementation": "对相同风险意图在不同输出接口下评测拒绝和执行行为；模拟评测覆盖 7 个模型，真机末端／关节接口分别记录 612／252 次测试。",
+      "results": "论文报告文本接口拒绝率约 73%，机器人接口约 18–25%；真机末端接口约 18%、关节接口约 41%。接口选择本身会改变观测到的安全表现。",
+      "limits": "拒绝率低不能自动换算为伤害率；不同接口的可执行性和样本构成不同。小规模场景和指定本体限制外推。",
+      "sections": ["Methodology", "Experiments", "Failure Analysis"]
+    },
+    {
+      "benchmark": "SafeLIBERO",
+      "kind": "仿真障碍避碰＋安全控制方法",
+      "question": "在原有 VLA 策略前增加安全层，能否避免杂乱桌面的障碍碰撞，同时保留任务能力？",
+      "scenarios": "四个 LIBERO 套件各选 4 个任务，每任务设置靠近目标与阻挡路径两级障碍，共 32 场景、每场景 50 次、合计 1,600 episode。",
+      "implementation": "AEGIS 采用控制障碍函数和二次规划修正名义动作；在平移／完整动作空间分别评价避碰率 CAR、任务成功率 TSR 和执行步数 ETS，并用两项真机任务验证。",
+      "results": "平移动作设置中，π0.5 的 CAR 18.7% 提升至 AEGIS 的 77.9%，TSR 50.9% 提升至 68.1%；完整动作空间也单独给出结果，不能交叉混比。",
+      "limits": "属于受控障碍避碰，不覆盖全部语义风险；CBF 的理论性质依赖状态估计、模型和求解可行性，不能无条件等同于真机安全保证。",
+      "sections": ["V-A Experimental Setup", "V-B Results", "VI Real-world Experiments"]
+    },
+    {
+      "benchmark": "SafeStage",
+      "kind": "仿真全流程操作安全",
+      "question": "任务开始前、执行中和完成后的危险，是否被只检查终点成功的评测遗漏？",
+      "scenarios": "97 个任务：初始危险 ISH 27、执行阶段 ETS 40、完成后 FSH 30；RoboLab／GPU PhysX 中的 Panda＋Robotiq 机械臂，完成后继续观察 5 秒。",
+      "implementation": "将危险状态、路径／接触约束、终态稳定性绑定到不同阶段，以仿真特权状态评分但不提供给策略；报告 SR、VR、SSR、USR，其中 SR=SSR+USR。",
+      "results": "报告聚合 SR 33.74%、SSR 9.84%、USR 23.90%；成功轨迹中 70.84% 含不安全行为。评估器在 240 条核查轨迹上 F1 为 97.26%。",
+      "limits": "机器人硬件名称不意味着做了真机评测。成功中违规比例与全 episode 的 USR 分母不同，评估器准确度也不代表策略安全度。",
+      "sections": ["Benchmark Construction", "Evaluation Protocol", "Experimental Results"]
+    },
+    {
+      "benchmark": "Trap-LIBERO / Trap-RoboTwin",
+      "kind": "VLA 定向失效诊断／安全研究",
+      "question": "干净任务分数较高时，是否仍可能隐藏只在特定条件下出现的定向操作失败？",
+      "scenarios": "在 LIBERO 与 RoboTwin 中分别考察过早闭合、抓取偏移、过早释放及释放偏移等失效类别，并提供模拟及有限真机分析。",
+      "implementation": "论文将正常任务效用与特定失效目标的达成程度分开统计，结合轨迹和动作层信号检查失效是否符合指定类型；本条仅记录评测层设计。",
+      "results": "论文展示干净成功率保持较高时仍可出现定向失效，说明标准成功率不足以筛查策略完整性；提供两套受控安全评测任务。",
+      "limits": "论文结果依赖特定威胁假设、模型与任务；不能推断任意部署模型都存在此类问题。正常成功和配置失效指标不是同一分母或同一目标。",
+      "sections": ["Task Definition", "Evaluation Metrics", "Experiments"]
+    },
+    {
+      "benchmark": "VLA-Arena",
+      "kind": "仿真多维 VLA 诊断",
+      "question": "如何同时区分安全、干扰、外推和长时程能力，而不让一个平均成功率掩盖短板？",
+      "scenarios": "170 个任务、11 套件、Safety／Distractor／Extrapolation／Long-Horizon 四维；任务难度 L0–L2，另设语言和视觉扰动等级。",
+      "implementation": "扩展约束式 BDDL，提供不同规模示范集；仅在 L0 训练，向 L1／L2 评估，并对任务结构、语言、视觉变化分别计分。",
+      "results": "不同诊断维度会改变模型相对排序；基准同时报告完成和安全代价，并配有真机案例检查。成果是共享任务表示、难度体系和数据。",
+      "limits": "难度、扰动和训练预算应分开报告；较高 SR 不自动意味着约束代价更低，局部真机结果也不能覆盖全部 170 个任务。",
+      "sections": ["2 Benchmark Design", "3 Dataset", "4 Experiments", "5 Real-world Evaluation"]
+    },
+    {
+      "benchmark": "BAVO-Bench",
+      "kind": "仿真双臂主动视觉",
+      "question": "遮挡发生后，机器人能否主动移动观察相机，再继续操作？",
+      "scenarios": "5 个双臂任务，一臂操作、一臂携带相机；Clean、Stage 和随机时刻遮挡三种条件，每任务 100 条 VR 示范，共 500 条。",
+      "implementation": "用阶段相关遮挡数据训练，评估 SR、任务进展 TPS 和相机运动带来的可见性增益 CVG，区分真实主动观察与单纯视觉恢复。",
+      "results": "A-FAR 的 Clean／Stage／随机遮挡 SR 为 51.3%／63.7%／18.7%。训练匹配的 Stage 可能比 Clean 更高，不能假定难度单调；随机遮挡明显更难。",
+      "limits": "ACT、ManiFlow、A-FAR 使用三种种子，π0.5 的训练设置不同，不能将所有行当等预算比较；可见性增益也不能替代任务成功。",
+      "sections": ["3.2 Benchmark", "5.1 Experimental Setup", "5.2 Main Results"]
+    },
+    {
+      "benchmark": "LIBERO-MAX",
+      "kind": "仿真执行中途变化鲁棒性",
+      "question": "动作尚未完成时世界改变，策略是否能及时丢弃过时计划并重新响应？",
+      "scenarios": "8 类事件含目标／容器位移、相机、光照、噪声、外观、干扰物和障碍；8,000 对干净／变化轨迹，完整版每模型 16,000 rollout，Lite 为 800 对。",
+      "implementation": "在确定性抓取前时刻触发一次持续事件，配对共享前缀、状态和种子；统计成对成功变化及已排队动作的过时暴露，采用配对检验和 bootstrap。",
+      "results": "14 种策略出现约 11–25.7 个百分点的成功下降；没有一种架构家族在所有事件上占优。基准揭示动作分块长度与反馈时机的重要性。",
+      "limits": "单次、预定阶段事件与连续真实扰动不同；8,000 对不是 8,000 个独立原始任务，成对统计不能改用不配对置信区间。",
+      "sections": ["3.1 Benchmark Construction", "3.2 Paired Evaluation", "4 Experiments"]
+    },
+    {
+      "benchmark": "LIBERO-Para",
+      "kind": "仿真语言改写鲁棒性",
+      "question": "任务语义不变，仅改写动作表达或物体名称，VLA 是否仍执行同一个任务？",
+      "scenarios": "在初始状态相同、只能靠指令区分任务的 LIBERO-Goal 上生成 4,092 条改写；动作轴覆盖词汇、句法、语用，物体轴覆盖同义替换和描述增补，另测组合。",
+      "implementation": "固定环境与策略，仅替换留出的测试指令；PRIDE 用关键词和结构差异对成功按改写难度加权，另以 DTW 相对成功轨迹的距离分析失败类型。",
+      "results": "7 种模型配置在改写下下降约 22–52 个百分点；失败中 79.5–95.5% 被归为远离参考轨迹的规划层偏离。独立提出论文为 arXiv:2603.28301，IndustrialVLA-Bench 只是后续使用者。",
+      "limits": "DTW 归类是轨迹层代理指标，并非直接观察到内部规划过程；结论主要来自 LIBERO-Goal。PRIDE 的权重影响诊断，不宜取代原始成功率。",
+      "sections": ["3 LIBERO-Para", "4.3 PRIDE Score", "5.1 Setup", "6.2 Finding 2", "6.3 Finding 3"]
+    },
+    {
+      "benchmark": "LIBERO-RECOVER",
+      "kind": "仿真自然失败状态恢复",
+      "question": "模型在自己的执行错误之后能否恢复，正常起点的高分是否能预测恢复能力？",
+      "scenarios": "收集 2,000 余真实策略运行产生的失败状态；四级恢复从动作重试、动作适配到物体状态与环境恢复，并按空间、物体结构、交互和拓扑能力标注。",
+      "implementation": "从存档失败状态继续执行原任务，报告 Recovery Success Rate、Recovery Degradation 和一致性；分级、分能力比较，而不是只加随机初始扰动。",
+      "results": "表 2 中 GR00T-N1.5 在 LIBERO-Spatial 恢复集的 RSR 从 0.057 提升至混合恢复数据训练后的 0.116；论文同时发现这种收益未稳定转化为正常起点分数。更长动作块通常更难恢复。",
+      "limits": "这里的自然失败发生在仿真策略 rollout，并非真实世界事故。失败状态来源策略与筛选流程影响分布，恢复集提升不等于所有失败都可自行纠正。",
+      "sections": ["2 Failure Collection", "3.2 Evaluation Metrics", "4.2 Main Results"]
+    },
+    {
+      "benchmark": "LIBERO-VPro",
+      "kind": "闭环视觉鲁棒性",
+      "question": "模型是否依赖当前、可信且与任务相关的视觉反馈，世界模型预测会不会偏离现实？",
+      "scenarios": "视觉退化、相机过时、信息源一致性、任务场景变化四维，12 类、96 设置、3,296 用例；约 19.6 万仿真 rollout，并有 200 次 FR3 真机测试。",
+      "implementation": "在闭环执行中控制遮挡位置、观察时效、多视角矛盾与场景变化；对比三种 VLA、三种 WAM，并检查目标区域与局部交互线索的不同作用。",
+      "results": "高标准成功率不保证视觉鲁棒性；目标被遮挡时仍成功不能直接证明模型理解了目标，局部交互线索的缺失可能更致命。WAM 的预测质量与实际执行也可能脱节。",
+      "limits": "3,296 是评测配置数，不是独立任务数。模拟与真机规模不同，必须分别解释；观察异常下的失败不能一概归因为语言理解。",
+      "sections": ["Benchmark Construction", "Evaluation Protocol", "Main Results", "Real-world Experiments"]
+    },
+    {
+      "benchmark": "RoboCasa-Shift",
+      "kind": "长时程操作阶段鲁棒性",
+      "question": "同样的总成功率下降，是否来自长任务中完全不同阶段的失误？",
+      "scenarios": "从 16 个候选任务筛出 4 个干净条件至少成功 12/20 的任务；4 种视觉扰动、3 档强度加干净条件，4×20×13=1,040 rollout。",
+      "implementation": "固定初始状态、指令和策略种子作配对，记录子目标及首次失败阶段。另做零变化相机控制，用于量化运行中的非确定性。",
+      "results": "相机 L2 与模糊 L1 的成功下降同为 0.188，首次阶段失败比例却为 19% 与 36.4%；零变化相机控制仍有 8/80 次结果翻转。",
+      "limits": "仅分析 GR00T-N1.5 和干净条件可完成的四个任务，存在明确的筛选边界。零扰动的非确定性必须从扰动效应中区分。",
+      "sections": ["III-A Task Selection", "III-C Evaluation", "IV-A", "IV-B", "IV-D"]
+    },
+    {
+      "benchmark": "AgiBot World",
+      "kind": "真机大规模数据集及训练评测",
+      "question": "如何以稳定的数据质量，扩展多任务机器人学习所需的真实示范规模？",
+      "scenarios": "100 万余轨迹、217 任务、3,000 余物体，覆盖家庭、零售、工业、餐饮、办公五域；在约 4,000 平方米采集设施中运行。",
+      "implementation": "基于 AgiBot G1 的标准化遥操作，结合采集前验证、本地完整性检查、云端质量审核和语言标注；包含失败恢复过程，训练 GO-1 等通用策略。",
+      "results": "论文报告 GO-1 在复杂任务上的成功率超过 60%，并比较不同预训练数据来源的效果；主要成果是百万级实机数据、采集体系和模型。",
+      "limits": "它首先是训练资源，不是独立的安全压力测试；跨数据源收益依赖任务、训练量和模型设置，不能把摘要中的百分比改写成未经确认的百分点。",
+      "sections": ["Data Collection", "Dataset", "Experiments"]
+    },
+    {
+      "benchmark": "BEHAVIOR-1K",
+      "kind": "家庭活动仿真平台与任务集",
+      "question": "机器人能否完成对人有实际价值、涉及复杂状态变化的长时程家庭活动？",
+      "scenarios": "1,000 种活动、50 个场景、9,000 余对象；任务取自人类需求调查，包含整理、清洁、烹饪等，超越单次抓放。",
+      "implementation": "BDDL 用逻辑关系描述初态与目标；OmniGibson 支持刚体、软体、液体及热／烹饪状态等，结合技能式执行器和活动完成检查。",
+      "results": "论文给出多种仿真解法，并在 CollectTrash 的真实 Tiago 与公寓孪生中分析迁移；真实抓取和感知误差是重要落差来源。成果是需求驱动的活动库、资产和仿真器。",
+      "limits": "本次读的是 arXiv:2403.09227 的扩展论文；后续 ManiUnit 等使用的任务子集不能当成原始全集。某些基线使用抽象抓取，不能与全低层控制直接比较。",
+      "sections": ["4 Dataset", "5 OmniGibson", "6.1 Evaluating Solutions", "6.2 Real Robot"]
+    },
+    {
+      "benchmark": "BiDex-100",
+      "kind": "双手灵巧操作仿真",
+      "question": "通用 VLA 在高自由度双手操作中，泛化、指令遵循、少样本、长时程和记忆能力分别如何？",
+      "scenarios": "名称虽为 100，正文包含 106 任务；两种本体、8,080 条成功核验示范、约 625 万帧，按五条能力轴组织。",
+      "implementation": "声明式配置对象、区域、关节和目标，使用逻辑完成条件与阶段进度；用匹配的随机种子构造 ID/OOD，每任务两种种子各 25 episode。",
+      "results": "LingBot-VLA-v2 的 ID 总成功率为 52.21%，OOD 为 1.68%；GR00T-N1.7 的 OOD 总成功率为 5.45%。多任务成功与域外泛化差距巨大。",
+      "limits": "结果对应文中本体、训练设置及组合变化；进度分数和全部完成率不同。不可把模型家族结论推广至未测 checkpoint。",
+      "sections": ["Benchmark Design", "Evaluation Protocol", "V-C Main Results"]
+    },
+    {
+      "benchmark": "CALVIN",
+      "kind": "语言条件长时程操作",
+      "question": "从非结构化 play 数据学习后，机器人能否按自然语言连续完成多步组合任务并迁移环境？",
+      "scenarios": "4 个桌面环境、34 类操作，涉及抽屉、滑门、按钮、灯和积木；核心评估是连续完成指令链。",
+      "implementation": "收集多模态 play 与语言标注，用状态变化判定单任务完成；区分单环境、多环境和训练三环境／测试第四环境，报告链长各级成功率与平均完成长度。",
+      "results": "原论文以 MCIL 等基线表明，训练场景中的单任务表现不能代表未见环境和连续指令组合表现。主要成果是长期指令协议、多传感器数据和环境划分。",
+      "limits": "现代论文的 ABC→D 协议、数据量、历史窗口和模型与原始基线不同，引用原论文不能据此报告当前榜首；该基准主要测能力而非显式危险约束。",
+      "sections": ["III-A Environment", "III-C The CALVIN Challenge", "V Experiments"]
+    },
+    {
+      "benchmark": "COLOSSEUM",
+      "kind": "仿真环境泛化与鲁棒性",
+      "question": "操作策略对训练环境以外的外观、几何与物理变化究竟有多脆弱？",
+      "scenarios": "基于 RLBench／CoppeliaSim 的 20 个任务、14 条扰动轴，包含目标与容器颜色／纹理／大小、背景、照明、干扰物、物理和相机变化。",
+      "implementation": "分别施加单轴与组合扰动，以相同任务目标评价策略；比较五种操作方法，并在四项真实桌面任务检查模拟趋势。",
+      "results": "论文报告常见变化造成约 30–50% 性能退化，组合变化可达至少 75% 的相对退化。成果是系统扰动集与跨策略诊断。",
+      "limits": "原底座不是 LIBERO。相对退化不能改写成成功率下降同等百分点；模拟／实机和不同扰动组合应分别报告。",
+      "sections": ["III-A Benchmark", "III-B Perturbations", "III-C Evaluation", "IV Experiments"]
+    },
+    {
+      "benchmark": "IndustrialVLA-Bench",
+      "kind": "多基准评测与复现证据框架",
+      "question": "干净任务分数已经接近时，如何结合鲁棒性、语言敏感性和运行成本区分已发布策略？",
+      "scenarios": "评测六个 VLA／WAM 系统：LIBERO 四套件、LIBERO-Plus 六类非语言扰动、LIBERO-Para 指令改写，并记录显存、延迟及复现负担。",
+      "implementation": "固定 checkpoint 和推理配置，完整运行三个种子；标准 LIBERO 每种子 2,000 episode，Plus 10,030 配置、Para 4,092 配置各一次。按协议忠实度标记结果，均值和标准差不混为置信区间。",
+      "results": "六个系统的干净分数跨度只有 1.58 个百分点，鲁棒性与语言分数跨度分别为 14.62 和 31.08 个百分点。成果是多轴报告、checkpoint 与复现证据记录。",
+      "limits": "它复用 LIBERO-Para，并非后者的提出论文。部分行只是近似复现或待核验，不能与严格协议行无差别排名；也没有证明真实工业部署安全。",
+      "sections": ["3.3 Benchmark Scope", "4.4 Language Sensitivity", "Appendix B Protocol"]
+    },
+    {
+      "benchmark": "LIBERO（基础套件）",
+      "kind": "终身机器人学习基础基准",
+      "question": "机器人能否跨任务迁移知识，在学习新技能时减少旧技能遗忘？",
+      "scenarios": "原版 130 任务：Spatial 10、Object 10、Goal 10 与 LIBERO-100；后者可拆为 90 个预训练和 10 个长任务。空间、物体和目标变化分别控制。",
+      "implementation": "从活动语言提取任务模板，以 BDDL 表达对象、初态和目标，在 robosuite／MuJoCo 中执行；比较不同任务顺序、预训练、架构和终身学习方法。",
+      "results": "原论文的关键指标是前向迁移 FWT、负向后向迁移 NBT 和成功曲线 AUC，展示新任务学习、旧任务保留之间的权衡；它后来成为大量 VLA 工作的基础环境。",
+      "limits": "后来常见的 40 任务成功率评测只覆盖特定组合，不能替代原始 130 任务的终身学习目的。原始来源应为 2306.03310，不应引用 MINERVA 作为提出者。",
+      "sections": ["Benchmark Construction", "Task Suites", "5.1 Evaluation Metrics", "5 Experiments"]
+    },
+    {
+      "benchmark": "ManiSkill / ManiSkill2",
+      "kind": "可泛化操作仿真平台",
+      "question": "能否在统一、高效的环境中比较不同视觉表示、学习算法和机器人控制方式？",
+      "scenarios": "本次以 ManiSkill2 论文为准：20 个任务族、2,000 余对象模型、400 万余示范帧，覆盖固定／移动、单臂／双臂和刚体／软体。",
+      "implementation": "基于 SAPIEN，提供 RGB-D、点云、状态观察，多种动作控制与示范转换；分训练对象与未见对象，支持规划、模仿和强化学习。",
+      "results": "论文的 Contact-GraspNet＋规划基线在 PickSingleYCB 的 74 个训练对象、各 5 次测试中成功率 43.24%，并提供模仿／强化学习及迁移案例。成果主要是环境、数据和统一接口。",
+      "limits": "ManiSkill 与 ManiSkill2 属不同版本，此处引用量仅对应后者。控制空间、观察模态和对象划分不同的结果不能直接合并；训练对象分数不是泛化分数。",
+      "sections": ["Benchmark Design", "Demonstrations", "5 Applications", "5.1 Sense-plan-act"]
+    },
+    {
+      "benchmark": "Open X-Embodiment",
+      "kind": "跨本体真机训练数据与模型",
+      "question": "来自不同实验室与机器人形态的数据能否共同训练可迁移的操作策略？",
+      "scenarios": "原论文聚合 22 种本体、100 万余真实轨迹和 527 种技能；不同来源的相机、动作、任务分布明显异构。",
+      "implementation": "统一到 RLDS 数据表示并建立动作／观察适配，以 RT-X 等模型比较单来源与跨本体训练，分别测试已有任务和域外能力。",
+      "results": "实验支持跨机器人数据存在正迁移，但并不意味着任意数据混合都同样有效。成果是数据联盟、标准化接口以及跨本体策略。",
+      "limits": "这是训练数据集合与研究项目，不是具有单一冻结测试集的安全 benchmark；不同论文使用的混合比例、过滤和版本必须注明。引用量对应论文记录，不等于每个子数据集的影响力。",
+      "sections": ["III Data Collection", "IV Data Format", "V Experiments"]
+    },
+    {
+      "benchmark": "RoboCasa",
+      "kind": "日常操作仿真平台",
+      "question": "如何用多样厨房场景和复合任务训练、评估通用机器人？",
+      "scenarios": "原版 100 个厨房任务，包括 25 个原子、75 个复合任务；八类基本技能覆盖抓放、开关门／抽屉、操纵开关、插入和导航等。",
+      "implementation": "以 robosuite／MuJoCo 和大量厨房、物体资产构建交互场景，结合人类示范与自动数据生成，系统变化场景、对象和任务组合。",
+      "results": "论文比较场景／任务多样性及合成示范的训练作用，并给出向真机迁移的实验。核心贡献是统一日常环境、复合任务和可扩展数据生成。",
+      "limits": "原论文为 arXiv:2406.02523；不能用后续 RoboCasa-Shift 或 RoboCasa365 取代其来源，也不能把 365 版的任务和厨房规模写成原始版本。",
+      "sections": ["III Environment", "IV Tasks and Datasets", "V Experiments"]
+    },
+    {
+      "benchmark": "RoboCasa365",
+      "kind": "大规模日常操作与持续学习",
+      "question": "扩大任务、场景和示范后，策略能否掌握复合任务、迁移未见组合并持续学习？",
+      "scenarios": "365 任务、2,500 厨房，约 600 小时人类数据与 1,600 小时合成数据；65 原子任务、300 复合任务。目标评测分原子、已见复合和未见复合。",
+      "implementation": "分别设置多任务训练、预训练后微调、四阶段终身学习；严格区分预训练与目标示范，按示范量、任务组合和场景划分比较。",
+      "results": "终身学习实验中，原子任务成功率从第一阶段 41.5% 降至第四阶段 10.6%，展示持续学习中的明显遗忘；提供开放模型和不同数据量协议。",
+      "limits": "365 个任务不全都属于同一个测试拆分；上述退化来自指定训练流程，不代表所有持续学习算法。大规模合成训练收益也不能直接当安全改进。",
+      "sections": ["3.3 Tasks", "3.4 Datasets", "4.1 Multi-task training", "4.2 Foundation model training", "4.3 Lifelong learning"]
+    },
+    {
+      "benchmark": "RoboChrono",
+      "kind": "机器人流式视频理解",
+      "question": "只看到当前时刻以前的画面，模型能否理解动作进度、预测下一步并定位事件？",
+      "scenarios": "39 种操作场景、1,816 个成功视频、约 25 小时；包括夹爪、灵巧手及人手，七项任务覆盖当前／下一动作、跨视角匹配、顺序和时间定位。",
+      "implementation": "人工时间标注后生成问题，输入严格截断为观察前缀；六项选择题报告正确率，动作时间定位独立报告 R@1、tIoU≥0.5，未来信息仅用于标签。",
+      "results": "18 个多模态模型的结果显示跨帧识别、下一步预测和时间定位难度不同；论文最佳选择题聚合为 0.805，时间定位为 0.721，二者不是同一种指标。",
+      "limits": "这是视频理解而非机器人控制成功率。成功示范视频不能代表失败恢复过程；人手与机器人视频、不同任务指标不宜无条件求平均。",
+      "sections": ["3.1 Benchmark Overview", "3.2 Data Collection and Temporal Annotation", "4.2 Main Results"]
+    },
+    {
+      "benchmark": "RoboComb",
+      "kind": "原子技能组合泛化",
+      "question": "已经学会的原子技能，能否在未见过的组合中可靠衔接？",
+      "scenarios": "以原子技能重组长任务，区分训练可见组合与未见重组；特别关注上一个技能留下的状态与下一个技能训练起点的不一致。",
+      "implementation": "RoboCombine 框架比较 Oracle-HSE、Ordered-HSE 和整段指令执行，将高层调度与低层技能、交接状态分开诊断；用 PRTI 扩展原子技能的初始状态覆盖。",
+      "results": "有限组合任务微调在已见组合上达到 40%，未见重组仅 7.7%；提示主要瓶颈不只是任务规划，还包括交接状态分布。",
+      "limits": "仓库短名 RoboComb 对应正文 RoboCombine。组合微调与只用原子示范是不同训练设定；使用 oracle 交接的成绩不是端到端自主能力。",
+      "sections": ["3.1 Benchmark", "3.2 Hierarchical Evaluation", "4.1", "4.2", "5 Analysis"]
+    },
+    {
+      "benchmark": "RoboFollow",
+      "kind": "语言驱动的操作分支选择",
+      "question": "模型是否真正依据指令选择动作，而不是根据画面猜测训练中最常见的任务？",
+      "scenarios": "同一视觉场景包含多个都可执行的分支，围绕空间、属性、轨迹、逻辑四类任务；L0 基础、L1 布局变化、L2 语义重组、L3 二者组合。",
+      "implementation": "通过高场景熵让图像不能唯一确定任务，保持基础动作和物体能力的可比性；把意图选择 Intent 和执行 Execution 分开评分，评测九种 VLA／WAM，并作小型真机试验。",
+      "results": "标准基准的高成功率不能稳定预测指令遵循能力；分阶段诊断能区分选错目标与选对但做不成。成果是控制视觉捷径的任务生成与诊断协议。",
+      "limits": "L0–L3 是因素组合，并非保证对每个模型单调变难；简化物体和动作有助于归因，却缩小了真实开放场景覆盖。",
+      "sections": ["Benchmark Construction", "Evaluation Protocol", "Experiments"]
+    },
+    {
+      "benchmark": "RoboIRG-Bench",
+      "kind": "隐式指代与具身记忆",
+      "question": "指令没有直接命名目标，而依赖空间关系、先前事件或推理时，机器人能否找到正确对象？",
+      "scenarios": "基于 RoboMME 的 11 个任务、40 个变体，覆盖直接、推理、空间和上下文指代，并配置显式指令对照。",
+      "implementation": "保持任务、状态和模型底座可比，比较五种基于 π0.5 的记忆／接地配置；每条件三个种子各 50 episode，使用显式与隐式表现差定位问题。",
+      "results": "FrameS 的显式、直接隐式和推理指代成功率分别为 45.82%、29.76%、16.85%；有记忆不等于会利用记忆完成指代推理。",
+      "limits": "成绩同时受底层操作能力约束；比较的是特定 π0.5 配置，不是全部模型家族。显式指令对照很重要，不能把所有失败归因于记忆不足。",
+      "sections": ["Benchmark Design", "Experimental Setup", "Main Results"]
+    },
+    {
+      "benchmark": "RoboMIND",
+      "kind": "多本体真机操作数据",
+      "question": "如何用统一采集与质量控制支持跨形态的模仿学习和 VLA 训练？",
+      "scenarios": "约 10.7 万轨迹，四种本体 Franka、Tien Kung、AgileX Cobot、UR5e；479 任务、96 类物体和 38 种技能。",
+      "implementation": "统一遥操作、传感记录、质量筛选和语言标注，提供不同机器人动作格式的适配；论文分别评估模仿学习、基础模型及数据迁移。",
+      "results": "成果是多本体、带任务语义与失败信息的真实数据平台，以及不同数据规模和来源下的训练对照；用以研究数据覆盖和迁移，不只有单一榜单分数。",
+      "limits": "训练数据规模不是安全场景覆盖率。跨本体评测须注明保留／见过的任务和机器人，不可将全部轨迹既算训练又算独立测试。",
+      "sections": ["III Data Collection", "IV Dataset", "V Experiments"]
+    },
+    {
+      "benchmark": "RoboReel",
+      "kind": "从观察学习的操作基准",
+      "question": "机器人从人类视频学习时，视觉外观、动作对应与精细操作分别构成什么障碍？",
+      "scenarios": "10 项任务包括推块、关抽屉、清空篮子、按按钮、开盖、抓放、收玩具和叠杯；提供人类视频、配对机器人仿真轨迹与多种测试条件。",
+      "implementation": "将人类观察和机器人动作数据对齐，比较视频条件策略与从人体运动提取关键点的策略，并用模拟／实机相对表现检查基准有效性。",
+      "results": "视频条件 π0.5 在部分长时程条件下更强；Point Policy 可较好完成推块、关抽屉，却更难处理精细抓取。方法差异随技能类型而改变。",
+      "limits": "包含配对机器人训练数据的设置不是纯粹从公开视频零样本学会操作；不同数据访问条件必须说明。相对趋势一致不等于模拟绝对成功率等于真机。",
+      "sections": ["3.2 Dataset", "3.3 Tasks", "3.4 Evaluation", "4.2 Results"]
+    },
+    {
+      "benchmark": "RoboTwin",
+      "kind": "双臂生成式数字孪生",
+      "question": "双臂示范稀缺时，如何自动产生多样资产和可执行专家轨迹，并缩小真实评测差距？",
+      "scenarios": "本次阅读 CVPR 2025 对应版本的 14 项任务，包含交接、双物体抓取、摆放、开柜和挂杯；在 COBOT Magic 平台验证。",
+      "implementation": "由单图生成物体孪生，为资产补充空间关系标注，再分解任务与生成专家运动；以 20／50／100 示范训练 2D Diffusion Policy 与不同点云输入的 DP3。",
+      "results": "同一任务随输入和示范量表现差异很大，例如 100 示范的 Block Hammer Beat 上 DP3 XYZ+RGB 为 82.0%，2D DP 为 0%；有限真机微调实验支持仿真预训练的帮助。",
+      "limits": "这里的成功要求终点姿态达标且全程无碰撞。该版本不能与 RoboTwin 2.0 的任务规模或后来的 VLA 结果混用；单项示例不是全基准平均。",
+      "sections": ["3 Digital Twin Generation", "4 Benchmark", "5.1 Setup", "5.2 Results", "5.3 Real World"]
+    },
+    {
+      "benchmark": "SimplerEnv",
+      "kind": "真机策略的仿真代理评测",
+      "question": "不反复占用真实机器人，能否用模拟可靠预测实机策略的相对表现？",
+      "scenarios": "Google Robot 与 WidowX BridgeV2 设置下的罐子、移动物体、抽屉等刚体操作；重点是模拟与真实的配对测试。",
+      "implementation": "以 SAPIEN 搭建环境，缩小控制与视觉差距；Visual Matching 匹配真实画面，Variant Aggregation 汇总环境变体，报告排序违背 MMRV 和 Pearson 相关。",
+      "results": "Google Robot 六个 checkpoint 的任务平均 Pearson r：验证 MSE 为 0.308，VarAgg 为 0.778，VisMatch 为 0.924；VisMatch 的 MMRV 为 0.056。",
+      "limits": "相关性证明的是所测任务／策略上的相对预测价值，不是任意物体动力学或绝对成功率的等价性。原论文以刚体、已知真实设置为主。",
+      "sections": ["III-B Metrics", "IV Control and Visual Gaps", "V SIMPLER", "VI-B Correlations"]
+    },
+    {
+      "benchmark": "Spa-Bench",
+      "kind": "真实机器人空间接地",
+      "question": "模型失败究竟因为不理解空间描述，还是因为不会执行所需机械动作？",
+      "scenarios": "SO-101 上六类桌面任务：物体状态、相对大小、指代描述、关系摆放、序数位置、计数；1,200 示范与 2,892 真实评测轨迹。",
+      "implementation": "保留对象、概念和动作的训练支持，仅留出空间配置；在相同场景比较空间指令与直接操作指令，另测改写、跨任务对象和无需动作条件。",
+      "results": "三个完整评测策略的 ID 成功率为 67.5–73.3%，OOD 为 40.7–52.0%；匹配场景中直接指令比空间指令高 28.3–40.0 个百分点，支持接地错误并非纯运动问题。",
+      "limits": "五个模型并非全部完成同样评测，主要比较限于三个完整策略。小型桌面机器人和有限物体不代表开放世界空间推理。",
+      "sections": ["III-A Task Suite", "III-C Controlled ID and OOD", "V-A", "V-B Matched-Scene Diagnostics"]
+    },
+    {
+      "benchmark": "VLABench",
+      "kind": "长时程语言与操作推理",
+      "question": "语言条件操作能否泛化到新物体类别、隐含语义和需要常识／规划的任务？",
+      "scenarios": "60 个原子任务、40 个复合任务，覆盖抓放、开门／抽屉、挂物、工具、按钮、插入、倾倒、旋转和探索。",
+      "implementation": "任务技能库结合运动规划自动生成轨迹，语言扩增描述对象与意图；分别评估 VLA、基础模型工作流和 VLM，未见物体按不同类别而非仅换纹理划分。",
+      "results": "成果是 100 任务、多维语言语义和更严格的对象类别泛化协议；评测显示低层技能获取、目标语义解析和长任务推理需要分开分析。",
+      "limits": "VLM 问答正确率、模块化流程成功率和端到端 VLA 成功率属于不同接口。未见类别设置比同类新实例更严格，跨论文比较必须统一。",
+      "sections": ["3.1 Task Description", "3.2 Benchmark Evaluation", "3.3 Data Generation", "Experiments"]
+    },
+    {
+      "benchmark": "Agent-SafetyBench",
+      "kind": "通用工具代理安全；邻接参考",
+      "question": "LLM 使用工具与外部环境交互时，会出现哪些超出文本回答的安全失误？",
+      "scenarios": "349 个交互环境、2,000 测试用例、8 类风险、10 种失败模式，包含信息泄漏、财产损失、物理后果及工具可用性等。",
+      "implementation": "整合已有测试、去重和增补，统一环境格式并人工质检；用评分器评价多步工具交互，同时考察有用性与安全提示的效果。",
+      "results": "16 个被测代理均未达到 60% 安全分数；论文将问题归纳为鲁棒性和风险意识不足，提示单靠防御提示不够。",
+      "limits": "其环境多数是软件／工具层，列入物理后果类别不代表运行了机器人动力学。适合借鉴 taxonomy 和安全／有用性双评价，不能直接当 VLA 物理安全分数。",
+      "sections": ["3.1 Risk Categories", "3.2 Data Collection", "3.3 Scorer", "4 Experiments"]
+    },
+    {
+      "benchmark": "Bench2Dex",
+      "kind": "双手视触觉仿真与数据平台",
+      "question": "灵巧手结构和触觉硬件不同，能否在统一格式下研究双手操作与泛化？",
+      "scenarios": "12 种灵巧手、26 个双手任务、约 1,300 条遥操作示范；工具、关节物体和多阶段操作，七种扰动分不变性与等变性两轴。",
+      "implementation": "Isaac Lab 中记录手套／腕部遥操作，离线重放成同步 RGB-D、触觉、关节、动作和物体状态；局部接触几何转换为统一图像式触觉，采用稳定成功 SR 和锁存阶段完成 LSCR。",
+      "results": "四种策略在不同任务和扰动通道表现差异明显；例如 Gaming Desk Setup 的 GR00T-N1.5 四通道平均稳定成功率为 59.5%，ACT 为 31.0%。",
+      "limits": "统一触觉是模拟接触表征，不是特定真实传感器的数字复制；主实验部分策略仅用 RGB 与关节，不能将所有成绩解释为触觉带来的收益。",
+      "sections": ["3.1 Teleoperation", "3.3 Visuo-Tactile Acquisition", "3.4 Datasets and Policy", "3.5 Metrics", "4.2 Main Results"]
+    },
+    {
+      "benchmark": "DESPITE",
+      "kind": "符号具身安全规划",
+      "question": "计划可执行、能达成目标，是否意味着计划也安全？模型变大首先改善哪种能力？",
+      "scenarios": "12,279 个任务覆盖物理和规范危险；主结果／规模分析使用从面板模型筛选出的 1,044 个困难任务，任务因素分析使用全集。",
+      "implementation": "用带安全约束的规划形式化与确定性验证，分别判定计划有效性、危险性和安全完成；评估 23 个模型，并分解规划能力与安全意识。",
+      "results": "最强规划模型仅 0.4% 任务未产生有效计划，却在 28.3% 任务产生危险计划；18 个开源模型的规划能力随规模明显改善，安全意识仍集中在约 38–57%。",
+      "limits": "这是形式化规划验证，不是执行机器人关节轨迹；主结果来自按模型表现挑出的困难集，不能宣称是全部 12,279 任务的随机平均。",
+      "sections": ["1.1 Safe Planning Landscape", "1.2 Scaling", "3.1 Experimental Setup", "3.2 Formalism", "3.3 Evaluation"]
+    },
+    {
+      "benchmark": "EmbodiedBench",
+      "kind": "视觉具身代理能力评测",
+      "question": "多模态模型能否将看到的场景转化成可执行行动，低层空间操作与高层语义规划有何差距？",
+      "scenarios": "1,128 测试任务，EB-ALFRED、EB-Habitat、EB-Navigation、EB-Manipulation 四类环境；六个能力子集覆盖常识、复杂指令、空间、视觉和长时程等。",
+      "implementation": "统一视觉代理输入、历史和结构化动作输出；高层环境使用离散技能，导航和操作采用更细粒度动作，并提供执行有效性反馈及语言／视觉消融。",
+      "results": "24 个模型中，原论文最佳 GPT-4o 平均仅 28.9%；模型在高层任务较强，低层操作明显困难。成果是跨执行层级的标准化环境与能力诊断。",
+      "limits": "它主要测能力，不是专门的安全约束基准；四种环境动作抽象不同，整体均值不能解释为真实机械臂安全成功率。模型结果是论文当时版本。",
+      "sections": ["4.1 High-level and Low-level Tasks", "4.2 Data Collection", "4.3 Agent Design", "5.2 Benchmark Results"]
+    },
+    {
+      "benchmark": "EmbodiedGovBench",
+      "kind": "治理评测协议与原型框架",
+      "question": "机器人能完成任务之外，是否还能受权限约束、接受人工接管、恢复故障并留下可审计记录？",
+      "scenarios": "七个治理维度：未授权能力调用、运行漂移、恢复、策略可移植性、版本升级、人工覆盖与审计；同时考虑单机器人和多主体机群。",
+      "implementation": "参数化场景和扰动经 adapter 注入系统，收集轨迹后由 governance judge 对照合法动作与权限边界；按 minimal／standard／fleet／full 档报告覆盖，不以任务完成代替合规。",
+      "results": "论文成果以指标体系、参与档位、两类原型目标及 worked example 为主；本次核查没有发现可当作大规模实证排行榜的统一比较结果。",
+      "limits": "示例分数不能写成多模型实验成果。可解释运行轨迹是评测前提；不支持某一治理接口与实际治理失败应分别标注。",
+      "sections": ["3 Governance Dimensions", "5 Scoring", "6.4 Execution Protocol", "6.5 Participation Profiles", "7 Prototype Instantiation"]
+    },
+    {
+      "benchmark": "HygieneRoboBench",
+      "kind": "接触历史驱动的卫生规划",
+      "question": "接触历史造成污染传播后，机器人如何安全继续任务，同时满足资源、时间和用户成本优先级？",
+      "scenarios": "134 任务族、624 实例；双夹爪、工具和共用表面间的污染传播，配置不同历史、用户偏好和新接触事件。",
+      "implementation": "规划器读取公开规则、结构化状态和历史；独立 evaluator 完整重放计划，隐藏 reference 给出可行性与最优成本。Hygiene-NSP 结合语言接地、历史重建和 CP-SAT。",
+      "results": "Hygiene-NSP 总体安全解决率 SR 为 94.4%、最优安全解决率 OSR 为 90.4%；安全完成与按用户优先级最省成本并非同一能力。",
+      "limits": "这里的 SR 包括正确拒绝不可行续接，不能当纯执行成功率。参考最优性只在声明的动作、时间界内成立，也不等于真实微生物传播验证。",
+      "sections": ["III-A Task Formulation", "III-C Protocol and Metrics", "IV Hygiene-NSP", "V-B", "V-C"]
+    },
+    {
+      "benchmark": "INFUSE",
+      "kind": "软件代理工作流安全；邻接参考",
+      "question": "长时程代理在持续读取外部材料时，安全边界能否贯穿整个工作流程？",
+      "scenarios": "40 个真实风格软件任务、56 种风险情形、五类威胁；测试对象涉及工具、文件和外部服务，非机器人动作环境。",
+      "implementation": "用隔离环境、统一任务约定和确定性任务验证保持可比性；将正常效用、行为风险的规则核验和模型判分分别记录，比较不同代理及防护条件。",
+      "results": "19 个模型形成 41,824 条风险测试轨迹与 720 条正常参考运行；平均风险目标达成率在模型判分下为 19.6%、规则核验下为 15.4%，说明裁判方式影响报告值。",
+      "limits": "并非所有任务都兼容所有风险情形，不能把 40×56×19 当实际样本数。适合借鉴长链评测与独立验证，不能用作具身碰撞或损伤结论。",
+      "sections": ["3.1 Test Suite Construction", "3.2 Evaluation Pipeline", "4.1 Setup", "4.2 Main Results"]
+    },
+    {
+      "benchmark": "IS-Bench",
+      "kind": "交互过程中的安全规划",
+      "question": "代理能否看到行动引入的新危险，并在正确的先后顺序执行防范和补救？",
+      "scenarios": "161 个场景、388 个独特风险，采用多视角视觉交互；18 种原子技能，涵盖操作前防范和操作后处置。",
+      "implementation": "逐步执行动作并更新图像及历史，按风险相关步骤的前后关系核验安全行为；提供不同级别提醒和安全思维链，分开报告任务 SR、安全 SSR 与风险处置召回。",
+      "results": "L1 条件下 GPT-4o 的任务 SR 为 81.3%，SSR 只有 33.8%；增强安全思维链能改善风险处置，但可能牺牲任务完成。",
+      "limits": "提醒等级与输入场景表示不同会显著改变结果；不能拿有具体安全提示的设置与无提示设置直接排名。终点无事故不代表过程满足顺序要求。",
+      "sections": ["Data Generation Pipeline", "Evaluation Framework", "Main Results", "Visual-Centric Ablations"]
+    },
+    {
+      "benchmark": "LABIT",
+      "kind": "真实工业长时程装配",
+      "question": "装配中的早期误差会怎样影响后续步骤，如何跨多种装配原语报告可靠性？",
+      "scenarios": "DIN 标准零件，包含拧紧、放置、插入、卡扣及不同公差；零件供给分定位送料、无序平放、箱内杂乱三级，壳体固定夹具位置。",
+      "implementation": "按装配原语的难度维度预先计分，并报告每类原语、子装配和整体可靠性；提供零件、模拟及真实基线的位置和力矩记录。",
+      "results": "真实基线重复五次，平均完整装配用时约 32 分钟；抓取可靠性 100%、插入平均 82.3%，但部分重定向步骤为 0%，总分会掩盖局部瓶颈。",
+      "limits": "五次重复规模小，抓取满分来自定位送料条件，不能外推到杂乱箱。低速真实运行影响时间，不应把用时直接视作算法效率上限。",
+      "sections": ["3.2 Tasks", "3.3 Performance Metrics", "3.3.2 Evaluation Protocol", "4.2 Results"]
+    },
+    {
+      "benchmark": "MSK-Bench",
+      "kind": "肌肉驱动全身控制",
+      "question": "控制器能否在高维、延迟且冗余的肌肉系统中完成任务，并产生合理的生理活动？",
+      "scenarios": "22 个任务分六项姿态稳定、六项移动、十项环境交互：站立、平衡、行走、跑跳、楼梯、跨障、开门、接物等。",
+      "implementation": "统一任务和扰动，比较奖励式 RL、代理奖励调优、潜动作、模仿先验与残差适配；除成功率还报告激活代价、关节平滑及肌电包络相似度。",
+      "results": "论文用从诊断到残差适配的案例展示，任务完成改善和肌电一致性必须分别验证；生理指标能揭示仅看奖励／成功看不到的问题。",
+      "limits": "残差案例同时调整目标与参考运动时序，收益不能单独归因于残差模块。肌肉仿真不是人类临床实验，也不是普通关节力矩控制的同条件榜单。",
+      "sections": ["III MSK-Bench", "IV Residual Adaptation Case Study", "Appendix A-B Evaluation Details"]
+    },
+    {
+      "benchmark": "MemForm",
+      "kind": "代理记忆可靠性诊断；邻接参考",
+      "question": "长期记忆形成过程中，经验内容、证据、适用范围、保留选择和整合次序会怎样影响后续行为？",
+      "scenarios": "Content、Evidence、Scope、Selection、Path 五个记忆接口；六种 LLM、两种回答格式，在正常／受影响条件下对照。",
+      "implementation": "对同一语义任务家族构造受控配对，分开检查形成的记忆与后续行为；只在满足正常条件要求的 eligible query 上统计风险目标达成率。",
+      "results": "主实现中，选择题格式的描述性宏平均风险达成率范围为 35.2–84.0%，自由回答为 49.0–87.1%；即使保留经历相同，整合次序仍可能改变行为。",
+      "limits": "各模型 eligible 子集不同，因此这些范围不是相同测试分布上的直接安全排名；这是记忆机制诊断，不是物理机器人执行评测。",
+      "sections": ["3.1 Definition and Scope", "4.1 Construction", "4.3 Protocol", "5.2 Overall Results", "5.5 Limitations"]
+    },
+    {
+      "benchmark": "MineAmongUs",
+      "kind": "三维多代理社会行为沙盒",
+      "question": "多模态代理的社会策略是否同时依赖语言和非语言行动，结果有多少来自模型、有多少来自代理框架？",
+      "scenarios": "三维 Among Us 风格隐藏角色游戏，包含第一人称 RGB、聊天、位置和游戏状态，代理通过具身行动与其他玩家互动。",
+      "implementation": "Minecraft／Mineflayer 沙盒与 Aria 框架分离，固定模型做认知组件消融、固定框架比较模型；将行为标注为 23 类原子及跨时刻行为弧。",
+      "results": "论文发现非语言行为对游戏胜负的贡献在多个设置中更突出，并提供接近人工一致性的自动行为标注验证。成果是可配置沙盒与多模态行为分析协议。",
+      "limits": "有明确隐藏角色目标的游戏行为不能直接证明模型在现实部署中自发产生恶意意图；胜率、行为标签一致率和现实安全性是不同概念。",
+      "sections": ["3.2 Sandbox", "3.3 Aria", "3.4 Evaluation", "4 Experiments"]
+    },
+    {
+      "benchmark": "ORBIT",
+      "kind": "多代理安全评测框架；邻接参考",
+      "question": "通信结构、记忆共享和安全机制如何共同影响多代理系统的风险与正常效用？",
+      "scenarios": "完整框架支持五类场景；论文实证切片主要是浏览器、编码、桌面、协作分配四类，结合不同威胁与防护配置。",
+      "implementation": "基于 UK AISI Inspect，以配置分离角色、拓扑、调度、记忆、风险和防护；在隔离环境中将风险运行与正常运行配对，报告 Wilson／bootstrap 区间。",
+      "results": "约 90 种实验条件形成可控比较矩阵；贡献在于统一架构／安全因素的对照基础设施，而非一个可概括所有系统的总安全分。",
+      "limits": "论文只测试了完整配置空间的一个切片，支持某场景不等于已全面实测；多数任务不是机器人环境，应作为多代理评测设计参考。",
+      "sections": ["3.1 Design Principles", "3.2 Experiment Layers", "3.4 Metrics", "4 Task Suite", "5 Experiment Results"]
+    },
+    {
+      "benchmark": "Peg-in-Bench",
+      "kind": "可打印物理插接基准设计",
+      "question": "如何用可复用的实体零件，系统测量高精度插入对几何、公差和布局变化的泛化？",
+      "scenarios": "五种插销形状、不同配合间隙、模块化底座和孔件；从单插销到多步装配，独立变化目标位置、方向与任务组合。",
+      "implementation": "提供 STL 文件与场景生成器，输出标准化配置及机器可读任务描述；在固定物理条件下控制几何和空间因素。",
+      "results": "主要成果是低门槛的模块化实体件与任务规范。本次正文核查未发现可作为统一模型排行榜的大规模成功率对照，因此不填造一个代表分数。",
+      "limits": "材料、打印精度、公差测量和机器人接触控制都会影响复现。提供场景生成器并不等于论文已验证所有几何／公差组合。",
+      "sections": ["III Benchmark Design", "IV-A Shape Generalization", "IV-B Tolerance-dependent Insertion", "V Scenario Generator"]
+    },
+    {
+      "benchmark": "PhysAI-Bench",
+      "kind": "UAV 任务轨迹中的离线决策问答",
+      "question": "无人机代理在物理约束、通信和多代理信息同时存在时，能否选择合适的下一步决策？",
+      "scenarios": "从自主 UAV 任务对话轨迹提取 10,178 个决策实例，保留任务、传感信息、MCP 工具、A2A 交互及延迟／丢包／边缘负载等网络条件。",
+      "implementation": "仅暴露决策前上下文，构造标准化问题；先选择模型提示／温度配置，再按论文两阶段协议评估，分析少样本与零样本差异。",
+      "results": "模型专属配置选择阶段的最佳准确率为 70.48%；这一数值来自该阶段配置比较，不应直接宣传为全部 10,178 实例的闭环飞行成功率。",
+      "limits": "它评估轨迹派生决策，不执行完整飞行闭环；标签与数据生成链影响有效性。配置选择集和最终测试集必须分清，准确率也不是碰撞率。",
+      "sections": ["III-B Benchmark Overview", "III-C Composition", "IV-D Two-Stage Protocol", "V-A Configuration Selection"]
+    },
+    {
+      "benchmark": "RoboAbstention",
+      "kind": "具身图像条件下的弃权判断",
+      "question": "当对象不存在、指代含糊、能力不足或任务不可行时，规划模型是否知道应当停止或请求澄清？",
+      "scenarios": "从 DROID、Robo2VLM、RoboVQA、BridgeV2、EgoThink 各取 250 图，共 1,250 图、6,069 指令，覆盖不同弃权原因。",
+      "implementation": "三阶段生成：结构化视觉接地、确定性约束推导、按类别生成指令；每图每类别抽取单条，减少模板重复，并分析错误继续执行的类型。",
+      "results": "论文最佳模型 Gemini 2.5 Flash 的弃权率仅 39.0%，显示前沿视觉模型仍常在信息不足时给出计划；成果是可审计的弃权 taxonomy 与图像指令集。",
+      "limits": "主要是静态图像／计划回答，不验证真实物理不可行性或实际执行结果。数据集中该弃权样本的识别率不能代表正常请求上的低误拒绝率。",
+      "sections": ["3.1 Sources", "3.2 Taxonomy", "3.3 Creation", "3.4 Statistics", "4.2 Benchmarking"]
+    },
+    {
+      "benchmark": "RoboJailBench",
+      "kind": "具身规划的安全与有用性评测",
+      "question": "增强拒绝危险目标后，模型是否仍能接受语义相近的正常目标？",
+      "scenarios": "18 类风险后果的 taxonomy，以六种数据来源构造正常／危险意图对照，强调场景接地和安全—有用性平衡。",
+      "implementation": "统一评测接口，分别报告危险目标拒绝的 Security Rate、正常目标接受的 Utility Rate 和调和均值 SU-HM；将无风险干预基线与压力测试分开。",
+      "results": "无额外干预的基线中 Claude Haiku 4.5 的危险拒绝率为 98.28%，GPT 5.4 Nano 正常接受率为 99.49%、SU-HM 为 97.84%；这些不是受压力条件下的最终安全率。",
+      "limits": "本论文 SR 指 Security Rate，其他机器人论文常指 Success Rate。接受／拒绝计划不等于物理动作成功或安全，不可将不同条件表格混读。",
+      "sections": ["3.2 Security Taxonomy", "3.3 Intent Contrast Dataset", "3.4 Evaluation Framework", "4.1 Baseline Performance"]
+    },
+    {
+      "benchmark": "STARS",
+      "kind": "表征学习方法；并非新 benchmark",
+      "question": "如何在社会导航数据稀缺时，从运动与交互关系中学习兼顾空间和社会语义的表征？",
+      "scenarios": "使用已有 SEAN Together 与 SocialNav-SUB 数据，研究短时窗内人／机器人群体运动、社会场景和主观人类感受。",
+      "implementation": "将多主体状态构成同构或异构时空图，以自监督图自编码器学习关系表征，再用线性探针评估不同标注量和跨数据迁移。",
+      "results": "SocialNav-SUB 上 STARS-He 的宏 F1 从 1% 标注的 0.362 到全标注的 0.503；同架构端到端有监督对照为 0.445。成果是表征方法，不是重新提出上述数据集。",
+      "limits": "保留此卡作为方法参考，不能计作新增 benchmark 的成果；F1 衡量下游分类，不是社交导航碰撞率或人类偏好因果效应。",
+      "sections": ["3.3 Graph Construction", "3.4 Autoencoder", "3.5 Linear Probing", "4.1 Downstream Performance", "5 Limitations"]
+    },
+    {
+      "benchmark": "SafeAgentBench",
+      "kind": "交互仿真中的安全任务规划",
+      "question": "代理对明确危险与正常长任务中的隐含风险，是否有足够的主动拒绝和安全规划能力？",
+      "scenarios": "750 个任务、10 类危险、三种任务类型；SafeAgentEnv 提供 17 个高层动作和低层执行器，支持九种代理基线。",
+      "implementation": "任务生成后筛选标注，在交互环境执行高层计划；从执行结果与语义两方面评价，分别比较详细、抽象及长时程任务。",
+      "results": "对详细危险任务，最有安全意识的基线拒绝率也只有 10%；仅替换底座 LLM 没有稳定解决安全意识不足。成果是可执行危险任务集与统一环境。",
+      "limits": "高层动作接口和控制器可能承担部分运动能力，不能与端到端关节 VLA 同分比较；拒绝率低不等于所有任务都成功造成物理后果。",
+      "sections": ["3 Dataset", "4.1 Embodied Environment", "4.2 Evaluation Methods", "5.1", "5.3", "5.4"]
+    },
+    {
+      "benchmark": "SkillSafetyBench",
+      "kind": "技能型软件代理安全；邻接参考",
+      "question": "用户任务正常时，代理是否会过度信任技能说明及本地工作流材料，从而做出越界行为？",
+      "scenarios": "47 个任务、155 个风险案例、六域和 30 个安全类别；使用多种命令行代理和模型组合。",
+      "implementation": "每个案例附可执行任务环境及独立规则验证器，把正常任务完成与风险行为分开评分；比较的是代理框架和模型的组合，而不仅底座模型。",
+      "results": "主表同一 GLM-5.1 在两种代理框架下的风险达成率分别为 50.3% 和 33.5%，显示框架上下文有影响，但该对照不足以孤立解释具体机制。",
+      "limits": "这里的 skill 是软件代理技能包，不是机器人运动技能。风险达成与任务成功可同时发生，安全与效用不能用一个数字替代。",
+      "sections": ["3 Benchmark Overview", "4 Benchmark Construction", "5.3 Metrics", "5.4 Main Results"]
+    },
+    {
+      "benchmark": "CARLA / CARLA Leaderboard",
+      "kind": "驾驶仿真平台；原论文与榜单需区分",
+      "question": "如何在可控城市环境、天气与动态交通下比较自动驾驶方法及其泛化？",
+      "scenarios": "2017 原论文使用两个城镇、六种天气，四类任务从直行、转弯到导航及带动态障碍导航；训练和未见城镇／天气分开。",
+      "implementation": "开放城市资产、传感器和交互仿真，比较模块化、模仿学习与强化学习方法；按到达目标、距离及违规等评价。",
+      "results": "成果是 CARLA 平台与早期受控驾驶协议，展示方法在未见天气／城镇上的不同泛化特点。本卡被引数对应原始模拟器论文。",
+      "limits": "原实验允许忽略限速与信号灯，不能视为现代 Leaderboard 的规则。Leaderboard 是后续独立协议与版本，模拟器论文引用量不等于排行榜引用量。",
+      "sections": ["2 Simulation Engine", "3 Autonomous Driving", "4 Experiments", "5 Results", "S.3 Experimental Setup"]
+    },
+    {
+      "benchmark": "NAVSIM",
+      "kind": "非反应式驾驶仿真评测",
+      "question": "能否保留真实观测和大规模数据，同时让离线驾驶评测比轨迹距离误差更接近闭环表现？",
+      "scenarios": "从真实驾驶数据挑选有挑战场景，短时展开鸟瞰状态；背景交通按记录运行，不因被测策略而改变。",
+      "implementation": "将候选轨迹在非反应式环境中展开，以碰撞、行驶区域、进度、碰撞时间等组成 PDMS，并对照不同闭环设置检查相关性。",
+      "results": "CVPR 2024 挑战赛有 143 队、463 次提交；论文发现中等算力的 TransFuser 可与部分更复杂驾驶架构竞争。主要成果是数据驱动的可扩展评测协议。",
+      "limits": "非反应式模拟不包含他车对自车行为的真实反应，不能替代长期交互安全评估。比赛提交数是社区参与证据，不是论文被引数。",
+      "sections": ["3 NAVSIM", "3.1 Train and Test Splits", "4.1 Closed-Loop Alignment", "4.2 Analysis"]
+    },
+    {
+      "benchmark": "SafeBench",
+      "kind": "驾驶安全关键场景评测",
+      "question": "在相同平台和路线下，不同危险场景生成方法对驾驶策略的压力有何差别？",
+      "scenarios": "基于 CARLA，八类 NHTSA 风格关键场景，每类十种变化；四种场景生成算法、四种 RL 驾驶算法与四种观察输入。",
+      "implementation": "统一场景、路线与控制接口，从安全、功能和驾驶礼仪三个层面评分；比较正常场景与安全关键场景，定位平均驾驶成绩遗漏的弱点。",
+      "results": "4D 输入条件下 TD3 的综合分由正常场景 0.830 降至关键场景 0.518，且正常与关键场景的算法排名不同。",
+      "limits": "综合分包含多种归一化指标和权重，不能当碰撞概率；实验主要是指定 RL 策略，不能直接推断当前全部端到端驾驶系统。",
+      "sections": ["3.1 Platform", "3.2 Scenarios", "3.4 Evaluation Metrics", "4.3 Benchmark Results"]
+    },
+    {
+      "benchmark": "VIPS",
+      "kind": "车路协同伪仿真评测",
+      "question": "路侧视角能否改善遮挡下的驾驶规划，并在车辆偏离名义轨迹后保持有效？",
+      "scenarios": "基于 V2X-Real 的车辆／路侧同步观测，补充矢量地图与有效配对场景；重点是交叉口遮挡、交通交互和偏离后的恢复。",
+      "implementation": "Stage 1 用真实观察，Stage 2 用偏移后的合成观察，合成 EPDMS 评价；提出稀疏协同表示 CoS-V2X，并比较通信量与规划表现。",
+      "results": "论文中多数方法在 Stage 2 下降，协同方法整体较强；CoS-V2X 在所测方法中综合表现最佳，通信带宽需求低于 Uni-V2X。",
+      "limits": "伪仿真的合成观察质量会影响排名，并非完全反应式交通闭环；原始 V2X-Real 数据集和本文新增地图／协议的成果应分别归属。",
+      "sections": ["3.1 Datasets", "3.2 Protocol", "3.3 Stage 1", "3.4 Stage 2", "5.2 Experiments", "6 Analysis"]
+    },
+    {
+      "benchmark": "nuScenes",
+      "kind": "真实驾驶感知数据与评测",
+      "question": "如何以完整车载多传感器数据标准化三维检测和跟踪，而不只依靠单目图像？",
+      "scenarios": "1,000 个各 20 秒场景，六相机、五雷达、一个激光雷达，360° 感知；原始标注含 23 类物体与八种属性。",
+      "implementation": "同步传感器、定位和地图，人工标注三维框；定义检测与跟踪的时间信息边界，提供 NDS、误差分量及 AMOTA／AMOTP 等，而不只计算框重叠。",
+      "results": "成果是多模态真实驾驶数据、开发工具和检测／跟踪基线，成为后续多任务驾驶研究的重要数据底座。原论文自身主要评价感知。",
+      "limits": "23 类标注不等于检测榜单全部评价 23 类。后来的预测／规划扩展不应倒推为原论文已完成；检测高分不是闭环驾驶安全保证。",
+      "sections": ["2 The nuScenes Dataset", "3.1 Detection", "3.2 Tracking", "4 Experiments"]
+    }
+  ]
+}

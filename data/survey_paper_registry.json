@@ -1,0 +1,3909 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-03",
+  "raw_row_count": 193,
+  "paper_count": 199,
+  "supplement_count": 6,
+  "deduplication": "原表保留不改写；补充来源按确切标题／arXiv／已知 DOI 别名连接，不按相似题名合并。",
+  "papers": [
+    {
+      "paper_id": "P0001",
+      "title": "HazardArena: Evaluating Semantic Safety in Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2604.12447",
+      "raw_row_indices": [
+        1
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "HazardArena"
+      ],
+      "reviewed_source": {
+        "title": "HazardArena: Evaluating Semantic Safety in Vision-Language-Action Models",
+        "url": "https://arxiv.org/abs/2604.12447",
+        "fulltext_url": "https://arxiv.org/html/2604.12447v3",
+        "authors": [
+          "Zixing Chen",
+          "Yifeng Gao",
+          "Li Wang",
+          "Yunhan Zhao",
+          "Yi Liu",
+          "Jiayu Li",
+          "Xiang Zheng",
+          "Zuxuan Wu",
+          "Cong Wang",
+          "Xingjun Ma",
+          "Yu-Gang Jiang"
+        ],
+        "version": "2604.12447v3",
+        "first_submitted": "2026-04-14T08:32:02Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0002",
+      "title": "SafeStage: Evaluating Safety Before, During, and After Vision-Language-Conditioned Robot Manipulation",
+      "url": "https://arxiv.org/abs/2609.21223",
+      "raw_row_indices": [
+        2
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "SafeStage"
+      ],
+      "reviewed_source": {
+        "title": "SafeStage: Evaluating Safety Before, During, and After Vision-Language-Conditioned Robot Manipulation",
+        "url": "https://arxiv.org/abs/2609.21223",
+        "fulltext_url": "https://arxiv.org/html/2609.21223v1",
+        "authors": [
+          "Jinzhu Luo",
+          "Qi Zhang",
+          "Wei Wang",
+          "Wei Jiang"
+        ],
+        "version": "2609.21223v1",
+        "first_submitted": "2026-09-18T02:12:40Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0003",
+      "title": "LIBERO-Plus: In-depth Robustness Analysis of Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2510.13626",
+      "raw_row_indices": [
+        3
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0004",
+      "title": "LIBERO-X: Robustness Litmus for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2602.06556",
+      "raw_row_indices": [
+        4
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0005",
+      "title": "LIBERO-Pro2.0: A Benchmark for Evaluating the Robustness of Embodied Foundation Models",
+      "url": "https://arxiv.org/abs/2610.24587",
+      "raw_row_indices": [
+        5
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0006",
+      "title": "LIBERO-RIG: A Hardware-Setup Robustness Benchmark for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2610.18843",
+      "raw_row_indices": [
+        6
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0007",
+      "title": "LIBERO-VPro: Benchmarking Closed-Loop Visual Robustness of Robotic Foundation Models",
+      "url": "https://arxiv.org/abs/2609.24350",
+      "raw_row_indices": [
+        7
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "LIBERO-VPro"
+      ],
+      "reviewed_source": {
+        "title": "LIBERO-VPro: Benchmarking Closed-Loop Visual Robustness of Robotic Foundation Models",
+        "url": "https://arxiv.org/abs/2609.24350",
+        "fulltext_url": "https://arxiv.org/html/2609.24350v1",
+        "authors": [
+          "Huiqiong Li",
+          "Zhiting Mei",
+          "Anirudha Majumdar",
+          "Jingjing Chen",
+          "Yu-Gang Jiang",
+          "Bin Zhu"
+        ],
+        "version": "2609.24350v1",
+        "first_submitted": "2026-09-21T09:43:41Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0008",
+      "title": "LIBERO-MAX: Do Robot Policies Adapt When the World Changes?",
+      "url": "https://arxiv.org/abs/2609.36518",
+      "raw_row_indices": [
+        8
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "LIBERO-MAX"
+      ],
+      "reviewed_source": {
+        "title": "LIBERO-MAX: Do Robot Policies Adapt When the World Changes?",
+        "url": "https://arxiv.org/abs/2609.36518",
+        "fulltext_url": "https://arxiv.org/html/2609.36518v1",
+        "authors": [
+          "Yunbei Zhang",
+          "Zijian Jin",
+          "Yuanzhe Liu",
+          "Janet Wang",
+          "Xilun Zhang",
+          "Yuyou Zhang",
+          "Zhenyu Zhang",
+          "Daoan Zhang",
+          "Shuaicheng Niu",
+          "Gen Li",
+          "Jianfei Yang",
+          "Jihun Hamm",
+          "Ismini Lourentzou",
+          "Weirui Ye",
+          "Bo Liu",
+          "Peter Stone",
+          "Marco Pavone"
+        ],
+        "version": "2609.36518v1",
+        "first_submitted": "2026-09-29T02:12:26Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0009",
+      "title": "LIBERO-RECOVER: Beyond Task Success Towards Failure Recovery in Robotic Manipulation Models",
+      "url": "https://arxiv.org/abs/2609.05178",
+      "raw_row_indices": [
+        9
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "LIBERO-RECOVER"
+      ],
+      "reviewed_source": {
+        "title": "LIBERO-RECOVER: Beyond Task Success Towards Failure Recovery in Robotic Manipulation Models",
+        "url": "https://arxiv.org/abs/2609.05178",
+        "fulltext_url": "https://arxiv.org/html/2609.05178v3",
+        "authors": [
+          "Lin Liu",
+          "Zhicheng Bao",
+          "Lu Zhang",
+          "Ziying Song",
+          "Wu Yang",
+          "Yuzheng Zhuang",
+          "Shuai Tao",
+          "Wulong Liu",
+          "Caiyan Jia",
+          "Huchuan Lu"
+        ],
+        "version": "2609.05178v3",
+        "first_submitted": "2026-09-04T14:15:27Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0010",
+      "title": "Beyond Single-Axis Testing: Paired Evaluation of Compound Robustness in Vision-Language-Action Policies",
+      "url": "https://arxiv.org/abs/2609.15940",
+      "raw_row_indices": [
+        10
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0011",
+      "title": "RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation",
+      "url": "https://arxiv.org/abs/2610.27861",
+      "raw_row_indices": [
+        11
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboCasa-Shift"
+      ],
+      "reviewed_source": {
+        "title": "RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation",
+        "url": "https://arxiv.org/abs/2610.27861",
+        "fulltext_url": "https://arxiv.org/html/2610.27861v1",
+        "authors": [
+          "Haocheng Wang",
+          "Youquan Liu",
+          "Weiyu Guo",
+          "Aokai Zhang",
+          "Donghang Wu",
+          "Hongyu Liu",
+          "Sha Zhang",
+          "Weidong Yang",
+          "Ben Fei"
+        ],
+        "version": "2610.27861v1",
+        "first_submitted": "2026-10-20T08:42:42Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0012",
+      "title": "VLA-GAUGE: Systematically Evaluating Generalization and Robustness in Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2610.16567",
+      "raw_row_indices": [
+        12
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0013",
+      "title": "AttackVLA: Benchmarking Adversarial and Backdoor Attacks on Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2511.12149",
+      "raw_row_indices": [
+        13
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0014",
+      "title": "Manipulation Facing Threats: Evaluating Physical Vulnerabilities in End-to-End Vision Language Action Models",
+      "url": "https://arxiv.org/abs/2409.13174",
+      "raw_row_indices": [
+        14
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0015",
+      "title": "VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer",
+      "url": "https://arxiv.org/abs/2512.11891",
+      "raw_row_indices": [
+        15
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "SafeLIBERO"
+      ],
+      "reviewed_source": {
+        "title": "VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer",
+        "url": "https://arxiv.org/abs/2512.11891",
+        "fulltext_url": "https://arxiv.org/html/2512.11891v2",
+        "authors": [
+          "Songqiao Hu",
+          "Zeyi Liu",
+          "Shuang Liu",
+          "Jun Cen",
+          "Zihan Meng",
+          "Shihefeng Wang",
+          "Xiang Li",
+          "Xiao He"
+        ],
+        "version": "2512.11891v2",
+        "first_submitted": "2025-12-09T16:53:44Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0016",
+      "title": "TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes",
+      "url": "https://arxiv.org/abs/2608.26578",
+      "raw_row_indices": [
+        16
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "Trap-LIBERO / Trap-RoboTwin"
+      ],
+      "reviewed_source": {
+        "title": "TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes",
+        "url": "https://arxiv.org/abs/2608.26578",
+        "fulltext_url": "https://arxiv.org/html/2608.26578v1",
+        "authors": [
+          "Jun-Hui Liu",
+          "Kun-Yu Lin",
+          "Yi-Lin Wei",
+          "Xu-Han Chen",
+          "Yinghao Li",
+          "Zhuohao Li",
+          "Yuan-Ming Li",
+          "Qing Zhang",
+          "Xiaoyi Fan",
+          "Dongmei Jiang",
+          "Yan Li",
+          "Wei-Shi Zheng"
+        ],
+        "version": "2608.26578v1",
+        "first_submitted": "2026-08-27T03:44:49Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0017",
+      "title": "Taming VLAs under Robot Execution Errors: Self-Compensation and Stress Testing",
+      "url": "https://arxiv.org/abs/2609.37334",
+      "raw_row_indices": [
+        17
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0018",
+      "title": "ManiPhysicsBench: Physics-Based Assessment of Object Preservation in VLA Manipulation",
+      "url": "https://arxiv.org/abs/2610.02802",
+      "raw_row_indices": [
+        18
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "ManiPhysicsBench"
+      ],
+      "reviewed_source": {
+        "title": "ManiPhysicsBench: Physics-Based Assessment of Object Preservation in VLA Manipulation",
+        "url": "https://arxiv.org/abs/2610.02802",
+        "fulltext_url": "https://arxiv.org/html/2610.02802v1",
+        "authors": [
+          "Sangwu Park",
+          "Yeonjun In",
+          "Wonjoong Kim",
+          "Sungwon Kim",
+          "Sein Kim",
+          "Chanyoung Park"
+        ],
+        "version": "2610.02802v1",
+        "first_submitted": "2026-10-02T04:49:46Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0019",
+      "title": "Spa-Bench: A Real-Robot Benchmark for Spatial Grounding in Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2610.12696",
+      "raw_row_indices": [
+        19
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "Spa-Bench"
+      ],
+      "reviewed_source": {
+        "title": "Spa-Bench: A Real-Robot Benchmark for Spatial Grounding in Vision-Language-Action Models",
+        "url": "https://arxiv.org/abs/2610.12696",
+        "fulltext_url": "https://arxiv.org/html/2610.12696v1",
+        "authors": [
+          "Justin Tien-Smith",
+          "Matthew Pidden",
+          "Rolandos Alexandros Potamias"
+        ],
+        "version": "2610.12696v1",
+        "first_submitted": "2026-10-08T20:22:35Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0020",
+      "title": "RoboIRGBench: Benchmarking Implicit Referential Grounding in Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2609.34384",
+      "raw_row_indices": [
+        20
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboIRG-Bench"
+      ],
+      "reviewed_source": {
+        "title": "RoboIRGBench: Benchmarking Implicit Referential Grounding in Vision-Language-Action Models",
+        "url": "https://arxiv.org/abs/2609.34384",
+        "fulltext_url": "https://arxiv.org/html/2609.34384v1",
+        "authors": [
+          "Aernaer Akelijiang",
+          "Jiannan Li",
+          "Zhineng Chen",
+          "Jingjing Chen",
+          "Bin Zhu"
+        ],
+        "version": "2609.34384v1",
+        "first_submitted": "2026-09-28T06:00:55Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0021",
+      "title": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
+      "url": "https://arxiv.org/abs/2609.25562",
+      "raw_row_indices": [
+        21
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "IndustrialVLA-Bench"
+      ],
+      "reviewed_source": {
+        "title": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
+        "url": "https://arxiv.org/abs/2609.25562",
+        "fulltext_url": "https://arxiv.org/html/2609.25562v2",
+        "authors": [
+          "Yiqi Wang",
+          "Zhifeng Rao",
+          "Jiaqi Zhang",
+          "Xiaoyang Li",
+          "Zhangkai Wu",
+          "Yiqun Duan",
+          "Mingkai Zheng",
+          "Fei Wang",
+          "Shan You",
+          "Taotao Cai"
+        ],
+        "version": "2609.25562v2",
+        "first_submitted": "2026-09-22T01:51:09Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0022",
+      "title": "VLA-Retain: Benchmarking Cross-Dimension Effects of Vision Tuning in VLAs",
+      "url": "https://arxiv.org/abs/2610.27698",
+      "raw_row_indices": [
+        22
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0023",
+      "title": "Same Trajectory, Contradictory Rewards (ROBORMBENCH): Paraphrase Fragility in Vision Language Reward Models",
+      "url": "https://arxiv.org/abs/2609.05401",
+      "raw_row_indices": [
+        23
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0024",
+      "title": "Language2Drive: Do Vision-Language-Action Models Really Follow the Instructions in Autonomous Driving?",
+      "url": "https://arxiv.org/abs/2610.16634",
+      "raw_row_indices": [
+        24
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0025",
+      "title": "Successful but Unsafe: An Analytical Benchmark for Revealing Collisions in Vision-and-Language Navigation",
+      "url": "https://arxiv.org/abs/2610.14682",
+      "raw_row_indices": [
+        25
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0026",
+      "title": "Validating, Not Sampling: Region-Level Robustness of Vision-Language and Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2609.22293",
+      "raw_row_indices": [
+        26
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0027",
+      "title": "Paraphrase Consensus Is Not Self-Consistency: Instruction Reliance and Robustness in VLA Policies",
+      "url": "https://arxiv.org/abs/2610.19438",
+      "raw_row_indices": [
+        27
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0028",
+      "title": "Encoded but Not in Control: Revealing the Grounding Gap in Vision-Language Robot Policies",
+      "url": "https://arxiv.org/abs/2610.06235",
+      "raw_row_indices": [
+        28
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0029",
+      "title": "Do Vision-Language-Action Models Understand Instructions? A Mechanistic Interpretability Study on Language Grounding",
+      "url": "https://arxiv.org/abs/2610.10178",
+      "raw_row_indices": [
+        29
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0030",
+      "title": "When Instructions Retrieve Trajectories: Diagnosing and Mitigating Generalization Failures in VLA Models",
+      "url": "https://arxiv.org/abs/2609.39971",
+      "raw_row_indices": [
+        30
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0031",
+      "title": "Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks",
+      "url": "https://arxiv.org/abs/2610.01351",
+      "raw_row_indices": [
+        31
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0032",
+      "title": "Beyond Success Rate: Interventional Evaluation of Memory in Vision-Language-Action Systems",
+      "url": "https://arxiv.org/abs/2610.23372",
+      "raw_row_indices": [
+        32
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0033",
+      "title": "VLA-Scope: Shift-Aware Failure Prediction for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2609.21246",
+      "raw_row_indices": [
+        33
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0034",
+      "title": "Blackout vs. Freeze: Analyzing Physical Failure Modes of VLAs under Camera Faults",
+      "url": "https://arxiv.org/abs/2609.39145",
+      "raw_row_indices": [
+        34
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0035",
+      "title": "Anatomy of a Closed-Loop Collapse: A Causal Case Study of a Compressed VLA Policy",
+      "url": "https://arxiv.org/abs/2609.23048",
+      "raw_row_indices": [
+        35
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0036",
+      "title": "Beyond the Leaderboard: Counterfactual Diagnosis of End-to-End and VLA Driving Policies Under Domain Shift",
+      "url": "https://arxiv.org/abs/2609.22582",
+      "raw_row_indices": [
+        36
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0037",
+      "title": "Perceives but Doesn't Brake: A Perception-Action Binding Gap in Reasoning Driving VLAs",
+      "url": "https://arxiv.org/abs/2610.28184",
+      "raw_row_indices": [
+        37
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0038",
+      "title": "Uncovering Linguistic Fragility in Vision-Language-Action Models via Diversity-Aware Red Teaming",
+      "url": "https://arxiv.org/abs/2604.05595",
+      "raw_row_indices": [
+        38
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0039",
+      "title": "Red-Teaming Vision-Language-Action Models via Quality Diversity Prompt Generation for Robust Robot Policies",
+      "url": "https://arxiv.org/abs/2603.12510",
+      "raw_row_indices": [
+        39
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0040",
+      "title": "No Free Checker: A Survey of Verifiers for Robot Policies",
+      "url": "https://arxiv.org/abs/2609.09250",
+      "raw_row_indices": [
+        40
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0041",
+      "title": "Vision-Language-Action Safety: Threats, Challenges, Evaluations, and Mechanisms",
+      "url": "https://arxiv.org/abs/2604.23775",
+      "raw_row_indices": [
+        41
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0042",
+      "title": "MINERVA: How Small Can a Manipulation Policy Be and Still Solve LIBERO?",
+      "url": "https://arxiv.org/abs/2609.03715",
+      "raw_row_indices": [
+        42
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0043",
+      "title": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
+      "url": "https://arxiv.org/abs/2609.08209",
+      "raw_row_indices": [
+        43
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboReel"
+      ],
+      "reviewed_source": {
+        "title": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
+        "url": "https://arxiv.org/abs/2609.08209",
+        "fulltext_url": "https://arxiv.org/html/2609.08209v4",
+        "authors": [
+          "Weiwei Gu",
+          "Anmol Gupta",
+          "Anant Sah",
+          "Ryan Varghese",
+          "Lalitha Shreya Vanam",
+          "Prabhath Adireddi",
+          "Peter Karkus",
+          "Nakul Gopalan"
+        ],
+        "version": "2609.08209v4",
+        "first_submitted": "2026-09-08T03:48:44Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0044",
+      "title": "Inspect Robots: Evaluating the Capabilities and Safety of Embodied AI",
+      "url": "https://arxiv.org/abs/2610.06306",
+      "raw_row_indices": [
+        44
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0045",
+      "title": "AGENTSAFE: Benchmarking the Safety of Embodied Agents on Hazardous Instructions",
+      "url": "https://arxiv.org/abs/2506.14697",
+      "raw_row_indices": [
+        45
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0046",
+      "title": "EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents",
+      "url": "https://arxiv.org/abs/2502.09560",
+      "raw_row_indices": [
+        46
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "EmbodiedBench"
+      ],
+      "reviewed_source": {
+        "title": "EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents",
+        "url": "https://arxiv.org/abs/2502.09560",
+        "fulltext_url": "https://arxiv.org/html/2502.09560v3",
+        "authors": [
+          "Rui Yang",
+          "Hanyang Chen",
+          "Junyu Zhang",
+          "Mark Zhao",
+          "Cheng Qian",
+          "Kangrui Wang",
+          "Qineng Wang",
+          "Teja Venkat Koripella",
+          "Marziyeh Movahedi",
+          "Manling Li",
+          "Heng Ji",
+          "Huan Zhang",
+          "Tong Zhang"
+        ],
+        "version": "2502.09560v3",
+        "first_submitted": "2025-02-13T18:11:34Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0047",
+      "title": "IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks",
+      "url": "https://arxiv.org/abs/2506.16402",
+      "raw_row_indices": [
+        47
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "IS-Bench"
+      ],
+      "reviewed_source": {
+        "title": "IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks",
+        "url": "https://arxiv.org/abs/2506.16402",
+        "fulltext_url": "https://arxiv.org/html/2506.16402v3",
+        "authors": [
+          "Xiaoya Lu",
+          "Zeren Chen",
+          "Xuhao Hu",
+          "Yijin Zhou",
+          "Weichen Zhang",
+          "Dongrui Liu",
+          "Lu Sheng",
+          "Jing Shao"
+        ],
+        "version": "2506.16402v3",
+        "first_submitted": "2025-06-19T15:34:46Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0048",
+      "title": "SafeAgentBench: A Benchmark for Safe Task Planning of Embodied LLM Agents",
+      "url": "https://arxiv.org/abs/2412.13178",
+      "raw_row_indices": [
+        48
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "SafeAgentBench"
+      ],
+      "reviewed_source": {
+        "title": "SafeAgentBench: A Benchmark for Safe Task Planning of Embodied LLM Agents",
+        "url": "https://arxiv.org/abs/2412.13178",
+        "fulltext_url": "https://arxiv.org/html/2412.13178v5",
+        "authors": [
+          "Sheng Yin",
+          "Xianghe Pang",
+          "Yuanzhuo Ding",
+          "Menglan Chen",
+          "Yutong Bi",
+          "Yichen Xiong",
+          "Wenhao Huang",
+          "Zhen Xiang",
+          "Jing Shao",
+          "Siheng Chen"
+        ],
+        "version": "2412.13178v5",
+        "first_submitted": "2024-12-17T18:55:58Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0049",
+      "title": "A Framework for Benchmarking and Aligning Task-Planning Safety in LLM-Based Embodied Agents",
+      "url": "https://arxiv.org/abs/2504.14650",
+      "raw_row_indices": [
+        49
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0050",
+      "title": "SafeMind: Benchmarking and Mitigating Safety Risks in Embodied LLM Agents",
+      "url": "https://arxiv.org/abs/2509.25885",
+      "raw_row_indices": [
+        50
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0051",
+      "title": "Generating Robot Constitutions & Benchmarks for Semantic Safety",
+      "url": "https://arxiv.org/abs/2503.08663",
+      "raw_row_indices": [
+        51
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "ASIMOV Benchmark"
+      ],
+      "reviewed_source": {
+        "title": "Generating Robot Constitutions & Benchmarks for Semantic Safety",
+        "url": "https://arxiv.org/abs/2503.08663",
+        "fulltext_url": "https://arxiv.org/html/2503.08663v1",
+        "authors": [
+          "Pierre Sermanet",
+          "Anirudha Majumdar",
+          "Alex Irpan",
+          "Dmitry Kalashnikov",
+          "Vikas Sindhwani"
+        ],
+        "version": "2503.08663v1",
+        "first_submitted": "2025-03-11T17:50:47Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0052",
+      "title": "VestaBench: An Embodied Benchmark for Safe Long-Horizon Planning Under Multi-Constraint and Adversarial Settings",
+      "url": "https://doi.org/10.18653/v1/2025.emnlp-industry.149",
+      "raw_row_indices": [
+        52
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0053",
+      "title": "HASARD: A Benchmark for Vision-Based Safe Reinforcement Learning in Embodied Agents",
+      "url": "https://arxiv.org/abs/2503.08241",
+      "raw_row_indices": [
+        53
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0054",
+      "title": "Benchmarking the Safety of Large Language Models for Robotic Health Attendant Control",
+      "url": "https://arxiv.org/abs/2604.26577",
+      "raw_row_indices": [
+        54
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0055",
+      "title": "RoboJailBench: Benchmarking Adversarial Attacks and Defenses in Embodied Robotic Agents",
+      "url": "https://arxiv.org/abs/2605.19328",
+      "raw_row_indices": [
+        55
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboJailBench"
+      ],
+      "reviewed_source": {
+        "title": "RoboJailBench: Benchmarking Adversarial Attacks and Defenses in Embodied Robotic Agents",
+        "url": "https://arxiv.org/abs/2605.19328",
+        "fulltext_url": "https://arxiv.org/html/2605.19328v1",
+        "authors": [
+          "Doguhuan Yeke",
+          "Yanming Zhou",
+          "Leo Y. Lin",
+          "Hongyu Cai",
+          "Antonio Bianchi",
+          "Z. Berkay Celik"
+        ],
+        "version": "2605.19328v1",
+        "first_submitted": "2026-05-19T04:07:24Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0056",
+      "title": "Benchmarking Jailbreak Guardrails for Embodied Agents",
+      "url": "https://arxiv.org/abs/2610.06122",
+      "raw_row_indices": [
+        56
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0057",
+      "title": "RT-Safe: Benchmarking Agent Safety in Real-Time Embodied Environment",
+      "url": "https://arxiv.org/abs/2610.09294",
+      "raw_row_indices": [
+        57
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0058",
+      "title": "CAPSafe: A Benchmark for Contextual Action and Plan Safety Reasoning in Embodied Agents",
+      "url": "https://arxiv.org/abs/2610.28381",
+      "raw_row_indices": [
+        58
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0059",
+      "title": "EmbodiedGovBench: A Benchmark for Governance, Recovery, and Upgrade Safety in Embodied Agent Systems",
+      "url": "https://arxiv.org/abs/2604.11174",
+      "raw_row_indices": [
+        59
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "EmbodiedGovBench"
+      ],
+      "reviewed_source": {
+        "title": "EmbodiedGovBench: A Benchmark for Governance, Recovery, and Upgrade Safety in Embodied Agent Systems",
+        "url": "https://arxiv.org/abs/2604.11174",
+        "fulltext_url": "https://arxiv.org/html/2604.11174v1",
+        "authors": [
+          "Xue Qin",
+          "Simin Luan",
+          "John See",
+          "Cong Yang",
+          "Zhijun Li"
+        ],
+        "version": "2604.11174v1",
+        "first_submitted": "2026-04-13T08:34:04Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0060",
+      "title": "Agent-SafetyBench: Evaluating the Safety of LLM Agents",
+      "url": "https://arxiv.org/abs/2412.14470",
+      "raw_row_indices": [
+        60
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "Agent-SafetyBench"
+      ],
+      "reviewed_source": {
+        "title": "Agent-SafetyBench: Evaluating the Safety of LLM Agents",
+        "url": "https://arxiv.org/abs/2412.14470",
+        "fulltext_url": "https://arxiv.org/html/2412.14470v2",
+        "authors": [
+          "Zhexin Zhang",
+          "Shiyao Cui",
+          "Yida Lu",
+          "Jingzhuo Zhou",
+          "Junxiao Yang",
+          "Hongning Wang",
+          "Minlie Huang"
+        ],
+        "version": "2412.14470v2",
+        "first_submitted": "2024-12-19T02:35:15Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0061",
+      "title": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
+      "url": "https://arxiv.org/abs/2605.20544",
+      "raw_row_indices": [
+        61
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboAbstention"
+      ],
+      "reviewed_source": {
+        "title": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
+        "url": "https://arxiv.org/abs/2605.20544",
+        "fulltext_url": "https://arxiv.org/html/2605.20544v1",
+        "authors": [
+          "Doguhan Yeke",
+          "Elif Su Temirel",
+          "Ananth Shreekumar",
+          "Brandon Lee",
+          "Dongyan Xu",
+          "Z Berkay Celik"
+        ],
+        "version": "2605.20544v1",
+        "first_submitted": "2026-05-19T22:32:44Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0062",
+      "title": "GuardianBench: A Same-Scene Instruction-Contrastive Benchmark for Latent Contextual Risk in Embodied AI",
+      "url": "https://arxiv.org/abs/2608.21928",
+      "raw_row_indices": [
+        62
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0063",
+      "title": "MMA-SafetyBench: A Benchmark for Multimodal Agent Safety Evaluation",
+      "url": "https://arxiv.org/abs/2610.19384",
+      "raw_row_indices": [
+        63
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0064",
+      "title": "Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making",
+      "url": "https://doi.org/10.52202/079017-3188",
+      "raw_row_indices": [
+        64
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0065",
+      "title": "MAGMA-Bench: Evaluating Long-Horizon Embodied Agents under Dynamic Tasks and Execution Failures",
+      "url": "https://arxiv.org/abs/2610.13534",
+      "raw_row_indices": [
+        65
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0066",
+      "title": "Frontier LLMs Enter the World of Robotics: A Cross-Model Evaluation on RoboColiseum",
+      "url": "https://arxiv.org/abs/2610.27865",
+      "raw_row_indices": [
+        66
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0067",
+      "title": "An Unexpected Robot Policy: Early Evaluations of GPT-6 Astra on RoboDojo and Beyond",
+      "url": "https://arxiv.org/abs/2609.24170",
+      "raw_row_indices": [
+        67
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0068",
+      "title": "Does Continual Imitation Learning Remain Grounded? A Language-Perturbed Benchmark for Robotic Task Retention",
+      "url": "https://arxiv.org/abs/2610.00542",
+      "raw_row_indices": [
+        68
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0069",
+      "title": "Exploring the Adversarial Vulnerabilities of Vision-Language-Action Models in Robotics",
+      "url": "https://arxiv.org/abs/2411.13587",
+      "raw_row_indices": [
+        69
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0070",
+      "title": "BadVLA: Towards Backdoor Attacks on Vision-Language-Action Models via Objective-Decoupled Optimization",
+      "url": "https://arxiv.org/abs/2505.16640",
+      "raw_row_indices": [
+        70
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0071",
+      "title": "FreezeVLA: Action-Freezing Attacks against Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2509.19870",
+      "raw_row_indices": [
+        71
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0072",
+      "title": "SilentDrift: Exploiting Action Chunking for Stealthy Backdoor Attacks on Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2601.14323",
+      "raw_row_indices": [
+        72
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0073",
+      "title": "DropVLA: An Action-Level Backdoor Attack on Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2510.10932",
+      "raw_row_indices": [
+        73
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0074",
+      "title": "Model-agnostic Adversarial Attack and Defense for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2510.13237",
+      "raw_row_indices": [
+        74
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0075",
+      "title": "Scalable Policy Evaluation with Video World Models",
+      "url": "https://arxiv.org/abs/2511.11520",
+      "raw_row_indices": [
+        75
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0076",
+      "title": "Altered Thoughts, Altered Actions: Probing Chain-of-Thought Vulnerabilities in VLA Robotic Manipulation",
+      "url": "https://arxiv.org/abs/2603.12717",
+      "raw_row_indices": [
+        76
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0077",
+      "title": "An Empirical Study and Open Testbed for Federated Fine-Tuning of Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2609.22973",
+      "raw_row_indices": [
+        77
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0078",
+      "title": "Beyond In-Distribution Preservation: Recovering Generalization in Quantized VLAs via Vulnerability-Oriented Tuning",
+      "url": "https://arxiv.org/abs/2610.05745",
+      "raw_row_indices": [
+        78
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0079",
+      "title": "Beyond Reconstruction: What Matters in Action Tokenization for Robot Policies?",
+      "url": "https://arxiv.org/abs/2610.09170",
+      "raw_row_indices": [
+        79
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0080",
+      "title": "FailureSpot: Label-Efficient Timestamp-Level Failure Detection for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2609.04277",
+      "raw_row_indices": [
+        80
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0081",
+      "title": "How (and How Not) to Use Data Augmentation in VLA Post-Training",
+      "url": "https://arxiv.org/abs/2610.05994",
+      "raw_row_indices": [
+        81
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0082",
+      "title": "Memorize, Adapt, Ignore: Diagnosing Robot Learning Mechanisms under Training Data Variation",
+      "url": "https://arxiv.org/abs/2609.38401",
+      "raw_row_indices": [
+        82
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0083",
+      "title": "Not All Layers Need Tuning: Diagnosing and Directing Adaptation in Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2609.18084",
+      "raw_row_indices": [
+        83
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0084",
+      "title": "RedVLA: Physical Red Teaming of Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2604.22591",
+      "raw_row_indices": [
+        84
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0085",
+      "title": "Rephrase Before You Act: Characterizing and Mitigating Language Sensitivity in Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2610.10526",
+      "raw_row_indices": [
+        85
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0086",
+      "title": "Retrieval-triggered Action Projection Adjustment for Frozen VLA Policies: An Empirical Study and Failure Analysis",
+      "url": "https://arxiv.org/abs/2610.24573",
+      "raw_row_indices": [
+        86
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0087",
+      "title": "RoboFollow: Unveiling the Instruction Following Mirage in Embodied Agents",
+      "url": "https://arxiv.org/abs/2609.25636",
+      "raw_row_indices": [
+        87
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboFollow"
+      ],
+      "reviewed_source": {
+        "title": "RoboFollow: Unveiling the Instruction Following Mirage in Embodied Agents",
+        "url": "https://arxiv.org/abs/2609.25636",
+        "fulltext_url": "https://arxiv.org/html/2609.25636v1",
+        "authors": [
+          "Chang Guo",
+          "Yukun Xie",
+          "Bohan Tan",
+          "Zheng Chang",
+          "Zhaokai Yin",
+          "Qianli Ma",
+          "Yingqiao Wang",
+          "Chao Liang",
+          "Zhipeng Zhang"
+        ],
+        "version": "2609.25636v1",
+        "first_submitted": "2026-09-22T03:48:02Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0088",
+      "title": "What Makes an Efficient VLA? Navigating Action-Head Design, Scaling, and Latency",
+      "url": "https://arxiv.org/abs/2609.13984",
+      "raw_row_indices": [
+        88
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0089",
+      "title": "What Matters for World Modeling in Vision-Language-Action Models?",
+      "url": "https://arxiv.org/abs/2610.19825",
+      "raw_row_indices": [
+        89
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0090",
+      "title": "What Matters, When? Diagnosing and Improving Conditional Visual Grounding in Visuomotor Imitation Policies",
+      "url": "https://arxiv.org/abs/2609.05376",
+      "raw_row_indices": [
+        90
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0091",
+      "title": "What Visual Representations Do World Action Models Need?",
+      "url": "https://arxiv.org/abs/2610.13024",
+      "raw_row_indices": [
+        91
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0092",
+      "title": "When Listening Becomes Easier: Scrubbing Visual Cues for Shortcut-Free VLAs",
+      "url": "https://arxiv.org/abs/2610.10912",
+      "raw_row_indices": [
+        92
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0093",
+      "title": "When Reasoning Helps Action: Monitoring and Steering Chain-of-Thought in Vision-Language-Action Policies",
+      "url": "https://arxiv.org/abs/2610.00601",
+      "raw_row_indices": [
+        93
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0094",
+      "title": "Where Predictive Supervision Goes Shapes What VLA Policies Learn",
+      "url": "https://arxiv.org/abs/2609.36645",
+      "raw_row_indices": [
+        94
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0095",
+      "title": "Do VLAs Understand and Adapt to the Objects They Handle, or Simply Replay Learned Behaviors?",
+      "url": "https://arxiv.org/abs/2610.06078",
+      "raw_row_indices": [
+        95
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0096",
+      "title": "Are Vision-Language-Action Models Robust to One-Step Observation Perturbations?",
+      "url": "https://arxiv.org/abs/2609.32550",
+      "raw_row_indices": [
+        96
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0097",
+      "title": "Adversarial Attacks on Robotic Vision Language Action Models",
+      "url": "https://arxiv.org/abs/2506.03350",
+      "raw_row_indices": [
+        97
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0098",
+      "title": "Attention-Guided Patch-Wise Sparse Adversarial Attacks on Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2511.21663",
+      "raw_row_indices": [
+        98
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0099",
+      "title": "Goal-oriented Backdoor Attack against Vision-Language-Action Models via Physical Objects",
+      "url": "https://arxiv.org/abs/2510.09269",
+      "raw_row_indices": [
+        99
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0100",
+      "title": "Run-time Observation Interventions Make Vision-Language-Action Models More Visually Robust",
+      "url": "https://arxiv.org/abs/2410.01971",
+      "raw_row_indices": [
+        100
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0101",
+      "title": "When Alignment Fails: Multimodal Adversarial Attacks on Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2511.16203",
+      "raw_row_indices": [
+        101
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0102",
+      "title": "When Robots Obey the Patch: Universal Transferable Patch Attacks on Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2511.21192",
+      "raw_row_indices": [
+        102
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0103",
+      "title": "Black-Box Adversarial Patch Attacks on VLAs via Ancestor VLM Exploitation",
+      "url": "https://arxiv.org/abs/2610.09708",
+      "raw_row_indices": [
+        103
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0104",
+      "title": "CertVLA: Certified Defense against Physical Visual Attacks for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2608.20791",
+      "raw_row_indices": [
+        104
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0105",
+      "title": "Detect and Suppress: A Mechanistic Defense against Adversarial Patches in VLA Models",
+      "url": "https://arxiv.org/abs/2610.03498",
+      "raw_row_indices": [
+        105
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0106",
+      "title": "Enhancing Visual Task-Redirection Attacks on Vision-Language-Action Models via Closed-Loop Optimization",
+      "url": "https://arxiv.org/abs/2610.23566",
+      "raw_row_indices": [
+        106
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0107",
+      "title": "Exploiting Vulnerabilities: Universal Adversarial Attacks on Vision-Language-Action Models in Robotics",
+      "url": "https://arxiv.org/abs/2609.39178",
+      "raw_row_indices": [
+        107
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0108",
+      "title": "JailWAM: Jailbreaking World Action Models in Robot Control",
+      "url": "https://arxiv.org/abs/2604.05498",
+      "raw_row_indices": [
+        108
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0109",
+      "title": "TAPDreamer: Transferable Adversarial Patches for World Action Models",
+      "url": "https://arxiv.org/abs/2610.06814",
+      "raw_row_indices": [
+        109
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0110",
+      "title": "Tex3D: Objects as Attack Surfaces via Adversarial 3D Textures for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2604.01618",
+      "raw_row_indices": [
+        110
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0111",
+      "title": "ANNIE: Be Careful of Your Robots",
+      "url": "https://arxiv.org/abs/2509.03383",
+      "raw_row_indices": [
+        111
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0112",
+      "title": "A Persian Vision-Language-Action Dataset and Benchmark for Ambiguity- and Infeasibility-Aware Instruction-to-Plan Grounding",
+      "url": "https://arxiv.org/abs/2610.15666",
+      "raw_row_indices": [
+        112
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0113",
+      "title": "BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks",
+      "url": "https://arxiv.org/abs/2610.25459",
+      "raw_row_indices": [
+        113
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "BiDex-100"
+      ],
+      "reviewed_source": {
+        "title": "BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks",
+        "url": "https://arxiv.org/abs/2610.25459",
+        "fulltext_url": "https://arxiv.org/html/2610.25459v2",
+        "authors": [
+          "Yong Wang",
+          "Kecheng Zheng",
+          "Xing Zhu",
+          "Chao Xu",
+          "Yujun Shen",
+          "Shengze Cai"
+        ],
+        "version": "2610.25459v2",
+        "first_submitted": "2026-10-18T18:44:05Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0114",
+      "title": "ManiUnit: A Manipulation Skill Dataset and Benchmark for Long-Horizon Tasks",
+      "url": "https://arxiv.org/abs/2610.12089",
+      "raw_row_indices": [
+        114
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0115",
+      "title": "X2Real: an eXtensive simulation benchmark for real-world generalist policies",
+      "url": "https://arxiv.org/abs/2609.27449",
+      "raw_row_indices": [
+        115
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0116",
+      "title": "Exploring the Limits of Combinatorial Generalization in Embodied Manipulation",
+      "url": "https://arxiv.org/abs/2610.15425",
+      "raw_row_indices": [
+        116
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboComb"
+      ],
+      "reviewed_source": {
+        "title": "Exploring the Limits of Combinatorial Generalization in Embodied Manipulation",
+        "url": "https://arxiv.org/abs/2610.15425",
+        "fulltext_url": "https://arxiv.org/html/2610.15425v1",
+        "authors": [
+          "Xupeng Zhang",
+          "Yantai Yang",
+          "Chang Guo",
+          "Zhaokai Yin",
+          "Zhipeng Zhang"
+        ],
+        "version": "2610.15425v1",
+        "first_submitted": "2026-10-11T07:59:34Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0117",
+      "title": "Self-Evolving AI for Humanoids: Mechanisms, Safety, and Evaluation of Post-Deployment Self-Improvement",
+      "url": "https://arxiv.org/abs/2609.13236",
+      "raw_row_indices": [
+        117
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0118",
+      "title": "World Action Models: The Next Frontier in Embodied AI",
+      "url": "https://arxiv.org/abs/2605.12090",
+      "raw_row_indices": [
+        118
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0119",
+      "title": "VLA-Arena: An Open-Source Framework for Benchmarking Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2512.22539",
+      "raw_row_indices": [
+        119
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "VLA-Arena"
+      ],
+      "reviewed_source": {
+        "title": "VLA-Arena: An Open-Source Framework for Benchmarking Vision-Language-Action Models",
+        "url": "https://arxiv.org/abs/2512.22539",
+        "fulltext_url": "https://arxiv.org/html/2512.22539v4",
+        "authors": [
+          "Borong Zhang",
+          "Jiahao Li",
+          "Jiachen Shen",
+          "Yuhao Zhang",
+          "Yishuai Cai",
+          "Lu Liu",
+          "Hailu Ji",
+          "Yuanpei Chen",
+          "Juntao Dai",
+          "Jiaming Ji",
+          "Yaodong Yang"
+        ],
+        "version": "2512.22539v4",
+        "first_submitted": "2025-12-27T09:40:54Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0120",
+      "title": "ForesightSafety-VLA: A Unified Diagnostic Safety Benchmark for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2606.27079",
+      "raw_row_indices": [
+        120
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "ForesightSafety-VLA"
+      ],
+      "reviewed_source": {
+        "title": "ForesightSafety-VLA: A Unified Diagnostic Safety Benchmark for Vision-Language-Action Models",
+        "url": "https://arxiv.org/abs/2606.27079",
+        "fulltext_url": "https://arxiv.org/html/2606.27079v2",
+        "authors": [
+          "Mingyang Lyu",
+          "Yinqian Sun",
+          "Yiyang Jia",
+          "Sicheng Shen",
+          "Moquan Sha",
+          "Huangrui Li",
+          "Feifei Zhao",
+          "Yi Zeng"
+        ],
+        "version": "2606.27079v2",
+        "first_submitted": "2026-06-25T14:19:36Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0121",
+      "title": "MANIGUARD: A Benchmark and Data Suite for Specification-Grounded Safety Evaluation and Improvement",
+      "url": "https://arxiv.org/abs/2608.17386",
+      "raw_row_indices": [
+        121
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0122",
+      "title": "LongBench: Evaluating Robotic Manipulation Policies on Real-World Long-Horizon Tasks",
+      "url": "https://arxiv.org/abs/2604.16788",
+      "raw_row_indices": [
+        122
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0123",
+      "title": "Red-Teaming of Vision-Language-Action Models via Quality Diversity Environment Generation",
+      "url": "https://arxiv.org/abs/2610.14415",
+      "raw_row_indices": [
+        123
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0124",
+      "title": "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning",
+      "url": "https://arxiv.org/abs/2306.03310",
+      "raw_row_indices": [
+        124
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "LIBERO（基础套件）"
+      ],
+      "reviewed_source": {
+        "title": "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning",
+        "url": "https://arxiv.org/abs/2306.03310",
+        "fulltext_url": "https://arxiv.org/html/2306.03310v2",
+        "authors": [
+          "Bo Liu",
+          "Yifeng Zhu",
+          "Chongkai Gao",
+          "Yihao Feng",
+          "Qiang Liu",
+          "Yuke Zhu",
+          "Peter Stone"
+        ],
+        "version": "2306.03310v2",
+        "first_submitted": "2023-06-05T23:32:26Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0125",
+      "title": "CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks",
+      "url": "https://arxiv.org/abs/2112.03227",
+      "raw_row_indices": [
+        125
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "CALVIN"
+      ],
+      "reviewed_source": {
+        "title": "CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks",
+        "url": "https://arxiv.org/abs/2112.03227",
+        "fulltext_url": "https://arxiv.org/html/2112.03227v4",
+        "authors": [
+          "Oier Mees",
+          "Lukas Hermann",
+          "Erick Rosete-Beas",
+          "Wolfram Burgard"
+        ],
+        "version": "2112.03227v4",
+        "first_submitted": "2021-12-06T18:37:33Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0126",
+      "title": "Evaluating Real-World Robot Manipulation Policies in Simulation (SimplerEnv)",
+      "url": "https://arxiv.org/abs/2405.05941",
+      "raw_row_indices": [
+        126
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "SimplerEnv"
+      ],
+      "reviewed_source": {
+        "title": "Evaluating Real-World Robot Manipulation Policies in Simulation",
+        "url": "https://arxiv.org/abs/2405.05941",
+        "fulltext_url": "https://arxiv.org/html/2405.05941v1",
+        "authors": [
+          "Xuanlin Li",
+          "Kyle Hsu",
+          "Jiayuan Gu",
+          "Karl Pertsch",
+          "Oier Mees",
+          "Homer Rich Walke",
+          "Chuyuan Fu",
+          "Ishikaa Lunawat",
+          "Isabel Sieh",
+          "Sean Kirmani",
+          "Sergey Levine",
+          "Jiajun Wu",
+          "Chelsea Finn",
+          "Hao Su",
+          "Quan Vuong",
+          "Ted Xiao"
+        ],
+        "version": "2405.05941v1",
+        "first_submitted": "2024-05-09T17:30:16Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0127",
+      "title": "RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots",
+      "url": "https://arxiv.org/abs/2406.02523",
+      "raw_row_indices": [
+        127
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboCasa"
+      ],
+      "reviewed_source": {
+        "title": "RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots",
+        "url": "https://arxiv.org/abs/2406.02523",
+        "fulltext_url": "https://arxiv.org/html/2406.02523v1",
+        "authors": [
+          "Soroush Nasiriany",
+          "Abhiram Maddukuri",
+          "Lance Zhang",
+          "Adeet Parikh",
+          "Aaron Lo",
+          "Abhishek Joshi",
+          "Ajay Mandlekar",
+          "Yuke Zhu"
+        ],
+        "version": "2406.02523v1",
+        "first_submitted": "2024-06-04T17:41:31Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0128",
+      "title": "RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins",
+      "url": "https://doi.org/10.1109/CVPR52734.2025.02575",
+      "raw_row_indices": [
+        128
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboTwin"
+      ],
+      "reviewed_source": {
+        "title": "RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins",
+        "url": "https://doi.org/10.1109/CVPR52734.2025.02575",
+        "fulltext_url": "https://arxiv.org/html/2504.13059v1",
+        "authors": [
+          "Yao Mu",
+          "Tianxing Chen",
+          "Zanxin Chen",
+          "Shijia Peng",
+          "Zhiqian Lan",
+          "Zeyu Gao",
+          "Zhixuan Liang",
+          "Qiaojun Yu",
+          "Yude Zou",
+          "Mingkun Xu",
+          "Lunkai Lin",
+          "Zhiqiang Xie",
+          "Mingyu Ding",
+          "Ping Luo"
+        ],
+        "version": "2504.13059v1",
+        "first_submitted": "2025-04-17T16:14:24Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0129",
+      "title": "VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning",
+      "url": "https://doi.org/10.1109/ICCV51701.2025.01037",
+      "raw_row_indices": [
+        129
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "VLABench"
+      ],
+      "reviewed_source": {
+        "title": "VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks",
+        "url": "https://doi.org/10.1109/ICCV51701.2025.01037",
+        "fulltext_url": "https://arxiv.org/html/2412.18194v1",
+        "authors": [
+          "Shiduo Zhang",
+          "Zhe Xu",
+          "Peiju Liu",
+          "Xiaopeng Yu",
+          "Yuan Li",
+          "Qinghui Gao",
+          "Zhaoye Fei",
+          "Zhangyue Yin",
+          "Zuxuan Wu",
+          "Yu-Gang Jiang",
+          "Xipeng Qiu"
+        ],
+        "version": "2412.18194v1",
+        "first_submitted": "2024-12-24T06:03:42Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0130",
+      "title": "THE COLOSSEUM: A Benchmark for Evaluating Generalization for Robotic Manipulation",
+      "url": "https://arxiv.org/abs/2402.08191",
+      "raw_row_indices": [
+        130
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "COLOSSEUM"
+      ],
+      "reviewed_source": {
+        "title": "THE COLOSSEUM: A Benchmark for Evaluating Generalization for Robotic Manipulation",
+        "url": "https://arxiv.org/abs/2402.08191",
+        "fulltext_url": "https://arxiv.org/html/2402.08191v2",
+        "authors": [
+          "Wilbert Pumacay",
+          "Ishika Singh",
+          "Jiafei Duan",
+          "Ranjay Krishna",
+          "Jesse Thomason",
+          "Dieter Fox"
+        ],
+        "version": "2402.08191v2",
+        "first_submitted": "2024-02-13T03:25:33Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0131",
+      "title": "RoboMIND: Benchmark on Multi-embodiment Intelligence Normative Data for Robot Manipulation",
+      "url": "https://arxiv.org/abs/2412.13877",
+      "raw_row_indices": [
+        131
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboMIND"
+      ],
+      "reviewed_source": {
+        "title": "RoboMIND: Benchmark on Multi-embodiment Intelligence Normative Data for Robot Manipulation",
+        "url": "https://arxiv.org/abs/2412.13877",
+        "fulltext_url": "https://arxiv.org/html/2412.13877v3",
+        "authors": [
+          "Kun Wu",
+          "Chengkai Hou",
+          "Jiaming Liu",
+          "Zhengping Che",
+          "Xiaozhu Ju",
+          "Zhuqin Yang",
+          "Meng Li",
+          "Yinuo Zhao",
+          "Zhiyuan Xu",
+          "Guang Yang",
+          "Shichao Fan",
+          "Xinhua Wang",
+          "Fei Liao",
+          "Zhen Zhao",
+          "Guangyu Li",
+          "Zhao Jin",
+          "Lecheng Wang",
+          "Jilei Mao",
+          "Ning Liu",
+          "Pei Ren",
+          "Qiang Zhang",
+          "Yaoxu Lyu",
+          "Mengzhen Liu",
+          "Jingyang He",
+          "Yulin Luo",
+          "Zeyu Gao",
+          "Chenxuan Li",
+          "Chenyang Gu",
+          "Yankai Fu",
+          "Di Wu",
+          "Xingyu Wang",
+          "Sixiang Chen",
+          "Zhenyu Wang",
+          "Pengju An",
+          "Siyuan Qian",
+          "Shanghang Zhang",
+          "Jian Tang"
+        ],
+        "version": "2412.13877v3",
+        "first_submitted": "2024-12-18T14:17:16Z",
+        "journal_ref": "Robotics: Science and Systems XXI (RSS 2025)",
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0132",
+      "title": "Jailbreaking LLM-Controlled Robots (RoboPAIR)",
+      "url": "https://doi.org/10.1109/ICRA55743.2025.11128119",
+      "raw_row_indices": [
+        132
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0133",
+      "title": "BadRobot: Jailbreaking Embodied LLM Agents in the Physical World",
+      "url": "https://arxiv.org/abs/2407.20242",
+      "raw_row_indices": [
+        133
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0134",
+      "title": "SafeBench: A Benchmarking Platform for Safety Evaluation of Autonomous Vehicles",
+      "url": "https://arxiv.org/abs/2206.09682",
+      "raw_row_indices": [
+        134
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "SafeBench"
+      ],
+      "reviewed_source": {
+        "title": "SafeBench: A Benchmarking Platform for Safety Evaluation of Autonomous Vehicles",
+        "url": "https://arxiv.org/abs/2206.09682",
+        "fulltext_url": "https://arxiv.org/html/2206.09682v4",
+        "authors": [
+          "Chejian Xu",
+          "Wenhao Ding",
+          "Weijie Lyu",
+          "Zuxin Liu",
+          "Shuai Wang",
+          "Yihan He",
+          "Hanjiang Hu",
+          "Ding Zhao",
+          "Bo Li"
+        ],
+        "version": "2206.09682v4",
+        "first_submitted": "2022-06-20T09:50:30Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0135",
+      "title": "DPed-VLN: A Benchmark for Socially Compliant Vision-and-Language Navigation in Dynamic Pedestrian Environments",
+      "url": "https://arxiv.org/abs/2609.21504",
+      "raw_row_indices": [
+        135
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0136",
+      "title": "How Long Until Your Robot Ignores You? A Safety Benchmark for LLM Orchestrators in Human-Humanoid Collaboration",
+      "url": "https://arxiv.org/abs/2609.07288",
+      "raw_row_indices": [
+        136
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0137",
+      "title": "Decentralized Multi-Robot Task Allocation Under Degraded Communication: A Benchmark of Performance, Reliability, and Computation",
+      "url": "https://arxiv.org/abs/2609.13711",
+      "raw_row_indices": [
+        137
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0138",
+      "title": "A Physics-Consistent Benchmark for Contact-Rich Human-Robot Interaction in Assistive Care",
+      "url": "https://arxiv.org/abs/2609.02402",
+      "raw_row_indices": [
+        138
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0139",
+      "title": "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots",
+      "url": "https://arxiv.org/abs/2610.08642",
+      "raw_row_indices": [
+        139
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "HygieneRoboBench"
+      ],
+      "reviewed_source": {
+        "title": "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots",
+        "url": "https://arxiv.org/abs/2610.08642",
+        "fulltext_url": "https://arxiv.org/html/2610.08642v1",
+        "authors": [
+          "Yurun Chen",
+          "Josh Qixuan Sun",
+          "Jason Qin",
+          "Chengtai Li",
+          "Tianyi Wang",
+          "Mark Crowley",
+          "Wentao Zhu"
+        ],
+        "version": "2610.08642v1",
+        "first_submitted": "2026-10-06T16:33:44Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0140",
+      "title": "LABIT: Long-Horizon Robotic Assembly Benchmark for Industrial Tasks",
+      "url": "https://arxiv.org/abs/2610.16398",
+      "raw_row_indices": [
+        140
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "LABIT"
+      ],
+      "reviewed_source": {
+        "title": "LABIT: Long-Horizon Robotic Assembly Benchmark for Industrial Tasks",
+        "url": "https://arxiv.org/abs/2610.16398",
+        "fulltext_url": "https://arxiv.org/html/2610.16398v1",
+        "authors": [
+          "Constantin Schempp",
+          "Christian Friedrich",
+          "Luca Kofler",
+          "Laura Suhm"
+        ],
+        "version": "2610.16398v1",
+        "first_submitted": "2026-10-12T08:40:04Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0141",
+      "title": "Peg-in-Bench: A Modular Benchmark for High-Precision Robotic Insertion",
+      "url": "https://arxiv.org/abs/2609.00906",
+      "raw_row_indices": [
+        141
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "Peg-in-Bench"
+      ],
+      "reviewed_source": {
+        "title": "Peg-in-Bench: A Modular Benchmark for High-Precision Robotic Insertion",
+        "url": "https://arxiv.org/abs/2609.00906",
+        "fulltext_url": "https://arxiv.org/html/2609.00906v1",
+        "authors": [
+          "Yosel Delgado",
+          "José G. Buenaventura-Carreón",
+          "Floris Erich",
+          "Roman Mykhailyshyn",
+          "Tomohiro Motoda",
+          "Koshi Makihara",
+          "Yukiyasu Domae"
+        ],
+        "version": "2609.00906v1",
+        "first_submitted": "2026-09-01T08:37:31Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0142",
+      "title": "Bench2Dex: Benchmarking Visuo-Tactile Bimanual Dexterous Manipulation Across Dexterous Hands",
+      "url": "https://arxiv.org/abs/2609.15726",
+      "raw_row_indices": [
+        142
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "Bench2Dex"
+      ],
+      "reviewed_source": {
+        "title": "Bench2Dex: Benchmarking Visuo-Tactile Bimanual Dexterous Manipulation Across Dexterous Hands",
+        "url": "https://arxiv.org/abs/2609.15726",
+        "fulltext_url": "https://arxiv.org/html/2609.15726v1",
+        "authors": [
+          "Zhenjie Yang",
+          "Yideng Zhang",
+          "Dongjie Zhang",
+          "Chenyu Jiang",
+          "Xianshuai Liu",
+          "Yufeng Li",
+          "Zuhao Ge",
+          "Xingyu Jiao",
+          "Zheng Zhang",
+          "Kaiyu He",
+          "He Wang",
+          "Yuwen Zhong",
+          "Yi Deng",
+          "Muyun Jiang",
+          "Xianliang Huang",
+          "Haisheng Su",
+          "Donghang Zhang",
+          "Jian Zhang",
+          "Xue Yang",
+          "Hongyang Li",
+          "Zuxuan Wu",
+          "Yu-Gang Jiang",
+          "Xiaosong Jia",
+          "Junchi Yan"
+        ],
+        "version": "2609.15726v1",
+        "first_submitted": "2026-09-14T15:22:59Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0143",
+      "title": "MSK-Bench: Benchmarking Full-Body Musculoskeletal Motor Control Across Tasks, Control Paradigms, and Physiological Metrics",
+      "url": "https://arxiv.org/abs/2609.26872",
+      "raw_row_indices": [
+        143
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "MSK-Bench"
+      ],
+      "reviewed_source": {
+        "title": "MSK-Bench: Benchmarking Full-Body Musculoskeletal Motor Control Across Tasks, Control Paradigms, and Physiological Metrics",
+        "url": "https://arxiv.org/abs/2609.26872",
+        "fulltext_url": "https://arxiv.org/html/2609.26872v1",
+        "authors": [
+          "Mengtao Ou",
+          "Zongzheng Zhang",
+          "Zhenghao Xiao",
+          "Yixuan Pan",
+          "Ziwen Zhuang",
+          "Hang Zhao",
+          "Hongyang Li",
+          "Yanan Sui",
+          "Libin Liu",
+          "Hao Zhao"
+        ],
+        "version": "2609.26872v1",
+        "first_submitted": "2026-09-22T17:52:19Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0144",
+      "title": "MotionForge: A Data Generation Pipeline and Large-Scale Benchmark for Long-Horizon Manipulation of Dynamic Objects with Domain Shifts",
+      "url": "https://arxiv.org/abs/2609.25689",
+      "raw_row_indices": [
+        144
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0145",
+      "title": "MemTransfer: Benchmarking Memory Beyond Matched Experience in Embodied Decision-Making",
+      "url": "https://arxiv.org/abs/2609.32313",
+      "raw_row_indices": [
+        145
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0146",
+      "title": "MemForm: Benchmarking Memory Formation Poisoning in LLM Agents",
+      "url": "https://arxiv.org/abs/2610.14431",
+      "raw_row_indices": [
+        146
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "MemForm"
+      ],
+      "reviewed_source": {
+        "title": "MemForm: Benchmarking Memory Formation Poisoning in LLM Agents",
+        "url": "https://arxiv.org/abs/2610.14431",
+        "fulltext_url": "https://arxiv.org/html/2610.14431v1",
+        "authors": [
+          "Haowen Pan",
+          "Pengyang Shao",
+          "Yunshan Ma",
+          "Yanzheng Jin",
+          "Naixin Zhai",
+          "Xiang Wang",
+          "Xun Yang"
+        ],
+        "version": "2610.14431v1",
+        "first_submitted": "2026-10-10T00:52:32Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0147",
+      "title": "ORDER: A Fictitious-World Benchmark for Domain-Adaptive Embodied AI",
+      "url": "https://arxiv.org/abs/2609.22285",
+      "raw_row_indices": [
+        147
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0148",
+      "title": "RoboVAD: A Large Cross-Domain Evaluation Benchmark for Anomaly Detection in Robotic Arm Manipulation Videos",
+      "url": "https://arxiv.org/abs/2609.17843",
+      "raw_row_indices": [
+        148
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0149",
+      "title": "Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation",
+      "url": "https://arxiv.org/abs/2609.37292",
+      "raw_row_indices": [
+        149
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "BAVO-Bench"
+      ],
+      "reviewed_source": {
+        "title": "Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation",
+        "url": "https://arxiv.org/abs/2609.37292",
+        "fulltext_url": "https://arxiv.org/html/2609.37292v1",
+        "authors": [
+          "Kaijun Luo",
+          "Yudi Huang",
+          "Qijun Zhong",
+          "Xinshuai Song",
+          "Yang Liu",
+          "Liang Lin"
+        ],
+        "version": "2609.37292v1",
+        "first_submitted": "2026-09-29T11:33:21Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0150",
+      "title": "The Robot Is Not Its Description: GaugeBench for Representation Robustness in Morphology-Aware Policies",
+      "url": "https://arxiv.org/abs/2610.07597",
+      "raw_row_indices": [
+        150
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0151",
+      "title": "REVERSAL-BENCH: A Reversibility Axis and Reset Oracle for Measuring the Reset-Free RL Cliff",
+      "url": "https://arxiv.org/abs/2609.17745",
+      "raw_row_indices": [
+        151
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0152",
+      "title": "TALK-Dem: Benchmarking Embodied Task Planning under Dementia-Associated Communication Patterns",
+      "url": "https://arxiv.org/abs/2609.38371",
+      "raw_row_indices": [
+        152
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0153",
+      "title": "PhysAI-Bench: A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
+      "url": "https://arxiv.org/abs/2609.23695",
+      "raw_row_indices": [
+        153
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "PhysAI-Bench"
+      ],
+      "reviewed_source": {
+        "title": "PhysAI-Bench: A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
+        "url": "https://arxiv.org/abs/2609.23695",
+        "fulltext_url": "https://arxiv.org/html/2609.23695v1",
+        "authors": [
+          "Mohamed Amine Ferrag",
+          "Merouane Debbah",
+          "Abderrahmane Lakas",
+          "Manu Perumkunnil",
+          "Norbert Tihanyi"
+        ],
+        "version": "2609.23695v1",
+        "first_submitted": "2026-09-20T15:14:45Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0154",
+      "title": "PLCBench: Can Autonomous LLM Agents Turn PLC Access into Sustained Physical Impact?",
+      "url": "https://arxiv.org/abs/2608.26882",
+      "raw_row_indices": [
+        154
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0155",
+      "title": "Words to World: Benchmarking LLMs in Interactive Physical Environments",
+      "url": "https://arxiv.org/abs/2610.15228",
+      "raw_row_indices": [
+        155
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0156",
+      "title": "AeroIntent: A Synchronized Multimodal Benchmark for UAV Mission Intent Recognition",
+      "url": "https://arxiv.org/abs/2610.25869",
+      "raw_row_indices": [
+        156
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0157",
+      "title": "INFUSE: A Unified Surface Benchmark for Indirect Prompt Injection in Agentic Systems",
+      "url": "https://arxiv.org/abs/2610.20776",
+      "raw_row_indices": [
+        157
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "INFUSE"
+      ],
+      "reviewed_source": {
+        "title": "INFUSE: A Unified Surface Benchmark for Indirect Prompt Injection in Agentic Systems",
+        "url": "https://arxiv.org/abs/2610.20776",
+        "fulltext_url": "https://arxiv.org/html/2610.20776v1",
+        "authors": [
+          "Thuy Dung Nguyen",
+          "Jingyi Guo",
+          "Rana Seda Dubauskas",
+          "Sreepriya Damuluru",
+          "Taylor T. Johnson",
+          "Kevin Leach"
+        ],
+        "version": "2610.20776v1",
+        "first_submitted": "2026-10-14T18:26:15Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0158",
+      "title": "BLINDSPOT: A Benchmark for Safety and Refusal Calibration in Long-Horizon Tool-Using Agents",
+      "url": "https://arxiv.org/abs/2609.16305",
+      "raw_row_indices": [
+        158
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0159",
+      "title": "DUMA-Bench: A Dual-Control Multi-Agent Benchmark for Evaluating LLM Agent Security",
+      "url": "https://arxiv.org/abs/2609.24662",
+      "raw_row_indices": [
+        159
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0160",
+      "title": "SkillSafetyBench: Evaluating Agent Safety under Skill-Facing Attack Surfaces",
+      "url": "https://arxiv.org/abs/2605.12015",
+      "raw_row_indices": [
+        160
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "SkillSafetyBench"
+      ],
+      "reviewed_source": {
+        "title": "SkillSafetyBench: Evaluating Agent Safety under Skill-Facing Attack Surfaces",
+        "url": "https://arxiv.org/abs/2605.12015",
+        "fulltext_url": "https://arxiv.org/html/2605.12015v3",
+        "authors": [
+          "Chang Jin",
+          "An Wang",
+          "Zeming Wei",
+          "Kai Wang",
+          "Biaojie Zeng",
+          "Qiaosheng Zhang",
+          "Chao Yang",
+          "Jingjing Qu",
+          "Xia Hu",
+          "Xingcheng Xu"
+        ],
+        "version": "2605.12015v3",
+        "first_submitted": "2026-05-12T12:03:54Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0161",
+      "title": "PASTABench: Proactive Assessment of Sequential Trajectories for Agent Safety",
+      "url": "https://arxiv.org/abs/2609.28197",
+      "raw_row_indices": [
+        161
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0162",
+      "title": "ORBIT: A Framework for Multi-Agent Safety and Security Evaluations",
+      "url": "https://arxiv.org/abs/2609.33102",
+      "raw_row_indices": [
+        162
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "ORBIT"
+      ],
+      "reviewed_source": {
+        "title": "ORBIT: A Framework for Multi-Agent Safety and Security Evaluations",
+        "url": "https://arxiv.org/abs/2609.33102",
+        "fulltext_url": "https://arxiv.org/html/2609.33102v1",
+        "authors": [
+          "Ben Hagag",
+          "William L. Anderson",
+          "Srija Chakraborty",
+          "Christian Schroeder de Witt"
+        ],
+        "version": "2609.33102v1",
+        "first_submitted": "2026-09-27T02:20:08Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0163",
+      "title": "Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots",
+      "url": "https://arxiv.org/abs/2610.28432",
+      "raw_row_indices": [
+        163
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0164",
+      "title": "Benchmarking Robots for Everyday Environments: From Lab Experiments to Real-World Operations",
+      "url": "https://arxiv.org/abs/2609.26490",
+      "raw_row_indices": [
+        164
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0165",
+      "title": "Using Large Language Models for Embodied Planning Introduces Systematic Safety Risks",
+      "url": "https://arxiv.org/abs/2604.18463",
+      "raw_row_indices": [
+        165
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "DESPITE"
+      ],
+      "reviewed_source": {
+        "title": "Using large language models for embodied planning introduces systematic safety risks",
+        "url": "https://arxiv.org/abs/2604.18463",
+        "fulltext_url": "https://arxiv.org/html/2604.18463v2",
+        "authors": [
+          "Tao Zhang",
+          "Kaixian Qu",
+          "Zhibin Li",
+          "Jiajun Wu",
+          "Marco Hutter",
+          "Manling Li",
+          "Fan Shi"
+        ],
+        "version": "2604.18463v2",
+        "first_submitted": "2026-04-20T16:18:08Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0166",
+      "title": "Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control",
+      "url": "https://arxiv.org/abs/2610.14043",
+      "raw_row_indices": [
+        166
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboHarm"
+      ],
+      "reviewed_source": {
+        "title": "Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control",
+        "url": "https://arxiv.org/abs/2610.14043",
+        "fulltext_url": "https://arxiv.org/html/2610.14043v1",
+        "authors": [
+          "Edward Sun",
+          "Christopher Leet",
+          "Sravanthi Machcha",
+          "Achyutha Menon",
+          "Tzu Kit Chan",
+          "Yuchen Cui",
+          "Jay Chooi"
+        ],
+        "version": "2610.14043v1",
+        "first_submitted": "2026-10-03T03:57:46Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0167",
+      "title": "Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions",
+      "url": "https://arxiv.org/abs/2608.30428",
+      "raw_row_indices": [
+        167
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "MineAmongUs"
+      ],
+      "reviewed_source": {
+        "title": "Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions",
+        "url": "https://arxiv.org/abs/2608.30428",
+        "fulltext_url": "https://arxiv.org/html/2608.30428v1",
+        "authors": [
+          "Jaewoo Ahn",
+          "Junseo Kim",
+          "Hyunseo Kim",
+          "Heeseung Yun",
+          "Jaehyeon Son",
+          "Zsolt Kira",
+          "Gunhee Kim"
+        ],
+        "version": "2608.30428v1",
+        "first_submitted": "2026-08-31T08:24:29Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0168",
+      "title": "STARS: From Spatiotemporal Dynamics to Social Representations in Human-Robot Interaction",
+      "url": "https://arxiv.org/abs/2609.40245",
+      "raw_row_indices": [
+        168
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "STARS"
+      ],
+      "reviewed_source": {
+        "title": "STARS: From Spatiotemporal Dynamics to Social Representations in Human-Robot Interaction",
+        "url": "https://arxiv.org/abs/2609.40245",
+        "fulltext_url": "https://arxiv.org/html/2609.40245v3",
+        "authors": [
+          "Nathan Tsoi",
+          "Michael J. Munje",
+          "Tejas Oberoi",
+          "Rishab Maheshwari",
+          "Pengen Zheng",
+          "Tanush Chauhan",
+          "Peter Stone",
+          "Joydeep Biswas"
+        ],
+        "version": "2609.40245v3",
+        "first_submitted": "2026-09-30T17:35:08Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0169",
+      "title": "Attacking Autonomous Driving Agents with Adversarial Machine Learning: A Holistic Evaluation with the CARLA Leaderboard",
+      "url": "https://arxiv.org/abs/2511.14876",
+      "raw_row_indices": [
+        169
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0170",
+      "title": "Advancing Embodied Agent Security: From Safety Benchmarks to Input Moderation",
+      "url": "https://arxiv.org/abs/2504.15699",
+      "raw_row_indices": [
+        170
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0171",
+      "title": "A Degradation-Tolerance Benchmark for Camera-Only End-to-End Driving",
+      "url": "https://arxiv.org/abs/2608.29005",
+      "raw_row_indices": [
+        171
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0172",
+      "title": "ExceptionDrive: A Planning-Oriented Counterfactual Corner-Case Benchmark for Autonomous Driving",
+      "url": "https://arxiv.org/abs/2609.37871",
+      "raw_row_indices": [
+        172
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0173",
+      "title": "TrafficSignBench: Rule-Centric Closed-Loop Evaluation of Traffic-Sign Compliance in Autonomous Driving",
+      "url": "https://arxiv.org/abs/2609.38463",
+      "raw_row_indices": [
+        173
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0174",
+      "title": "VIPS: Vehicle-Infrastructure Cooperative Planning Benchmark via Pseudo-Simulation",
+      "url": "https://arxiv.org/abs/2609.02462",
+      "raw_row_indices": [
+        174
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "VIPS"
+      ],
+      "reviewed_source": {
+        "title": "VIPS: Vehicle-Infrastructure Cooperative Planning Benchmark via Pseudo-Simulation",
+        "url": "https://arxiv.org/abs/2609.02462",
+        "fulltext_url": "https://arxiv.org/html/2609.02462v1",
+        "authors": [
+          "Hoonhee Cho",
+          "Jae-Young Kang",
+          "Giwon Lee",
+          "Hyemin Yang",
+          "Heejun Park",
+          "Kuk-Jin Yoon"
+        ],
+        "version": "2609.02462v1",
+        "first_submitted": "2026-09-02T11:32:52Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0175",
+      "title": "Radar2Plan: Benchmarking 4D Radar for End-to-End Open-Loop Ego-Trajectory Planning",
+      "url": "https://arxiv.org/abs/2610.06121",
+      "raw_row_indices": [
+        175
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0176",
+      "title": "SIREN-Bench: Behavior-Driven Generation and Evaluation of Emergency-Vehicle Interactions",
+      "url": "https://arxiv.org/abs/2608.24094",
+      "raw_row_indices": [
+        176
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0177",
+      "title": "Bench2Drive: Towards Multi-Ability Benchmarking of Closed-Loop End-to-End Autonomous Driving",
+      "url": "https://doi.org/10.52202/079017-0025",
+      "raw_row_indices": [
+        177
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0178",
+      "title": "NavSim: Data-Driven Non-Reactive Autonomous Vehicle Simulation and Benchmarking",
+      "url": "https://doi.org/10.52202/079017-0902",
+      "raw_row_indices": [
+        178
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "NAVSIM"
+      ],
+      "reviewed_source": {
+        "title": "NAVSIM: Data-Driven Non-Reactive Autonomous Vehicle Simulation and Benchmarking",
+        "url": "https://doi.org/10.52202/079017-0902",
+        "fulltext_url": "https://arxiv.org/html/2406.15349v2",
+        "authors": [
+          "Daniel Dauner",
+          "Marcel Hallgarten",
+          "Tianyu Li",
+          "Xinshuo Weng",
+          "Zhiyu Huang",
+          "Zetong Yang",
+          "Hongyang Li",
+          "Igor Gilitschenski",
+          "Boris Ivanovic",
+          "Marco Pavone",
+          "Andreas Geiger",
+          "Kashyap Chitta"
+        ],
+        "version": "2406.15349v2",
+        "first_submitted": "2024-06-21T17:59:02Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0179",
+      "title": "LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2606.23686",
+      "raw_row_indices": [
+        179
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "LIBERO-Safety"
+      ],
+      "reviewed_source": {
+        "title": "LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models",
+        "url": "https://arxiv.org/abs/2606.23686",
+        "fulltext_url": "https://arxiv.org/html/2606.23686v2",
+        "authors": [
+          "Rongxu Cui",
+          "Zongzheng Zhang",
+          "Jingrui Pang",
+          "Haohan Chi",
+          "Jinbang Guo",
+          "Saining Zhang",
+          "Shaoxuan Xie",
+          "Xin Jin",
+          "Yao Mu",
+          "Jiaolong Yang",
+          "Guocai Yao",
+          "Xianyuan Zhan",
+          "Ya-Qin Zhang",
+          "Hao Zhao"
+        ],
+        "version": "2606.23686v2",
+        "first_submitted": "2026-06-22T17:59:53Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0180",
+      "title": "SafeVLA-Bench: A Benchmark for the Success-Safety Gap in Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2606.00773",
+      "raw_row_indices": [
+        180
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0181",
+      "title": "PolaRiS: Scalable Real-to-Sim Evaluations for Generalist Robot Policies",
+      "url": "https://doi.org/10.15607/RSS.2026.XXII.062",
+      "raw_row_indices": [
+        181
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0182",
+      "title": "RoboWorld: Fast and Reliable Neural Simulators for Generalist Robot Policy Evaluation",
+      "url": "https://arxiv.org/abs/2607.01060",
+      "raw_row_indices": [
+        182
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0183",
+      "title": "WorldEval: World Model as Real-World Robot Policies Evaluator",
+      "url": "https://arxiv.org/abs/2505.19017",
+      "raw_row_indices": [
+        183
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0184",
+      "title": "dWorldEval: Scalable Robotic Policy Evaluation via Discrete Diffusion World Model",
+      "url": "https://arxiv.org/abs/2604.22152",
+      "raw_row_indices": [
+        184
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0185",
+      "title": "Active Real-World Factor-Based Evaluation for Generalist Robot Policies",
+      "url": "https://arxiv.org/abs/2607.14439",
+      "raw_row_indices": [
+        185
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0186",
+      "title": "Robo Eval: Where Robotic Manipulation Meets Structured and Scalable Evaluation",
+      "url": "https://doi.org/10.1109/ICRA57385.2026.11697082",
+      "raw_row_indices": [
+        186
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0187",
+      "title": "Robo2Process: Benchmarking and Learning Process-Aware Understanding in Vision-Language Robotic Manipulation",
+      "url": "https://arxiv.org/abs/2606.13040",
+      "raw_row_indices": [
+        187
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0188",
+      "title": "RoboChrono: A Real Robot Benchmark for Streaming Task Understanding",
+      "url": "https://arxiv.org/abs/2609.36605",
+      "raw_row_indices": [
+        188
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "RoboChrono"
+      ],
+      "reviewed_source": {
+        "title": "RoboChrono: A Real Robot Benchmark for Streaming Task Understanding",
+        "url": "https://arxiv.org/abs/2609.36605",
+        "fulltext_url": "https://arxiv.org/html/2609.36605v1",
+        "authors": [
+          "Yuzhou Wu",
+          "Longteng Fan",
+          "Zimeng Li",
+          "Yu Wanchan",
+          "Ting Zhang",
+          "Yiyang Ma",
+          "Shihao Li",
+          "Wei Ying",
+          "Jianbin Qin",
+          "Jiajian Jing",
+          "Fangwen Chen",
+          "Yifan Wu",
+          "Zichen Zhang",
+          "Ruiqi Yang",
+          "Weibin Kong",
+          "Yihang Xu",
+          "Haoran Liu",
+          "Zonghang He",
+          "Xuyang Liu",
+          "YiFan Xiong",
+          "Siteng Huang",
+          "Tao Xu",
+          "Zhuo Xu",
+          "Long Chen",
+          "Ruoxiang Li"
+        ],
+        "version": "2609.36605v1",
+        "first_submitted": "2026-09-29T03:21:32Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0189",
+      "title": "RoboVista: Evaluating Vision Language Models for Diverse Robot Applications",
+      "url": "https://doi.org/10.15607/RSS.2026.XXII.095",
+      "raw_row_indices": [
+        189
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0190",
+      "title": "TSHA: A Benchmark for Visual Language Models in Trustworthy Safety Hazard Assessment Scenarios",
+      "url": "https://arxiv.org/abs/2603.29759",
+      "raw_row_indices": [
+        190
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0191",
+      "title": "AgiBot World Colosseo: A Large-Scale Manipulation Platform for Scalable and Intelligent Embodied Systems",
+      "url": "https://doi.org/10.1109/IROS60139.2025.11247088",
+      "raw_row_indices": [
+        191
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "AgiBot World"
+      ],
+      "reviewed_source": {
+        "title": "AgiBot World Colosseo: A Large-scale Manipulation Platform for Scalable and Intelligent Embodied Systems",
+        "url": "https://doi.org/10.1109/IROS60139.2025.11247088",
+        "fulltext_url": "https://arxiv.org/html/2503.06669v5",
+        "authors": [
+          "AgiBot World Contributors",
+          "Qingwen Bu",
+          "Jisong Cai",
+          "Li Chen",
+          "Xiuqi Cui",
+          "Yan Ding",
+          "Siyuan Feng",
+          "Shenyuan Gao",
+          "Xindong He",
+          "Xuan Hu",
+          "Xu Huang",
+          "Shu Jiang",
+          "Yuxin Jiang",
+          "Cheng Jing",
+          "Hongyang Li",
+          "Jialu Li",
+          "Chiming Liu",
+          "Yi Liu",
+          "Yuxiang Lu",
+          "Jianlan Luo",
+          "Ping Luo",
+          "Yao Mu",
+          "Yuehan Niu",
+          "Yixuan Pan",
+          "Jiangmiao Pang",
+          "Yu Qiao",
+          "Guanghui Ren",
+          "Cheng Ruan",
+          "Jiaqi Shan",
+          "Yongjian Shen",
+          "Chengshi Shi",
+          "Mingkang Shi",
+          "Modi Shi",
+          "Chonghao Sima",
+          "Jianheng Song",
+          "Huijie Wang",
+          "Wenhao Wang",
+          "Dafeng Wei",
+          "Chengen Xie",
+          "Guo Xu",
+          "Junchi Yan",
+          "Cunbiao Yang",
+          "Lei Yang",
+          "Shukai Yang",
+          "Maoqing Yao",
+          "Jia Zeng",
+          "Chi Zhang",
+          "Qinglin Zhang",
+          "Bin Zhao",
+          "Chengyue Zhao",
+          "Jiaqi Zhao",
+          "Jianchao Zhu"
+        ],
+        "version": "2503.06669v5",
+        "first_submitted": "2025-03-09T15:40:29Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0192",
+      "title": "ManiSkill2: A Unified Benchmark for Generalizable Manipulation Skills",
+      "url": "https://arxiv.org/abs/2302.04659",
+      "raw_row_indices": [
+        192
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [
+        "ManiSkill / ManiSkill2"
+      ],
+      "reviewed_source": {
+        "title": "ManiSkill2: A Unified Benchmark for Generalizable Manipulation Skills",
+        "url": "https://arxiv.org/abs/2302.04659",
+        "fulltext_url": "https://arxiv.org/html/2302.04659v1",
+        "authors": [
+          "Jiayuan Gu",
+          "Fanbo Xiang",
+          "Xuanlin Li",
+          "Zhan Ling",
+          "Xiqiang Liu",
+          "Tongzhou Mu",
+          "Yihe Tang",
+          "Stone Tao",
+          "Xinyue Wei",
+          "Yunchao Yao",
+          "Xiaodi Yuan",
+          "Pengwei Xie",
+          "Zhiao Huang",
+          "Rui Chen",
+          "Hao Su"
+        ],
+        "version": "2302.04659v1",
+        "first_submitted": "2023-02-09T14:24:01Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0193",
+      "title": "HUGE-Bench: A Benchmark for High-Level UAV Vision-Language-Action Tasks",
+      "url": "https://doi.org/10.1007/978-3-032-37167-6_21",
+      "raw_row_indices": [
+        193
+      ],
+      "in_original_table": true,
+      "reviewed_benchmarks": [],
+      "reviewed_source": null
+    },
+    {
+      "paper_id": "P0194",
+      "title": "LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models",
+      "url": "https://arxiv.org/abs/2603.28301",
+      "raw_row_indices": [],
+      "in_original_table": false,
+      "reviewed_benchmarks": [
+        "LIBERO-Para"
+      ],
+      "reviewed_source": {
+        "title": "LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models",
+        "url": "https://arxiv.org/abs/2603.28301",
+        "fulltext_url": "https://arxiv.org/html/2603.28301v3",
+        "authors": [
+          "Chanyoung Kim",
+          "Minwoo Kim",
+          "Minseok Kang",
+          "Hyunwoo Kim",
+          "Dahuin Jung"
+        ],
+        "version": "2603.28301v3",
+        "first_submitted": "2026-03-30T11:27:34Z",
+        "journal_ref": null,
+        "publication_note": "arXiv 摘要页及作者官方仓库声明 EMNLP 2026 Main（Oral），2026-11-03 核查。",
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0195",
+      "title": "BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation",
+      "url": "https://arxiv.org/abs/2403.09227",
+      "raw_row_indices": [],
+      "in_original_table": false,
+      "reviewed_benchmarks": [
+        "BEHAVIOR-1K"
+      ],
+      "reviewed_source": {
+        "title": "BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation",
+        "url": "https://arxiv.org/abs/2403.09227",
+        "fulltext_url": "https://arxiv.org/html/2403.09227v1",
+        "authors": [
+          "Chengshu Li",
+          "Ruohan Zhang",
+          "Josiah Wong",
+          "Cem Gokmen",
+          "Sanjana Srivastava",
+          "Roberto Martín-Martín",
+          "Chen Wang",
+          "Gabrael Levine",
+          "Wensi Ai",
+          "Benjamin Martinez",
+          "Hang Yin",
+          "Michael Lingelbach",
+          "Minjune Hwang",
+          "Ayano Hiranaka",
+          "Sujay Garlanka",
+          "Arman Aydin",
+          "Sharon Lee",
+          "Jiankai Sun",
+          "Mona Anvari",
+          "Manasi Sharma",
+          "Dhruva Bansal",
+          "Samuel Hunter",
+          "Kyu-Young Kim",
+          "Alan Lou",
+          "Caleb R Matthews",
+          "Ivan Villa-Renteria",
+          "Jerry Huayang Tang",
+          "Claire Tang",
+          "Fei Xia",
+          "Yunzhu Li",
+          "Silvio Savarese",
+          "Hyowon Gweon",
+          "C. Karen Liu",
+          "Jiajun Wu",
+          "Li Fei-Fei"
+        ],
+        "version": "2403.09227v1",
+        "first_submitted": "2024-03-14T09:48:36Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0196",
+      "title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+      "url": "https://arxiv.org/abs/2310.08864",
+      "raw_row_indices": [],
+      "in_original_table": false,
+      "reviewed_benchmarks": [
+        "Open X-Embodiment"
+      ],
+      "reviewed_source": {
+        "title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+        "url": "https://arxiv.org/abs/2310.08864",
+        "fulltext_url": "https://arxiv.org/html/2310.08864v9",
+        "authors": [
+          "Open X-Embodiment Collaboration",
+          "Abby O'Neill",
+          "Abdul Rehman",
+          "Abhinav Gupta",
+          "Abhiram Maddukuri",
+          "Abhishek Gupta",
+          "Abhishek Padalkar",
+          "Abraham Lee",
+          "Acorn Pooley",
+          "Agrim Gupta",
+          "Ajay Mandlekar",
+          "Ajinkya Jain",
+          "Albert Tung",
+          "Alex Bewley",
+          "Alex Herzog",
+          "Alex Irpan",
+          "Alexander Khazatsky",
+          "Anant Rai",
+          "Anchit Gupta",
+          "Andrew Wang",
+          "Andrey Kolobov",
+          "Anikait Singh",
+          "Animesh Garg",
+          "Aniruddha Kembhavi",
+          "Annie Xie",
+          "Anthony Brohan",
+          "Antonin Raffin",
+          "Archit Sharma",
+          "Arefeh Yavary",
+          "Arhan Jain",
+          "Ashwin Balakrishna",
+          "Ayzaan Wahid",
+          "Ben Burgess-Limerick",
+          "Beomjoon Kim",
+          "Bernhard Schölkopf",
+          "Blake Wulfe",
+          "Brian Ichter",
+          "Cewu Lu",
+          "Charles Xu",
+          "Charlotte Le",
+          "Chelsea Finn",
+          "Chen Wang",
+          "Chenfeng Xu",
+          "Cheng Chi",
+          "Chenguang Huang",
+          "Christine Chan",
+          "Christopher Agia",
+          "Chuer Pan",
+          "Chuyuan Fu",
+          "Coline Devin",
+          "Danfei Xu",
+          "Daniel Morton",
+          "Danny Driess",
+          "Daphne Chen",
+          "Deepak Pathak",
+          "Dhruv Shah",
+          "Dieter Büchler",
+          "Dinesh Jayaraman",
+          "Dmitry Kalashnikov",
+          "Dorsa Sadigh",
+          "Edward Johns",
+          "Ethan Foster",
+          "Fangchen Liu",
+          "Federico Ceola",
+          "Fei Xia",
+          "Feiyu Zhao",
+          "Felipe Vieira Frujeri",
+          "Freek Stulp",
+          "Gaoyue Zhou",
+          "Gaurav S. Sukhatme",
+          "Gautam Salhotra",
+          "Ge Yan",
+          "Gilbert Feng",
+          "Giulio Schiavi",
+          "Glen Berseth",
+          "Gregory Kahn",
+          "Guangwen Yang",
+          "Guanzhi Wang",
+          "Hao Su",
+          "Hao-Shu Fang",
+          "Haochen Shi",
+          "Henghui Bao",
+          "Heni Ben Amor",
+          "Henrik I Christensen",
+          "Hiroki Furuta",
+          "Homanga Bharadhwaj",
+          "Homer Walke",
+          "Hongjie Fang",
+          "Huy Ha",
+          "Igor Mordatch",
+          "Ilija Radosavovic",
+          "Isabel Leal",
+          "Jacky Liang",
+          "Jad Abou-Chakra",
+          "Jaehyung Kim",
+          "Jaimyn Drake",
+          "Jan Peters",
+          "Jan Schneider",
+          "Jasmine Hsu",
+          "Jay Vakil",
+          "Jeannette Bohg",
+          "Jeffrey Bingham",
+          "Jeffrey Wu",
+          "Jensen Gao",
+          "Jiaheng Hu",
+          "Jiajun Wu",
+          "Jialin Wu",
+          "Jiankai Sun",
+          "Jianlan Luo",
+          "Jiayuan Gu",
+          "Jie Tan",
+          "Jihoon Oh",
+          "Jimmy Wu",
+          "Jingpei Lu",
+          "Jingyun Yang",
+          "Jitendra Malik",
+          "João Silvério",
+          "Joey Hejna",
+          "Jonathan Booher",
+          "Jonathan Tompson",
+          "Jonathan Yang",
+          "Jordi Salvador",
+          "Joseph J. Lim",
+          "Junhyek Han",
+          "Kaiyuan Wang",
+          "Kanishka Rao",
+          "Karl Pertsch",
+          "Karol Hausman",
+          "Keegan Go",
+          "Keerthana Gopalakrishnan",
+          "Ken Goldberg",
+          "Kendra Byrne",
+          "Kenneth Oslund",
+          "Kento Kawaharazuka",
+          "Kevin Black",
+          "Kevin Lin",
+          "Kevin Zhang",
+          "Kiana Ehsani",
+          "Kiran Lekkala",
+          "Kirsty Ellis",
+          "Krishan Rana",
+          "Krishnan Srinivasan",
+          "Kuan Fang",
+          "Kunal Pratap Singh",
+          "Kuo-Hao Zeng",
+          "Kyle Hatch",
+          "Kyle Hsu",
+          "Laurent Itti",
+          "Lawrence Yunliang Chen",
+          "Lerrel Pinto",
+          "Li Fei-Fei",
+          "Liam Tan",
+          "Linxi \"Jim\" Fan",
+          "Lionel Ott",
+          "Lisa Lee",
+          "Luca Weihs",
+          "Magnum Chen",
+          "Marion Lepert",
+          "Marius Memmel",
+          "Masayoshi Tomizuka",
+          "Masha Itkina",
+          "Mateo Guaman Castro",
+          "Max Spero",
+          "Maximilian Du",
+          "Michael Ahn",
+          "Michael C. Yip",
+          "Mingtong Zhang",
+          "Mingyu Ding",
+          "Minho Heo",
+          "Mohan Kumar Srirama",
+          "Mohit Sharma",
+          "Moo Jin Kim",
+          "Muhammad Zubair Irshad",
+          "Naoaki Kanazawa",
+          "Nicklas Hansen",
+          "Nicolas Heess",
+          "Nikhil J Joshi",
+          "Niko Suenderhauf",
+          "Ning Liu",
+          "Norman Di Palo",
+          "Nur Muhammad Mahi Shafiullah",
+          "Oier Mees",
+          "Oliver Kroemer",
+          "Osbert Bastani",
+          "Pannag R Sanketi",
+          "Patrick \"Tree\" Miller",
+          "Patrick Yin",
+          "Paul Wohlhart",
+          "Peng Xu",
+          "Peter David Fagan",
+          "Peter Mitrano",
+          "Pierre Sermanet",
+          "Pieter Abbeel",
+          "Priya Sundaresan",
+          "Qiuyu Chen",
+          "Quan Vuong",
+          "Rafael Rafailov",
+          "Ran Tian",
+          "Ria Doshi",
+          "Roberto Martín-Martín",
+          "Rohan Baijal",
+          "Rosario Scalise",
+          "Rose Hendrix",
+          "Roy Lin",
+          "Runjia Qian",
+          "Ruohan Zhang",
+          "Russell Mendonca",
+          "Rutav Shah",
+          "Ryan Hoque",
+          "Ryan Julian",
+          "Samuel Bustamante",
+          "Sean Kirmani",
+          "Sergey Levine",
+          "Shan Lin",
+          "Sherry Moore",
+          "Shikhar Bahl",
+          "Shivin Dass",
+          "Shubham Sonawani",
+          "Shubham Tulsiani",
+          "Shuran Song",
+          "Sichun Xu",
+          "Siddhant Haldar",
+          "Siddharth Karamcheti",
+          "Simeon Adebola",
+          "Simon Guist",
+          "Soroush Nasiriany",
+          "Stefan Schaal",
+          "Stefan Welker",
+          "Stephen Tian",
+          "Subramanian Ramamoorthy",
+          "Sudeep Dasari",
+          "Suneel Belkhale",
+          "Sungjae Park",
+          "Suraj Nair",
+          "Suvir Mirchandani",
+          "Takayuki Osa",
+          "Tanmay Gupta",
+          "Tatsuya Harada",
+          "Tatsuya Matsushima",
+          "Ted Xiao",
+          "Thomas Kollar",
+          "Tianhe Yu",
+          "Tianli Ding",
+          "Todor Davchev",
+          "Tony Z. Zhao",
+          "Travis Armstrong",
+          "Trevor Darrell",
+          "Trinity Chung",
+          "Vidhi Jain",
+          "Vikash Kumar",
+          "Vincent Vanhoucke",
+          "Vitor Guizilini",
+          "Wei Zhan",
+          "Wenxuan Zhou",
+          "Wolfram Burgard",
+          "Xi Chen",
+          "Xiangyu Chen",
+          "Xiaolong Wang",
+          "Xinghao Zhu",
+          "Xinyang Geng",
+          "Xiyuan Liu",
+          "Xu Liangwei",
+          "Xuanlin Li",
+          "Yansong Pang",
+          "Yao Lu",
+          "Yecheng Jason Ma",
+          "Yejin Kim",
+          "Yevgen Chebotar",
+          "Yifan Zhou",
+          "Yifeng Zhu",
+          "Yilin Wu",
+          "Ying Xu",
+          "Yixuan Wang",
+          "Yonatan Bisk",
+          "Yongqiang Dou",
+          "Yoonyoung Cho",
+          "Youngwoon Lee",
+          "Yuchen Cui",
+          "Yue Cao",
+          "Yueh-Hua Wu",
+          "Yujin Tang",
+          "Yuke Zhu",
+          "Yunchu Zhang",
+          "Yunfan Jiang",
+          "Yunshuang Li",
+          "Yunzhu Li",
+          "Yusuke Iwasawa",
+          "Yutaka Matsuo",
+          "Zehan Ma",
+          "Zhuo Xu",
+          "Zichen Jeff Cui",
+          "Zichen Zhang",
+          "Zipeng Fu",
+          "Zipeng Lin"
+        ],
+        "version": "2310.08864v9",
+        "first_submitted": "2023-10-13T05:20:40Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0197",
+      "title": "RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots",
+      "url": "https://arxiv.org/abs/2603.04356",
+      "raw_row_indices": [],
+      "in_original_table": false,
+      "reviewed_benchmarks": [
+        "RoboCasa365"
+      ],
+      "reviewed_source": {
+        "title": "RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots",
+        "url": "https://arxiv.org/abs/2603.04356",
+        "fulltext_url": "https://arxiv.org/html/2603.04356v1",
+        "authors": [
+          "Soroush Nasiriany",
+          "Sepehr Nasiriany",
+          "Abhiram Maddukuri",
+          "Yuke Zhu"
+        ],
+        "version": "2603.04356v1",
+        "first_submitted": "2026-03-04T18:20:03Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0198",
+      "title": "CARLA: An Open Urban Driving Simulator",
+      "url": "https://arxiv.org/abs/1711.03938",
+      "raw_row_indices": [],
+      "in_original_table": false,
+      "reviewed_benchmarks": [
+        "CARLA / CARLA Leaderboard"
+      ],
+      "reviewed_source": {
+        "title": "CARLA: An Open Urban Driving Simulator",
+        "url": "https://arxiv.org/abs/1711.03938",
+        "fulltext_url": "https://arxiv.org/html/1711.03938v1",
+        "authors": [
+          "Alexey Dosovitskiy",
+          "German Ros",
+          "Felipe Codevilla",
+          "Antonio Lopez",
+          "Vladlen Koltun"
+        ],
+        "version": "1711.03938v1",
+        "first_submitted": "2017-11-10T17:54:40Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    },
+    {
+      "paper_id": "P0199",
+      "title": "nuScenes: A multimodal dataset for autonomous driving",
+      "url": "https://arxiv.org/abs/1903.11027",
+      "raw_row_indices": [],
+      "in_original_table": false,
+      "reviewed_benchmarks": [
+        "nuScenes"
+      ],
+      "reviewed_source": {
+        "title": "nuScenes: A multimodal dataset for autonomous driving",
+        "url": "https://arxiv.org/abs/1903.11027",
+        "fulltext_url": "https://arxiv.org/html/1903.11027v5",
+        "authors": [
+          "Holger Caesar",
+          "Varun Bankiti",
+          "Alex H. Lang",
+          "Sourabh Vora",
+          "Venice Erin Liong",
+          "Qiang Xu",
+          "Anush Krishnan",
+          "Yu Pan",
+          "Giancarlo Baldan",
+          "Oscar Beijbom"
+        ],
+        "version": "1903.11027v5",
+        "first_submitted": "2019-03-26T17:19:56Z",
+        "journal_ref": null,
+        "publication_note": null,
+        "reading_status": "重点章节核查"
+      }
+    }
+  ]
+}

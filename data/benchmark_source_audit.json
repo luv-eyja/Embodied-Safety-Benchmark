@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01",
-  "method": "逐条核对 benchmark 名称在本库论文标题/摘要中的出现位置，并以论文摘要、arXiv 元数据或官方项目页确认提出关系。same_paper_in_registry 表示提出论文已在本库，但标题未包含 benchmark 名称；external_original_paper 表示提出论文不在本库当前 192 条记录中。",
+  "generated_at": "2026-11-03",
+  "method": "论文标题与摘要归属审计，并对当前重点条目核查原论文方法、实验和参考文献。exclusive_source=true 时仅 source_title 对应论文可以标为提出；外部原始来源不冒充 193 条原始记录中的论文。",
   "entries": {
     "SafeLIBERO": {
       "status": "confirmed",
@@ -44,12 +44,12 @@
       "source_basis": "论文摘要明确将 LIBERO-CTRL 定义为六轴复合鲁棒性 benchmark。"
     },
     "LIBERO-Para": {
-      "status": "confirmed",
-      "kind": "same_paper_in_registry",
-      "source_title": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
-      "source_link": "https://arxiv.org/abs/2609.25562",
+      "kind": "external_original_paper",
+      "source_title": "LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models",
+      "source_link": "https://arxiv.org/abs/2603.28301",
       "source_year": 2026,
-      "source_basis": "摘要明确说明在 LIBERO-Para 上评估 instruction sensitivity。"
+      "exclusive_source": true,
+      "source_basis": "2026-11-03 沿 IndustrialVLA-Bench 参考文献 [15] 找到独立提出论文；后者只是使用论文。"
     },
     "RoboStress": {
       "status": "confirmed",
@@ -178,6 +178,33 @@
       "source_link": "https://openaccess.thecvf.com/content/CVPR2022/html/Hong_Bridging_the_Gap_Between_Learning_in_Discrete_and_Continuous_Environments_for_Vision-and-Language_Navigation_CVPR_2022_paper.html",
       "source_year": 2022,
       "source_basis": "该工作将 R2R 路径转换到连续环境并构造 VLN-CE/R2R-CE 评测设置；当前表中的 VLN-Safe 是使用论文。"
+    },
+    "LIBERO（基础套件）": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning",
+      "source_link": "https://arxiv.org/abs/2306.03310",
+      "source_year": 2023,
+      "source_basis": "2026-11-03 复核原始论文标题与方法章节：§3–4；原始论文，不以 MINERVA 代替",
+      "exclusive_source": true
+    },
+    "RoboCasa": {
+      "status": "confirmed",
+      "kind": "same_paper_in_registry",
+      "source_title": "RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots",
+      "source_link": "https://arxiv.org/abs/2406.02523",
+      "source_year": 2024,
+      "source_basis": "2026-11-03 复核原始论文标题与方法章节：§3–4；与 RoboCasa-Shift / RoboCasa365 分开",
+      "exclusive_source": true
+    },
+    "CARLA / CARLA Leaderboard": {
+      "status": "confirmed",
+      "kind": "external_original_paper",
+      "source_title": "CARLA: An Open Urban Driving Simulator",
+      "source_link": "https://arxiv.org/abs/1711.03938",
+      "source_year": 2017,
+      "source_basis": "2026-11-03 复核原始论文标题与方法章节：CARLA 模拟器原论文；Leaderboard 是后续评测平台，引用量不代表 Leaderboard 本身",
+      "exclusive_source": true
     }
   }
 }

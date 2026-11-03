@@ -433,13 +433,15 @@
     {
       "benchmark": "LIBERO-Para",
       "status": "found",
-      "project_url": "https://github.com/xiaoqi-7/IndustrialVLA-Bench",
+      "project_url": "https://github.com/cau-hai-lab/LIBERO-Para",
       "project_urls": [
-        "https://github.com/xiaoqi-7/IndustrialVLA-Bench"
+        "https://github.com/cau-hai-lab/LIBERO-Para",
+        "https://cau-hai-lab.github.io/LIBERO-Para/"
       ],
-      "discovery": "arxiv_abs",
-      "paper_url": "https://arxiv.org/abs/2609.25562",
-      "note": "Project/code links extracted from arXiv abs page 2609.25562."
+      "discovery": "original_paper_link_and_official_readme",
+      "paper_url": "https://arxiv.org/abs/2603.28301",
+      "note": "2026-11-03 核查原始论文与官方 README，修正误指 IndustrialVLA-Bench 的项目地址。",
+      "verified_at": "2026-11-03"
     },
     {
       "benchmark": "LIBERO-Plus",

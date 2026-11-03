@@ -1,0 +1,2638 @@
+{
+  "schema_version": 3,
+  "generated_at": "2026-11-04",
+  "queried_at": "2026-11-04T00:09:16.322615+08:00",
+  "scope": "active_only",
+  "source": "OpenAlex Works API",
+  "citation_field": "cited_by_count",
+  "snapshot_rule": "Prefer a verified published record, otherwise the arXiv DOI record. Never sum version records. Zero is the selected record's observed count; null means unverified/unavailable.",
+  "version_search_scope": "DOI lookup for all sources, title search additionally for sources first submitted before 2026; version discovery is not exhaustive.",
+  "entry_count": 62,
+  "unique_paper_count": 62,
+  "matched_count": 62,
+  "entries": [
+    {
+      "benchmark": "ASIMOV Benchmark",
+      "document": "1__ASIMOV-Benchmark.md",
+      "paper": "Generating Robot Constitutions & Benchmarks for Semantic Safety",
+      "source_link": "https://arxiv.org/abs/2503.08663",
+      "arxiv_id": "2503.08663",
+      "paper_version": "2503.08663v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2503.08663&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=Generating%20Robot%20Constitutions%20%26%20Benchmarks%20for%20Semantic%20Safety&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W4414578652",
+        "title": "Generating Robot Constitutions & Benchmarks for Semantic Safety",
+        "doi": "https://doi.org/10.48550/arxiv.2503.08663",
+        "publication_date": "2025-03-11",
+        "title_similarity": 1.0,
+        "author_overlap": 4,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/2503.08663"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4414578652",
+          "title": "Generating Robot Constitutions & Benchmarks for Semantic Safety",
+          "doi": "https://doi.org/10.48550/arxiv.2503.08663",
+          "publication_date": "2025-03-11",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 4,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2503.08663"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "ForesightSafety-VLA",
+      "document": "1__ForesightSafety-VLA.md",
+      "paper": "ForesightSafety-VLA: A Unified Diagnostic Safety Benchmark for Vision-Language-Action Models",
+      "source_link": "https://arxiv.org/abs/2606.27079",
+      "arxiv_id": "2606.27079",
+      "paper_version": "2606.27079v2",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2606.27079&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7166132482",
+        "title": "ForesightSafety-VLA: A Unified Diagnostic Safety Benchmark for Vision-Language-Action Models",
+        "doi": "https://doi.org/10.48550/arxiv.2606.27079",
+        "publication_date": "2026-06-25",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2606.27079"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7166132482",
+          "title": "ForesightSafety-VLA: A Unified Diagnostic Safety Benchmark for Vision-Language-Action Models",
+          "doi": "https://doi.org/10.48550/arxiv.2606.27079",
+          "publication_date": "2026-06-25",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2606.27079"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "HazardArena",
+      "document": "1__HazardArena.md",
+      "paper": "HazardArena: Evaluating Semantic Safety in Vision-Language-Action Models",
+      "source_link": "https://arxiv.org/abs/2604.12447",
+      "arxiv_id": "2604.12447",
+      "paper_version": "2604.12447v3",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2604.12447&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7154513284",
+        "title": "HazardArena: Evaluating Semantic Safety in Vision-Language-Action Models",
+        "doi": "https://doi.org/10.48550/arxiv.2604.12447",
+        "publication_date": "2026-04-14",
+        "title_similarity": 1.0,
+        "author_overlap": 11,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2604.12447"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7154513284",
+          "title": "HazardArena: Evaluating Semantic Safety in Vision-Language-Action Models",
+          "doi": "https://doi.org/10.48550/arxiv.2604.12447",
+          "publication_date": "2026-04-14",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 11,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2604.12447"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "LIBERO-Safety",
+      "document": "1__LIBERO-Safety.md",
+      "paper": "LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models",
+      "source_link": "https://arxiv.org/abs/2606.23686",
+      "arxiv_id": "2606.23686",
+      "paper_version": "2606.23686v2",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2606.23686&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7165682249",
+        "title": "LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models",
+        "doi": "https://doi.org/10.1007/978-3-032-37627-5_28",
+        "publication_date": "2026-01-01",
+        "title_similarity": 1.0,
+        "author_overlap": 12,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "Lecture notes in computer science",
+        "landing_page_url": "https://doi.org/10.1007/978-3-032-37627-5_28"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7165682249",
+          "title": "LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models",
+          "doi": "https://doi.org/10.1007/978-3-032-37627-5_28",
+          "publication_date": "2026-01-01",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 12,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "Lecture notes in computer science",
+          "landing_page_url": "https://doi.org/10.1007/978-3-032-37627-5_28"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "ManiPhysicsBench",
+      "document": "1__ManiPhysicsBench.md",
+      "paper": "ManiPhysicsBench: Physics-Based Assessment of Object Preservation in VLA Manipulation",
+      "source_link": "https://arxiv.org/abs/2610.02802",
+      "arxiv_id": "2610.02802",
+      "paper_version": "2610.02802v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2610.02802&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7220458345",
+        "title": "ManiPhysicsBench: Physics-Based Assessment of Object Preservation in VLA Manipulation",
+        "doi": "https://doi.org/10.48550/arxiv.2610.02802",
+        "publication_date": "2026-10-02",
+        "title_similarity": 1.0,
+        "author_overlap": 6,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2610.02802"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7220458345",
+          "title": "ManiPhysicsBench: Physics-Based Assessment of Object Preservation in VLA Manipulation",
+          "doi": "https://doi.org/10.48550/arxiv.2610.02802",
+          "publication_date": "2026-10-02",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 6,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2610.02802"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboHarm",
+      "document": "1__RoboHarm.md",
+      "paper": "Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control",
+      "source_link": "https://arxiv.org/abs/2610.14043",
+      "arxiv_id": "2610.14043",
+      "paper_version": "2610.14043v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2610.14043&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7221820979",
+        "title": "Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control",
+        "doi": "https://doi.org/10.48550/arxiv.2610.14043",
+        "publication_date": "2026-10-03",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2610.14043"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7221820979",
+          "title": "Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control",
+          "doi": "https://doi.org/10.48550/arxiv.2610.14043",
+          "publication_date": "2026-10-03",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2610.14043"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "SafeLIBERO",
+      "document": "1__SafeLIBERO.md",
+      "paper": "VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer",
+      "source_link": "https://arxiv.org/abs/2512.11891",
+      "arxiv_id": "2512.11891",
+      "paper_version": "2512.11891v2",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2512.11891&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=VLSA%3A%20Vision-Language-Action%20Models%20with%20Plug-and-Play%20Safety%20Constraint%20Layer&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W4417446096",
+        "title": "VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer",
+        "doi": "https://doi.org/10.48550/arxiv.2512.11891",
+        "publication_date": "2025-12-09",
+        "title_similarity": 1.0,
+        "author_overlap": 4,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2512.11891"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4417446096",
+          "title": "VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer",
+          "doi": "https://doi.org/10.48550/arxiv.2512.11891",
+          "publication_date": "2025-12-09",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 4,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2512.11891"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "SafeStage",
+      "document": "1__SafeStage.md",
+      "paper": "SafeStage: Evaluating Safety Before, During, and After Vision-Language-Conditioned Robot Manipulation",
+      "source_link": "https://arxiv.org/abs/2609.21223",
+      "arxiv_id": "2609.21223",
+      "paper_version": "2609.21223v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.21223&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "id": "https://openalex.org/W7213988552",
+        "title": "SafeStage: Evaluating Safety Before, During, and After Vision-Language-Conditioned Robot Manipulation",
+        "cited_by_count": 0,
+        "query_mode": "retained_source_verified_snapshot",
+        "version_note": "Earlier DOI/title lookup retained; publication-version consolidation not verified."
+      },
+      "version_records": [
+        {
+          "status": "matched",
+          "id": "https://openalex.org/W7213988552",
+          "title": "SafeStage: Evaluating Safety Before, During, and After Vision-Language-Conditioned Robot Manipulation",
+          "cited_by_count": 0,
+          "query_mode": "retained_source_verified_snapshot",
+          "version_note": "Earlier DOI/title lookup retained; publication-version consolidation not verified."
+        }
+      ],
+      "observed_on": "2026-11-03",
+      "retained_prior_observation": true
+    },
+    {
+      "benchmark": "Trap-LIBERO / Trap-RoboTwin",
+      "document": "1__Trap-LIBERO-Trap-RoboTwin.md",
+      "paper": "TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes",
+      "source_link": "https://arxiv.org/abs/2608.26578",
+      "arxiv_id": "2608.26578",
+      "paper_version": "2608.26578v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2608.26578&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7204530163",
+        "title": "TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes",
+        "doi": "https://doi.org/10.48550/arxiv.2608.26578",
+        "publication_date": "2026-08-27",
+        "title_similarity": 1.0,
+        "author_overlap": 12,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2608.26578"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7204530163",
+          "title": "TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes",
+          "doi": "https://doi.org/10.48550/arxiv.2608.26578",
+          "publication_date": "2026-08-27",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 12,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2608.26578"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "VLA-Arena",
+      "document": "1__VLA-Arena.md",
+      "paper": "VLA-Arena: An Open-Source Framework for Benchmarking Vision-Language-Action Models",
+      "source_link": "https://arxiv.org/abs/2512.22539",
+      "arxiv_id": "2512.22539",
+      "paper_version": "2512.22539v4",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2512.22539&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=VLA-Arena%3A%20An%20Open-Source%20Framework%20for%20Benchmarking%20Vision-Language-Action%20Models&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7117763818",
+        "title": "VLA-Arena: An Open-Source Framework for Benchmarking Vision-Language-Action Models",
+        "doi": "https://doi.org/10.48550/arxiv.2512.22539",
+        "publication_date": "2025-12-27",
+        "title_similarity": 1.0,
+        "author_overlap": 10,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2512.22539"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7117763818",
+          "title": "VLA-Arena: An Open-Source Framework for Benchmarking Vision-Language-Action Models",
+          "doi": "https://doi.org/10.48550/arxiv.2512.22539",
+          "publication_date": "2025-12-27",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 10,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2512.22539"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "BAVO-Bench",
+      "document": "2__BAVO-Bench.md",
+      "paper": "Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation",
+      "source_link": "https://arxiv.org/abs/2609.37292",
+      "arxiv_id": "2609.37292",
+      "paper_version": "2609.37292v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.37292&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7214940409",
+        "title": "Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation",
+        "doi": "https://doi.org/10.48550/arxiv.2609.37292",
+        "publication_date": "2026-09-29",
+        "title_similarity": 1.0,
+        "author_overlap": 6,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.37292"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7214940409",
+          "title": "Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation",
+          "doi": "https://doi.org/10.48550/arxiv.2609.37292",
+          "publication_date": "2026-09-29",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 6,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.37292"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "LIBERO-MAX",
+      "document": "2__LIBERO-MAX.md",
+      "paper": "LIBERO-MAX: Do Robot Policies Adapt When the World Changes?",
+      "source_link": "https://arxiv.org/abs/2609.36518",
+      "arxiv_id": "2609.36518",
+      "paper_version": "2609.36518v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.36518&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7214921693",
+        "title": "LIBERO-MAX: Do Robot Policies Adapt When the World Changes?",
+        "doi": "https://doi.org/10.48550/arxiv.2609.36518",
+        "publication_date": "2026-09-29",
+        "title_similarity": 1.0,
+        "author_overlap": 17,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.36518"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7214921693",
+          "title": "LIBERO-MAX: Do Robot Policies Adapt When the World Changes?",
+          "doi": "https://doi.org/10.48550/arxiv.2609.36518",
+          "publication_date": "2026-09-29",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 17,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.36518"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "LIBERO-Para",
+      "document": "2__LIBERO-Para.md",
+      "paper": "LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models",
+      "source_link": "https://arxiv.org/abs/2603.28301",
+      "arxiv_id": "2603.28301",
+      "paper_version": "2603.28301v3",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2603.28301&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7147537669",
+        "title": "LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models",
+        "doi": "https://doi.org/10.18653/2026.emnlp-main.101",
+        "publication_date": "2026-01-01",
+        "title_similarity": 1.0,
+        "author_overlap": 5,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+        "landing_page_url": "https://doi.org/10.18653/2026.emnlp-main.101"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7147537669",
+          "title": "LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models",
+          "doi": "https://doi.org/10.18653/2026.emnlp-main.101",
+          "publication_date": "2026-01-01",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 5,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+          "landing_page_url": "https://doi.org/10.18653/2026.emnlp-main.101"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "LIBERO-RECOVER",
+      "document": "2__LIBERO-RECOVER.md",
+      "paper": "LIBERO-RECOVER: Beyond Task Success Towards Failure Recovery in Robotic Manipulation Models",
+      "source_link": "https://arxiv.org/abs/2609.05178",
+      "arxiv_id": "2609.05178",
+      "paper_version": "2609.05178v3",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.05178&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7211887144",
+        "title": "LIBERO-RECOVER: Beyond Task Success Towards Failure Recovery in Robotic Manipulation Models",
+        "doi": "https://doi.org/10.48550/arxiv.2609.05178",
+        "publication_date": "2026-09-04",
+        "title_similarity": 1.0,
+        "author_overlap": 9,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.05178"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7211887144",
+          "title": "LIBERO-RECOVER: Beyond Task Success Towards Failure Recovery in Robotic Manipulation Models",
+          "doi": "https://doi.org/10.48550/arxiv.2609.05178",
+          "publication_date": "2026-09-04",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 9,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.05178"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "LIBERO-VPro",
+      "document": "2__LIBERO-VPro.md",
+      "paper": "LIBERO-VPro: Benchmarking Closed-Loop Visual Robustness of Robotic Foundation Models",
+      "source_link": "https://arxiv.org/abs/2609.24350",
+      "arxiv_id": "2609.24350",
+      "paper_version": "2609.24350v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.24350&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7214051566",
+        "title": "LIBERO-VPro: Benchmarking Closed-Loop Visual Robustness of Robotic Foundation Models",
+        "doi": "https://doi.org/10.48550/arxiv.2609.24350",
+        "publication_date": "2026-09-21",
+        "title_similarity": 1.0,
+        "author_overlap": 6,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.24350"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7214051566",
+          "title": "LIBERO-VPro: Benchmarking Closed-Loop Visual Robustness of Robotic Foundation Models",
+          "doi": "https://doi.org/10.48550/arxiv.2609.24350",
+          "publication_date": "2026-09-21",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 6,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.24350"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboCasa-Shift",
+      "document": "2__RoboCasa-Shift.md",
+      "paper": "RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation",
+      "source_link": "https://arxiv.org/abs/2610.27861",
+      "arxiv_id": "2610.27861",
+      "paper_version": "2610.27861v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2610.27861&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7223122581",
+        "title": "RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation",
+        "doi": "https://doi.org/10.48550/arxiv.2610.27861",
+        "publication_date": "2026-10-20",
+        "title_similarity": 1.0,
+        "author_overlap": 9,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2610.27861"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7223122581",
+          "title": "RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation",
+          "doi": "https://doi.org/10.48550/arxiv.2610.27861",
+          "publication_date": "2026-10-20",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 9,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2610.27861"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "AgiBot World",
+      "document": "3__AgiBot-World.md",
+      "paper": "AgiBot World Colosseo: A Large-scale Manipulation Platform for Scalable and Intelligent Embodied Systems",
+      "source_link": "https://doi.org/10.1109/IROS60139.2025.11247088",
+      "arxiv_id": "2503.06669",
+      "paper_version": "2503.06669v5",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2503.06669&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=AgiBot%20World%20Colosseo%3A%20A%20Large-scale%20Manipulation%20Platform%20for%20Scalable%20and%20Intelligent%20Embodied%20Systems&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "id": "https://openalex.org/W4416748905",
+        "title": "AgiBot World Colosseo: A Large-Scale Manipulation Platform for Scalable and Intelligent Embodied Systems",
+        "cited_by_count": 13,
+        "query_mode": "retained_source_verified_snapshot",
+        "version_note": "Earlier DOI/title lookup retained; publication-version consolidation not verified."
+      },
+      "version_records": [
+        {
+          "status": "matched",
+          "id": "https://openalex.org/W4416748905",
+          "title": "AgiBot World Colosseo: A Large-Scale Manipulation Platform for Scalable and Intelligent Embodied Systems",
+          "cited_by_count": 13,
+          "query_mode": "retained_source_verified_snapshot",
+          "version_note": "Earlier DOI/title lookup retained; publication-version consolidation not verified."
+        }
+      ],
+      "observed_on": "2026-11-03",
+      "retained_prior_observation": true
+    },
+    {
+      "benchmark": "BEHAVIOR-1K",
+      "document": "3__BEHAVIOR-1K.md",
+      "paper": "BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation",
+      "source_link": "https://arxiv.org/abs/2403.09227",
+      "arxiv_id": "2403.09227",
+      "paper_version": "2403.09227v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2403.09227&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=BEHAVIOR-1K%3A%20A%20Human-Centered%2C%20Embodied%20AI%20Benchmark%20with%201%2C000%20Everyday%20Activities%20and%20Realistic%20Simulation&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 7,
+        "id": "https://openalex.org/W4392872989",
+        "title": "BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation",
+        "doi": "https://doi.org/10.48550/arxiv.2403.09227",
+        "publication_date": "2024-03-14",
+        "title_similarity": 1.0,
+        "author_overlap": 24,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/2403.09227"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4392872989",
+          "title": "BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation",
+          "doi": "https://doi.org/10.48550/arxiv.2403.09227",
+          "publication_date": "2024-03-14",
+          "cited_by_count": 7,
+          "title_similarity": 1.0,
+          "author_overlap": 24,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2403.09227"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "BiDex-100",
+      "document": "3__BiDex-100.md",
+      "paper": "BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks",
+      "source_link": "https://arxiv.org/abs/2610.25459",
+      "arxiv_id": "2610.25459",
+      "paper_version": "2610.25459v2",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2610.25459&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7223068191",
+        "title": "BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks",
+        "doi": "https://doi.org/10.48550/arxiv.2610.25459",
+        "publication_date": "2026-10-18",
+        "title_similarity": 1.0,
+        "author_overlap": 6,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2610.25459"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7223068191",
+          "title": "BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks",
+          "doi": "https://doi.org/10.48550/arxiv.2610.25459",
+          "publication_date": "2026-10-18",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 6,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2610.25459"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "CALVIN",
+      "document": "3__CALVIN.md",
+      "paper": "CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks",
+      "source_link": "https://arxiv.org/abs/2112.03227",
+      "arxiv_id": "2112.03227",
+      "paper_version": "2112.03227v4",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2112.03227&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=CALVIN%3A%20A%20Benchmark%20for%20Language-Conditioned%20Policy%20Learning%20for%20Long-Horizon%20Robot%20Manipulation%20Tasks&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 189,
+        "id": "https://openalex.org/W4226073959",
+        "title": "CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks",
+        "doi": "https://doi.org/10.1109/lra.2022.3180108",
+        "publication_date": "2022-06-03",
+        "title_similarity": 1.0,
+        "author_overlap": 3,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "IEEE Robotics and Automation Letters",
+        "landing_page_url": "https://doi.org/10.1109/lra.2022.3180108"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4226073959",
+          "title": "CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks",
+          "doi": "https://doi.org/10.1109/lra.2022.3180108",
+          "publication_date": "2022-06-03",
+          "cited_by_count": 189,
+          "title_similarity": 1.0,
+          "author_overlap": 3,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "IEEE Robotics and Automation Letters",
+          "landing_page_url": "https://doi.org/10.1109/lra.2022.3180108"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "COLOSSEUM",
+      "document": "3__COLOSSEUM.md",
+      "paper": "THE COLOSSEUM: A Benchmark for Evaluating Generalization for Robotic Manipulation",
+      "source_link": "https://arxiv.org/abs/2402.08191",
+      "arxiv_id": "2402.08191",
+      "paper_version": "2402.08191v2",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2402.08191&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=THE%20COLOSSEUM%3A%20A%20Benchmark%20for%20Evaluating%20Generalization%20for%20Robotic%20Manipulation&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 29,
+        "id": "https://openalex.org/W4402354166",
+        "title": "THE COLOSSEUM: A Benchmark for Evaluating Generalization for Robotic Manipulation",
+        "doi": "https://doi.org/10.15607/rss.2024.xx.133",
+        "publication_date": "2024-07-15",
+        "title_similarity": 1.0,
+        "author_overlap": 6,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "Robotics: Science and Systems",
+        "landing_page_url": "https://doi.org/10.15607/rss.2024.xx.133"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4402354166",
+          "title": "THE COLOSSEUM: A Benchmark for Evaluating Generalization for Robotic Manipulation",
+          "doi": "https://doi.org/10.15607/rss.2024.xx.133",
+          "publication_date": "2024-07-15",
+          "cited_by_count": 29,
+          "title_similarity": 1.0,
+          "author_overlap": 6,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "Robotics: Science and Systems",
+          "landing_page_url": "https://doi.org/10.15607/rss.2024.xx.133"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "IndustrialVLA-Bench",
+      "document": "3__IndustrialVLA-Bench.md",
+      "paper": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
+      "source_link": "https://arxiv.org/abs/2609.25562",
+      "arxiv_id": "2609.25562",
+      "paper_version": "2609.25562v2",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.25562&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7214113903",
+        "title": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
+        "doi": "https://doi.org/10.48550/arxiv.2609.25562",
+        "publication_date": "2026-09-22",
+        "title_similarity": 1.0,
+        "author_overlap": 10,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.25562"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7214113903",
+          "title": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
+          "doi": "https://doi.org/10.48550/arxiv.2609.25562",
+          "publication_date": "2026-09-22",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 10,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.25562"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "LIBERO（基础套件）",
+      "document": "3__LIBERO-基础套件.md",
+      "paper": "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning",
+      "source_link": "https://arxiv.org/abs/2306.03310",
+      "arxiv_id": "2306.03310",
+      "paper_version": "2306.03310v2",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2306.03310&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=LIBERO%3A%20Benchmarking%20Knowledge%20Transfer%20for%20Lifelong%20Robot%20Learning&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 136,
+        "id": "https://openalex.org/W7133220882",
+        "title": "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning",
+        "doi": "https://doi.org/10.52202/075280-1939",
+        "publication_date": "2023-01-01",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "neural information processing systems",
+        "landing_page_url": "https://doi.org/10.52202/075280-1939"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7133220882",
+          "title": "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning",
+          "doi": "https://doi.org/10.52202/075280-1939",
+          "publication_date": "2023-01-01",
+          "cited_by_count": 136,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "neural information processing systems",
+          "landing_page_url": "https://doi.org/10.52202/075280-1939"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "ManiSkill / ManiSkill2",
+      "document": "3__ManiSkill-ManiSkill2.md",
+      "paper": "ManiSkill2: A Unified Benchmark for Generalizable Manipulation Skills",
+      "source_link": "https://arxiv.org/abs/2302.04659",
+      "arxiv_id": "2302.04659",
+      "paper_version": "2302.04659v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2302.04659&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=ManiSkill2%3A%20A%20Unified%20Benchmark%20for%20Generalizable%20Manipulation%20Skills&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 24,
+        "id": "https://openalex.org/W4320165654",
+        "title": "ManiSkill2: A Unified Benchmark for Generalizable Manipulation Skills",
+        "doi": "https://doi.org/10.48550/arxiv.2302.04659",
+        "publication_date": "2023-02-09",
+        "title_similarity": 1.0,
+        "author_overlap": 13,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/2302.04659"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4320165654",
+          "title": "ManiSkill2: A Unified Benchmark for Generalizable Manipulation Skills",
+          "doi": "https://doi.org/10.48550/arxiv.2302.04659",
+          "publication_date": "2023-02-09",
+          "cited_by_count": 24,
+          "title_similarity": 1.0,
+          "author_overlap": 13,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2302.04659"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "Open X-Embodiment",
+      "document": "3__Open-X-Embodiment.md",
+      "paper": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+      "source_link": "https://arxiv.org/abs/2310.08864",
+      "arxiv_id": "2310.08864",
+      "paper_version": "2310.08864v9",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2310.08864&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=Open%20X-Embodiment%3A%20Robotic%20Learning%20Datasets%20and%20RT-X%20Models&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 113,
+        "id": "https://openalex.org/W4387764390",
+        "title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+        "doi": "https://doi.org/10.48550/arxiv.2310.08864",
+        "publication_date": "2023-10-13",
+        "title_similarity": 1.0,
+        "author_overlap": 65,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/2310.08864"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4387764390",
+          "title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+          "doi": "https://doi.org/10.48550/arxiv.2310.08864",
+          "publication_date": "2023-10-13",
+          "cited_by_count": 113,
+          "title_similarity": 1.0,
+          "author_overlap": 65,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2310.08864"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboCasa",
+      "document": "3__RoboCasa.md",
+      "paper": "RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots",
+      "source_link": "https://arxiv.org/abs/2406.02523",
+      "arxiv_id": "2406.02523",
+      "paper_version": "2406.02523v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2406.02523&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=RoboCasa%3A%20Large-Scale%20Simulation%20of%20Everyday%20Tasks%20for%20Generalist%20Robots&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 4,
+        "id": "https://openalex.org/W4399424845",
+        "title": "RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots",
+        "doi": "https://doi.org/10.48550/arxiv.2406.02523",
+        "publication_date": "2024-06-04",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/2406.02523"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4399424845",
+          "title": "RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots",
+          "doi": "https://doi.org/10.48550/arxiv.2406.02523",
+          "publication_date": "2024-06-04",
+          "cited_by_count": 4,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2406.02523"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboCasa365",
+      "document": "3__RoboCasa365.md",
+      "paper": "RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots",
+      "source_link": "https://arxiv.org/abs/2603.04356",
+      "arxiv_id": "2603.04356",
+      "paper_version": "2603.04356v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2603.04356&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7133954504",
+        "title": "RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots",
+        "doi": "https://doi.org/10.48550/arxiv.2603.04356",
+        "publication_date": "2026-03-04",
+        "title_similarity": 1.0,
+        "author_overlap": 4,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/2603.04356"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7133954504",
+          "title": "RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots",
+          "doi": "https://doi.org/10.48550/arxiv.2603.04356",
+          "publication_date": "2026-03-04",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 4,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2603.04356"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboChrono",
+      "document": "3__RoboChrono.md",
+      "paper": "RoboChrono: A Real Robot Benchmark for Streaming Task Understanding",
+      "source_link": "https://arxiv.org/abs/2609.36605",
+      "arxiv_id": "2609.36605",
+      "paper_version": "2609.36605v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.36605&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7214955540",
+        "title": "RoboChrono: A Real Robot Benchmark for Streaming Task Understanding",
+        "doi": "https://doi.org/10.48550/arxiv.2609.36605",
+        "publication_date": "2026-09-29",
+        "title_similarity": 1.0,
+        "author_overlap": 25,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.36605"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7214955540",
+          "title": "RoboChrono: A Real Robot Benchmark for Streaming Task Understanding",
+          "doi": "https://doi.org/10.48550/arxiv.2609.36605",
+          "publication_date": "2026-09-29",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 25,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.36605"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboComb",
+      "document": "3__RoboComb.md",
+      "paper": "Exploring the Limits of Combinatorial Generalization in Embodied Manipulation",
+      "source_link": "https://arxiv.org/abs/2610.15425",
+      "arxiv_id": "2610.15425",
+      "paper_version": "2610.15425v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2610.15425&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7221756428",
+        "title": "Exploring the Limits of Combinatorial Generalization in Embodied Manipulation",
+        "doi": "https://doi.org/10.48550/arxiv.2610.15425",
+        "publication_date": "2026-10-11",
+        "title_similarity": 1.0,
+        "author_overlap": 5,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2610.15425"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7221756428",
+          "title": "Exploring the Limits of Combinatorial Generalization in Embodied Manipulation",
+          "doi": "https://doi.org/10.48550/arxiv.2610.15425",
+          "publication_date": "2026-10-11",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 5,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2610.15425"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboFollow",
+      "document": "3__RoboFollow.md",
+      "paper": "RoboFollow: Unveiling the Instruction Following Mirage in Embodied Agents",
+      "source_link": "https://arxiv.org/abs/2609.25636",
+      "arxiv_id": "2609.25636",
+      "paper_version": "2609.25636v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.25636&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "id": "https://openalex.org/W7214246107",
+        "title": "RoboFollow: Unveiling the Instruction Following Mirage in Embodied Agents",
+        "cited_by_count": 0,
+        "query_mode": "retained_source_verified_snapshot",
+        "version_note": "Earlier DOI/title lookup retained; publication-version consolidation not verified."
+      },
+      "version_records": [
+        {
+          "status": "matched",
+          "id": "https://openalex.org/W7214246107",
+          "title": "RoboFollow: Unveiling the Instruction Following Mirage in Embodied Agents",
+          "cited_by_count": 0,
+          "query_mode": "retained_source_verified_snapshot",
+          "version_note": "Earlier DOI/title lookup retained; publication-version consolidation not verified."
+        }
+      ],
+      "observed_on": "2026-11-03",
+      "retained_prior_observation": true
+    },
+    {
+      "benchmark": "RoboIRG-Bench",
+      "document": "3__RoboIRG-Bench.md",
+      "paper": "RoboIRGBench: Benchmarking Implicit Referential Grounding in Vision-Language-Action Models",
+      "source_link": "https://arxiv.org/abs/2609.34384",
+      "arxiv_id": "2609.34384",
+      "paper_version": "2609.34384v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.34384&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7214772858",
+        "title": "RoboIRGBench: Benchmarking Implicit Referential Grounding in Vision-Language-Action Models",
+        "doi": "https://doi.org/10.48550/arxiv.2609.34384",
+        "publication_date": "2026-09-28",
+        "title_similarity": 1.0,
+        "author_overlap": 5,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.34384"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7214772858",
+          "title": "RoboIRGBench: Benchmarking Implicit Referential Grounding in Vision-Language-Action Models",
+          "doi": "https://doi.org/10.48550/arxiv.2609.34384",
+          "publication_date": "2026-09-28",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 5,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.34384"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboMIND",
+      "document": "3__RoboMIND.md",
+      "paper": "RoboMIND: Benchmark on Multi-embodiment Intelligence Normative Data for Robot Manipulation",
+      "source_link": "https://arxiv.org/abs/2412.13877",
+      "arxiv_id": "2412.13877",
+      "paper_version": "2412.13877v3",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2412.13877%7C10.15607%2FRSS.2025.XXI.152&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=RoboMIND%3A%20Benchmark%20on%20Multi-embodiment%20Intelligence%20Normative%20Data%20for%20Robot%20Manipulation&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 23,
+        "id": "https://openalex.org/W4414050913",
+        "title": "RoboMIND: Benchmark on Multi-embodiment Intelligence Normative Data for Robot Manipulation",
+        "doi": "https://doi.org/10.15607/rss.2025.xxi.152",
+        "publication_date": "2025-06-21",
+        "title_similarity": 1.0,
+        "author_overlap": 33,
+        "exact_doi": true,
+        "is_published": true,
+        "venue": "Robotics: Science and Systems",
+        "landing_page_url": "https://doi.org/10.15607/rss.2025.xxi.152"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4414050913",
+          "title": "RoboMIND: Benchmark on Multi-embodiment Intelligence Normative Data for Robot Manipulation",
+          "doi": "https://doi.org/10.15607/rss.2025.xxi.152",
+          "publication_date": "2025-06-21",
+          "cited_by_count": 23,
+          "title_similarity": 1.0,
+          "author_overlap": 33,
+          "exact_doi": true,
+          "is_published": true,
+          "venue": "Robotics: Science and Systems",
+          "landing_page_url": "https://doi.org/10.15607/rss.2025.xxi.152"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboReel",
+      "document": "3__RoboReel.md",
+      "paper": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
+      "source_link": "https://arxiv.org/abs/2609.08209",
+      "arxiv_id": "2609.08209",
+      "paper_version": "2609.08209v4",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.08209&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7212081197",
+        "title": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
+        "doi": "https://doi.org/10.48550/arxiv.2609.08209",
+        "publication_date": "2026-09-08",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.08209"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7212081197",
+          "title": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
+          "doi": "https://doi.org/10.48550/arxiv.2609.08209",
+          "publication_date": "2026-09-08",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.08209"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboTwin",
+      "document": "3__RoboTwin.md",
+      "paper": "RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins",
+      "source_link": "https://doi.org/10.1109/CVPR52734.2025.02575",
+      "arxiv_id": "2504.13059",
+      "paper_version": "2504.13059v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2504.13059&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=RoboTwin%3A%20Dual-Arm%20Robot%20Benchmark%20with%20Generative%20Digital%20Twins&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 31,
+        "id": "https://openalex.org/W4413144615",
+        "title": "RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins",
+        "doi": "https://doi.org/10.1109/cvpr52734.2025.02575",
+        "publication_date": "2025-06-10",
+        "title_similarity": 1.0,
+        "author_overlap": 14,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+        "landing_page_url": "https://doi.org/10.1109/cvpr52734.2025.02575"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4413144615",
+          "title": "RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins",
+          "doi": "https://doi.org/10.1109/cvpr52734.2025.02575",
+          "publication_date": "2025-06-10",
+          "cited_by_count": 31,
+          "title_similarity": 1.0,
+          "author_overlap": 14,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+          "landing_page_url": "https://doi.org/10.1109/cvpr52734.2025.02575"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "SimplerEnv",
+      "document": "3__SimplerEnv.md",
+      "paper": "Evaluating Real-World Robot Manipulation Policies in Simulation",
+      "source_link": "https://arxiv.org/abs/2405.05941",
+      "arxiv_id": "2405.05941",
+      "paper_version": "2405.05941v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2405.05941&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=Evaluating%20Real-World%20Robot%20Manipulation%20Policies%20in%20Simulation&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 4,
+        "id": "https://openalex.org/W4396822572",
+        "title": "Evaluating Real-World Robot Manipulation Policies in Simulation",
+        "doi": "https://doi.org/10.48550/arxiv.2405.05941",
+        "publication_date": "2024-05-09",
+        "title_similarity": 1.0,
+        "author_overlap": 14,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/2405.05941"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4396822572",
+          "title": "Evaluating Real-World Robot Manipulation Policies in Simulation",
+          "doi": "https://doi.org/10.48550/arxiv.2405.05941",
+          "publication_date": "2024-05-09",
+          "cited_by_count": 4,
+          "title_similarity": 1.0,
+          "author_overlap": 14,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2405.05941"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "Spa-Bench",
+      "document": "3__Spa-Bench.md",
+      "paper": "Spa-Bench: A Real-Robot Benchmark for Spatial Grounding in Vision-Language-Action Models",
+      "source_link": "https://arxiv.org/abs/2610.12696",
+      "arxiv_id": "2610.12696",
+      "paper_version": "2610.12696v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2610.12696&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7221577967",
+        "title": "Spa-Bench: A Real-Robot Benchmark for Spatial Grounding in Vision-Language-Action Models",
+        "doi": "https://doi.org/10.48550/arxiv.2610.12696",
+        "publication_date": "2026-10-08",
+        "title_similarity": 1.0,
+        "author_overlap": 3,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2610.12696"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7221577967",
+          "title": "Spa-Bench: A Real-Robot Benchmark for Spatial Grounding in Vision-Language-Action Models",
+          "doi": "https://doi.org/10.48550/arxiv.2610.12696",
+          "publication_date": "2026-10-08",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 3,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2610.12696"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "VLABench",
+      "document": "3__VLABench.md",
+      "paper": "VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks",
+      "source_link": "https://doi.org/10.1109/ICCV51701.2025.01037",
+      "arxiv_id": "2412.18194",
+      "paper_version": "2412.18194v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2412.18194&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=VLABench%3A%20A%20Large-Scale%20Benchmark%20for%20Language-Conditioned%20Robotics%20Manipulation%20with%20Long-Horizon%20Reasoning%20Tasks&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 16,
+        "id": "https://openalex.org/W4405783861",
+        "title": "VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks",
+        "doi": "https://doi.org/10.1109/iccv51701.2025.01037",
+        "publication_date": "2025-10-19",
+        "title_similarity": 1.0,
+        "author_overlap": 11,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "IEEE/CVF International Conference on Computer Vision (ICCV)",
+        "landing_page_url": "https://doi.org/10.1109/iccv51701.2025.01037"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4405783861",
+          "title": "VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks",
+          "doi": "https://doi.org/10.1109/iccv51701.2025.01037",
+          "publication_date": "2025-10-19",
+          "cited_by_count": 16,
+          "title_similarity": 1.0,
+          "author_overlap": 11,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "IEEE/CVF International Conference on Computer Vision (ICCV)",
+          "landing_page_url": "https://doi.org/10.1109/iccv51701.2025.01037"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "Agent-SafetyBench",
+      "document": "4__Agent-SafetyBench.md",
+      "paper": "Agent-SafetyBench: Evaluating the Safety of LLM Agents",
+      "source_link": "https://arxiv.org/abs/2412.14470",
+      "arxiv_id": "2412.14470",
+      "paper_version": "2412.14470v2",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2412.14470&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=Agent-SafetyBench%3A%20Evaluating%20the%20Safety%20of%20LLM%20Agents&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 6,
+        "id": "https://openalex.org/W4405627542",
+        "title": "Agent-SafetyBench: Evaluating the Safety of LLM Agents",
+        "doi": "https://doi.org/10.48550/arxiv.2412.14470",
+        "publication_date": "2024-12-19",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/2412.14470"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4405627542",
+          "title": "Agent-SafetyBench: Evaluating the Safety of LLM Agents",
+          "doi": "https://doi.org/10.48550/arxiv.2412.14470",
+          "publication_date": "2024-12-19",
+          "cited_by_count": 6,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2412.14470"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "Bench2Dex",
+      "document": "4__Bench2Dex.md",
+      "paper": "Bench2Dex: Benchmarking Visuo-Tactile Bimanual Dexterous Manipulation Across Dexterous Hands",
+      "source_link": "https://arxiv.org/abs/2609.15726",
+      "arxiv_id": "2609.15726",
+      "paper_version": "2609.15726v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.15726&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7213308421",
+        "title": "Bench2Dex: Benchmarking Visuo-Tactile Bimanual Dexterous Manipulation Across Dexterous Hands",
+        "doi": "https://doi.org/10.48550/arxiv.2609.15726",
+        "publication_date": "2026-09-14",
+        "title_similarity": 1.0,
+        "author_overlap": 24,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.15726"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7213308421",
+          "title": "Bench2Dex: Benchmarking Visuo-Tactile Bimanual Dexterous Manipulation Across Dexterous Hands",
+          "doi": "https://doi.org/10.48550/arxiv.2609.15726",
+          "publication_date": "2026-09-14",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 24,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.15726"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "DESPITE",
+      "document": "4__DESPITE.md",
+      "paper": "Using large language models for embodied planning introduces systematic safety risks",
+      "source_link": "https://arxiv.org/abs/2604.18463",
+      "arxiv_id": "2604.18463",
+      "paper_version": "2604.18463v2",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2604.18463&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7155060036",
+        "title": "Using large language models for embodied planning introduces systematic safety risks",
+        "doi": "https://doi.org/10.48550/arxiv.2604.18463",
+        "publication_date": "2026-04-20",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2604.18463"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7155060036",
+          "title": "Using large language models for embodied planning introduces systematic safety risks",
+          "doi": "https://doi.org/10.48550/arxiv.2604.18463",
+          "publication_date": "2026-04-20",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2604.18463"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "EmbodiedBench",
+      "document": "4__EmbodiedBench.md",
+      "paper": "EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents",
+      "source_link": "https://arxiv.org/abs/2502.09560",
+      "arxiv_id": "2502.09560",
+      "paper_version": "2502.09560v3",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2502.09560&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=EmbodiedBench%3A%20Comprehensive%20Benchmarking%20Multi-modal%20Large%20Language%20Models%20for%20Vision-Driven%20Embodied%20Agents&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 1,
+        "id": "https://openalex.org/W4407590542",
+        "title": "EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents",
+        "doi": "https://doi.org/10.48550/arxiv.2502.09560",
+        "publication_date": "2025-02-13",
+        "title_similarity": 1.0,
+        "author_overlap": 9,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/2502.09560"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4407590542",
+          "title": "EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents",
+          "doi": "https://doi.org/10.48550/arxiv.2502.09560",
+          "publication_date": "2025-02-13",
+          "cited_by_count": 1,
+          "title_similarity": 1.0,
+          "author_overlap": 9,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2502.09560"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "EmbodiedGovBench",
+      "document": "4__EmbodiedGovBench.md",
+      "paper": "EmbodiedGovBench: A Benchmark for Governance, Recovery, and Upgrade Safety in Embodied Agent Systems",
+      "source_link": "https://arxiv.org/abs/2604.11174",
+      "arxiv_id": "2604.11174",
+      "paper_version": "2604.11174v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2604.11174&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7154418749",
+        "title": "EmbodiedGovBench: A Benchmark for Governance, Recovery, and Upgrade Safety in Embodied Agent Systems",
+        "doi": "https://doi.org/10.48550/arxiv.2604.11174",
+        "publication_date": "2026-04-13",
+        "title_similarity": 1.0,
+        "author_overlap": 5,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2604.11174"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7154418749",
+          "title": "EmbodiedGovBench: A Benchmark for Governance, Recovery, and Upgrade Safety in Embodied Agent Systems",
+          "doi": "https://doi.org/10.48550/arxiv.2604.11174",
+          "publication_date": "2026-04-13",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 5,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2604.11174"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "HygieneRoboBench",
+      "document": "4__HygieneRoboBench.md",
+      "paper": "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots",
+      "source_link": "https://arxiv.org/abs/2610.08642",
+      "arxiv_id": "2610.08642",
+      "paper_version": "2610.08642v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2610.08642&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7221007195",
+        "title": "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots",
+        "doi": "https://doi.org/10.48550/arxiv.2610.08642",
+        "publication_date": "2026-10-06",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2610.08642"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7221007195",
+          "title": "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots",
+          "doi": "https://doi.org/10.48550/arxiv.2610.08642",
+          "publication_date": "2026-10-06",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2610.08642"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "INFUSE",
+      "document": "4__INFUSE.md",
+      "paper": "INFUSE: A Unified Surface Benchmark for Indirect Prompt Injection in Agentic Systems",
+      "source_link": "https://arxiv.org/abs/2610.20776",
+      "arxiv_id": "2610.20776",
+      "paper_version": "2610.20776v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2610.20776&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7222558873",
+        "title": "INFUSE: A Unified Surface Benchmark for Indirect Prompt Injection in Agentic Systems",
+        "doi": "https://doi.org/10.48550/arxiv.2610.20776",
+        "publication_date": "2026-10-14",
+        "title_similarity": 1.0,
+        "author_overlap": 5,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2610.20776"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7222558873",
+          "title": "INFUSE: A Unified Surface Benchmark for Indirect Prompt Injection in Agentic Systems",
+          "doi": "https://doi.org/10.48550/arxiv.2610.20776",
+          "publication_date": "2026-10-14",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 5,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2610.20776"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "IS-Bench",
+      "document": "4__IS-Bench.md",
+      "paper": "IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks",
+      "source_link": "https://arxiv.org/abs/2506.16402",
+      "arxiv_id": "2506.16402",
+      "paper_version": "2506.16402v3",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2506.16402&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=IS-Bench%3A%20Evaluating%20Interactive%20Safety%20of%20VLM-Driven%20Embodied%20Agents%20in%20Daily%20Household%20Tasks&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 2,
+        "id": "https://openalex.org/W7138977141",
+        "title": "IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks",
+        "doi": "https://doi.org/10.1609/aaai.v40i42.40880",
+        "publication_date": "2026-03-14",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+        "landing_page_url": "https://doi.org/10.1609/aaai.v40i42.40880"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7138977141",
+          "title": "IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks",
+          "doi": "https://doi.org/10.1609/aaai.v40i42.40880",
+          "publication_date": "2026-03-14",
+          "cited_by_count": 2,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+          "landing_page_url": "https://doi.org/10.1609/aaai.v40i42.40880"
+        },
+        {
+          "id": "https://openalex.org/W4417145625",
+          "title": "IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks",
+          "doi": "https://doi.org/10.48550/arxiv.2506.16402",
+          "publication_date": "2025-06-19",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 4,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2506.16402"
+        },
+        {
+          "id": "https://openalex.org/W7128744501",
+          "title": "IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks",
+          "doi": "https://doi.org/10.48448/c9r4-ed49",
+          "publication_date": "2026-01-07",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 8,
+          "exact_doi": false,
+          "is_published": false,
+          "venue": "Underline Science Inc.",
+          "landing_page_url": "https://doi.org/10.48448/c9r4-ed49"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "LABIT",
+      "document": "4__LABIT.md",
+      "paper": "LABIT: Long-Horizon Robotic Assembly Benchmark for Industrial Tasks",
+      "source_link": "https://arxiv.org/abs/2610.16398",
+      "arxiv_id": "2610.16398",
+      "paper_version": "2610.16398v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2610.16398&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7221815075",
+        "title": "LABIT: Long-Horizon Robotic Assembly Benchmark for Industrial Tasks",
+        "doi": "https://doi.org/10.48550/arxiv.2610.16398",
+        "publication_date": "2026-10-12",
+        "title_similarity": 1.0,
+        "author_overlap": 4,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2610.16398"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7221815075",
+          "title": "LABIT: Long-Horizon Robotic Assembly Benchmark for Industrial Tasks",
+          "doi": "https://doi.org/10.48550/arxiv.2610.16398",
+          "publication_date": "2026-10-12",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 4,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2610.16398"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "MSK-Bench",
+      "document": "4__MSK-Bench.md",
+      "paper": "MSK-Bench: Benchmarking Full-Body Musculoskeletal Motor Control Across Tasks, Control Paradigms, and Physiological Metrics",
+      "source_link": "https://arxiv.org/abs/2609.26872",
+      "arxiv_id": "2609.26872",
+      "paper_version": "2609.26872v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.26872&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7214208713",
+        "title": "MSK-Bench: Benchmarking Full-Body Musculoskeletal Motor Control Across Tasks, Control Paradigms, and Physiological Metrics",
+        "doi": "https://doi.org/10.48550/arxiv.2609.26872",
+        "publication_date": "2026-09-22",
+        "title_similarity": 1.0,
+        "author_overlap": 10,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.26872"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7214208713",
+          "title": "MSK-Bench: Benchmarking Full-Body Musculoskeletal Motor Control Across Tasks, Control Paradigms, and Physiological Metrics",
+          "doi": "https://doi.org/10.48550/arxiv.2609.26872",
+          "publication_date": "2026-09-22",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 10,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.26872"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "MemForm",
+      "document": "4__MemForm.md",
+      "paper": "MemForm: Benchmarking Memory Formation Poisoning in LLM Agents",
+      "source_link": "https://arxiv.org/abs/2610.14431",
+      "arxiv_id": "2610.14431",
+      "paper_version": "2610.14431v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2610.14431&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7221777130",
+        "title": "MemForm: Benchmarking Memory Formation Poisoning in LLM Agents",
+        "doi": "https://doi.org/10.48550/arxiv.2610.14431",
+        "publication_date": "2026-10-10",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2610.14431"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7221777130",
+          "title": "MemForm: Benchmarking Memory Formation Poisoning in LLM Agents",
+          "doi": "https://doi.org/10.48550/arxiv.2610.14431",
+          "publication_date": "2026-10-10",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2610.14431"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "MineAmongUs",
+      "document": "4__MineAmongUs.md",
+      "paper": "Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions",
+      "source_link": "https://arxiv.org/abs/2608.30428",
+      "arxiv_id": "2608.30428",
+      "paper_version": "2608.30428v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2608.30428&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7204938515",
+        "title": "Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions",
+        "doi": "https://doi.org/10.48550/arxiv.2608.30428",
+        "publication_date": "2026-08-31",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2608.30428"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7204938515",
+          "title": "Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions",
+          "doi": "https://doi.org/10.48550/arxiv.2608.30428",
+          "publication_date": "2026-08-31",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2608.30428"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "ORBIT",
+      "document": "4__ORBIT.md",
+      "paper": "ORBIT: A Framework for Multi-Agent Safety and Security Evaluations",
+      "source_link": "https://arxiv.org/abs/2609.33102",
+      "arxiv_id": "2609.33102",
+      "paper_version": "2609.33102v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.33102&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7214782110",
+        "title": "ORBIT: A Framework for Multi-Agent Safety and Security Evaluations",
+        "doi": "https://doi.org/10.48550/arxiv.2609.33102",
+        "publication_date": "2026-09-27",
+        "title_similarity": 1.0,
+        "author_overlap": 4,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.33102"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7214782110",
+          "title": "ORBIT: A Framework for Multi-Agent Safety and Security Evaluations",
+          "doi": "https://doi.org/10.48550/arxiv.2609.33102",
+          "publication_date": "2026-09-27",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 4,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.33102"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "Peg-in-Bench",
+      "document": "4__Peg-in-Bench.md",
+      "paper": "Peg-in-Bench: A Modular Benchmark for High-Precision Robotic Insertion",
+      "source_link": "https://arxiv.org/abs/2609.00906",
+      "arxiv_id": "2609.00906",
+      "paper_version": "2609.00906v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.00906&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7206171071",
+        "title": "Peg-in-Bench: A Modular Benchmark for High-Precision Robotic Insertion",
+        "doi": "https://doi.org/10.48550/arxiv.2609.00906",
+        "publication_date": "2026-09-01",
+        "title_similarity": 1.0,
+        "author_overlap": 7,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.00906"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7206171071",
+          "title": "Peg-in-Bench: A Modular Benchmark for High-Precision Robotic Insertion",
+          "doi": "https://doi.org/10.48550/arxiv.2609.00906",
+          "publication_date": "2026-09-01",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 7,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.00906"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "PhysAI-Bench",
+      "document": "4__PhysAI-Bench.md",
+      "paper": "PhysAI-Bench: A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
+      "source_link": "https://arxiv.org/abs/2609.23695",
+      "arxiv_id": "2609.23695",
+      "paper_version": "2609.23695v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.23695&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7214012534",
+        "title": "PhysAI-Bench: A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
+        "doi": "https://doi.org/10.48550/arxiv.2609.23695",
+        "publication_date": "2026-09-20",
+        "title_similarity": 1.0,
+        "author_overlap": 4,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.23695"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7214012534",
+          "title": "PhysAI-Bench: A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
+          "doi": "https://doi.org/10.48550/arxiv.2609.23695",
+          "publication_date": "2026-09-20",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 4,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.23695"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboAbstention",
+      "document": "4__RoboAbstention.md",
+      "paper": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
+      "source_link": "https://arxiv.org/abs/2605.20544",
+      "arxiv_id": "2605.20544",
+      "paper_version": "2605.20544v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2605.20544&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7162010380",
+        "title": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
+        "doi": "https://doi.org/10.48550/arxiv.2605.20544",
+        "publication_date": "2026-05-19",
+        "title_similarity": 1.0,
+        "author_overlap": 6,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2605.20544"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7162010380",
+          "title": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
+          "doi": "https://doi.org/10.48550/arxiv.2605.20544",
+          "publication_date": "2026-05-19",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 6,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2605.20544"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "RoboJailBench",
+      "document": "4__RoboJailBench.md",
+      "paper": "RoboJailBench: Benchmarking Adversarial Attacks and Defenses in Embodied Robotic Agents",
+      "source_link": "https://arxiv.org/abs/2605.19328",
+      "arxiv_id": "2605.19328",
+      "paper_version": "2605.19328v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2605.19328&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7161775162",
+        "title": "RoboJailBench: Benchmarking Adversarial Attacks and Defenses in Embodied Robotic Agents",
+        "doi": "https://doi.org/10.48550/arxiv.2605.19328",
+        "publication_date": "2026-05-19",
+        "title_similarity": 1.0,
+        "author_overlap": 6,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2605.19328"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7161775162",
+          "title": "RoboJailBench: Benchmarking Adversarial Attacks and Defenses in Embodied Robotic Agents",
+          "doi": "https://doi.org/10.48550/arxiv.2605.19328",
+          "publication_date": "2026-05-19",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 6,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2605.19328"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "STARS",
+      "document": "4__STARS.md",
+      "paper": "STARS: From Spatiotemporal Dynamics to Social Representations in Human-Robot Interaction",
+      "source_link": "https://arxiv.org/abs/2609.40245",
+      "arxiv_id": "2609.40245",
+      "paper_version": "2609.40245v3",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.40245&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7215077318",
+        "title": "STARS: From Spatiotemporal Dynamics to Social Representations in Human-Robot Interaction",
+        "doi": "https://doi.org/10.48550/arxiv.2609.40245",
+        "publication_date": "2026-09-30",
+        "title_similarity": 1.0,
+        "author_overlap": 8,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "https://arxiv.org/abs/2609.40245"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7215077318",
+          "title": "STARS: From Spatiotemporal Dynamics to Social Representations in Human-Robot Interaction",
+          "doi": "https://doi.org/10.48550/arxiv.2609.40245",
+          "publication_date": "2026-09-30",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 8,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "https://arxiv.org/abs/2609.40245"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "SafeAgentBench",
+      "document": "4__SafeAgentBench.md",
+      "paper": "SafeAgentBench: A Benchmark for Safe Task Planning of Embodied LLM Agents",
+      "source_link": "https://arxiv.org/abs/2412.13178",
+      "arxiv_id": "2412.13178",
+      "paper_version": "2412.13178v5",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2412.13178&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=SafeAgentBench%3A%20A%20Benchmark%20for%20Safe%20Task%20Planning%20of%20Embodied%20LLM%20Agents&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 2,
+        "id": "https://openalex.org/W4405562840",
+        "title": "SafeAgentBench: A Benchmark for Safe Task Planning of Embodied LLM Agents",
+        "doi": "https://doi.org/10.48550/arxiv.2412.13178",
+        "publication_date": "2024-12-17",
+        "title_similarity": 1.0,
+        "author_overlap": 5,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/2412.13178"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4405562840",
+          "title": "SafeAgentBench: A Benchmark for Safe Task Planning of Embodied LLM Agents",
+          "doi": "https://doi.org/10.48550/arxiv.2412.13178",
+          "publication_date": "2024-12-17",
+          "cited_by_count": 2,
+          "title_similarity": 1.0,
+          "author_overlap": 5,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/2412.13178"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "SkillSafetyBench",
+      "document": "4__SkillSafetyBench.md",
+      "paper": "SkillSafetyBench: Evaluating Agent Safety under Skill-Facing Attack Surfaces",
+      "source_link": "https://arxiv.org/abs/2605.12015",
+      "arxiv_id": "2605.12015",
+      "paper_version": "2605.12015v3",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2605.12015&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7161027243",
+        "title": "SkillSafetyBench: Evaluating Agent Safety under Skill-Facing Attack Surfaces",
+        "doi": "https://doi.org/10.18653/2026.emnlp-main.703",
+        "publication_date": "2026-01-01",
+        "title_similarity": 1.0,
+        "author_overlap": 9,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+        "landing_page_url": "https://doi.org/10.18653/2026.emnlp-main.703"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7161027243",
+          "title": "SkillSafetyBench: Evaluating Agent Safety under Skill-Facing Attack Surfaces",
+          "doi": "https://doi.org/10.18653/2026.emnlp-main.703",
+          "publication_date": "2026-01-01",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 9,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+          "landing_page_url": "https://doi.org/10.18653/2026.emnlp-main.703"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "CARLA / CARLA Leaderboard",
+      "document": "5__CARLA-CARLA-Leaderboard.md",
+      "paper": "CARLA: An Open Urban Driving Simulator",
+      "source_link": "https://arxiv.org/abs/1711.03938",
+      "arxiv_id": "1711.03938",
+      "paper_version": "1711.03938v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.1711.03938&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=CARLA%3A%20An%20Open%20Urban%20Driving%20Simulator&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 3759,
+        "id": "https://openalex.org/W2767621168",
+        "title": "CARLA: An Open Urban Driving Simulator",
+        "doi": "https://doi.org/10.48550/arxiv.1711.03938",
+        "publication_date": "2017-11-10",
+        "title_similarity": 1.0,
+        "author_overlap": 3,
+        "exact_doi": true,
+        "is_published": false,
+        "venue": "arXiv (Cornell University)",
+        "landing_page_url": "http://arxiv.org/abs/1711.03938"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W2767621168",
+          "title": "CARLA: An Open Urban Driving Simulator",
+          "doi": "https://doi.org/10.48550/arxiv.1711.03938",
+          "publication_date": "2017-11-10",
+          "cited_by_count": 3759,
+          "title_similarity": 1.0,
+          "author_overlap": 3,
+          "exact_doi": true,
+          "is_published": false,
+          "venue": "arXiv (Cornell University)",
+          "landing_page_url": "http://arxiv.org/abs/1711.03938"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "NAVSIM",
+      "document": "5__NAVSIM.md",
+      "paper": "NAVSIM: Data-Driven Non-Reactive Autonomous Vehicle Simulation and Benchmarking",
+      "source_link": "https://doi.org/10.52202/079017-0902",
+      "arxiv_id": "2406.15349",
+      "paper_version": "2406.15349v2",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2406.15349&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=NAVSIM%3A%20Data-Driven%20Non-Reactive%20Autonomous%20Vehicle%20Simulation%20and%20Benchmarking&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 63,
+        "id": "https://openalex.org/W4415798424",
+        "title": "NAVSIM: Data-Driven Non-Reactive Autonomous Vehicle Simulation and Benchmarking",
+        "doi": "https://doi.org/10.52202/079017-0902",
+        "publication_date": "2024-01-01",
+        "title_similarity": 1.0,
+        "author_overlap": 11,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "neural information processing systems",
+        "landing_page_url": "https://doi.org/10.52202/079017-0902"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W4415798424",
+          "title": "NAVSIM: Data-Driven Non-Reactive Autonomous Vehicle Simulation and Benchmarking",
+          "doi": "https://doi.org/10.52202/079017-0902",
+          "publication_date": "2024-01-01",
+          "cited_by_count": 63,
+          "title_similarity": 1.0,
+          "author_overlap": 11,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "neural information processing systems",
+          "landing_page_url": "https://doi.org/10.52202/079017-0902"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "SafeBench",
+      "document": "5__SafeBench.md",
+      "paper": "SafeBench: A Benchmarking Platform for Safety Evaluation of Autonomous Vehicles",
+      "source_link": "https://arxiv.org/abs/2206.09682",
+      "arxiv_id": "2206.09682",
+      "paper_version": "2206.09682v4",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2206.09682&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=SafeBench%3A%20A%20Benchmarking%20Platform%20for%20Safety%20Evaluation%20of%20Autonomous%20Vehicles&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 48,
+        "id": "https://openalex.org/W7133222348",
+        "title": "SafeBench: A Benchmarking Platform for Safety Evaluation of Autonomous Vehicles",
+        "doi": "https://doi.org/10.52202/068431-1861",
+        "publication_date": "2022-01-01",
+        "title_similarity": 1.0,
+        "author_overlap": 9,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "neural information processing systems",
+        "landing_page_url": "https://doi.org/10.52202/068431-1861"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7133222348",
+          "title": "SafeBench: A Benchmarking Platform for Safety Evaluation of Autonomous Vehicles",
+          "doi": "https://doi.org/10.52202/068431-1861",
+          "publication_date": "2022-01-01",
+          "cited_by_count": 48,
+          "title_similarity": 1.0,
+          "author_overlap": 9,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "neural information processing systems",
+          "landing_page_url": "https://doi.org/10.52202/068431-1861"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "VIPS",
+      "document": "5__VIPS.md",
+      "paper": "VIPS: Vehicle-Infrastructure Cooperative Planning Benchmark via Pseudo-Simulation",
+      "source_link": "https://arxiv.org/abs/2609.02462",
+      "arxiv_id": "2609.02462",
+      "paper_version": "2609.02462v1",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.2609.02462&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 0,
+        "id": "https://openalex.org/W7207785702",
+        "title": "VIPS: Vehicle-Infrastructure Cooperative Planning Benchmark via Pseudo-Simulation",
+        "doi": "https://doi.org/10.1007/978-3-032-37225-3_25",
+        "publication_date": "2026-01-01",
+        "title_similarity": 1.0,
+        "author_overlap": 5,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "Lecture notes in computer science",
+        "landing_page_url": "https://doi.org/10.1007/978-3-032-37225-3_25"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W7207785702",
+          "title": "VIPS: Vehicle-Infrastructure Cooperative Planning Benchmark via Pseudo-Simulation",
+          "doi": "https://doi.org/10.1007/978-3-032-37225-3_25",
+          "publication_date": "2026-01-01",
+          "cited_by_count": 0,
+          "title_similarity": 1.0,
+          "author_overlap": 5,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "Lecture notes in computer science",
+          "landing_page_url": "https://doi.org/10.1007/978-3-032-37225-3_25"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    },
+    {
+      "benchmark": "nuScenes",
+      "document": "5__nuScenes.md",
+      "paper": "nuScenes: A multimodal dataset for autonomous driving",
+      "source_link": "https://arxiv.org/abs/1903.11027",
+      "arxiv_id": "1903.11027",
+      "paper_version": "1903.11027v5",
+      "queries": [
+        "https://api.openalex.org/works?filter=doi:10.48550%2Farxiv.1903.11027&per-page=20&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships",
+        "https://api.openalex.org/works?search=nuScenes%3A%20A%20multimodal%20dataset%20for%20autonomous%20driving&per-page=10&select=id,title,doi,publication_date,cited_by_count,primary_location,authorships"
+      ],
+      "query_errors": [],
+      "openalex": {
+        "status": "matched",
+        "cited_by_count": 7179,
+        "id": "https://openalex.org/W2925148167",
+        "title": "nuScenes: A Multimodal Dataset for Autonomous Driving",
+        "doi": "https://doi.org/10.1109/cvpr42600.2020.01164",
+        "publication_date": "2020-06-01",
+        "title_similarity": 1.0,
+        "author_overlap": 8,
+        "exact_doi": false,
+        "is_published": true,
+        "venue": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+        "landing_page_url": "https://doi.org/10.1109/cvpr42600.2020.01164"
+      },
+      "version_records": [
+        {
+          "id": "https://openalex.org/W2925148167",
+          "title": "nuScenes: A Multimodal Dataset for Autonomous Driving",
+          "doi": "https://doi.org/10.1109/cvpr42600.2020.01164",
+          "publication_date": "2020-06-01",
+          "cited_by_count": 7179,
+          "title_similarity": 1.0,
+          "author_overlap": 8,
+          "exact_doi": false,
+          "is_published": true,
+          "venue": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+          "landing_page_url": "https://doi.org/10.1109/cvpr42600.2020.01164"
+        }
+      ],
+      "observed_on": "2026-11-04"
+    }
+  ]
+}

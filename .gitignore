@@ -13,8 +13,17 @@ venv/
 docs/_*.txt
 docs/_*.json
 docs/_backup/
+docs/_paper_cache/
 
 # OS
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Local spreadsheet runtime and QA previews
+.survey_work/
+scripts/node_modules/
+
+# 生成的汇报幻灯片（体积大，留在本地）
+presentations/*.pptx
+~$*.pptx
