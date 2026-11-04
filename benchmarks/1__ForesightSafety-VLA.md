@@ -29,7 +29,8 @@
 | 规模线索 | 基于 RoboTwin 的 66 个场景、5 种本体、13 类风险；Safe-Core、Safe-Lang、Safe-Vis 分别诊断核心风险、语言变化和视觉变化。 |
 | 执行环境线索 | 仿真 VLA 安全控制 |
 | 全文状态 | 已核查本地全文：`docs/_fulltext/ForesightSafety-VLA.txt` |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7166132482)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7166132482)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 12 个缩写／技术词，并标出 2 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -82,17 +83,84 @@
 四象限的分母是全部 episode，不能把不安全成功率直接当成成功中的违规比例。仿真中的风险触发与真实损伤之间仍有距离。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Mingyang Lyu, Yinqian Sun, Yiyang Jia, et al., ‘ForesightSafety-VLA: A Unified Diagnostic Safety Benchmark for Vision-Language-Action Models,’ arXiv preprint, 2026, arXiv:2606.27079v2. [论文](https://arxiv.org/abs/2606.27079)；[核查正文](https://arxiv.org/html/2606.27079v2)。
 
 **重点核查位置（章节主题）**：III Benchmark；IV Evaluation；V Experiments。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7166132482)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7166132482)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://github.com/tuotuoLyu/ForesightSafety-VLA](https://github.com/tuotuoLyu/ForesightSafety-VLA)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要未见命中。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（已确认项目入口，2026-11-04）
+
+**项目入口**：[https://github.com/tuotuoLyu/ForesightSafety-VLA](https://github.com/tuotuoLyu/ForesightSafety-VLA)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [repo](https://github.com/tuotuoLyu/ForesightSafety-VLA) | https://raw.githubusercontent.com/tuotuoLyu/ForesightSafety-VLA/HEAD/README.md | stars 87，license NOASSERTION，最后推送 2026-10-29，保留文本 4200 字符（截断） |
+
+**项目页显示**：GitHub https://github.com/tuotuoLyu/ForesightSafety-VLA（87 stars，2026-10-29 推送，许可标记 NOASSERTION），README 为论文首页信息与作者单位。
+
+**涉及领域**：VLA 模型的物理与语义安全诊断；仿真操作场景，含任务难度分级与语言／视觉扰动。
+
+**测试目的与构建方法**：用层级任务难度与语言／视觉扰动构造可控测试，结合任务完成与约束违反信号，报告 SR、约束违反 CC、风险暴露 RET，并把 episode 分成安全成功／不安全成功／安全失败／不安全失败四象限。
+
+**测试缺陷**：四象限分母是全部 episode，不能把“不安全成功”当成成功中的违规比；仿真风险触发与真实损伤仍有距离；扰动强度与任务难度耦合。
+
+**与具身智能安全的相关性**：直接测执行层安全：动作是否违反约束，以及“成功”里有多少是危险的。四象限正好把能力与安全解耦，是本库中最贴近物理安全的评测之一。
+
+**用这个 benchmark 测了什么**：原文示例 OpenVLA-oft 的 SR 0.48、不安全成功 0.06（即成功轨迹中约 12.5% 不安全）；常规措辞变化与结构性风险影响不同，说明“换个说法”不足以暴露风险。
+
+**本轮核查边界**：只读 README 头部，未核对代码与数据集。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 12 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **episode** | episode | 回合 | 一次从重置到终止（成功／失败／超时）的完整交互，是最常见的分母。 |
+| **CC** | Cumulative safety Cost | 累计安全代价 | 一次 episode 内违规代价的累加，衡量“踩线有多重”而非“有没有踩线”。 |
+| **RET** | Risk Exposure Time | 风险暴露时间 | 处于风险状态（如贴着人或物体）的时长。 |
+| **SR** | Success Rate | 成功率 | 成功 episode ÷ 全部 episode；但有的论文用它指 Security Rate，必须先看定义。 |
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+| **OpenVLA** | OpenVLA（含 OpenVLA-oft 变体） | OpenVLA 开源策略 | 开源的 7B VLA 基线，安全基准里最常被拿来测“干净能力 vs 安全”的模型之一。 |
+| **LLM** | Large Language Model | 大语言模型 | 纯文本大模型，常作为具身代理的规划或工具调用层。 |
+| **RDT** | Robotics Diffusion Transformer | 机器人扩散 Transformer | 基于扩散 Transformer 的机器人策略，常见对照模型之一。 |
+| **DP** | Diffusion Policy | 扩散策略 | 用扩散模型生成动作序列的模仿学习基线，安全论文里常作“普通策略”对照。 |
+| **ACT** | Action Chunking with Transformers | 动作分块 Transformer 策略 | 把连续多步动作一次性预测的模仿学习基线，常作为对照。 |
+| **L0** | difficulty level L0–L3 | L0–L3 难度档 | 基准自定义的难度阶梯：常见是 L0 干净、L1 加扰动、L2 更强扰动或结构变化，L3 更难。 |
+| **cs.RO** | arXiv category: cs.RO / cs.CV / cs.AI / cs.LG | arXiv 学科分类 | arXiv 的学科标签：cs.RO 机器人、cs.CV 计算机视觉、cs.AI 人工智能、cs.LG 机器学习。 |
+
+**本文最容易读错的地方**：
+- **episode**：把“任务数”“配置数”当 episode 分母，会让成功率虚高。
+- **SR**：把 SR（Security Rate）当成功率，或把 /N 的比率当 /SR 的比率。
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| ForesightSafety-VLA | 基准 | VLA 安全诊断基准 |
+| RoboTwin | 基准 | 双臂操作数据生成与评测 |
+
+<!-- glossary:end -->

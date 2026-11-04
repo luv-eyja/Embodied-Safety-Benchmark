@@ -30,7 +30,8 @@
 | 执行环境线索 | 原子技能组合泛化 |
 | 来源审计 | [Exploring the Limits of Combinatorial Generalization in Embodied Manipulation](https://arxiv.org/abs/2610.15425)；same_paper_in_registry |
 | 来源核验依据 | 摘要实际使用名称 RoboCombine；本库正则将其收录为 RoboComb，属于名称缩写/变体。 |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7221756428)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7221756428)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 2 个缩写／技术词，并标出 3 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -69,17 +70,71 @@
 仓库短名 RoboComb 对应正文 RoboCombine。组合微调与只用原子示范是不同训练设定；使用 oracle 交接的成绩不是端到端自主能力。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Xupeng Zhang, Yantai Yang, Chang Guo, et al., ‘Exploring the Limits of Combinatorial Generalization in Embodied Manipulation,’ arXiv preprint, 2026, arXiv:2610.15425v1. [论文](https://arxiv.org/abs/2610.15425)；[核查正文](https://arxiv.org/html/2610.15425v1)。
 
 **重点核查位置（章节主题）**：3.1 Benchmark；3.2 Hierarchical Evaluation；4.1；4.2；5 Analysis。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7221756428)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7221756428)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://github.com/AutoLab-SAI-SJTU/RoboCombine](https://github.com/AutoLab-SAI-SJTU/RoboCombine)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要未见命中。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（已确认项目入口，2026-11-04）
+
+**项目入口**：[https://github.com/AutoLab-SAI-SJTU/RoboCombine](https://github.com/AutoLab-SAI-SJTU/RoboCombine)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [repo](https://github.com/AutoLab-SAI-SJTU/RoboCombine) | https://raw.githubusercontent.com/AutoLab-SAI-SJTU/RoboCombine/HEAD/README.md | stars 10，license MIT（开源许可证），最后推送 2026-10-15，保留文本 4200 字符（截断） |
+
+**项目页显示**：GitHub https://github.com/AutoLab-SAI-SJTU/RoboCombine（10 stars，MIT，2026-10-15 推送）README 明确公开范围：19 个组合任务、3 条轨道、2 个策略适配器，2026-10 发布评测代码。
+
+**涉及领域**：具身操作的组合泛化；19 个组合任务、3 条轨道（full_inst、oracle_hse、ordered_hse）。
+
+**测试目的与构建方法**：用 RoboCombine 框架比较 Oracle-HSE、Ordered-HSE 与整段指令执行，把高层调度、低层技能与交接状态分开诊断；用 PRTI 扩展原子技能的初始状态覆盖。
+
+**测试缺陷**：仓库短名 RoboComb 对应正文 RoboCombine；组合微调与只用原子示范是不同的训练设定；oracle 交接下的成绩不是端到端自主能力；只支持 Motus、pi05 两种适配器。
+
+**与具身智能安全的相关性**：间接：组合任务的失败集中在“交接状态”，这类失败在真实流水线里往往表现为碰撞或掉落，但基准只记成功。
+
+**用这个 benchmark 测了什么**：有限组合任务微调在已见组合达 40%，未见重组仅 7.7%；瓶颈不只是任务规划，还包括交接状态分布；NeurIPS（会议／期刊） 2026 接收。
+
+**本轮核查边界**：只读 README 的能力表，未跑评测代码。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 2 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+| **cs.RO** | arXiv category: cs.RO / cs.CV / cs.AI / cs.LG | arXiv 学科分类 | arXiv 的学科标签：cs.RO 机器人、cs.CV 计算机视觉、cs.AI 人工智能、cs.LG 机器学习。 |
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| RoboComb | 基准 | 原子技能组合泛化 |
+
+另有 2 个专有名称已在正文首次出现处加括号标注类别（例如 MIT（开源许可证）、NeurIPS（会议／期刊）），不再重复解释。
+
+<!-- glossary:end -->

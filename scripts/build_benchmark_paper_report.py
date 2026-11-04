@@ -9,9 +9,20 @@ import json
 import re
 from pathlib import Path
 
+from build_benchmark_glossary import (load as load_glossary, load_names, names_in,
+                                      tag_names, terms_in)
+
 ROOT = Path(__file__).resolve().parents[1]
 BEGIN = '<!-- paper-review:start -->'
 END = '<!-- paper-review:end -->'
+PROJECT_BEGIN = '<!-- project-review:start -->'
+PROJECT_END = '<!-- project-review:end -->'
+USAGE_BEGIN = '<!-- usage-review:start -->'
+USAGE_END = '<!-- usage-review:end -->'
+GLOSSARY_BEGIN = '<!-- glossary:start -->'
+GLOSSARY_END = '<!-- glossary:end -->'
+PROJECT_STATUS = {'found': '已确认项目入口', 'platform_only': '仅平台入口',
+                  'candidate': '候选待确认', 'not_found': '未找到已确认入口'}
 
 
 def read(name):
@@ -68,10 +79,133 @@ def row(text, label, value):
                   lambda m: m[1].rstrip() + '\n' + replacement + '\n\n', text, count=1)
 
 
-def update_doc(card, review, source, cite, release, audit):
+def citing_line(entry):
+    """One line about who cites this record; only claims what the two channels actually observed."""
+    if not entry:
+        return '**引文清单**：本轮未收集，见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。'
+    cites = entry.get('cites') or {}
+    arxiv = entry.get('arxiv') or {}
+    if cites.get('total') is None:
+        cited = '引文查询失败，未取得计数'
+    elif cites.get('total') == 0:
+        cited = '在 OpenAlex 引文图中暂无可列出的引文论文'
+    else:
+        cited = 'OpenAlex 引文图中有 **%d** 篇引文论文（清单保留被引最高的 %d 篇）' % (
+            cites['total'], cites.get('listed', 0))
+    if arxiv.get('status') == 'ambiguous':
+        mention = 'arXiv 摘要检索因名称歧义不作计数'
+    elif arxiv.get('verified'):
+        mention = 'arXiv 摘要命中 %d 篇' % arxiv['verified']
+    elif arxiv.get('status') == 'failed':
+        mention = 'arXiv 摘要检索失败'
+    else:
+        mention = 'arXiv 摘要未见命中'
+    return ('**引文清单**：%s；%s。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；'
+            '清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。' % (cited, mention))
+
+
+def project_doc_block(entry, reviewed_at):
+    """Section 8: what the project source itself shows, plus the five review questions."""
+    label = PROJECT_STATUS.get(entry.get('project_status'), entry.get('project_status') or '未记录')
+    links = '；'.join(f'[{u}]({u})' for u in entry.get('project_urls') or [])
+    lines = [PROJECT_BEGIN,
+             '## 8. 项目源核查（%s，%s）' % (label, reviewed_at), '',
+             '**项目入口**：' + (links or '—'), '']
+    rows = []
+    for s in entry.get('sources_checked') or []:
+        bits = [b for b in (
+            'stars %s' % s['stars'] if s.get('stars') is not None else '',
+            'license %s' % s['license'] if s.get('license') else '',
+            '最后推送 %s' % s['pushed_at'] if s.get('pushed_at') else '',
+            '保留文本 %s 字符（截断）' % s['text_chars'] if s.get('text_chars') else '') if b]
+        target = s.get('readme_url') or s.get('url')
+        rows.append('| [%s](%s) | %s | %s |' % (cell(s.get('kind') or '页面'), s.get('url'),
+                                               cell(target), '，'.join(bits) or '—'))
+    if rows:
+        lines += ['| 抓取对象 | 实际读取的地址 | 抓取时状态 |', '|---|---|---|'] + rows + ['']
+    lines += ['**项目页显示**：' + cell(entry.get('project_facts')), '',
+              '**涉及领域**：' + cell(entry.get('domain')), '',
+              '**测试目的与构建方法**：' + cell(entry.get('purpose_build')), '',
+              '**测试缺陷**：' + cell(entry.get('defects')), '',
+              '**与具身智能安全的相关性**：' + cell(entry.get('safety_relevance')), '',
+              '**用这个 benchmark 测了什么**：' + cell(entry.get('tested')), '',
+              '**本轮核查边界**：' + cell(entry.get('limits_of_this_review')) + ' 本节只读项目页与 README 文本，未运行代码、未下载数据集。', '',
+              PROJECT_END]
+    return lines
+
+
+def usage_doc_block(entry):
+    """Section 9: what each citing paper tested, how it used the benchmark, and what it reported."""
+    import re as _re
+
+    def short(text, n):
+        text = (text or '').strip()
+        return text if len(text) <= n else text[:n].rstrip() + '…'
+
+    lines = [USAGE_BEGIN, '## 9. 使用明细：谁在用什么、怎么用', '']
+    records = (entry or {}).get('records') or []
+    if not records:
+        note = (entry or {}).get('noise_note') or '本轮没有可判读的使用记录。'
+        lines += [note, '', USAGE_END]
+        return lines
+    lines += ['本轮判读 **%d 篇**论文：下表逐篇写被测模型、用法、评测范围与指标、报告结果；'
+              '“摘要未给数值”表示摘要里确实没写数，不是没跑。每行下方的引用块是摘要原文片段，'
+              '可据此复核判读是否过度。' % len(records), '',
+              '| 论文（年份） | 被测模型 | 用法 | 评测范围与指标 | 报告结果 |', '|---|---|---|---|---|']
+    for r in records:
+        lines.append('| %s（%s） | %s | %s | %s | %s |' % (
+            cell(short(r.get('paper'), 70)), cell(r.get('year')), cell(short(r.get('model'), 60)),
+            cell(short(r.get('mode'), 40)), cell(short(r.get('setup'), 90)), cell(short(r.get('result'), 120))))
+    lines += ['', '**原文片段（摘要）**：', '']
+    for r in records:
+        lines.append('- %s（%s，%s）：> %s' % (cell(short(r.get('paper'), 60)), cell(r.get('year')),
+                                              cell(r.get('source')), cell(r.get('evidence'))))
+    note = (entry or {}).get('noise_note')
+    if note:
+        lines += ['', '**口径提示**：' + note]
+    lines += ['', USAGE_END]
+    return lines
+
+
+def glossary_doc_block(hits, name_hits=None):
+    """Section 10: explain only the jargon this document actually uses, with its denominator."""
+    lines = [GLOSSARY_BEGIN, '## 10. 术语说明（本文出现的词）', '']
+    plain_names = [n for n in (name_hits or []) if not n.get('inline')]
+    inline_names = [n for n in (name_hits or []) if n.get('inline')]
+    if not hits and not name_hits:
+        lines += ['本文没有命中词表里的术语；若仍有看不懂的词，见[全库术语表](../docs/GLOSSARY.md)。', '', GLOSSARY_END]
+        return lines
+    if hits:
+        lines += ['正文出现的缩写与技术词按下表解释，共 %d 个。每个词都写清它除以什么、和哪些指标配套——'
+                  '不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。' % len(hits), '',
+                  '| 术语 | 英文全称 | 中文 | 一句话解释 |', '|---|---|---|---|']
+        for term in hits:
+            lines.append('| **%s** | %s | %s | %s |' % (cell(term['term']), cell(term.get('en') or '—'),
+                                                       cell(term.get('zh') or '—'), cell(term['short'])))
+        pitfalls = [t for t in hits if t.get('pitfall')]
+        if pitfalls:
+            lines += ['', '**本文最容易读错的地方**：']
+            for term in pitfalls:
+                lines.append('- **%s**：%s' % (term['term'], cell(term['pitfall'])))
+    if plain_names:
+        lines += ['', '**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：', '',
+                  '| 名称 | 是什么 | 说明 |', '|---|---|---|']
+        for item in plain_names:
+            lines.append('| %s | %s | %s |' % (cell(item['name']), cell(item['kind']), cell(item.get('note') or '—')))
+    if inline_names:
+        lines += ['', '另有 %d 个专有名称已在正文首次出现处加括号标注类别（例如 %s），不再重复解释。'
+                  % (len(inline_names), '、'.join('%s（%s）' % (n['name'], n['kind']) for n in inline_names[:6]))]
+    lines += ['', GLOSSARY_END]
+    return lines
+
+
+def update_doc(card, review, source, cite, release, audit, citing=None, project=None, reviewed_at='', usage=None, glossary=None, names=None):
     path = ROOT / 'benchmarks' / card['document']
     text = path.read_text(encoding='utf-8')
     text = re.sub(r'(?s)\n?' + re.escape(BEGIN) + '.*?' + re.escape(END) + r'\n?', '\n', text)
+    text = re.sub(r'(?s)\n?' + re.escape(PROJECT_BEGIN) + '.*?' + re.escape(PROJECT_END) + r'\n?', '\n', text)
+    text = re.sub(r'(?s)\n?' + re.escape(USAGE_BEGIN) + '.*?' + re.escape(USAGE_END) + r'\n?', '\n', text)
+    text = re.sub(r'(?s)\n?' + re.escape(GLOSSARY_BEGIN) + '.*?' + re.escape(GLOSSARY_END) + r'\n?', '\n', text)
     # Reconstruct the table of historical papers with audited roles, keeping all titles.
     papers = ['下表为原调研表收录关系；它不是完整引文网络。外部补回的提出论文见第 7 节。', '',
               '| 论文 | 年份 | 与本条目的关系 | 原表评测线索 | 历史摘要记录 |', '|---|---|---|---|---|']
@@ -121,10 +255,26 @@ def update_doc(card, review, source, cite, release, audit):
              citation_note(cite), '',
              '**项目与成果入口**：' + links + '。地址状态为 `' + release['status'] + '`；找到页面不等于已验证安装、数据下载和复现。', '',
              '**后续使用证据**：原表内有 ' + str(card['user_count']) + ' 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。', '',
+             citing_line(citing), '',
              '完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。', END]
     if card['name'] == 'LIBERO-Safety':
         block.insert(-1, '\n本仓库另有[LIBERO-Safety 实现拆解](../analysis/LIBERO-Safety-实现拆解.md)。')
-    path.write_text(text.rstrip() + '\n\n' + '\n'.join(block) + '\n', encoding='utf-8')
+    tail = '\n'.join(block)
+    if project:
+        tail += '\n\n' + '\n'.join(project_doc_block(project, reviewed_at))
+    if usage is not None:
+        tail += '\n\n' + '\n'.join(usage_doc_block(usage))
+    body = text.rstrip() + '\n\n' + tail
+    if names:
+        body = tag_names(body, names)
+    hits = terms_in(body, glossary) if glossary else []
+    name_hits = names_in(body, names) if names else []
+    if hits or name_hits:
+        body = row(body, '术语说明',
+                   '第 10 节解释本文出现的 %d 个缩写／技术词，并标出 %d 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md)'
+                   % (len(hits), len(name_hits)))
+    body += '\n\n' + '\n'.join(glossary_doc_block(hits, name_hits))
+    path.write_text(body + '\n', encoding='utf-8')
 
 
 def main():
@@ -136,6 +286,18 @@ def main():
     projects = {e['benchmark']: e for e in read('benchmark_project_audit.json')['audits']}
     payload = read('benchmark_cards.json')
     cards = {c['name']: c for c in payload['cards']}
+    citing_path = ROOT / 'data/benchmark_citing_works.json'
+    citing = ({e['benchmark']: e for e in json.loads(citing_path.read_text(encoding='utf-8'))['entries']}
+              if citing_path.exists() else {})
+    project_path = ROOT / 'data/benchmark_project_reviews.json'
+    project_payload = (json.loads(project_path.read_text(encoding='utf-8')) if project_path.exists() else {})
+    project = {e['benchmark']: e for e in project_payload.get('entries', [])}
+    reviewed_at = project_payload.get('reviewed_at', '')
+    usage_path = ROOT / 'data/benchmark_usage_records.json'
+    usage = ({e['benchmark']: e for e in json.loads(usage_path.read_text(encoding='utf-8'))['entries']}
+             if usage_path.exists() else {})
+    glossary = load_glossary()
+    names = load_names()
     reviews = review_data['entries']
     assert len(reviews) == len({r['benchmark'] for r in reviews}) == 62
     assert {r['benchmark'] for r in reviews} == {c['name'] for c in payload['cards'] if not c['document'].startswith('no-project/')}
@@ -171,7 +333,7 @@ def main():
                                  'paper':e['paper'], 'source_link':e['source_link'],
                                  'status':oa['status'], 'cited_by_count':oa.get('cited_by_count'),
                                  'openalex_id':oa.get('id'), 'retained_prior_observation':e.get('retained_prior_observation',False)}
-        update_doc(c,r,s,e,release,a)
+        update_doc(c,r,s,e,release,a,citing.get(name),project.get(name),reviewed_at,usage.get(name),glossary,names)
     for c in payload['cards']:
         if c['document'].startswith('no-project/'):
             c.pop('citation_snapshot', None)
@@ -190,7 +352,7 @@ def main():
              f"OpenAlex 当前保存 **{snapshot['matched_count']}/62** 个可核验来源的计数，观测日期 {snapshot['generated_at']}。限流或未匹配的查询不写入计数，也不按 0 处理。每个值链接到具体 Work 记录。", '',
              '0 仅表示该数据库记录在观测时计为零，不证明论文无人引用。预印本与正式版可能分开或合并收录；发现可靠正式版时优先展示，但本轮未穷尽版本，也不将多个记录相加。对于新论文，收录延迟尤其明显。', '',
              '被引次数不等于 benchmark 采用次数；同一论文可关联多个条目，因此本报告不计算“全部 benchmark 总引用量”。本库 193 条原始论文记录只是有限收录样本，使用关系也是下界。API 查询、错误、版本记录、观测日期保存在[引用快照](../data/benchmark_citation_snapshot.json)，计数含义参见 [OpenAlex Works](https://help.openalex.org/data/works/)。', '',
-             '谁在引用这些 benchmark：逐条的引文清单、引文年份分布与“仅全文提及”的候选见[引文清单报告](benchmark-citing-papers.md)。', '',
+             '谁在引用这些 benchmark：逐条的引文清单、引文年份分布与“仅 arXiv 摘要命中”的候选见[引文清单报告](benchmark-citing-papers.md)。', '',
              '## 不同类型的评测应如何比较', '',
              '| 层级 | 典型条目 | 适合回答的问题 | 不能直接推出 |', '|---|---|---|---|',
              '| 闭环操作 | LIBERO-Safety、SafeStage、ManiPhysicsBench | 动作过程中是否违反约束／损伤对象 | 全部真实部署场景安全 |',

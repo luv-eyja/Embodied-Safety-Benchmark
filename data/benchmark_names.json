@@ -1,0 +1,682 @@
+{
+ "schema_version": 1,
+ "updated_at": "2026-11-04",
+ "rule": "这里只标“这个名字是什么类别”，不展开解释。kind 写在括号里或表格的“是什么”列；inline=true 的词会在正文第一次出现处直接加括号标注（例：GPT-4o（LLM 模型）），基准名不 inline，避免打断标题与表格。",
+ "kinds_legend": {
+  "LLM 模型": "大语言模型，纯文本输入输出",
+  "VLM 模型": "视觉语言模型，看图＋读文、输出文字",
+  "VLA 模型": "视觉—语言—动作模型，直接输出机器人动作",
+  "机构": "公司、实验室或研究机构",
+  "开源许可证": "代码／数据的授权条款，不是机构",
+  "会议／期刊": "发表 venue",
+  "基准": "benchmark 或评测套件",
+  "数据集": "以数据发布为主的资源",
+  "仿真平台": "仿真器或训练框架",
+  "机器人本体": "具体机械臂／机器人硬件型号",
+  "工具／框架": "软件工具、中间件或评测框架",
+  "评测框架": "benchmark/eval harness 的封装与流程，不是单一任务集",
+  "方法": "以方法贡献为主的论文，不是新基准"
+ },
+ "names": [
+  {
+   "name": "GPT-4o",
+   "kind": "LLM 模型",
+   "note": "OpenAI",
+   "inline": true
+  },
+  {
+   "name": "GPT-5.5",
+   "kind": "LLM 模型",
+   "note": "OpenAI",
+   "inline": true
+  },
+  {
+   "name": "GPT-6",
+   "kind": "LLM 模型",
+   "note": "OpenAI，文中为 GPT-6 Astra",
+   "inline": true
+  },
+  {
+   "name": "Claude",
+   "kind": "LLM 模型",
+   "note": "Anthropic",
+   "inline": true
+  },
+  {
+   "name": "Gemini",
+   "kind": "VLM 模型",
+   "note": "Google",
+   "inline": true
+  },
+  {
+   "name": "Qwen2.5-VL",
+   "kind": "VLM 模型",
+   "note": "阿里 Qwen 系列的开源多模态版本",
+   "inline": true
+  },
+  {
+   "name": "Qwen3-VL",
+   "kind": "VLM 模型",
+   "note": "同上，更新一代",
+   "inline": true
+  },
+  {
+   "name": "SmolVLA",
+   "kind": "VLA 模型",
+   "note": "Hugging Face 的开源小型 VLA",
+   "inline": true
+  },
+  {
+   "name": "RT-X",
+   "kind": "VLA 模型",
+   "note": "Open X-Embodiment 论文提出的跨本体策略",
+   "inline": true
+  },
+  {
+   "name": "XR-1",
+   "kind": "VLA 模型",
+   "note": "小米机器人策略，RoboCasa365 上的对照模型",
+   "inline": true
+  },
+  {
+   "name": "Paimon-0",
+   "kind": "VLA 模型",
+   "note": "RoboCasa365 公开榜单上的参考模型",
+   "inline": true
+  },
+  {
+   "name": "NVIDIA",
+   "kind": "机构",
+   "note": "GR00T、Isaac 的研发方",
+   "inline": true
+  },
+  {
+   "name": "OpenAI",
+   "kind": "机构",
+   "note": "GPT 系列",
+   "inline": true
+  },
+  {
+   "name": "Anthropic",
+   "kind": "机构",
+   "note": "Claude 系列",
+   "inline": true
+  },
+  {
+   "name": "Google DeepMind",
+   "kind": "机构",
+   "note": "RT-X、Gemini 等",
+   "inline": true
+  },
+  {
+   "name": "Physical Intelligence",
+   "kind": "机构",
+   "note": "π0／π0.5 的研发方",
+   "inline": true
+  },
+  {
+   "name": "Hugging Face",
+   "kind": "机构",
+   "note": "模型与数据集托管平台，也发布 SmolVLA",
+   "inline": true
+  },
+  {
+   "name": "ModelScope",
+   "kind": "机构",
+   "note": "阿里系模型与数据托管平台",
+   "inline": true
+  },
+  {
+   "name": "NEDO",
+   "kind": "机构",
+   "note": "日本新能源产业技术综合开发机构，Peg-in-Bench 的资助方",
+   "inline": true
+  },
+  {
+   "name": "MIT",
+   "kind": "开源许可证",
+   "note": "宽松许可，允许商用；不是麻省理工学院的缩写（本文语境）",
+   "inline": true
+  },
+  {
+   "name": "Apache-2.0",
+   "kind": "开源许可证",
+   "note": "含专利授权的宽松许可",
+   "inline": true
+  },
+  {
+   "name": "CC BY-NC-SA 4.0",
+   "kind": "开源许可证",
+   "note": "署名—非商业—相同方式共享，商用受限",
+   "inline": true
+  },
+  {
+   "name": "CoRL",
+   "kind": "会议／期刊",
+   "note": "Conference on Robot Learning",
+   "inline": true
+  },
+  {
+   "name": "RSS",
+   "kind": "会议／期刊",
+   "note": "Robotics: Science and Systems",
+   "inline": true
+  },
+  {
+   "name": "ICML",
+   "kind": "会议／期刊",
+   "note": "International Conference on Machine Learning",
+   "inline": true
+  },
+  {
+   "name": "ICLR",
+   "kind": "会议／期刊",
+   "note": "International Conference on Learning Representations",
+   "inline": true
+  },
+  {
+   "name": "NeurIPS",
+   "kind": "会议／期刊",
+   "note": "Conference on Neural Information Processing Systems",
+   "inline": true
+  },
+  {
+   "name": "CVPR",
+   "kind": "会议／期刊",
+   "note": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+   "inline": true
+  },
+  {
+   "name": "ICCV",
+   "kind": "会议／期刊",
+   "note": "International Conference on Computer Vision",
+   "inline": true
+  },
+  {
+   "name": "ECCV",
+   "kind": "会议／期刊",
+   "note": "European Conference on Computer Vision",
+   "inline": true
+  },
+  {
+   "name": "AAAI",
+   "kind": "会议／期刊",
+   "note": "AAAI Conference on Artificial Intelligence",
+   "inline": true
+  },
+  {
+   "name": "EMNLP",
+   "kind": "会议／期刊",
+   "note": "Conference on Empirical Methods in Natural Language Processing",
+   "inline": true
+  },
+  {
+   "name": "RA-L",
+   "kind": "会议／期刊",
+   "note": "IEEE Robotics and Automation Letters",
+   "inline": true
+  },
+  {
+   "name": "IROS",
+   "kind": "会议／期刊",
+   "note": "IEEE/RSJ International Conference on Intelligent Robots and Systems",
+   "inline": true
+  },
+  {
+   "name": "ICRA",
+   "kind": "会议／期刊",
+   "note": "IEEE International Conference on Robotics and Automation",
+   "inline": true
+  },
+  {
+   "name": "ROS",
+   "kind": "工具／框架",
+   "note": "机器人中间件",
+   "inline": true
+  },
+  {
+   "name": "Unity3D",
+   "kind": "工具／框架",
+   "note": "游戏引擎，也用于机器人仿真前端",
+   "inline": true
+  },
+  {
+   "name": "Inspect",
+   "kind": "工具／框架",
+   "note": "UK AISI 的代理评测框架，ORBIT 建在其上",
+   "inline": true
+  },
+  {
+   "name": "Isaac Lab",
+   "kind": "仿真平台",
+   "note": "NVIDIA 的 GPU 并行仿真训练框架",
+   "inline": true
+  },
+  {
+   "name": "YAM",
+   "kind": "机器人本体",
+   "note": "I2RT YAM 双臂机器人，RoboHarm 的真机与 MuJoCo 孪生都用它",
+   "inline": true
+  },
+  {
+   "name": "LIBERO",
+   "kind": "基准",
+   "note": "本库最常用的终身学习操作基准套件",
+   "inline": false
+  },
+  {
+   "name": "LIBERO-Plus",
+   "kind": "基准",
+   "note": "LIBERO 的扰动扩展",
+   "inline": false
+  },
+  {
+   "name": "LIBERO-Para",
+   "kind": "基准",
+   "note": "LIBERO 的指令改写扩展",
+   "inline": false
+  },
+  {
+   "name": "LIBERO-Safety",
+   "kind": "基准",
+   "note": "LIBERO 的安全扩展",
+   "inline": false
+  },
+  {
+   "name": "LIBERO-MAX",
+   "kind": "基准",
+   "note": "执行中改变环境的动态鲁棒性基准",
+   "inline": false
+  },
+  {
+   "name": "LIBERO-Pro",
+   "kind": "基准",
+   "note": "LIBERO 的难例扩展",
+   "inline": false
+  },
+  {
+   "name": "SafeLIBERO",
+   "kind": "基准",
+   "note": "LIBERO 的避碰安全扩展",
+   "inline": false
+  },
+  {
+   "name": "CALVIN",
+   "kind": "基准",
+   "note": "语言条件长时程操作基准",
+   "inline": false
+  },
+  {
+   "name": "RoboCasa",
+   "kind": "基准",
+   "note": "家庭场景大规模仿真基准",
+   "inline": false
+  },
+  {
+   "name": "RoboCasa365",
+   "kind": "基准",
+   "note": "RoboCasa 的 365 任务版本",
+   "inline": false
+  },
+  {
+   "name": "RoboTwin",
+   "kind": "基准",
+   "note": "双臂操作数据生成与评测",
+   "inline": false
+  },
+  {
+   "name": "SimplerEnv",
+   "kind": "基准",
+   "note": "真实策略的仿真代理评测",
+   "inline": false
+  },
+  {
+   "name": "ManiSkill",
+   "kind": "基准",
+   "note": "通用操作技能基准（SAPIEN）",
+   "inline": false
+  },
+  {
+   "name": "ManiSkill2",
+   "kind": "基准",
+   "note": "ManiSkill 的第二代",
+   "inline": false
+  },
+  {
+   "name": "RLBench",
+   "kind": "基准",
+   "note": "CoppeliaSim 上的机械臂任务集",
+   "inline": false
+  },
+  {
+   "name": "BEHAVIOR-1K",
+   "kind": "基准",
+   "note": "1000 项家务活动的长时程基准",
+   "inline": false
+  },
+  {
+   "name": "NAVSIM",
+   "kind": "基准",
+   "note": "非反应式自动驾驶伪仿真评测",
+   "inline": false
+  },
+  {
+   "name": "CARLA",
+   "kind": "仿真平台",
+   "note": "开源城市驾驶仿真器",
+   "inline": false
+  },
+  {
+   "name": "nuScenes",
+   "kind": "数据集",
+   "note": "多模态自动驾驶数据集",
+   "inline": false
+  },
+  {
+   "name": "VLA-Arena",
+   "kind": "基准",
+   "note": "分难度的 VLA 基准与榜单",
+   "inline": false
+  },
+  {
+   "name": "COLOSSEUM",
+   "kind": "基准",
+   "note": "系统扰动的操作泛化基准",
+   "inline": false
+  },
+  {
+   "name": "AgiBot World",
+   "kind": "数据集",
+   "note": "真机双臂操作数据集与平台",
+   "inline": false
+  },
+  {
+   "name": "RoboMIND",
+   "kind": "数据集",
+   "note": "多本体真实操作数据集",
+   "inline": false
+  },
+  {
+   "name": "Open X-Embodiment",
+   "kind": "数据集",
+   "note": "跨机构机器人数据集合",
+   "inline": false
+  },
+  {
+   "name": "EmbodiedBench",
+   "kind": "基准",
+   "note": "跨环境具身代理能力基准",
+   "inline": false
+  },
+  {
+   "name": "SafeBench",
+   "kind": "基准",
+   "note": "自动驾驶安全关键场景平台（另有同名 LVLM 基准）",
+   "inline": false
+  },
+  {
+   "name": "VLABench",
+   "kind": "基准",
+   "note": "语言条件长时程操作基准",
+   "inline": false
+  },
+  {
+   "name": "IS-Bench",
+   "kind": "基准",
+   "note": "VLM 代理交互安全基准",
+   "inline": false
+  },
+  {
+   "name": "SafeStage",
+   "kind": "基准",
+   "note": "分阶段安全评测基准",
+   "inline": false
+  },
+  {
+   "name": "DESPITE",
+   "kind": "基准",
+   "note": "具身规划的安全评测",
+   "inline": false
+  },
+  {
+   "name": "HazardArena",
+   "kind": "基准",
+   "note": "VLA 语义安全基准",
+   "inline": false
+  },
+  {
+   "name": "RoboJailBench",
+   "kind": "基准",
+   "note": "具身对抗攻击与防御基准",
+   "inline": false
+  },
+  {
+   "name": "TrapVLA",
+   "kind": "基准",
+   "note": "VLA 后门／失效注入方法与其基准",
+   "inline": false
+  },
+  {
+   "name": "ForesightSafety-VLA",
+   "kind": "基准",
+   "note": "VLA 安全诊断基准",
+   "inline": false
+  },
+  {
+   "name": "ManiPhysicsBench",
+   "kind": "基准",
+   "note": "物体保全物理评估基准",
+   "inline": false
+  },
+  {
+   "name": "ASIMOV Benchmark",
+   "kind": "基准",
+   "note": "机器人语义安全判断／数据与方法",
+   "inline": false
+  },
+  {
+   "name": "RoboHarm",
+   "kind": "基准",
+   "note": "模拟与真机机器人接口安全",
+   "inline": false
+  },
+  {
+   "name": "Trap-LIBERO / Trap-RoboTwin",
+   "kind": "基准",
+   "note": "VLA 定向失效诊断／安全研究",
+   "inline": false
+  },
+  {
+   "name": "BAVO-Bench",
+   "kind": "基准",
+   "note": "仿真双臂主动视觉",
+   "inline": false
+  },
+  {
+   "name": "LIBERO-RECOVER",
+   "kind": "基准",
+   "note": "仿真自然失败状态恢复",
+   "inline": false
+  },
+  {
+   "name": "LIBERO-VPro",
+   "kind": "基准",
+   "note": "闭环视觉鲁棒性",
+   "inline": false
+  },
+  {
+   "name": "RoboCasa-Shift",
+   "kind": "基准",
+   "note": "长时程操作阶段鲁棒性",
+   "inline": false
+  },
+  {
+   "name": "BiDex-100",
+   "kind": "基准",
+   "note": "双手灵巧操作仿真",
+   "inline": false
+  },
+  {
+   "name": "IndustrialVLA-Bench",
+   "kind": "基准",
+   "note": "多基准评测与复现证据框架",
+   "inline": false
+  },
+  {
+   "name": "LIBERO（基础套件）",
+   "kind": "基准",
+   "note": "终身机器人学习基础基准",
+   "inline": false
+  },
+  {
+   "name": "ManiSkill / ManiSkill2",
+   "kind": "基准",
+   "note": "可泛化操作仿真平台",
+   "inline": false
+  },
+  {
+   "name": "RoboChrono",
+   "kind": "基准",
+   "note": "机器人流式视频理解",
+   "inline": false
+  },
+  {
+   "name": "RoboComb",
+   "kind": "基准",
+   "note": "原子技能组合泛化",
+   "inline": false
+  },
+  {
+   "name": "RoboFollow",
+   "kind": "基准",
+   "note": "语言驱动的操作分支选择",
+   "inline": false
+  },
+  {
+   "name": "RoboIRG-Bench",
+   "kind": "基准",
+   "note": "隐式指代与具身记忆",
+   "inline": false
+  },
+  {
+   "name": "RoboReel",
+   "kind": "基准",
+   "note": "从观察学习的操作基准",
+   "inline": false
+  },
+  {
+   "name": "Spa-Bench",
+   "kind": "基准",
+   "note": "真实机器人空间接地",
+   "inline": false
+  },
+  {
+   "name": "Agent-SafetyBench",
+   "kind": "基准",
+   "note": "通用工具代理安全；邻接参考",
+   "inline": false
+  },
+  {
+   "name": "Bench2Dex",
+   "kind": "基准",
+   "note": "双手视触觉仿真与数据平台",
+   "inline": false
+  },
+  {
+   "name": "EmbodiedGovBench",
+   "kind": "基准",
+   "note": "治理评测协议与原型框架",
+   "inline": false
+  },
+  {
+   "name": "HygieneRoboBench",
+   "kind": "基准",
+   "note": "接触历史驱动的卫生规划",
+   "inline": false
+  },
+  {
+   "name": "INFUSE",
+   "kind": "基准",
+   "note": "软件代理工作流安全；邻接参考",
+   "inline": false
+  },
+  {
+   "name": "LABIT",
+   "kind": "基准",
+   "note": "真实工业长时程装配",
+   "inline": false
+  },
+  {
+   "name": "MSK-Bench",
+   "kind": "基准",
+   "note": "肌肉驱动全身控制",
+   "inline": false
+  },
+  {
+   "name": "MemForm",
+   "kind": "基准",
+   "note": "代理记忆可靠性诊断；邻接参考",
+   "inline": false
+  },
+  {
+   "name": "MineAmongUs",
+   "kind": "基准",
+   "note": "三维多代理社会行为沙盒",
+   "inline": false
+  },
+  {
+   "name": "ORBIT",
+   "kind": "基准",
+   "note": "多代理安全评测框架；邻接参考",
+   "inline": false
+  },
+  {
+   "name": "Peg-in-Bench",
+   "kind": "基准",
+   "note": "可打印物理插接基准设计",
+   "inline": false
+  },
+  {
+   "name": "PhysAI-Bench",
+   "kind": "基准",
+   "note": "UAV 任务轨迹中的离线决策问答",
+   "inline": false
+  },
+  {
+   "name": "RoboAbstention",
+   "kind": "基准",
+   "note": "具身图像条件下的弃权判断",
+   "inline": false
+  },
+  {
+   "name": "STARS",
+   "kind": "基准",
+   "note": "表征学习方法；并非新 benchmark",
+   "inline": false
+  },
+  {
+   "name": "SafeAgentBench",
+   "kind": "基准",
+   "note": "交互仿真中的安全任务规划",
+   "inline": false
+  },
+  {
+   "name": "SkillSafetyBench",
+   "kind": "基准",
+   "note": "技能型软件代理安全；邻接参考",
+   "inline": false
+  },
+  {
+   "name": "CARLA / CARLA Leaderboard",
+   "kind": "基准",
+   "note": "驾驶仿真平台；原论文与榜单需区分",
+   "inline": false
+  },
+  {
+   "name": "VIPS",
+   "kind": "基准",
+   "note": "车路协同伪仿真评测",
+   "inline": false
+  }
+ ]
+}

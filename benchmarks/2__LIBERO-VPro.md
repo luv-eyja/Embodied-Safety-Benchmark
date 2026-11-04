@@ -29,7 +29,8 @@
 | 规模线索 | 视觉退化、相机过时、信息源一致性、任务场景变化四维，12 类、96 设置、3,296 用例；约 19.6 万仿真 rollout，并有 200 次 FR3 真机测试。 |
 | 执行环境线索 | 闭环视觉鲁棒性 |
 | 全文状态 | 已核查本地全文：`docs/_fulltext/LIBERO-VPro.txt` |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7214051566)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7214051566)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 6 个缩写／技术词，并标出 3 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -82,17 +83,79 @@
 3,296 是评测配置数，不是独立任务数。模拟与真机规模不同，必须分别解释；观察异常下的失败不能一概归因为语言理解。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Huiqiong Li, Zhiting Mei, Anirudha Majumdar, et al., ‘LIBERO-VPro: Benchmarking Closed-Loop Visual Robustness of Robotic Foundation Models,’ arXiv preprint, 2026, arXiv:2609.24350v1. [论文](https://arxiv.org/abs/2609.24350)；[核查正文](https://arxiv.org/html/2609.24350v1)。
 
 **重点核查位置（章节主题）**：Benchmark Construction；Evaluation Protocol；Main Results；Real-world Experiments。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214051566)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214051566)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://huiqiongli.github.io/LIBERO-VPro](https://huiqiongli.github.io/LIBERO-VPro)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要未见命中。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（已确认项目入口，2026-11-04）
+
+**项目入口**：[https://huiqiongli.github.io/LIBERO-VPro](https://huiqiongli.github.io/LIBERO-VPro)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [page](https://huiqiongli.github.io/LIBERO-VPro) | https://huiqiongli.github.io/LIBERO-VPro | 保留文本 4200 字符（截断） |
+
+**项目页显示**：项目页 https://huiqiongli.github.io/LIBERO-VPro 给 Paper 与 Dataset 入口，并附 GPT-6 Astra 评测对比页。
+
+**涉及领域**：VLA 的闭环视觉鲁棒性；在闭环执行中控制遮挡、观察时效、多视角矛盾与场景变化。
+
+**测试目的与构建方法**：在闭环执行里系统改变视觉证据（遮挡位置、观察时效、多视角冲突、场景变化），对比三种 VLA 与三种 WAM，并分离目标区域与局部交互线索的作用。
+
+**测试缺陷**：3,296 是评测配置数而非独立任务数；模拟与真机规模不同须分别解释；观察异常下的失败不能一概归因为语言理解；扰动由程序注入。
+
+**与具身智能安全的相关性**：间接但关键：感知缺失下仍继续动作是典型事故前兆，该基准量化“证据不足时的行为”；不含风险约束。
+
+**用这个 benchmark 测了什么**：高标准成功率不保证视觉鲁棒性；目标被遮挡时仍成功，不能证明模型理解了目标，局部交互线索缺失可能更致命；WAM 的预测质量与实际执行可能脱节。项目页另给出 GPT-6 Astra 与六个机器人基础模型的对照。
+
+**本轮核查边界**：只读项目页文字，未进入数据集。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 6 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **rollout** | rollout | 展开／推演 | 用当前策略跑一次得到的完整轨迹，常与 episode 混用。 |
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+| **WAM** | World-Action Model | 世界—动作模型 | 同时预测未来画面与动作的模型，用于规划或作为策略主干。 |
+| **closed-loop** | closed-loop execution | 闭环执行 | 策略根据最新观测逐步决策，执行中的误差会影响后续输入。 |
+| **cs.RO** | arXiv category: cs.RO / cs.CV / cs.AI / cs.LG | arXiv 学科分类 | arXiv 的学科标签：cs.RO 机器人、cs.CV 计算机视觉、cs.AI 人工智能、cs.LG 机器学习。 |
+| **Franka** | Franka Emika Panda / Franka Research 3 | Franka 机械臂 | 最常用的七自由度科研机械臂，真机实验的标准硬件。 |
+
+**本文最容易读错的地方**：
+- **rollout**：rollout 数、episode 数、候选轨迹数三者混用。
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| LIBERO | 基准 | 本库最常用的终身学习操作基准套件 |
+| LIBERO-VPro | 基准 | 闭环视觉鲁棒性 |
+
+另有 1 个专有名称已在正文首次出现处加括号标注类别（例如 GPT-6（LLM 模型）），不再重复解释。
+
+<!-- glossary:end -->

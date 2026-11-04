@@ -28,7 +28,8 @@
 | 基础平台线索 | 表内摘要未明确基础平台。 |
 | 规模线索 | 使用已有 SEAN Together 与 SocialNav-SUB 数据，研究短时窗内人／机器人群体运动、社会场景和主观人类感受。 |
 | 执行环境线索 | 表征学习方法；并非新 benchmark |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7215077318)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7215077318)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 1 个缩写／技术词，并标出 2 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -67,17 +68,70 @@
 保留此卡作为方法参考，不能计作新增 benchmark 的成果；F1 衡量下游分类，不是社交导航碰撞率或人类偏好因果效应。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Nathan Tsoi, Michael J. Munje, Tejas Oberoi, et al., ‘STARS: From Spatiotemporal Dynamics to Social Representations in Human-Robot Interaction,’ arXiv preprint, 2026, arXiv:2609.40245v3. [论文](https://arxiv.org/abs/2609.40245)；[核查正文](https://arxiv.org/html/2609.40245v3)。
 
 **重点核查位置（章节主题）**：3.3 Graph Construction；3.4 Autoencoder；3.5 Linear Probing；4.1 Downstream Performance；5 Limitations。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7215077318)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7215077318)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://larg.github.io/stars](https://larg.github.io/stars)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要检索因名称歧义不作计数。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（已确认项目入口，2026-11-04）
+
+**项目入口**：[https://larg.github.io/stars](https://larg.github.io/stars)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [page](https://larg.github.io/stars) | https://larg.github.io/stars | 保留文本 4200 字符（截断） |
+
+**项目页显示**：项目页 https://larg.github.io/stars 说明三阶段流程（构造时空图 → 图自编码器 → 下游探针），并给 arXiv 与 Code 入口，作者为 UT Austin 团队。
+
+**涉及领域**：人机交互的时空动态表征方法；把多主体状态构成同构／异构时空图学习表征。
+
+**测试目的与构建方法**：将多主体状态建成时空图，用自监督消息传递图自编码器压缩物理动态为隐表征，再用线性探针评估不同标注量与跨数据迁移。
+
+**测试缺陷**：它是方法论文而非新基准（本库按“方法”归类）；F1 衡量下游分类，不是社交导航碰撞率或人类偏好因果效应；表征质量依赖图结构设计。
+
+**与具身智能安全的相关性**：间接且偏弱：理解交互动态是社交安全的基础，但不产生风险度量。
+
+**用这个 benchmark 测了什么**：SocialNav-SUB 上 STARS-He 的宏 F1 从 1% 标注的 0.362 到全标注的 0.503，同架构端到端监督对照为 0.445；CoRL（会议／期刊） 2026。
+
+**本轮核查边界**：只读项目页流程说明，未取到代码细节。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+名称既指恒星／星图／遥感 X-STARS，也指 3D 动作识别 STARS 与社交导航 StARS，无法区分。本轮不给使用明细；该条在本库中本就归为“方法”而非基准。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 1 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **F1** | F1 score | 调和平均分 | 精确率与召回率的调和平均，用于二分类式判定。 |
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| STARS | 基准 | 表征学习方法；并非新 benchmark |
+
+另有 1 个专有名称已在正文首次出现处加括号标注类别（例如 CoRL（会议／期刊）），不再重复解释。
+
+<!-- glossary:end -->

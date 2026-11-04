@@ -1,0 +1,1478 @@
+{
+ "schema_version": 1,
+ "generated_at": "2026-11-04",
+ "scope": "62 classified entries",
+ "method": "对每条 benchmark，从 OpenAlex 引文清单与 arXiv 摘要命中的论文里取出提到该基准的原文句子，再逐篇判读“被测模型／用法／评测范围与指标／报告结果”。判读只用摘要原文；摘要没写到的数值一律标“摘要未给数值”，不补猜。",
+ "mode_legend": [
+  "训练后评测",
+  "评测（直接跑 checkpoint 或外部训练策略）",
+  "预训练数据",
+  "微调（SFT／RL）",
+  "扩展／派生基准",
+  "审计／诊断",
+  "仅批评／参照"
+ ],
+ "entry_count": 62,
+ "entries_with_records": 26,
+ "records_total": 106,
+ "entries": [
+  {
+   "benchmark": "ASIMOV Benchmark",
+   "document": "1__ASIMOV-Benchmark.md",
+   "records": [
+    {
+     "paper": "SciFi-Benchmark: Leveraging Science Fiction To Improve Robot Behavior",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "由科幻作品生成的 constitution（准则）驱动的模型",
+     "mode": "评测（安全准则比较）",
+     "setup": "ASIMOV 验证集（题目由真实图像与医院伤害报告派生），比较不同 constitution 的人类判断一致率",
+     "result": "该文的 constitution 进入 ASIMOV 上的最优一组；摘要未给出具体数值",
+     "evidence": "那些 constitution 在 ASIMOV Benchmark 上属于 top performers"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "ForesightSafety-VLA",
+   "document": "1__ForesightSafety-VLA.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "HazardArena",
+   "document": "1__HazardArena.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "LIBERO-Safety",
+   "document": "1__LIBERO-Safety.md",
+   "records": [
+    {
+     "paper": "FabriVLA: A Lightweight Vision-Language-Action Model with Conformal Action Chunk Uncertainty",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "FabriVLA（轻量 VLA + 保形预测）",
+     "mode": "评测并叠加方法（用基准做风险排序）",
+     "setup": "LIBERO-Safety rollout，用保形区间在执行前给轨迹排风险",
+     "result": "摘要只说明“可按风险排序 rollout、支持风险排序复核”，未给成功率数值",
+     "evidence": "On LIBERO-Safety, these bounds rank rollouts by risk before execution"
+    },
+    {
+     "paper": "VLA-ULAP: Interleaving Cloud VLA Calls with Ultra-Lightweight Local Action Prediction",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "VLA-ULAP（云端 VLA + 本地轻量动作预测），对照 π0.5",
+     "mode": "评测（时延感知场景）",
+     "setup": "latency-aware LIBERO-Safety 仿真中的两个任务",
+     "result": "成功率比 π0.5 高 11.0 与 15.5 个百分点，同时把 VLA 调用次数减半",
+     "evidence": "exceed π0.5's success rate by 11.0 and 15.5 pp on two tasks in latency-aware LIBERO-Safety simulation"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "ManiPhysicsBench",
+   "document": "1__ManiPhysicsBench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "RoboHarm",
+   "document": "1__RoboHarm.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "SafeLIBERO",
+   "document": "1__SafeLIBERO.md",
+   "records": [
+    {
+     "paper": "VLPSA: Vision-Language-Poisson-Safe Actions for Full-Body Safety of Legged Manipulators",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "VLPSA，基线为 AEGIS 与 π0.5 等安全过滤方法",
+     "mode": "评测（与安全过滤基线对比）",
+     "setup": "SafeLIBERO 碰撞避免率 CAR",
+     "result": "把碰撞避免率从 π0.5 基线的 23.1% 提升到 91.2%，并超过其任务成功率；另在 Franka FR3 的杂乱动态场景做了真机部署",
+     "evidence": "increasing collision avoidance from 23.1% for the base π0.5 policy to 91.2% while surpassing its task success rate"
+    },
+    {
+     "paper": "SafeDojo: Safe Reinforcement Learning for VLA via Interactive World Models",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "SafeDojo（安全 RL 微调，拉格朗日约束 GRPO）",
+     "mode": "训练后评测（Level I 微调，Level II 零样本）",
+     "setup": "SafeLIBERO Level I 与零样本 Level II，指标为 average safe-success rate",
+     "result": "Level I 比最强基线高 8.25 个百分点；Level II 零样本与最强 model-free 基线相当",
+     "evidence": "On SafeLIBERO Level I, SafeDojo improves average safe-success rate by 8.25 percentage points"
+    },
+    {
+     "paper": "DetAug: Obstacle-Blind Trajectory Augmentation for Zero-shot Obstacle Avoidance",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "DetAug（障碍盲数据增广 + 推理期标签采样）",
+     "mode": "评测（零样本，不训练于基准）",
+     "setup": "SafeLIBERO collision-free success rate",
+     "result": "比次优方法高 20pp 以上；在标签空间上选择比同一策略的引导方式高 26pp",
+     "evidence": "achieves a collision-free success rate more than 20pp above the next best method"
+    },
+    {
+     "paper": "Neuro-Symbolic Safety Guidance for Vision-Language-Action Models",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "神经符号安全引导（在单步安全方法上改进）",
+     "mode": "评测（与单步安全方法对比）",
+     "setup": "SafeLIBERO，碰撞避免率与任务成功率，细分长时程任务",
+     "result": "82.8% 碰撞避免、81.6% 任务成功，比单步方法分别高 6.3% 与 19.8%，长时程增益最大",
+     "evidence": "our method achieves 82.8% collision avoidance and 81.6% task success"
+    },
+    {
+     "paper": "WBAG: A Whole-Body and Attached-Geometry Safety Framework for VLA",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "WBAG（整身与附着几何安全框架）",
+     "mode": "评测（场景级安全评估器）",
+     "setup": "SafeLIBERO（LIBERO 加障碍的变体），安全与安全任务成功率",
+     "result": "在所比方法中安全与安全任务成功率均最好；摘要未给具体数值",
+     "evidence": "WBAG achieves the best overall safety and safe task success among the evaluated methods"
+    },
+    {
+     "paper": "Route-Guided CBF-QP Repair for Safe Vision-Language-Action Models",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "CBF-QP 修复 + 路线引导项，对照 AEGIS",
+     "mode": "评测（在 AEGIS 基础上改进）",
+     "setup": "SafeLIBERO，碰撞避免、任务成功与 SafeSuccess 三项",
+     "result": "三项均优于 AEGIS；摘要未给具体数值",
+     "evidence": "On SafeLIBERO, our method improves collision avoidance, task success, and SafeSuccess compared with AEGIS"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "SafeStage",
+   "document": "1__SafeStage.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "Trap-LIBERO / Trap-RoboTwin",
+   "document": "1__Trap-LIBERO-Trap-RoboTwin.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "VLA-Arena",
+   "document": "1__VLA-Arena.md",
+   "records": [
+    {
+     "paper": "ActionPiece: Rethinking Action Tokenization for Autoregressive Vision-Language-Action Models",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "ActionPiece + Qwen3-VL-4B 策略",
+     "mode": "训练后评测（同一训练设置下对比）",
+     "setup": "VLA-Arena L0–L2 平均，另报 LIBERO／LIBERO-Plus／SimplerEnv",
+     "result": "VLA-Arena L0–L2 51.5%；LIBERO 94.8%、未见 LIBERO-Plus 68.8%、SimplerEnv 71.9%",
+     "evidence": "additional evaluations reaching 71.9% on SimplerEnv and 51.5% across VLA-Arena L0-L2"
+    },
+    {
+     "paper": "StellaVLA: In-Context Structured Demonstration for Generalizable Vision-Language-Action",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "StellaVLA，对照 π0.5 与 LingBot-VLA",
+     "mode": "评测（官方 leaderboard 提交）",
+     "setup": "VLA-Arena leaderboard（2026-08-01），总分",
+     "result": "总分 0.63 排名第一，π0.5 为 0.44、LingBot-VLA 为 0.22；LIBERO 上 98.8%",
+     "evidence": "On the VLA-Arena leaderboard, StellaVLA ranks first with an overall score of 0.63"
+    },
+    {
+     "paper": "Learning from Runtime Feedback through Failure-Bank Self-Evolution",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "FailBank（运行期失败库自进化），在两种 VLA 主干上",
+     "mode": "评测（跨两种难度、两种主干）",
+     "setup": "VLA-Arena 两个难度层级 × 两个 VLA backbone",
+     "result": "摘要只说明评测设置，未给数值",
+     "evidence": "We evaluate FailBank on the VLA-Arena benchmark across two difficulty levels and two VLA backbones"
+    },
+    {
+     "paper": "Frequency-Conditioned Flow Matching for Vision-Language-Action Models",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "FreqFM（频域条件流匹配，插入既有 Flow Matching 动作专家）",
+     "mode": "训练后评测（与 LIBERO／LIBERO-Plus 并列报告）",
+     "setup": "VLA-Arena、LIBERO、LIBERO-Plus 三套",
+     "result": "三套上一致提升，其中 LIBERO-Plus +9.3 个点；另在六个真机任务验证",
+     "evidence": "Across LIBERO, LIBERO-Plus, and VLA-Arena, FreqFM consistently improves performance"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "BAVO-Bench",
+   "document": "2__BAVO-Bench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "LIBERO-MAX",
+   "document": "2__LIBERO-MAX.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "LIBERO-Para",
+   "document": "2__LIBERO-Para.md",
+   "records": [
+    {
+     "paper": "WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Fusion",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "WAVE-0（VLA + 世界动作模型融合）",
+     "mode": "训练后评测（多基准并列）",
+     "setup": "LIBERO-Para 成功率，另报 LIBERO／LIBERO-Plus／LIBERO-Pro／RoboTwin 2.0",
+     "result": "LIBERO-Para 75.0%；LIBERO 98.7%、LIBERO-Plus 88.0%、LIBERO-Pro 61.4%、RoboTwin 2.0 91.47%",
+     "evidence": "along with 88.0%, 61.4%, and 75.0% on LIBERO-Plus, LIBERO-Pro, and LIBERO-Para"
+    },
+    {
+     "paper": "Grounded Semantic Re-Binding for Robust Instruction Generalization",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "GSR（语义重绑定方法）",
+     "mode": "训练后评测（指令泛化专项）",
+     "setup": "LIBERO-Para 的成功率提升幅度",
+     "result": "成功率最高提升 44.6 个百分点",
+     "evidence": "On the LIBERO-Para benchmark, GSR improves success rates by up to 44.6 percent"
+    },
+    {
+     "paper": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "六个开放 VLA／WAM 系统（固定 checkpoint 与推理配置）",
+     "mode": "评测（把该基准当作“指令敏感度”一根轴复用）",
+     "setup": "LIBERO-Para 4,092 个配置各跑一次，与 LIBERO（干净能力）、LIBERO-Plus（非语言鲁棒性）并列",
+     "result": "语言轴的分数跨度 31.08 个百分点，远大于干净轴的 1.58 个百分点",
+     "evidence": "It separately evaluates clean capability on LIBERO, non-language robustness on LIBERO-Plus, instruction sensitivity on LIBERO-Para"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "LIBERO-RECOVER",
+   "document": "2__LIBERO-RECOVER.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "LIBERO-VPro",
+   "document": "2__LIBERO-VPro.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "RoboCasa-Shift",
+   "document": "2__RoboCasa-Shift.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "AgiBot World",
+   "document": "3__AgiBot-World.md",
+   "records": [
+    {
+     "paper": "DreamTrue: Action-Faithful Robot World Model with Counterfactual Supervision",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "DreamTrue（世界模型）",
+     "mode": "评测（竞赛赛道提交）",
+     "setup": "AgiBot World Challenge 2026 世界模型赛道",
+     "result": "该赛道排名第一；摘要另报动作缺陷率由 48.12% 降到 6.25%",
+     "evidence": "our model ranks first in the world model track of the AgiBot World Challenge 2026"
+    },
+    {
+     "paper": "Structured Latent Dynamics for Long-Horizon Embodied World Models",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "Structured Latent Dynamics，分别接 Ctrl-World 与 EVAC",
+     "mode": "评测（在真实轨迹上做世界模型预测）",
+     "setup": "AgiBot World 真实轨迹上的 nDTW 与 Logic 指标",
+     "result": "nDTW +9.7%（Ctrl-World）、Logic +8.4%（EVAC）",
+     "evidence": "On real-world AgiBot World trajectories, it improves nDTW by 9.7% with Ctrl-World and Logic by 8.4% with EVAC"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "BEHAVIOR-1K",
+   "document": "3__BEHAVIOR-1K.md",
+   "records": [
+    {
+     "paper": "Openpi Comet: Competition Solution For 2025 BEHAVIOR Challenge",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "openpi（π 系列开源实现）竞赛方案",
+     "mode": "评测（竞赛提交）",
+     "setup": "2025 BEHAVIOR Challenge 的长时程家务移动操作任务",
+     "result": "摘要只交代任务性质与方案背景，未给分数",
+     "evidence": "BEHAVIOR-1K focuses on everyday household tasks … long-horizon mobile manipulation challenges"
+    },
+    {
+     "paper": "Foresight: Failure Detection for Long-Horizon Robotic Manipulation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "Foresight（失败检测器），配多种 SOTA VLA 策略",
+     "mode": "评测（失败检测任务，与 SOTA 检测方法对比）",
+     "setup": "仿真中的 LIBERO-Long、ManiSkill-Long 与 BEHAVIOR-1K，另做真机验证",
+     "result": "摘要称与 SOTA 失败检测方法对比并有真机验证，未给具体数值",
+     "evidence": "We evaluate Foresight … in simulation on LIBERO-Long, ManiSkill-Long, and BEHAVIOR-1K"
+    },
+    {
+     "paper": "MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Manipulation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "MobiAgent（双环递归自改进）",
+     "mode": "训练后评测（含真机）",
+     "setup": "RoboCasa 与 BEHAVIOR-1K，另加真实任务",
+     "result": "摘要称三处均验证有效，未给具体数值",
+     "evidence": "Evaluations on RoboCasa, BEHAVIOR-1K, and real-world tasks demonstrate the effectiveness of MobiAgent"
+    },
+    {
+     "paper": "BEHAVIOR-Spatial Benchmark: Evaluating Spatial Understanding for Embodied Agents",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "VLM 与 VLA（作为被测对象）",
+     "mode": "派生子基准（建立在 BEHAVIOR-1K 之上）",
+     "setup": "新增空间问答、点目标接地与机器人动作三类任务，检验 VLM 空间理解与 VLA 行为的关系",
+     "result": "产出的是新基准，不是 BEHAVIOR-1K 上的分数",
+     "evidence": "We present BEHAVIOR-Spatial, a benchmark built on BEHAVIOR-1K that measures spatial question answering"
+    },
+    {
+     "paper": "Diagnosing Semantic Handoff Failures in Agent-Orchestrated Vision-Language-Action",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "agent-orchestrated VLA 执行框架",
+     "mode": "诊断（在基准上做失效分析）",
+     "setup": "BEHAVIOR-1K 的技能交接状态（semantic handoff）",
+     "result": "提出并诊断“上一个技能结束时状态不可用于下一个技能”的失败模式",
+     "evidence": "We study this semantic handoff problem in BEHAVIOR-1K through an agent-orchestrated VLA execution harness"
+    },
+    {
+     "paper": "SSC: A Verifiable Structured Representation for Bimanual Manipulation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "—（方法论文，把它的标注格式当参照）",
+     "mode": "仅批评／参照其数据格式",
+     "setup": "BEHAVIOR-1K 的 skill_annotation 模板",
+     "result": "认为该模板“语言上过度切分”，影响可读性与标注一致性",
+     "evidence": "Rigid template formats, such as BEHAVIOR-1K's skill_annotation, are linguistically over-segmented"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "BiDex-100",
+   "document": "3__BiDex-100.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "CALVIN",
+   "document": "3__CALVIN.md",
+   "records": [
+    {
+     "paper": "What Matters in Language Conditioned Robotic Imitation Learning Over Unstructured Data",
+     "year": "2022",
+     "source": "OpenAlex 引文",
+     "model": "MCIL 系列改进（该文自己的模型）",
+     "mode": "训练后评测（SOTA 对比）",
+     "setup": "CALVIN 的语言条件长时程任务",
+     "result": "论文称显著优于当时 SOTA（摘要无具体数值）",
+     "evidence": "significantly outperforms the state of the art on the challenging language conditioned long-horizon robot manipulation benchmark"
+    },
+    {
+     "paper": "Grounding Language with Visual Affordances over Unstructured Data",
+     "year": "2023",
+     "source": "OpenAlex 引文",
+     "model": "该文的视觉可供性接地方法",
+     "mode": "训练后评测（仿真 + 真机）",
+     "setup": "CALVIN（仿真）+ 真实机器人，另学 25+ 种视觉运动技能",
+     "result": "称在 CALVIN 上达到 SOTA",
+     "evidence": "achieving state-of-the-art performance on the challenging CALVIN benchmark"
+    },
+    {
+     "paper": "Diffusion Transformer Policy",
+     "year": "2024",
+     "source": "arXiv",
+     "model": "Diffusion Transformer Policy，真机为 Franka",
+     "mode": "训练后评测（多基准并列）",
+     "setup": "ManiSkill2、LIBERO、CALVIN、SimplerEnv 四套仿真 + 真机",
+     "result": "称在四处一致优于基线（摘要无逐项数值）",
+     "evidence": "Extensive experiments … on Maniskill2, Libero, Calvin and SimplerEnv, as well as the real-world Franka arm"
+    },
+    {
+     "paper": "Multi-Teacher On-Policy Distillation for Flow-Based Vision-Language-Action",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "Velocity Loss OPD（多教师在线策略蒸馏），从联合 SFT 初始化",
+     "mode": "训练后评测（按指令链长报告）",
+     "setup": "CALVIN 五指令序列的成功率，另报 LIBERO-40 与 Meta-World MT5",
+     "result": "CALVIN 五指令序列绝对提升 33.4 个百分点；LIBERO-40 +22.55%、Meta-World MT5 +22.6%",
+     "evidence": "yields absolute success-rate gains of 22.55% on LIBERO-40, 33.4% on CALVIN five-instruction sequences"
+    },
+    {
+     "paper": "What Are We Actually Benchmarking in Robot Manipulation?",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "—（基准审计，不测模型）",
+     "mode": "审计（把 CALVIN 当被审计对象）",
+     "setup": "对 LIBERO、CALVIN、SimplerEnv、RoboCasa、RoboTwin 2.0 做诊断",
+     "result": "指出奖励／数据来源依赖等问题，并为每种失效模式提一个诊断指标",
+     "evidence": "We audit LIBERO, CALVIN, SimplerEnv, RoboCasa, and RoboTwin 2.0 under these diagnostics"
+    }
+   ],
+   "noise_note": "arXiv 摘要检索还命中《Style Transfer to Calvin and Hobbes comics》——因为出现 “Calvin” 这个名字，与基准无关，已剔除。"
+  },
+  {
+   "benchmark": "COLOSSEUM",
+   "document": "3__COLOSSEUM.md",
+   "records": [
+    {
+     "paper": "DynaRend: Learning 3D Dynamics via Masked Future Rendering for Robot Manipulation",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "DynaRend（3D 动态表征学习）",
+     "mode": "训练后评测（跨基准 + 真机）",
+     "setup": "RLBench 与 Colosseum 两套泛化基准，另做真实机器人实验",
+     "result": "称在策略成功率与对环境的泛化上有显著提升",
+     "evidence": "We evaluate DynaRend on two challenging benchmarks, RLBench and Colosseum"
+    },
+    {
+     "paper": "Hyperbolic Multiview Pretraining for Robotic Manipulation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "HyperMVP（双曲空间多视角预训练）",
+     "mode": "预训练后评测（含扰动设置）",
+     "setup": "COLOSSEUM（多扰动）、RLBench 与真实场景",
+     "result": "称在不同任务与扰动设置下一致优于强基线",
+     "evidence": "We evaluate HyperMVP on COLOSSEUM, RLBench, and real-world scenarios"
+    },
+    {
+     "paper": "FOCI Policy: Focus on Object-Centric Interactions for Relational Manipulation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "FOCI Policy（物体中心交互）",
+     "mode": "训练后评测（数据效率对比）",
+     "setup": "RLBench、COLOSSEUM 与真实任务，比较训练数据量",
+     "result": "以明显更少的训练数据达到强性能（摘要无具体数值）",
+     "evidence": "Experiments on RLBench, COLOSSEUM, and real-world tasks show … with substantially less training data"
+    },
+    {
+     "paper": "Robust Industrial Manipulation Under Test-Time Perturbations",
+     "year": "2026",
+     "source": "OpenAlex 引文",
+     "model": "固定相机的 Franka Panda 工作单元策略",
+     "mode": "评测（工业场景扰动测试）",
+     "setup": "在 RLBench 与 Colosseum 上做测试时扰动评估",
+     "result": "研究测试时扰动下的鲁棒性，摘要未给数值",
+     "evidence": "This paper studies this problem in a fixedcamera Franka Panda workcell using RLBench and Colosseum"
+    },
+    {
+     "paper": "Colosseum V2: Benchmarking Generalization for Vision-Language-Action",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "VLA（作为被测对象）",
+     "mode": "派生新版本基准（不是使用者，而是升级者）",
+     "setup": "面向 VLA 泛化的大规模仿真基准",
+     "result": "产出的是 V2 基准；原 COLOSSEUM 是其前身",
+     "evidence": "we introduce Colosseum V2, a large-scale simulation benchmark for evaluating VLA generalization"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "IndustrialVLA-Bench",
+   "document": "3__IndustrialVLA-Bench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "LIBERO（基础套件）",
+   "document": "3__LIBERO-基础套件.md",
+   "records": [
+    {
+     "paper": "Depth Helps: Improving Pre-trained RGB-based Policy with Depth Information",
+     "year": "2024",
+     "source": "OpenAlex 引文",
+     "model": "预训练 RGB 策略 + 深度增强",
+     "mode": "训练后评测（仿真 + 真机）",
+     "setup": "LIBERO 仿真环境与真实场景",
+     "result": "称有效提升预训练 RGB 策略的 3D 感知能力（摘要无具体数值）",
+     "evidence": "We conduct experiments on simulated LIBERO environments and real-world scenarios"
+    },
+    {
+     "paper": "LMoE-DP: Language-Conditioned Representations and Mixture-of-Experts Policies",
+     "year": "2026",
+     "source": "OpenAlex 引文",
+     "model": "LMoE-DP（语言条件表示 + 混合专家扩散策略）",
+     "mode": "训练后评测（仿真 + 真机）",
+     "setup": "LIBERO 成功率，另报真实机器人任务",
+     "result": "LIBERO 73.4%，真实机器人任务 79%",
+     "evidence": "LMoE-DP achieves 73.4% success on LIBERO and 79% on real-robot tasks"
+    },
+    {
+     "paper": "ActionX: pre-training action experts with reinforcement learning",
+     "year": "2026",
+     "source": "OpenAlex 引文",
+     "model": "ActionX（RL 预训练动作专家）",
+     "mode": "预训练后评测",
+     "setup": "LIBERO 与 Meta-World 仿真 + 真实机器人操作",
+     "result": "摘要只说明评测范围，未给数值",
+     "evidence": "We evaluate ActionX on the LIBERO and Meta-World benchmarks as well as real-world robotic manipulation"
+    },
+    {
+     "paper": "LaMP: Learning Vision-Language-Action Policy with 3D Scene Flow as Latent Motion Prior",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "LaMP（双专家 VLA，3D 场景流作隐运动先验）",
+     "mode": "训练后评测（三套仿真 + 真机）",
+     "setup": "LIBERO、LIBERO-Plus、SimplerEnv-WidowX 与真实世界",
+     "result": "摘要称在三套仿真与真机均评测，未给数值",
+     "evidence": "We evaluate LaMP on the LIBERO, LIBERO-Plus, and SimplerEnv-WidowX simulation benchmarks"
+    },
+    {
+     "paper": "RoboDuo: Attempt, Check and Atomic Recovery through Code for Visual Agents",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "原子 VLA + 具备完成检查能力的编码代理",
+     "mode": "用基准数据衍生新任务（LIBERO-Atomic／Code／Judge）",
+     "setup": "用同一套 LIBERO 示范构造三个新数据集用于训练",
+     "result": "产出的是衍生数据与流程，不是基准分数",
+     "evidence": "we build LIBERO-Atomic, LIBERO-Code, and LIBERO-Judge from a single set of LIBERO demonstrations"
+    },
+    {
+     "paper": "From Knowing to Doing Precisely: A General Self-Correction and Test-Time Method",
+     "year": "2026",
+     "source": "OpenAlex 引文",
+     "model": "该文的自纠正 + 测试时方法",
+     "mode": "训练后评测（逐数据集对比）",
+     "setup": "LIBERO 全部数据集，重点看精细操作成功率",
+     "result": "称在所有数据集上一致提升，精细操作提升显著",
+     "evidence": "our method achieves consistent improvements across all datasets in the LIBERO benchmark"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "ManiSkill / ManiSkill2",
+   "document": "3__ManiSkill-ManiSkill2.md",
+   "records": [
+    {
+     "paper": "NestedVLA: Learning to Consolidate and Generate Skills for Vision-Language-Action",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "NestedVLA（技能整合），三个用 RL 微调的策略",
+     "mode": "训练后评测（跨基准技能整合）",
+     "setup": "分别用 MetaWorld、ManiSkill、CALVIN 上 RL 微调的策略做整合",
+     "result": "摘要只说明整合方式，未给数值",
+     "evidence": "We evaluate NestedVLA by consolidating three policies fine-tuned with reinforcement learning on MetaWorld, ManiSkill, and CALVIN"
+    },
+    {
+     "paper": "RLinf-VLA: A Unified and Efficient Framework for Reinforcement Learning of VLA",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "RLinf-VLA（VLA 强化学习框架）",
+     "mode": "训练加速评测（在基准上测吞吐）",
+     "setup": "ManiSkill 上的混合细粒度流水线分配",
+     "result": "训练加速 1.61×–1.88×",
+     "evidence": "achieves a 1.61×-1.88× training speedup on ManiSkill"
+    },
+    {
+     "paper": "ManiSkill-ViTac 2025: Challenge on Manipulation Skill Learning With Tactile and Visual Sensing",
+     "year": "2024",
+     "source": "arXiv",
+     "model": "参赛策略（触觉 + 视觉）",
+     "mode": "派生挑战赛（以 ManiSkill 为底座）",
+     "setup": "接触丰富任务，要求同时用触觉与视觉",
+     "result": "产出的是赛题与协议，不是原基准分数",
+     "evidence": "This article introduces the ManiSkill-ViTac Challenge 2025"
+    },
+    {
+     "paper": "Let's Handle It: Generalizable Manipulation of Articulated Objects",
+     "year": "2022",
+     "source": "arXiv",
+     "model": "该文的抓取／操作框架",
+     "mode": "挑战赛提交（SAPIEN ManiSkill Challenge 2021 赛道）",
+     "setup": "四个操作技能，日常铰接物体",
+     "result": "摘要称四项技能均可演示，未给榜单名次",
+     "evidence": "We demonstrate our framework on four manipulation skills … that comprise the SAPIEN ManiSkill Manipulation challenge"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "Open X-Embodiment",
+   "document": "3__Open-X-Embodiment.md",
+   "records": [
+    {
+     "paper": "LLARVA: Vision-Action Instruction Tuning Enhances Robot Learning",
+     "year": "2024",
+     "source": "arXiv",
+     "model": "LLARVA（视觉—动作指令微调）",
+     "mode": "预训练数据（从该数据集生成 8.5M 图文—视觉轨迹对）",
+     "setup": "用 Open X-Embodiment 生成预训练对；在 RLBench 12 个任务与真实 Franka Panda 上评测",
+     "result": "产出 8.5M 预训练样本；下游在 12 个 RLBench 任务与真机上评测",
+     "evidence": "We generate 8.5M image-visual trace pairs from the Open X-Embodiment dataset in order to pre-train our model"
+    },
+    {
+     "paper": "MoS-VLA: A Vision-Language-Action Model with One-Shot Skill Adaptation",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "MoS-VLA（技能基函数）",
+     "mode": "预训练数据（跨数据集联合预训练）",
+     "setup": "在 Open X-Embodiment 各数据集上联合学习基函数，形成结构化技能空间",
+     "result": "摘要只说明预训练方式与技能空间，未给数值",
+     "evidence": "During pretraining, MoS-VLA jointly learns these basis functions across datasets from the Open X-Embodiment project"
+    },
+    {
+     "paper": "Video-Language Critic: Transferable Reward Functions for Language-Conditioned Robotics",
+     "year": "2024",
+     "source": "arXiv",
+     "model": "Video-Language Critic（奖励模型）",
+     "mode": "训练数据（训练奖励函数），再用于 RL",
+     "setup": "在 Open X-Embodiment 上训练奖励模型；在 Meta-World 任务上用作 RL 奖励",
+     "result": "相比只用稀疏奖励，策略训练样本效率提升 2 倍（尽管存在明显域差）",
+     "evidence": "When trained on Open X-Embodiment data, our reward model enables 2x more sample-efficient policy training on Meta-World"
+    },
+    {
+     "paper": "HCLSM: Hierarchical Causal Latent State Machines for Object-Centric World Models",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "HCLSM（68M 参数世界模型）",
+     "mode": "子集训练 + 评测（取 PushT 子集）",
+     "setup": "Open X-Embodiment 的 PushT 子集，下一状态预测 MSE 与 SBD loss",
+     "result": "0.008 MSE；SBD loss 0.0075",
+     "evidence": "We train a 68M-parameter model on the PushT robotic manipulation benchmark from the Open X-Embodiment dataset, achieving 0.008 MSE"
+    },
+    {
+     "paper": "StableVLA: Towards Robust Vision-Language-Action Models without Extra Data",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "StableVLA（0.5B 主干）",
+     "mode": "对照条件（明确“未在该数据集上预训练”）",
+     "setup": "与 7B 级 SOTA VLA 比鲁棒性",
+     "result": "不做 Open X-Embodiment 预训练、主干小 14 倍，鲁棒性仍与 7B 模型相当",
+     "evidence": "even with a 14x smaller backbone (0.5B parameters) and no pre-training on the Open X-Embodiment dataset"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "RoboCasa",
+   "document": "3__RoboCasa.md",
+   "records": [
+    {
+     "paper": "Z-1: Efficient Reinforcement Learning for Vision-Language-Action",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "Z-1（基于 π0.5，先 SFT 再逐任务 GRPO）",
+     "mode": "微调（用公开示范做 SFT）+ 强化学习后评测",
+     "setup": "只用 RoboCasa 公开示范做 SFT，然后在 24 个标准 RoboCasa 任务上做 task-wise GRPO",
+     "result": "摘要强调效率与 24 任务覆盖，未给具体成功率",
+     "evidence": "Z-1 uses only publicly released RoboCasa demonstrations for SFT and then applies a task-wise GRPO strategy across 24 standard RoboCasa tasks"
+    },
+    {
+     "paper": "LY-GWM-RoboCasa-Human300: Prediction-Guided Action Selection",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "GR00T-N1.5（在 Human300 上微调）+ 图动力学模型 + 状态奖励打分器",
+     "mode": "微调（Human300 示范）+ 推理期选择",
+     "setup": "RoboCasa 环境中的动作生成与候选选择",
+     "result": "摘要只说明组件与流程，未给数值",
+     "evidence": "a Human300-fine-tuned GR00T-N1.5 action generator, an action-conditioned graph dynamics model, and a learned binary state-reward scorer"
+    },
+    {
+     "paper": "SeeTraceAct: Visibility-Aware Latent Planning from Cross-Embodiment Demonstrations",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "SeeTraceAct（可见性感知隐规划）",
+     "mode": "扩展基准（发布 RoboCasa-DC）+ 评测",
+     "setup": "把机器人轨迹与新增人类示教配对，形成 demo-conditioned 扩展 RoboCasa-DC",
+     "result": "产出 RoboCasa-DC 数据扩展，不是基准分数",
+     "evidence": "we introduce and release RoboCasa-DC, a demo-conditioned extension of RoboCasa"
+    },
+    {
+     "paper": "AffordanceWAM: Affordance-Aware Joint World-Action Modeling",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "AffordanceWAM（可供性感知联合世界—动作模型）",
+     "mode": "训练后评测（跨基准 + 真机）",
+     "setup": "RoboCasa、CALVIN ABC→D 与真实操作",
+     "result": "称相比只用 RGB 或只用机器人数据的基线一致更优",
+     "evidence": "Experiments on RoboCasa, CALVIN ABC→D, and real-world manipulation demonstrate consistent gains"
+    },
+    {
+     "paper": "MOST: Memory of Object States and Task Progress for Long-Horizon Mobile Manipulation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "MOST（物体状态与任务进度记忆）",
+     "mode": "扩展基准（提出 RoboCasa-Long）+ 评测",
+     "setup": "多分钟、多阶段的移动操作任务",
+     "result": "产出 RoboCasa-Long 基准，不是原基准分数",
+     "evidence": "We further introduce RoboCasa-Long, a benchmark of multi-minute, multi-stage mobile manipulation tasks"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "RoboCasa365",
+   "document": "3__RoboCasa365.md",
+   "records": [
+    {
+     "paper": "Axiom-0: Hierarchical Self-Refinement for Vision-Language-Action Policies",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "Axiom-0，对照 Paimon-0 与 Xiaomi-Robotics-1（XR-1）",
+     "mode": "训练后评测（对照官方 leaderboard）",
+     "setup": "RoboCasa365 总体成功率（官方协议）",
+     "result": "62.32%，比最高公开榜单分（Paimon-0 的 58.1%）高 4.22pp，比 XR-1 高 4.92pp",
+     "evidence": "Axiom-0 achieves 62.32% overall success … exceeding the highest published leaderboard score (Paimon-0, 58.1%)"
+    },
+    {
+     "paper": "Scale and Selection: What Makes Automatic Harness Evolution Work for Visual-Interface Robot Agents",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "把多智能体 harness 的 rollout 蒸馏回策略后的 standalone 策略",
+     "mode": "训练（多教师在线策略蒸馏）后评测",
+     "setup": "RoboCasa365 官方协议",
+     "result": "62.2%，比自身起点高 4.8 个百分点",
+     "evidence": "yields a standalone policy at 62.2% on RoboCasa365 under the official protocol, 4.8 points above its starting point"
+    },
+    {
+     "paper": "Fewer Tokens, Better Action: GPT-6 Astra Robot Agents",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "GPT-6 Astra 规划器 + 原语（tool calling）",
+     "mode": "评测（与同一规划器的工具调用方式对比）",
+     "setup": "LIBERO-PRO、RoboTwin 2.0 与 RoboCasa365 共 700 个仿真任务实例",
+     "result": "成功率 63.1% → 71.7%，LLM 调用减少 49%",
+     "evidence": "Across 700 simulated task instances from LIBERO-PRO, RoboTwin 2.0, and RoboCasa365, it raises success from 63.1% to 71.7%"
+    },
+    {
+     "paper": "MOST: Memory of Object States and Task Progress for Long-Horizon Mobile Manipulation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "MOST，对照 Xiaomi-Robotics-1（XR-1，前 SOTA）",
+     "mode": "训练后评测（跨基准 + 真机）",
+     "setup": "RoboCasa365、RoboCasa-Long 与真机",
+     "result": "三处均优于 XR-1；摘要未给数值",
+     "evidence": "Across RoboCasa365, RoboCasa-Long, and real-world robot experiments, MOST consistently outperforms XR-1"
+    },
+    {
+     "paper": "MM-ABC: Towards Generalist Mobile Manipulation via Seeing, Coordinating and Imagining",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "MM-ABC",
+     "mode": "评测 + 消融（在基准上做控制变量实验）",
+     "setup": "RoboCasa365 composite-seen 任务",
+     "result": "把干净动作预测换成速度预测，成功率由 32.8% 降到 29.2%",
+     "evidence": "replacing clean-action prediction with velocity prediction lowers success on RoboCasa365 composite-seen tasks from 32.8% to 29.2%"
+    },
+    {
+     "paper": "REKI: Registering Knowledge in VLAs",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "REKI（2.4B VLA，只用公开数据预训练）",
+     "mode": "预训练后评测（效率—性能前沿对比）",
+     "setup": "LIBERO-Plus、RoboTwin Clean2Rand 与 RoboCasa365 等",
+     "result": "称在性能与模型规模之间建立新 Pareto 前沿；摘要未给逐项数值",
+     "evidence": "sets a new Pareto frontier between performance and model size: on LIBERO-Plus, RoboTwin Clean2Rand and RoboCasa365…"
+    },
+    {
+     "paper": "Qwen-RobotManip Technical Report: Alignment Unlocks Scale for Robot Manipulation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "Qwen-RobotManip（以 Qwen 为底座）",
+     "mode": "评测（明确指出标准基准不够，改用 OOD 设置）",
+     "setup": "把 RoboCasa365、LIBERO-Plus、EBench、RoboTwin-Clean2Rand／IF／XE 作为 OOD 组",
+     "result": "结论是“标准基准无法反映预训练质量”，故采用 OOD 组；未给单一分数",
+     "evidence": "standard benchmarks fail to capture pretraining quality and instead adopt OOD settings including RoboCasa365"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "RoboChrono",
+   "document": "3__RoboChrono.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "RoboComb",
+   "document": "3__RoboComb.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "RoboFollow",
+   "document": "3__RoboFollow.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "RoboIRG-Bench",
+   "document": "3__RoboIRG-Bench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "RoboMIND",
+   "document": "3__RoboMIND.md",
+   "records": [
+    {
+     "paper": "RoboMIND 2.0: A Multimodal, Bimanual Mobile Manipulation Dataset",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "—（该文即数据集本身的 2.0 版）",
+     "mode": "自更新（发布更大规模数据）",
+     "setup": "六种机器人本体、739 个复杂任务、310K+ 双臂轨迹",
+     "result": "产出 2.0 数据集；不是第三方使用分数",
+     "evidence": "a comprehensive real-world dataset comprising over 310K dual-arm manipulation trajectories across six robot embodiments"
+    },
+    {
+     "paper": "Pelican-Sim 1.0: A General World Model Simulator for Embodied Intelligence",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "Pelican-Sim（世界模型模拟器）",
+     "mode": "训练数据（约百万条真实 + 仿真轨迹）后评测",
+     "setup": "动作可控性与视频质量；在 RoboMIND 上报告 PSNR 增益",
+     "result": "在 RoboMIND 上 PSNR 比最强基线高 2.080（同段另报 AgiBotWorld Beta +4.636、RoboTwin +10.343）",
+     "evidence": "PSNR improves over the strongest evaluated baselines by 4.636 on AgiBotWorld Beta, 2.080 on RoboMIND, and 10.343 on RoboTwin"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "RoboReel",
+   "document": "3__RoboReel.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "RoboTwin",
+   "document": "3__RoboTwin.md",
+   "records": [
+    {
+     "paper": "RecastVLA: From Past Interaction to Future Control with Adaptive Test-Time Training",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "RecastVLA（测试时训练）",
+     "mode": "评测（与“不做测试时训练”的匹配策略对比）",
+     "setup": "LIBERO、RoboTwin、RoboDojo 与 12 个真机任务；RoboTwin Clean-to-Clean",
+     "result": "RoboTwin Clean-to-Clean 提升 10.68 个百分点",
+     "evidence": "including 10.68 percentage points on RoboTwin Clean-to-Clean"
+    },
+    {
+     "paper": "Qwen-RobotManip Technical Report: Alignment Unlocks Scale for Robot Manipulation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "Qwen-RobotManip",
+     "mode": "评测（OOD 设置族）",
+     "setup": "RoboTwin-Clean2Rand、RoboTwin-IF、RoboTwin-XE 等 OOD 子集",
+     "result": "把 RoboTwin 的多个变体当 OOD 测试场；未给单一分数",
+     "evidence": "adopt OOD settings including … RoboTwin-Clean2Rand, RoboTwin-IF, and RoboTwin-XE"
+    },
+    {
+     "paper": "Seeing Realism from Simulation: Efficient Video Transfer for Visual Robot Policies",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "该文的视频迁移方法",
+     "mode": "训练后评测（跨基准 + 真机）",
+     "setup": "RoboTwin 2.0、LIBERO、LIBERO-Plus 与真实机器人平台",
+     "result": "称四处一致提升（摘要无具体数值）",
+     "evidence": "Extensive experiments on Robotwin 2.0, LIBERO, LIBERO-Plus, and a real robotic platform demonstrate consistent improvements"
+    },
+    {
+     "paper": "RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "—（该文即 2.0 版本）",
+     "mode": "自更新（数据生成器 + 统一评测协议）",
+     "setup": "双臂操作，强域随机化",
+     "result": "产出 2.0 与统一协议；原论文的 1.0 版本是本条目的来源",
+     "evidence": "We present RoboTwin 2.0, a scalable framework … together with unified evaluation protocols for dual-arm manipulation"
+    },
+    {
+     "paper": "Benchmarking Generalizable Bimanual Manipulation: RoboTwin Dual-Arm Collaboration Challenge",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "挑战赛参赛策略",
+     "mode": "派生挑战赛（CVPR 2025 MEIS Workshop）",
+     "setup": "双臂协作任务赛道",
+     "result": "产出赛题与成绩榜，不是原基准分数",
+     "evidence": "we launched the RoboTwin Dual-Arm Collaboration Challenge at the 2nd MEIS Workshop, CVPR 2025"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "SimplerEnv",
+   "document": "3__SimplerEnv.md",
+   "records": [
+    {
+     "paper": "Discrete Diffusion VLA: Bringing Discrete Diffusion to Action Decoding",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "Discrete Diffusion VLA",
+     "mode": "评测（分 SimplerEnv 的两个子集报告）",
+     "setup": "SimplerEnv-Fractal 的 visual matching 与 SimplerEnv-Bridge 总体",
+     "result": "SimplerEnv-Fractal 71.2%、SimplerEnv-Bridge 54.2%；LIBERO 平均 96.4%",
+     "evidence": "71.2% visual matching on SimplerEnv-Fractal, and 54.2% overall on SimplerEnv-Bridge"
+    },
+    {
+     "paper": "DeFI: Disentangled Robot Learning via Separate Forward and Inverse Dynamics",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "DeFI",
+     "mode": "评测（CALVIN + SimplerEnv 并列）",
+     "setup": "CALVIN ABC-D 平均任务长度；SimplerEnv-Fractal 成功率",
+     "result": "CALVIN 平均长度 4.51；SimplerEnv-Fractal 51.2%",
+     "evidence": "DeFI achieving an average task length of 4.51 for CALVIN, 51.2% success rate on SimplerEnv-Fractal"
+    },
+    {
+     "paper": "CronusVLA: Towards Efficient and Robust Manipulation via Multi-Frame",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "CronusVLA",
+     "mode": "派生扰动基准（SimplerEnv-OR）+ 评测",
+     "setup": "24 类观察扰动 × 120 个严重度等级",
+     "result": "产出新扰动基准 SimplerEnv-OR；用于测时间与空间扰动下的鲁棒性",
+     "evidence": "we introduce SimplerEnv-OR, a novel benchmark featuring 24 types of observational disturbances and 120 severity levels"
+    },
+    {
+     "paper": "PhysBrain 1.0 Technical Report",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "PhysBrain 1.0",
+     "mode": "评测（多基准 SOTA 对比）",
+     "setup": "ERQA、PhysBench、SimplerEnv-WidowX、LIBERO、RoboCasa",
+     "result": "称在多模态问答与具身控制基准上取得 SOTA，域外表现尤其强",
+     "evidence": "including ERQA, PhysBench, SimplerEnv-WidowX, LIBERO, and RoboCasa, PhysBrain 1.0 achieves SOTA results"
+    },
+    {
+     "paper": "TTF-VLA: Temporal Token Fusion via Pixel-Attention Integration",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "TTF-VLA",
+     "mode": "评测（逐基准报告均值）",
+     "setup": "LIBERO 与 SimplerEnv，另加真机任务",
+     "result": "LIBERO 平均 +4.0 个百分点（72.4% vs 基线 68.4%），SimplerEnv 做跨环境验证",
+     "evidence": "4.0 percentage points average on LIBERO (72.4% vs 68.4% baseline), cross-environment validation on SimplerEnv"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "Spa-Bench",
+   "document": "3__Spa-Bench.md",
+   "records": [
+    {
+     "paper": "Benchmarking LLM Judges for Mobile Agent Evaluation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "6 种 judge 方法（5 种改编自 SPA-Bench／A3／AndroidArena／AgentRewardBench）+ 多种 LLM 后端",
+     "mode": "借用评测方法（把 SPA-Bench 的评分做法搬来做 judge 对比）",
+     "setup": "6 个移动代理基准、4 个代理模型、68 个 App",
+     "result": "产出的是 judge 方法比较，不是 SPA-Bench 上的模型分数",
+     "evidence": "We evaluate 6 judge methods (five adapted from SPA-Bench, A3 …) across multiple LLM backends"
+    },
+    {
+     "paper": "OpenMobile-2: Building Versatile Mobile Agents with Scalable Environments",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "OpenMobile-2",
+     "mode": "评测（迁移测试）",
+     "setup": "AndroidWorld 79.9、MobileWorld 50.4，另报 SPA-Bench 上的迁移表现",
+     "result": "在 SPA-Bench 上表现“接近翻倍”（摘要未给绝对值）",
+     "evidence": "nearly doubling SPA-Bench performance"
+    }
+   ],
+   "noise_note": "SPA-Bench 是手机 GUI 代理基准（Spa-Bench）与机器人空间接地基准（Spa-Bench: Real-Robot Spatial Grounding）重名：上面两条 Arduino／手机代理的引用属于前者，不是本条真机空间接地基准。"
+  },
+  {
+   "benchmark": "VLABench",
+   "document": "3__VLABench.md",
+   "records": [
+    {
+     "paper": "Separating Execution and Target Selection in Vision–Language–Action Evaluation",
+     "year": "2026",
+     "source": "OpenAlex 引文",
+     "model": "SmolVLA 与 π0（已发布 checkpoint）",
+     "mode": "审计式评测（同状态可信／空指令、对称停止、保持性检查）",
+     "setup": "VLABench，使用与模型家族匹配的 native controls",
+     "result": "拆开“执行”和“选目标”两种失败，未给单一分数",
+     "evidence": "We evaluate released SmolVLA and π0 policies in VLABench using family-matched native controls"
+    },
+    {
+     "paper": "GaussMemory: Task-Driven 3D Gaussian Scene Memory for Long-Horizon Manipulation",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "GaussMemory，对照 π0-FAST 与 MemoryVLA",
+     "mode": "训练后评测（分 Track 报告）",
+     "setup": "VLABench Track 1 与 Track 6；另在 LIBERO 上与 MemoryVLA 比",
+     "result": "VLABench Track 1 +5.2%、Track 6 +6.0%（相对 π0-FAST）",
+     "evidence": "on VLABench, it surpasses π0-FAST by +5.2% (Track 1) and +6.0% (Track 6)"
+    },
+    {
+     "paper": "E0: Enhancing Generalization and Fine-Grained Control in VLA Models",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "E0，对照多种强基线",
+     "mode": "训练后评测（14 个环境平均）",
+     "setup": "LIBERO、VLABench、ManiSkill 与真实 Franka",
+     "result": "14 个环境平均比强基线高 10.7%",
+     "evidence": "E0 achieves state-of-the-art performance across 14 diverse environments, outperforming strong baselines by 10.7% on average"
+    },
+    {
+     "paper": "TAG: Target-Agnostic Guidance for Stable Object-Centric Inference",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "TAG（目标无关引导）",
+     "mode": "训练后评测（杂乱场景鲁棒性）",
+     "setup": "LIBERO、LIBERO-Plus、VLABench",
+     "result": "称在杂乱场景下鲁棒性一致提升，并减少近失手与拿错对象",
+     "evidence": "it consistently improves robustness under clutter and reduces near-miss and wrong-object executions"
+    },
+    {
+     "paper": "$A_1$: Adaptive Truncated Vision-Language-Action Model",
+     "year": "2026",
+     "source": "OpenAlex 引文",
+     "model": "A1（自适应截断 VLA），在 Franka 与 AgiBot 两套机器人上",
+     "mode": "训练后评测（多基准 + 多机器人）",
+     "setup": "LIBERO 与 VLABench 等基准，真机为 Franka 与 AgiBot",
+     "result": "摘要只说明评测范围，未给数值",
+     "evidence": "LIBERO and VLABench) and multiple robotic systems (Franka and AgiBot)"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "Agent-SafetyBench",
+   "document": "4__Agent-SafetyBench.md",
+   "records": [
+    {
+     "paper": "SHE: Trajectory-driven Safety Harness Evolution for LLM Agents",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "SHE（在多种 LLM 代理上做安全 harness 演化），对照静态 SafeHarness",
+     "mode": "评测（安全 harness 演化前后对比）",
+     "setup": "Agent-SafetyBench 的风险达成率（ASR）与正常效用",
+     "result": "ASR 相比静态 SafeHarness 降低到 1/3.1（3.1× 降幅），同时正常效用提升",
+     "evidence": "achieving a 3.1x ASR reduction compared with static SafeHarness, while also improving benign utility"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "Bench2Dex",
+   "document": "4__Bench2Dex.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "DESPITE",
+   "document": "4__DESPITE.md",
+   "records": [],
+   "noise_note": "名称是常用英文词（despite），arXiv 摘要检索的 50 条命中全部与本文无关（如 LiDAR 论文里作连词使用）。本轮不提供使用明细，避免把无关论文算成使用证据；论文自身的 23 模型结论见第 8 节。"
+  },
+  {
+   "benchmark": "EmbodiedBench",
+   "document": "4__EmbodiedBench.md",
+   "records": [
+    {
+     "paper": "RoboMemory: A Brain-inspired Multi-memory Agentic Framework",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "RoboMemory，实例化为 Qwen2.5-VL-72B-Ins",
+     "mode": "评测（加记忆框架后的增益）",
+     "setup": "EmbodiedBench 全部子集，与强基线及闭源 SOTA 比较",
+     "result": "平均成功率比强基线高 26.5%，并超过闭源 SOTA（Claude 系列）",
+     "evidence": "instantiated with Qwen2.5-VL-72B-Ins, improves the average success rate by 26.5% over its strong baseline"
+    },
+    {
+     "paper": "RoboGPT-R1: Enhancing Robot Task Planning with Reinforcement Learning",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "RoboGPT-R1，在 Qwen2.5-VL-3B 上训练",
+     "mode": "强化学习训练后评测（小模型 vs 大模型）",
+     "setup": "EmbodiedBench 上的任务规划成功率",
+     "result": "比 GPT-4o-mini 高 21.33%，比基于 Qwen2.5-VL-7B 的其他工作高 20.33%",
+     "evidence": "significantly outperforms the larger-scale model, GPT-4o-mini, by 21.33% … on the EmbodiedBench benchmark"
+    },
+    {
+     "paper": "RoboFoundry: System-as-Policy Evolution for Self-Learning Embodied Agents",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "RoboFoundry，基线为 GPT-5.5",
+     "mode": "评测（系统级演化前后对比）",
+     "setup": "EmbodiedBench 总体表现",
+     "result": "相对 GPT-5.5 提升 27.8%，称达到 SOTA",
+     "evidence": "On EmbodiedBench, RoboFoundry achieves state-of-the-art performance, notably improving GPT-5.5 by 27.8%"
+    },
+    {
+     "paper": "MemCompiler: Compile, Don't Inject — State-Conditioned Memory",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "MemCompiler，在多种开源主干上",
+     "mode": "评测（有／无记忆对照）",
+     "setup": "AlfWorld、EmbodiedBench、ScienceWorld",
+     "result": "相比无记忆一致提升（最高 +129%），并接近前沿闭源系统",
+     "evidence": "Across Alf World, EmbodiedBench, and ScienceWorld, MemCompiler consistently improves over no-memory … (up to +129%)"
+    },
+    {
+     "paper": "MemCtrl: Using MLLMs as Active Memory Controllers on Embodied Agents",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "两个表现较弱的 MLLM + MemCtrl 记忆控制器",
+     "mode": "评测（增强前后对比，多子集）",
+     "setup": "EmbodiedBench 多个子集",
+     "result": "平均提升约 16%，部分子集超过 20%",
+     "evidence": "μ-augmented MLLMs show an improvement of around 16% on average, with over 20% on…"
+    },
+    {
+     "paper": "Look Before You Move: Agent-Interface-Aligned Supervision",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "AIDA 监督流程",
+     "mode": "评测（导航子集）",
+     "setup": "EmbodiedBench 的导航子集",
+     "result": "摘要称验证了该流程对导航任务的可用性，未给数值",
+     "evidence": "Applying AIDA to a navigation subset of EmbodiedBench further demonstrates the pipeline's utility"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "EmbodiedGovBench",
+   "document": "4__EmbodiedGovBench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "HygieneRoboBench",
+   "document": "4__HygieneRoboBench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "INFUSE",
+   "document": "4__INFUSE.md",
+   "records": [],
+   "noise_note": "名称是常用动词／多个项目的缩写（VCC-INFUSE、INFUSE 后门攻击、INFUSE 幻觉缓解、网络入侵检测 INFUSE 等），无法区分所指。本轮不给使用明细。"
+  },
+  {
+   "benchmark": "IS-Bench",
+   "document": "4__IS-Bench.md",
+   "records": [],
+   "noise_note": "本轮取得引文 2 篇、arXiv 摘要命中 0 篇，但摘要里没有出现能判读用法的句子（可能只有题名提及或无摘要）。详见第 7 节的记录。"
+  },
+  {
+   "benchmark": "LABIT",
+   "document": "4__LABIT.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "MSK-Bench",
+   "document": "4__MSK-Bench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "MemForm",
+   "document": "4__MemForm.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "MineAmongUs",
+   "document": "4__MineAmongUs.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "ORBIT",
+   "document": "4__ORBIT.md",
+   "records": [],
+   "noise_note": "名称是常用名词（orbit／on-orbit，还有 ORBIT-Surgical 等同类缩写），命中的多数与多代理安全框架无关。本轮不给使用明细。"
+  },
+  {
+   "benchmark": "Peg-in-Bench",
+   "document": "4__Peg-in-Bench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "PhysAI-Bench",
+   "document": "4__PhysAI-Bench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "RoboAbstention",
+   "document": "4__RoboAbstention.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "RoboJailBench",
+   "document": "4__RoboJailBench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "STARS",
+   "document": "4__STARS.md",
+   "records": [],
+   "noise_note": "名称既指恒星／星图／遥感 X-STARS，也指 3D 动作识别 STARS 与社交导航 StARS，无法区分。本轮不给使用明细；该条在本库中本就归为“方法”而非基准。"
+  },
+  {
+   "benchmark": "SafeAgentBench",
+   "document": "4__SafeAgentBench.md",
+   "records": [
+    {
+     "paper": "ConceptBot: Enhancing Robot's Autonomy through Task Decomposition",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "ConceptBot（任务分解）",
+     "mode": "评测（与次优基线对比）",
+     "setup": "SafeAgentBench 总体分数",
+     "result": "总分 80%，次优基线 46%",
+     "evidence": "On SafeAgentBench, ConceptBot achieved an overall score of 80% (versus 46% for the next-best baseline)"
+    },
+    {
+     "paper": "NEXUS: Learning Safety Constraints and Action Models for Safe Embodied Agents",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "NEXUS（安全约束 + 动作模型）",
+     "mode": "评测（安全—完成权衡 + 越狱压力测试）",
+     "setup": "SafeAgentBench 评测集：安全任务完成、危险任务拒绝、越狱下违规率",
+     "result": "称取得最佳整体权衡，并在越狱攻击下维持低违规率；摘要未给数值",
+     "evidence": "NEXUS achieves the best overall trade-off between safetask completion and unsafe-task refusal"
+    },
+    {
+     "paper": "When Robots Mishear Us: Mapping the Safety Risks of Voice-Controlled Embodied AI",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "EAI 模型（受 ASR 错误影响）",
+     "mode": "输入扰动注入（把语音识别错误叠到基准上）",
+     "setup": "模拟 ASR 错误 + SafeAgentBench 与 POEX 的危险任务",
+     "result": "测出 ASR 错误如何降低安全性；摘要未给数值",
+     "evidence": "We simulate ASR errors and combine them with existing safety benchmarks (SafeAgentBench and POEX)"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "SkillSafetyBench",
+   "document": "4__SkillSafetyBench.md",
+   "records": [],
+   "noise_note": "本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。"
+  },
+  {
+   "benchmark": "CARLA / CARLA Leaderboard",
+   "document": "5__CARLA-CARLA-Leaderboard.md",
+   "records": [
+    {
+     "paper": "ANTI-CARLA: An Adversarial Testing Framework for Autonomous Vehicles",
+     "year": "2022",
+     "source": "arXiv",
+     "model": "被测自动驾驶栈（框架侧生成对抗场景）",
+     "mode": "安全测试框架（在 CARLA 中生成对抗场景）",
+     "setup": "CARLA 场景与传感器配置",
+     "result": "产出对抗测试框架，不是模型分数",
+     "evidence": "These challenges can be addressed by using driving simulators such as CARLA instead"
+    },
+    {
+     "paper": "PCLA: A Framework for Testing Autonomous Agents in the CARLA Simulator",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "CARLA Leaderboard 参赛代理",
+     "mode": "测试框架（在 CARLA 上搭测试流水线）",
+     "setup": "以 Leaderboard 代理为被测对象",
+     "result": "产出测试框架；摘要称 Leaderboard 代理是该环境下表现最好的一批",
+     "evidence": "the autonomous agents from the CARLA Leaderboard challenge are regarded as the best-performing agents within this environment"
+    },
+    {
+     "paper": "vEDGAR — Can CARLA Do HiL?",
+     "year": "2025",
+     "source": "arXiv",
+     "model": "自动驾驶算法（含硬件在环）",
+     "mode": "方法／基础设施（把 CARLA 用于 HiL 测试）",
+     "setup": "CARLA 用于训练、评测与软件在环测试",
+     "result": "研究 CARLA 能否支撑硬件在环；摘要未给模型分数",
+     "evidence": "Common open-source simulators like CARLA are extensively used in training, evaluation, and software-in-the-loop testing"
+    },
+    {
+     "paper": "Multi-Modal Fusion Transformer for End-to-End Autonomous Driving",
+     "year": "2021",
+     "source": "OpenAlex 引文",
+     "model": "多模态融合 Transformer（端到端驾驶）",
+     "mode": "评测（端到端驾驶）",
+     "setup": "CARLA 城市环境与复杂场景",
+     "result": "称在复杂城市场景上验证有效，未给驾驶分数",
+     "evidence": "We experimentally validate the efficacy of our approach in urban settings involving complex scenarios using the CARLA urban driving simulator"
+    },
+    {
+     "paper": "Paris-CARLA-3D: A Real and Synthetic Outdoor Point Cloud Dataset",
+     "year": "2021",
+     "source": "arXiv",
+     "model": "—（数据集）",
+     "mode": "数据生成（用 CARLA 扩增真实点云）",
+     "setup": "车载 LiDAR + 相机采集的真实点云，与 CARLA 合成数据配对",
+     "result": "产出 Paris-CARLA-3D 数据集",
+     "evidence": "Paris-CARLA-3D is a dataset of several dense colored point clouds of outdoor environments built by a mobile LiDAR and camera system"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "NAVSIM",
+   "document": "5__NAVSIM.md",
+   "records": [
+    {
+     "paper": "Gaze-Flow: Human-Like and Interpretable End-to-End Planning via Gaze",
+     "year": "2026",
+     "source": "OpenAlex 引文",
+     "model": "Gaze-Flow（端到端规划）",
+     "mode": "评测（v1 与 v2 分别报告）",
+     "setup": "NAVSIM v1 的 PDMS 与 v2 的 EPDMS",
+     "result": "PDMS 91.5（v1）、EPDMS 86.7（v2）；摘要称在安全、舒适、规则遵守与类人度上都有竞争力",
+     "evidence": "Gaze-Flow achieves a PDMS of 91.5 on NAVSIM v1 and an EPDMS of 86.7 on NAVSIM v2"
+    },
+    {
+     "paper": "DriveFuture: Future-Aware Latent World Models for Autonomous Driving",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "DriveFuture（未来感知隐世界模型）",
+     "mode": "评测（官方榜单拆分）",
+     "setup": "NAVSIM-v2 的 navhard 与 navtest 两个拆分，EPDMS",
+     "result": "navhard 55.5 EPDMS、navtest 89.9 EPDMS，称达到公开榜单 SOTA",
+     "evidence": "reaching 55.5 EPDMS on NAVSIM-v2 navhard, 89.9 EPDMS on NAVSIM-v2 navtest"
+    },
+    {
+     "paper": "DIVER: Reinforced Diffusion Breaks Imitation Bottlenecks in End-to-End Driving",
+     "year": "2026",
+     "source": "OpenAlex 引文",
+     "model": "DIVER（强化扩散）",
+     "mode": "评测（闭环 + 开环并列）",
+     "setup": "闭环 NAVSIM 与 Bench2Drive，另在开环 nuScenes 上评测",
+     "result": "称显著提升轨迹多样性并缓解模仿瓶颈；摘要未给 NAVSIM 分数",
+     "evidence": "Extensive experiments on the closed-loop NAVSIM and Bench2Drive benchmarks"
+    },
+    {
+     "paper": "Driving on manifolds: A stochastic manifold mapping paradigm",
+     "year": "2026",
+     "source": "OpenAlex 引文",
+     "model": "DOM（流形映射）",
+     "mode": "评测（基准 + 真车闭环）",
+     "setup": "NAVSIM、大规模真实数据集与真实闭环实验",
+     "result": "称达到 SOTA 并有良好 scaling 性质；未给数值",
+     "evidence": "Validated on the NAVSIM benchmark, large-scale real-world datasets, and closed-loop real-world experiments"
+    },
+    {
+     "paper": "Do Open-Loop Metrics Predict Closed-Loop Driving? A Cross-Benchmark Study",
+     "year": "2026",
+     "source": "arXiv",
+     "model": "—（指标研究，不测单一模型）",
+     "mode": "审计（检验开环指标能否预测闭环）",
+     "setup": "NAVSIM v2 引入的“安全感知开环指标”与闭环表现的相关性",
+     "result": "提出并检验相关性；结论按论文，不在此复述数值",
+     "evidence": "we ask whether the more recent, safety-aware open-loop metrics introduced by NAVSIM v2 can bridge this gap"
+    }
+   ],
+   "noise_note": null
+  },
+  {
+   "benchmark": "SafeBench",
+   "document": "5__SafeBench.md",
+   "records": [
+    {
+     "paper": "Traffic Scene Generation from Natural Language Description for Autonomous Vehicles",
+     "year": "2024",
+     "source": "arXiv",
+     "model": "场景生成方法 + 被测自动驾驶策略",
+     "mode": "评测（生成场景后测碰撞率）",
+     "setup": "SafeBench 三个关键场景，平均碰撞率",
+     "result": "平均碰撞率 3.5%（三个关键场景中的最低值由该方法取得）",
+     "evidence": "our method achieves the lowest average collision rate (3.5%) across three critical scenarios"
+    }
+   ],
+   "noise_note": "**同名坑**：另有一批多模态大模型安全论文也把数据集叫 SafeBench（例如 MML 越狱论文报告 “97.80% on SafeBench”、PRISM 与 “Internal Activation Revision” 也提到 SafeBench／MM-SafetyBench）。那些是 LVLM 越狱基准，不是本条自动驾驶安全基准；本轮只收自动驾驶侧的使用记录。"
+  },
+  {
+   "benchmark": "VIPS",
+   "document": "5__VIPS.md",
+   "records": [],
+   "noise_note": "缩写与多个项目冲突：ViPS（多视觉先验）、ViPS（视频姿态空间）、VIPs（视障人士，多篇 UAV 论文）、VIPS（高斯变分推断算法）。无法区分所指，本轮不给使用明细。"
+  },
+  {
+   "benchmark": "nuScenes",
+   "document": "5__nuScenes.md",
+   "records": [
+    {
+     "paper": "Center-based 3D Object Detection and Tracking（CenterPoint）",
+     "year": "2021",
+     "source": "OpenAlex 引文",
+     "model": "CenterPoint",
+     "mode": "训练后评测（检测 + 跟踪 SOTA）",
+     "setup": "nuScenes 3D 检测与跟踪，指标 NDS 与 AMOTA",
+     "result": "单模型 65.5 NDS、63.8 AMOTA",
+     "evidence": "CenterPoint achieved state-of-the-art performance on the nuScenes benchmark … with 65.5 NDS and 63.8 AMOTA"
+    },
+    {
+     "paper": "BEVFusion: Multi-Task Multi-Sensor Fusion with Unified Bird's-Eye View",
+     "year": "2023",
+     "source": "OpenAlex 引文",
+     "model": "BEVFusion（多传感器融合）",
+     "mode": "训练后评测（检测 + BEV 分割）",
+     "setup": "nuScenes 3D 检测 mAP／NDS 与 BEV map segmentation mIoU",
+     "result": "mAP 与 NDS 各高 1.3%，分割 mIoU 高 13.6%，算力低 1.9 倍",
+     "evidence": "achieving 1.3% higher mAP and NDS on 3D object detection and 13.6% higher mIoU on BEV map segmentation"
+    },
+    {
+     "paper": "TransFusion: Robust LiDAR-Camera Fusion for 3D Object Detection",
+     "year": "2022",
+     "source": "OpenAlex 引文",
+     "model": "TransFusion",
+     "mode": "训练后评测（检测 + 跟踪榜单）",
+     "setup": "nuScenes 3D 检测，另扩展到跟踪任务",
+     "result": "在 nuScenes 跟踪榜单拿到第 1 名",
+     "evidence": "achieve the 1st place in the leader-board of nuScenes tracking"
+    },
+    {
+     "paper": "PointPainting: Sequential Fusion for 3D Object Detection",
+     "year": "2020",
+     "source": "OpenAlex 引文",
+     "model": "PointPainting（叠加到 Point-RCNN／VoxelNet／PointPillars）",
+     "mode": "训练后评测（作为通用增强模块）",
+     "setup": "KITTI 与 nuScenes 两个数据集",
+     "result": "在三个 SOTA 检测器上均有大幅提升",
+     "evidence": "large improvements on three different state-of-the art methods … on the KITTI and nuScenes datasets"
+    },
+    {
+     "paper": "Planning-oriented Autonomous Driving（UniAD）",
+     "year": "2023",
+     "source": "OpenAlex 引文",
+     "model": "UniAD（规划导向的端到端框架）",
+     "mode": "训练后评测（把规划与感知任务串起来）",
+     "setup": "nuScenes 上的检测、跟踪、建图、运动预测与规划",
+     "result": "在 nuScenes 上实例化并报告各任务成绩；摘要未给单一数值",
+     "evidence": "We instantiate UniAD on the challenging nuScenes benchmark"
+    }
+   ],
+   "noise_note": null
+  }
+ ]
+}

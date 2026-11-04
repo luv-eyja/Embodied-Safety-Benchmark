@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "generated_at": "2026-11-04",
-  "queried_at": "2026-11-04T00:09:16.322615+08:00",
+  "queried_at": "2026-11-04T00:35:52.635106+08:00",
   "scope": "active_only",
   "source": "OpenAlex Works API",
   "citation_field": "cited_by_count",
@@ -332,12 +332,12 @@
           "id": "https://openalex.org/W7213988552",
           "title": "SafeStage: Evaluating Safety Before, During, and After Vision-Language-Conditioned Robot Manipulation",
           "cited_by_count": 0,
-          "query_mode": "retained_source_verified_snapshot",
-          "version_note": "Earlier DOI/title lookup retained; publication-version consolidation not verified."
+          "query_mode": "direct_id_lookup",
+          "version_note": "Re-queried by OpenAlex Work id on 2026-11-04; publication-version consolidation not verified."
         }
       ],
-      "observed_on": "2026-11-03",
-      "retained_prior_observation": true
+      "observed_on": "2026-11-04",
+      "retained_prior_observation": false
     },
     {
       "benchmark": "Trap-LIBERO / Trap-RoboTwin",
@@ -702,12 +702,12 @@
           "id": "https://openalex.org/W4416748905",
           "title": "AgiBot World Colosseo: A Large-Scale Manipulation Platform for Scalable and Intelligent Embodied Systems",
           "cited_by_count": 13,
-          "query_mode": "retained_source_verified_snapshot",
-          "version_note": "Earlier DOI/title lookup retained; publication-version consolidation not verified."
+          "query_mode": "direct_id_lookup",
+          "version_note": "Re-queried by OpenAlex Work id on 2026-11-04; publication-version consolidation not verified."
         }
       ],
-      "observed_on": "2026-11-03",
-      "retained_prior_observation": true
+      "observed_on": "2026-11-04",
+      "retained_prior_observation": false
     },
     {
       "benchmark": "BEHAVIOR-1K",
@@ -1245,12 +1245,12 @@
           "id": "https://openalex.org/W7214246107",
           "title": "RoboFollow: Unveiling the Instruction Following Mirage in Embodied Agents",
           "cited_by_count": 0,
-          "query_mode": "retained_source_verified_snapshot",
-          "version_note": "Earlier DOI/title lookup retained; publication-version consolidation not verified."
+          "query_mode": "direct_id_lookup",
+          "version_note": "Re-queried by OpenAlex Work id on 2026-11-04; publication-version consolidation not verified."
         }
       ],
-      "observed_on": "2026-11-03",
-      "retained_prior_observation": true
+      "observed_on": "2026-11-04",
+      "retained_prior_observation": false
     },
     {
       "benchmark": "RoboIRG-Bench",

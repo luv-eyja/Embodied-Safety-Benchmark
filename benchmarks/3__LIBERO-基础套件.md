@@ -28,9 +28,10 @@
 | 基础平台线索 | LIBERO、RoboTwin、SimplerEnv、ManiSkill |
 | 规模线索 | 原版 130 任务：Spatial 10、Object 10、Goal 10 与 LIBERO-100；后者可拆为 90 个预训练和 10 个长任务。空间、物体和目标变化分别控制。 |
 | 执行环境线索 | 终身机器人学习基础基准 |
-| OpenAlex 引用快照 | [136](https://openalex.org/W7133220882)；2026-11-03 |
+| OpenAlex 引用快照 | [136](https://openalex.org/W7133220882)；2026-11-04 |
 | 来源审计 | [LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning](https://arxiv.org/abs/2306.03310)；same_paper_in_registry |
 | 来源核验依据 | 2026-11-03 复核原始论文标题与方法章节：§3–4；原始论文，不以 MINERVA 代替 |
+| 术语说明 | 第 10 节解释本文出现的 20 个缩写／技术词，并标出 15 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -127,17 +128,122 @@
 后来常见的 40 任务成功率评测只覆盖特定组合，不能替代原始 130 任务的终身学习目的。原始来源应为 2306.03310，不应引用 MINERVA 作为提出者。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Bo Liu, Yifeng Zhu, Chongkai Gao, et al., ‘LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning,’ arXiv preprint, 2023, arXiv:2306.03310v2. [论文](https://arxiv.org/abs/2306.03310)；[核查正文](https://arxiv.org/html/2306.03310v2)。
 
 **重点核查位置（章节主题）**：Benchmark Construction；Task Suites；5.1 Evaluation Metrics；5 Experiments。
 
-OpenAlex 被引次数：**[136](https://openalex.org/W7133220882)**；观测日期：2026-11-03。这是所链接论文记录的计数，不是 benchmark 使用次数。
+OpenAlex 被引次数：**[136](https://openalex.org/W7133220882)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://libero-project.github.io/main.html](https://libero-project.github.io/main.html)。地址状态为 `platform_only`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 29 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：OpenAlex 引文图中有 **136** 篇引文论文（清单保留被引最高的 25 篇）；arXiv 摘要命中 50 篇。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（仅平台入口，2026-11-04）
+
+**项目入口**：[https://libero-project.github.io/main.html](https://libero-project.github.io/main.html)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [page](https://libero-project.github.io/main.html) | https://libero-project.github.io/main.html | 保留文本 1018 字符（截断） |
+
+**项目页显示**：项目页 https://libero-project.github.io/main.html 阐述终身学习（LLDM）动机与基准定位；未提供代码仓库入口（代码在 LIBERO 官方 repo）。
+
+**涉及领域**：终身学习与知识迁移的机械臂操作基础套件；robosuite／MuJoCo 中的 130 个任务、四个子套件。
+
+**测试目的与构建方法**：从活动语言提取任务模板，用 BDDL 表达对象、初态与目标，在 robosuite／MuJoCo 执行；比较不同任务顺序、预训练、架构与终身学习方法，指标为前向迁移 FWT、负向后向迁移 NBT 与成功曲线 AUC。
+
+**测试缺陷**：后来常见的“LIBERO 40 任务成功率”只覆盖特定组合，不能替代原始 130 任务的终身学习目的；任务数量与算力开销使完整评测昂贵；仿真动作抽象与真实机械臂有落差。
+
+**与具身智能安全的相关性**：弱：它是能力与迁移基准，本身不含安全约束。但它是绝大多数 VLA 安全基准（LIBERO-Safety、LIBERO-Para、LIBERO-MAX、SafeLIBERO 等）的底座，安全性结论通常以此为对照。
+
+**用这个 benchmark 测了什么**：原论文用多种终身学习基线展示“学新任务 vs 保旧任务”的权衡；后续 136 篇引文覆盖扩散策略综述、具身大模型综述；arXiv 摘要命中 ≥50 篇，例如 LaMP 在 LIBERO／LIBERO-Plus／SimplerEnv-WidowX 上评测，RoboDuo 用它做原子恢复。
+
+**本轮核查边界**：项目页只有介绍，未链到代码；代码可获取性沿用既有审计结论。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+本轮判读 **6 篇**论文：下表逐篇写被测模型、用法、评测范围与指标、报告结果；“摘要未给数值”表示摘要里确实没写数，不是没跑。每行下方的引用块是摘要原文片段，可据此复核判读是否过度。
+
+| 论文（年份） | 被测模型 | 用法 | 评测范围与指标 | 报告结果 |
+|---|---|---|---|---|
+| Depth Helps: Improving Pre-trained RGB-based Policy with Depth Informa…（2024） | 预训练 RGB 策略 + 深度增强 | 训练后评测（仿真 + 真机） | LIBERO 仿真环境与真实场景 | 称有效提升预训练 RGB 策略的 3D 感知能力（摘要无具体数值） |
+| LMoE-DP: Language-Conditioned Representations and Mixture-of-Experts P…（2026） | LMoE-DP（语言条件表示 + 混合专家扩散策略） | 训练后评测（仿真 + 真机） | LIBERO 成功率，另报真实机器人任务 | LIBERO 73.4%，真实机器人任务 79% |
+| ActionX: pre-training action experts with reinforcement learning（2026） | ActionX（RL 预训练动作专家） | 预训练后评测 | LIBERO 与 Meta-World 仿真 + 真实机器人操作 | 摘要只说明评测范围，未给数值 |
+| LaMP: Learning Vision-Language-Action Policy with 3D Scene Flow as Lat…（2026） | LaMP（双专家 VLA，3D 场景流作隐运动先验） | 训练后评测（三套仿真 + 真机） | LIBERO、LIBERO-Plus、SimplerEnv-WidowX 与真实世界 | 摘要称在三套仿真与真机均评测，未给数值 |
+| RoboDuo: Attempt, Check and Atomic Recovery through Code for Visual Ag…（2026） | 原子 VLA + 具备完成检查能力的编码代理 | 用基准数据衍生新任务（LIBERO-Atomic／Code／Judge） | 用同一套 LIBERO 示范构造三个新数据集用于训练 | 产出的是衍生数据与流程，不是基准分数 |
+| From Knowing to Doing Precisely: A General Self-Correction and Test-Ti…（2026） | 该文的自纠正 + 测试时方法 | 训练后评测（逐数据集对比） | LIBERO 全部数据集，重点看精细操作成功率 | 称在所有数据集上一致提升，精细操作提升显著 |
+
+**原文片段（摘要）**：
+
+- Depth Helps: Improving Pre-trained RGB-based Policy with Dep…（2024，OpenAlex 引文）：> We conduct experiments on simulated LIBERO environments and real-world scenarios
+- LMoE-DP: Language-Conditioned Representations and Mixture-of…（2026，OpenAlex 引文）：> LMoE-DP achieves 73.4% success on LIBERO and 79% on real-robot tasks
+- ActionX: pre-training action experts with reinforcement lear…（2026，OpenAlex 引文）：> We evaluate ActionX on the LIBERO and Meta-World benchmarks as well as real-world robotic manipulation
+- LaMP: Learning Vision-Language-Action Policy with 3D Scene F…（2026，arXiv）：> We evaluate LaMP on the LIBERO, LIBERO-Plus, and SimplerEnv-WidowX simulation benchmarks
+- RoboDuo: Attempt, Check and Atomic Recovery through Code for…（2026，arXiv）：> we build LIBERO-Atomic, LIBERO-Code, and LIBERO-Judge from a single set of LIBERO demonstrations
+- From Knowing to Doing Precisely: A General Self-Correction a…（2026，OpenAlex 引文）：> our method achieves consistent improvements across all datasets in the LIBERO benchmark
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 20 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **rollout** | rollout | 展开／推演 | 用当前策略跑一次得到的完整轨迹，常与 episode 混用。 |
+| **TSR** | Task Success Rate | 任务成功率 | 把任务做完的比例，与 CAR 一起用时表示“做完且没撞”。 |
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+| **OpenVLA** | OpenVLA（含 OpenVLA-oft 变体） | OpenVLA 开源策略 | 开源的 7B VLA 基线，安全基准里最常被拿来测“干净能力 vs 安全”的模型之一。 |
+| **π0.5** | pi-zero / pi-zero-point-five | π0／π0.5 策略模型 | Physical Intelligence 的通用 VLA 策略家族，本库最常见的对照基线。 |
+| **GR00T** | NVIDIA GR00T N1 / N1.5 | GR00T 机器人基础模型 | NVIDIA 的类人／通用操作基础模型家族，常作为强基线或微调起点。 |
+| **LLM** | Large Language Model | 大语言模型 | 纯文本大模型，常作为具身代理的规划或工具调用层。 |
+| **VLM** | Vision-Language Model | 视觉语言模型 | 能同时理解图像和文字的模型，常被当作具身代理的高层决策器。 |
+| **DP** | Diffusion Policy | 扩散策略 | 用扩散模型生成动作序列的模仿学习基线，安全论文里常作“普通策略”对照。 |
+| **RL** | Reinforcement Learning | 强化学习 | 用奖励信号优化策略，区别于用示范做监督学习。 |
+| **grounding** | visual grounding | 视觉接地 | 把语言里的指称（“那个杯子”）对应到画面中的具体对象。 |
+| **OOD** | Out-of-Distribution | 分布外 | 测试数据与训练分布不同，用来检验泛化。 |
+| **ablation** | ablation study | 消融实验 | 逐个去掉或替换模块，看性能变化，用来归因。 |
+| **open-loop** | open-loop evaluation | 开环评测 | 按记录好的输入序列评估，不考虑模型输出对后续状态的影响。 |
+| **domain randomization** | domain randomization | 域随机化 | 训练时随机化纹理、光照、相机位姿、物理参数，逼策略学不变特征。 |
+| **ID** | In-Distribution | 分布内 | 测试与训练同分布，通常作为上限参照。 |
+| **BDDL** | Behavior Domain Definition Language | 行为域定义语言 | 用符号逻辑描述任务初态、目标与物体关系的任务定义语言。 |
+| **robosuite** | robosuite | robosuite 操作仿真库 | 基于 MuJoCo 的机械臂操作环境库，LIBERO、RoboCasa 都建在上面。 |
+| **MuJoCo** | MuJoCo | MuJoCo 物理引擎 | 经典的高效刚体物理引擎，robosuite、LIBERO 的底层。 |
+| **RGB** | RGB image observation | 彩色图像观测 | 只用普通彩色相机画面作为输入，不含深度、触觉或本体状态。 |
+
+**本文最容易读错的地方**：
+- **rollout**：rollout 数、episode 数、候选轨迹数三者混用。
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| LIBERO | 基准 | 本库最常用的终身学习操作基准套件 |
+| LIBERO（基础套件） | 基准 | 终身机器人学习基础基准 |
+| RoboTwin | 基准 | 双臂操作数据生成与评测 |
+| SimplerEnv | 基准 | 真实策略的仿真代理评测 |
+| ManiSkill | 基准 | 通用操作技能基准（SAPIEN） |
+| LIBERO-RECOVER | 基准 | 仿真自然失败状态恢复 |
+| TrapVLA | 基准 | VLA 后门／失效注入方法与其基准 |
+| ManiPhysicsBench | 基准 | 物体保全物理评估基准 |
+| IndustrialVLA-Bench | 基准 | 多基准评测与复现证据框架 |
+| LIBERO-Plus | 基准 | LIBERO 的扰动扩展 |
+| LIBERO-Para | 基准 | LIBERO 的指令改写扩展 |
+| LIBERO-Pro | 基准 | LIBERO 的难例扩展 |
+| LIBERO-MAX | 基准 | 执行中改变环境的动态鲁棒性基准 |
+| LIBERO-Safety | 基准 | LIBERO 的安全扩展 |
+| SafeLIBERO | 基准 | LIBERO 的避碰安全扩展 |
+
+<!-- glossary:end -->

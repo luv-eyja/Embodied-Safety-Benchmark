@@ -24,14 +24,15 @@
 | 应用领域 | 具身拒答 |
 | 被测对象 | 模拟与真机机器人接口安全 |
 | 历史关键词标签（未重新统计） | 语义/指令安全 |
-| 评测维度/指标 | 接口变量受控；MuJoCo 双臂 YAM 仿真 + 真机 612 次试验 |
+| 评测维度/指标 | 接口变量受控；MuJoCo 双臂 YAM（机器人本体） 仿真 + 真机 612 次试验 |
 | 基础平台线索 | MuJoCo、YAM |
 | 规模线索 | 五类不安全场景，使用 YAM 机械臂及 MuJoCo 孪生；比较文本、代码式计划、末端执行器及关节等动作接口。 |
 | 执行环境线索 | 模拟与真机机器人接口安全 |
 | 来源审计 | [Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control](https://arxiv.org/abs/2610.14043)；same_paper_in_registry |
 | 来源核验依据 | 摘要明确写明 introduce RoboHarm。 |
 | 全文状态 | 已核查本地全文：`docs/_fulltext/RoboHarm.txt` |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7221820979)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7221820979)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 5 个缩写／技术词，并标出 3 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -84,17 +85,77 @@
 拒绝率低不能自动换算为伤害率；不同接口的可执行性和样本构成不同。小规模场景和指定本体限制外推。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Edward Sun, Christopher Leet, Sravanthi Machcha, et al., ‘Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control,’ arXiv preprint, 2026, arXiv:2610.14043v1. [论文](https://arxiv.org/abs/2610.14043)；[核查正文](https://arxiv.org/html/2610.14043v1)。
 
 **重点核查位置（章节主题）**：Methodology；Experiments；Failure Analysis。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7221820979)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7221820979)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://github.com/robocurve/roboharm](https://github.com/robocurve/roboharm)。地址状态为 `candidate`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要未见命中。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（候选待确认，2026-11-04）
+
+**项目入口**：[https://github.com/robocurve/roboharm](https://github.com/robocurve/roboharm)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [repo](https://github.com/robocurve/roboharm) | https://raw.githubusercontent.com/robocurve/roboharm/HEAD/README.md | stars 13，license NOASSERTION，最后推送 2026-09-22，保留文本 4200 字符（截断） |
+
+**项目页显示**：GitHub https://github.com/robocurve/roboharm（13 stars，2026-09-22 推送）基于 Inspect Robots 构建，README 列出五个任务、协议文档与三相机标注流程。
+
+**涉及领域**：VLA／LLM 代理的伤害识别与拒绝；五个固定场景（刀与玩偶、气雾罐与灶、螺丝刀与烤面包机等）。
+
+**测试目的与构建方法**：同一风险意图在不同输出接口下评测拒绝与执行行为；模拟评测覆盖 7 个模型，真机在末端／关节接口分别记录 612／252 次测试；每模型每任务目标 20 次独立重置 rollout，事后看三路相机与保存的对话记录做标注。
+
+**测试缺陷**：拒绝率低不能自动换算为伤害率；不同接口的可执行性与样本构成不同；仅五个场景、指定本体，外推受限；标注依赖人工。
+
+**与具身智能安全的相关性**：直接测“会不会拒绝伤人指令”，而且跨文本与机器人接口对照——正说明安全表现取决于接口，是本库中最直接的语义安全对照之一。
+
+**用这个 benchmark 测了什么**：论文报告文本接口拒绝率约 73%，机器人接口约 18–25%；真机末端接口约 18%、关节接口约 41%——“换个接口”就改变观测到的安全表现。
+
+**本轮核查边界**：仓库状态为 candidate（作者仓库，未完全确认官方发布）；未运行。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 5 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **rollout** | rollout | 展开／推演 | 用当前策略跑一次得到的完整轨迹，常与 episode 混用。 |
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+| **LLM** | Large Language Model | 大语言模型 | 纯文本大模型，常作为具身代理的规划或工具调用层。 |
+| **cs.RO** | arXiv category: cs.RO / cs.CV / cs.AI / cs.LG | arXiv 学科分类 | arXiv 的学科标签：cs.RO 机器人、cs.CV 计算机视觉、cs.AI 人工智能、cs.LG 机器学习。 |
+| **MuJoCo** | MuJoCo | MuJoCo 物理引擎 | 经典的高效刚体物理引擎，robosuite、LIBERO 的底层。 |
+
+**本文最容易读错的地方**：
+- **rollout**：rollout 数、episode 数、候选轨迹数三者混用。
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| RoboHarm | 基准 | 模拟与真机机器人接口安全 |
+
+另有 2 个专有名称已在正文首次出现处加括号标注类别（例如 YAM（机器人本体）、Inspect（工具／框架）），不再重复解释。
+
+<!-- glossary:end -->

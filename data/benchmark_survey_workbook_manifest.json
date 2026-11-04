@@ -2,10 +2,10 @@
   "generated_from_as_of": "2026-11-03",
   "engine": "@oai/artifact-tool",
   "inputs": {
-    "data/benchmark_survey.json": "55603041939fade2a44c066963f5929da6a8aaf6772a42d4febcd03348e8ba91",
+    "data/benchmark_survey.json": "9115172267cd23bf21a03fc4e2c4266f13620a30abcae88b34ae041ddd192f25",
     "data/survey_paper_registry.json": "38ccc2001f6e4a2e931783ceab6856baaa2431773a7fe68546cedd626862a55c"
   },
-  "output_sha256": "59b23db988af2a825b00df700ed79921c841dbf80b414622723de9a1c8c2213e",
+  "output_sha256": "8cf26a37ca1466e2a7c5ecbdb4db1229ba984c88e181b1fbcc5bb31ef65d4ad7",
   "sheets": {
     "调研概览": "formula summary",
     "条目分类": 122,
@@ -17,7 +17,7 @@
     62,
     60,
     48,
-    59,
+    62,
     18
   ],
   "live_formula_dependency_check": "passed",

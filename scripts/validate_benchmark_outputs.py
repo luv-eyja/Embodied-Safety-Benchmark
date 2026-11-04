@@ -22,6 +22,11 @@ REQUIRED_SECTIONS = [
 ]
 
 
+TAG = re.compile('（(?:%s)）' % '|'.join(re.escape(k) for k in (
+    'LLM 模型', 'VLM 模型', 'VLA 模型', '机构', '开源许可证', '会议／期刊',
+    '基准', '数据集', '仿真平台', '机器人本体', '工具／框架')))
+
+
 def main():
     payload = json.loads(CARDS.read_text(encoding='utf-8'))
     cards = payload['cards']
@@ -65,6 +70,82 @@ def main():
     assert not missing_docs, missing_docs
     assert not missing_sections, missing_sections
 
+    project_path = REPO / 'data/benchmark_project_reviews.json'
+    if project_path.exists():
+        project = json.loads(project_path.read_text(encoding='utf-8'))
+        active_names = {card['name'] for card in cards if not card['document'].startswith('no-project/')}
+        entries = project['entries']
+        assert {e['benchmark'] for e in entries} == active_names, len(entries)
+        for entry in entries:
+            for key in ('domain', 'purpose_build', 'defects', 'safety_relevance', 'tested',
+                        'project_facts', 'limits_of_this_review'):
+                assert entry.get(key), (entry['benchmark'], key)
+            assert entry['project_status'] in ('found', 'platform_only', 'candidate'), entry['benchmark']
+            assert entry.get('document') in {card['document'] for card in cards}, entry['benchmark']
+        for card in cards:
+            if card['document'].startswith('no-project/'):
+                continue
+            text = (DOC_DIR / card['document']).read_text(encoding='utf-8')
+            assert text.count('<!-- project-review:start -->') == 1, card['name']
+            assert text.count('<!-- project-review:end -->') == 1, card['name']
+        print('project source reviews: %d; five review questions and project blocks verified' % len(entries))
+
+    usage_path = REPO / 'data/benchmark_usage_records.json'
+    if usage_path.exists():
+        usage = json.loads(usage_path.read_text(encoding='utf-8'))
+        active_names = {card['name'] for card in cards if not card['document'].startswith('no-project/')}
+        uentries = usage['entries']
+        assert {e['benchmark'] for e in uentries} == active_names, len(uentries)
+        keys = ('paper', 'year', 'model', 'mode', 'setup', 'result', 'evidence')
+        for entry in uentries:
+            for record in entry['records']:
+                missing = [k for k in keys if not record.get(k)]
+                assert not missing, (entry['benchmark'], record.get('paper'), missing)
+            if not entry['records']:
+                assert entry.get('noise_note'), ('empty usage without explanation', entry['benchmark'])
+        for card in cards:
+            if card['document'].startswith('no-project/'):
+                continue
+            text = (DOC_DIR / card['document']).read_text(encoding='utf-8')
+            assert text.count('<!-- usage-review:start -->') == 1, card['name']
+            assert text.count('<!-- usage-review:end -->') == 1, card['name']
+        print('usage records: %d papers over %d entries; per-record fields and blocks verified'
+              % (sum(len(e['records']) for e in uentries), usage['entries_with_records']))
+
+    glossary_json = REPO / 'data/benchmark_glossary.json'
+    glossary_md = REPO / 'docs/GLOSSARY.md'
+    if glossary_json.exists() and glossary_md.exists():
+        glossary = json.loads(glossary_json.read_text(encoding='utf-8'))
+        rendered = glossary_md.read_text(encoding='utf-8')
+        missing = [t['term'] for t in glossary['terms'] if '**%s**' % t['term'] not in rendered]
+        assert not missing, ('term missing from GLOSSARY.md', missing)
+        for term in glossary['terms']:
+            for key in ('term', 'category', 'short', 'long'):
+                assert term.get(key), (term.get('term'), key)
+            assert term['category'] in glossary['categories'], term['term']
+            assert len(term['short']) >= 15, ('short explanation too terse', term['term'])
+        for card in cards:
+            if card['document'].startswith('no-project/'):
+                continue
+            doc = (DOC_DIR / card['document']).read_text(encoding='utf-8')
+            assert doc.count('<!-- glossary:start -->') == 1, card['name']
+            assert doc.count('<!-- glossary:end -->') == 1, card['name']
+            assert '## 10. 术语说明' in doc, card['name']
+        print('glossary: %d terms; every document has a term section and the total table is in sync'
+              % len(glossary['terms']))
+
+    names_path = REPO / 'data/benchmark_names.json'
+    if names_path.exists():
+        names = json.loads(names_path.read_text(encoding='utf-8'))
+        legend = set(names['kinds_legend'])
+        rendered = glossary_md.read_text(encoding='utf-8') if glossary_md.exists() else ''
+        for item in names['names']:
+            assert item['kind'] in legend, ('unknown kind', item['name'], item['kind'])
+            assert isinstance(item.get('inline'), bool), item['name']
+            assert item['name'] in rendered, ('name missing from GLOSSARY.md', item['name'])
+        print('proper names: %d labelled by kind (%d inline)'
+              % (len(names['names']), sum(1 for n in names['names'] if n['inline'])))
+
     index_text = INDEX.read_text(encoding='utf-8')
     for card in cards:
         assert index_text.count('](' + card['document'] + ')') == 1, card['name']
@@ -98,7 +179,9 @@ def main():
             assert card['citation_snapshot']['cited_by_count'] == cite['openalex'].get('cited_by_count'), name
             text = (DOC_DIR / card['document']).read_text(encoding='utf-8')
             assert text.count('<!-- paper-review:start -->') == text.count('<!-- paper-review:end -->') == 1, name
-            assert src['fulltext_url'] in text and r['results'] in text, name
+            # Inline name tags (e.g. "GPT-4o（LLM 模型）") are inserted into the prose, so compare untagged text.
+            plain = TAG.sub('', text)
+            assert src['fulltext_url'] in plain and r['results'] in plain, name
             oa = cite['openalex']
             if oa['status'] == 'matched':
                 assert isinstance(oa['cited_by_count'], int) and oa['cited_by_count'] >= 0 and oa['id'], name

@@ -14,11 +14,13 @@
 
 ## 引用量如何读
 
-OpenAlex 当前保存 **59/62** 个可核验来源的计数。部分后续查询返回 HTTP 429，保留同日较早且来源一致的观测；修正来源后无法核验的计数留空。每个值链接到具体 Work 记录。
+OpenAlex 当前保存 **62/62** 个可核验来源的计数，观测日期 2026-11-04。限流或未匹配的查询不写入计数，也不按 0 处理。每个值链接到具体 Work 记录。
 
 0 仅表示该数据库记录在观测时计为零，不证明论文无人引用。预印本与正式版可能分开或合并收录；发现可靠正式版时优先展示，但本轮未穷尽版本，也不将多个记录相加。对于新论文，收录延迟尤其明显。
 
 被引次数不等于 benchmark 采用次数；同一论文可关联多个条目，因此本报告不计算“全部 benchmark 总引用量”。本库 193 条原始论文记录只是有限收录样本，使用关系也是下界。API 查询、错误、版本记录、观测日期保存在[引用快照](../data/benchmark_citation_snapshot.json)，计数含义参见 [OpenAlex Works](https://help.openalex.org/data/works/)。
+
+谁在引用这些 benchmark：逐条的引文清单、引文年份分布与“仅 arXiv 摘要命中”的候选见[引文清单报告](benchmark-citing-papers.md)。
 
 ## 不同类型的评测应如何比较
 
@@ -46,20 +48,20 @@ OpenAlex 当前保存 **59/62** 个可核验来源的计数。部分后续查询
 | [VLA-Arena](../benchmarks/1__VLA-Arena.md) | 仿真多维 VLA 诊断 | [0](https://openalex.org/W7117763818) |
 | [BAVO-Bench](../benchmarks/2__BAVO-Bench.md) | 仿真双臂主动视觉 | [0](https://openalex.org/W7214940409) |
 | [LIBERO-MAX](../benchmarks/2__LIBERO-MAX.md) | 仿真执行中途变化鲁棒性 | [0](https://openalex.org/W7214921693) |
-| [LIBERO-Para](../benchmarks/2__LIBERO-Para.md) | 仿真语言改写鲁棒性 | 未核验（查询失败／未匹配） |
+| [LIBERO-Para](../benchmarks/2__LIBERO-Para.md) | 仿真语言改写鲁棒性 | [0](https://openalex.org/W7147537669) |
 | [LIBERO-RECOVER](../benchmarks/2__LIBERO-RECOVER.md) | 仿真自然失败状态恢复 | [0](https://openalex.org/W7211887144) |
 | [LIBERO-VPro](../benchmarks/2__LIBERO-VPro.md) | 闭环视觉鲁棒性 | [0](https://openalex.org/W7214051566) |
 | [RoboCasa-Shift](../benchmarks/2__RoboCasa-Shift.md) | 长时程操作阶段鲁棒性 | [0](https://openalex.org/W7223122581) |
 | [AgiBot World](../benchmarks/3__AgiBot-World.md) | 真机大规模数据集及训练评测 | [13](https://openalex.org/W4416748905) |
-| [BEHAVIOR-1K](../benchmarks/3__BEHAVIOR-1K.md) | 家庭活动仿真平台与任务集 | [6](https://openalex.org/W4392872989) |
+| [BEHAVIOR-1K](../benchmarks/3__BEHAVIOR-1K.md) | 家庭活动仿真平台与任务集 | [7](https://openalex.org/W4392872989) |
 | [BiDex-100](../benchmarks/3__BiDex-100.md) | 双手灵巧操作仿真 | [0](https://openalex.org/W7223068191) |
 | [CALVIN](../benchmarks/3__CALVIN.md) | 语言条件长时程操作 | [189](https://openalex.org/W4226073959) |
 | [COLOSSEUM](../benchmarks/3__COLOSSEUM.md) | 仿真环境泛化与鲁棒性 | [29](https://openalex.org/W4402354166) |
 | [IndustrialVLA-Bench](../benchmarks/3__IndustrialVLA-Bench.md) | 多基准评测与复现证据框架 | [0](https://openalex.org/W7214113903) |
 | [LIBERO（基础套件）](../benchmarks/3__LIBERO-基础套件.md) | 终身机器人学习基础基准 | [136](https://openalex.org/W7133220882) |
-| [ManiSkill / ManiSkill2](../benchmarks/3__ManiSkill-ManiSkill2.md) | 可泛化操作仿真平台 | [23](https://openalex.org/W4320165654) |
-| [Open X-Embodiment](../benchmarks/3__Open-X-Embodiment.md) | 跨本体真机训练数据与模型 | [111](https://openalex.org/W4387764390) |
-| [RoboCasa](../benchmarks/3__RoboCasa.md) | 日常操作仿真平台 | 未核验（查询失败／未匹配） |
+| [ManiSkill / ManiSkill2](../benchmarks/3__ManiSkill-ManiSkill2.md) | 可泛化操作仿真平台 | [24](https://openalex.org/W4320165654) |
+| [Open X-Embodiment](../benchmarks/3__Open-X-Embodiment.md) | 跨本体真机训练数据与模型 | [113](https://openalex.org/W4387764390) |
+| [RoboCasa](../benchmarks/3__RoboCasa.md) | 日常操作仿真平台 | [4](https://openalex.org/W4399424845) |
 | [RoboCasa365](../benchmarks/3__RoboCasa365.md) | 大规模日常操作与持续学习 | [0](https://openalex.org/W7133954504) |
 | [RoboChrono](../benchmarks/3__RoboChrono.md) | 机器人流式视频理解 | [0](https://openalex.org/W7214955540) |
 | [RoboComb](../benchmarks/3__RoboComb.md) | 原子技能组合泛化 | [0](https://openalex.org/W7221756428) |
@@ -78,7 +80,7 @@ OpenAlex 当前保存 **59/62** 个可核验来源的计数。部分后续查询
 | [EmbodiedGovBench](../benchmarks/4__EmbodiedGovBench.md) | 治理评测协议与原型框架 | [0](https://openalex.org/W7154418749) |
 | [HygieneRoboBench](../benchmarks/4__HygieneRoboBench.md) | 接触历史驱动的卫生规划 | [0](https://openalex.org/W7221007195) |
 | [INFUSE](../benchmarks/4__INFUSE.md) | 软件代理工作流安全；邻接参考 | [0](https://openalex.org/W7222558873) |
-| [IS-Bench](../benchmarks/4__IS-Bench.md) | 交互过程中的安全规划 | [0](https://openalex.org/W4417145625) |
+| [IS-Bench](../benchmarks/4__IS-Bench.md) | 交互过程中的安全规划 | [2](https://openalex.org/W7138977141) |
 | [LABIT](../benchmarks/4__LABIT.md) | 真实工业长时程装配 | [0](https://openalex.org/W7221815075) |
 | [MSK-Bench](../benchmarks/4__MSK-Bench.md) | 肌肉驱动全身控制 | [0](https://openalex.org/W7214208713) |
 | [MemForm](../benchmarks/4__MemForm.md) | 代理记忆可靠性诊断；邻接参考 | [0](https://openalex.org/W7221777130) |
@@ -91,11 +93,11 @@ OpenAlex 当前保存 **59/62** 个可核验来源的计数。部分后续查询
 | [STARS](../benchmarks/4__STARS.md) | 表征学习方法；并非新 benchmark | [0](https://openalex.org/W7215077318) |
 | [SafeAgentBench](../benchmarks/4__SafeAgentBench.md) | 交互仿真中的安全任务规划 | [2](https://openalex.org/W4405562840) |
 | [SkillSafetyBench](../benchmarks/4__SkillSafetyBench.md) | 技能型软件代理安全；邻接参考 | [0](https://openalex.org/W7161027243) |
-| [CARLA / CARLA Leaderboard](../benchmarks/5__CARLA-CARLA-Leaderboard.md) | 驾驶仿真平台；原论文与榜单需区分 | 未核验（查询失败／未匹配） |
+| [CARLA / CARLA Leaderboard](../benchmarks/5__CARLA-CARLA-Leaderboard.md) | 驾驶仿真平台；原论文与榜单需区分 | [3759](https://openalex.org/W2767621168) |
 | [NAVSIM](../benchmarks/5__NAVSIM.md) | 非反应式驾驶仿真评测 | [63](https://openalex.org/W4415798424) |
 | [SafeBench](../benchmarks/5__SafeBench.md) | 驾驶安全关键场景评测 | [48](https://openalex.org/W7133222348) |
 | [VIPS](../benchmarks/5__VIPS.md) | 车路协同伪仿真评测 | [0](https://openalex.org/W7207785702) |
-| [nuScenes](../benchmarks/5__nuScenes.md) | 真实驾驶感知数据与评测 | [7152](https://openalex.org/W2925148167) |
+| [nuScenes](../benchmarks/5__nuScenes.md) | 真实驾驶感知数据与评测 | [7179](https://openalex.org/W2925148167) |
 
 ## 逐条阅读笔记
 
@@ -113,7 +115,7 @@ OpenAlex 当前保存 **59/62** 个可核验来源的计数。部分后续查询
 
 **边界**：一致率不等于闭环动作安全率；自动扩增规模不代表人工审查覆盖率。机器人案例数量小，不能据此声称对所有物理危险有保证。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W4414578652)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W4414578652)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://asimov-benchmark.github.io/](https://asimov-benchmark.github.io/)（`found`）；本库使用论文 1 篇。
 
@@ -133,7 +135,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W4414578652)**；观测日期
 
 **边界**：四象限的分母是全部 episode，不能把不安全成功率直接当成成功中的违规比例。仿真中的风险触发与真实损伤之间仍有距离。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7166132482)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7166132482)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/tuotuoLyu/ForesightSafety-VLA](https://github.com/tuotuoLyu/ForesightSafety-VLA)（`found`）；本库使用论文 0 篇。
 
@@ -153,7 +155,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7166132482)**；观测日期
 
 **边界**：安全／危险配对并非只替换一个文本标签；Attempt、Commit 与实际完成危险行为不可混用。改进只对应文中训练和评测分布。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7154513284)**；观测日期：2026-11-03。这是所链接论文记录的计数，不是 benchmark 使用次数。
+OpenAlex 被引次数：**[0](https://openalex.org/W7154513284)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/HazardArena-Team/HazardArena](https://github.com/HazardArena-Team/HazardArena)（`found`）；本库使用论文 0 篇。
 
@@ -173,7 +175,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7154513284)**；观测日期
 
 **边界**：不能把 L1 的高成功率解释为安全性全面更好；须同时看安全指标。部分数据生成组件的公开状态仍以仓库实现审计为准，论文描述不等于全部代码已可运行。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7165682249)**；观测日期：2026-11-03。这是所链接论文记录的计数，不是 benchmark 使用次数。
+OpenAlex 被引次数：**[0](https://openalex.org/W7165682249)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://libero-safety.github.io](https://libero-safety.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -193,7 +195,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7165682249)**；观测日期
 
 **边界**：损伤由求解器事后判断，并非仿真中直接产生真实断裂。材料、接触模型及连续夹爪设置影响结论；SR 为零时 PR 未定义。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7220458345)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7220458345)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/sangwu99/ManiPhysicsBench_Arxiv](https://github.com/sangwu99/ManiPhysicsBench_Arxiv)（`candidate`）；本库使用论文 0 篇。
 
@@ -213,7 +215,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7220458345)**；观测日期
 
 **边界**：拒绝率低不能自动换算为伤害率；不同接口的可执行性和样本构成不同。小规模场景和指定本体限制外推。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7221820979)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7221820979)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/robocurve/roboharm](https://github.com/robocurve/roboharm)（`candidate`）；本库使用论文 0 篇。
 
@@ -233,7 +235,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7221820979)**；观测日期
 
 **边界**：属于受控障碍避碰，不覆盖全部语义风险；CBF 的理论性质依赖状态估计、模型和求解可行性，不能无条件等同于真机安全保证。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W4417446096)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W4417446096)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://vlsa-aegis.github.io](https://vlsa-aegis.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -253,7 +255,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W4417446096)**；观测日期
 
 **边界**：机器人硬件名称不意味着做了真机评测。成功中违规比例与全 episode 的 USR 分母不同，评估器准确度也不代表策略安全度。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7213988552)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7213988552)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/reeta-042/safestage](https://github.com/reeta-042/safestage)（`candidate`）；本库使用论文 0 篇。
 
@@ -273,7 +275,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7213988552)**；观测日期
 
 **边界**：论文结果依赖特定威胁假设、模型与任务；不能推断任意部署模型都存在此类问题。正常成功和配置失效指标不是同一分母或同一目标。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7204530163)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7204530163)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://john-liua.github.io/TrapVLA](https://john-liua.github.io/TrapVLA)（`found`）；本库使用论文 0 篇。
 
@@ -293,7 +295,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7204530163)**；观测日期
 
 **边界**：难度、扰动和训练预算应分开报告；较高 SR 不自动意味着约束代价更低，局部真机结果也不能覆盖全部 170 个任务。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7117763818)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7117763818)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://vla-arena.github.io](https://vla-arena.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -313,7 +315,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7117763818)**；观测日期
 
 **边界**：ACT、ManiFlow、A-FAR 使用三种种子，π0.5 的训练设置不同，不能将所有行当等预算比较；可见性增益也不能替代任务成功。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214940409)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214940409)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://hcplab-sysu.github.io/BAVO-Bench](https://hcplab-sysu.github.io/BAVO-Bench)（`found`）；本库使用论文 0 篇。
 
@@ -333,7 +335,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7214940409)**；观测日期
 
 **边界**：单次、预定阶段事件与连续真实扰动不同；8,000 对不是 8,000 个独立原始任务，成对统计不能改用不配对置信区间。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214921693)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214921693)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://liberomax.github.io](https://liberomax.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -353,7 +355,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7214921693)**；观测日期
 
 **边界**：DTW 归类是轨迹层代理指标，并非直接观察到内部规划过程；结论主要来自 LIBERO-Goal。PRIDE 的权重影响诊断，不宜取代原始成功率。
 
-OpenAlex 被引次数：**未核验（查询失败／未匹配）**；观测日期：2026-11-03。本次未取得可核验计数，不按 0 处理。
+OpenAlex 被引次数：**[0](https://openalex.org/W7147537669)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/cau-hai-lab/LIBERO-Para](https://github.com/cau-hai-lab/LIBERO-Para)；[https://cau-hai-lab.github.io/LIBERO-Para/](https://cau-hai-lab.github.io/LIBERO-Para/)（`found`）；本库使用论文 1 篇。
 
@@ -373,7 +375,7 @@ OpenAlex 被引次数：**未核验（查询失败／未匹配）**；观测日�
 
 **边界**：这里的自然失败发生在仿真策略 rollout，并非真实世界事故。失败状态来源策略与筛选流程影响分布，恢复集提升不等于所有失败都可自行纠正。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7211887144)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7211887144)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://liulin815.github.io/LIBERO-Recovery](https://liulin815.github.io/LIBERO-Recovery)（`found`）；本库使用论文 0 篇。
 
@@ -393,7 +395,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7211887144)**；观测日期
 
 **边界**：3,296 是评测配置数，不是独立任务数。模拟与真机规模不同，必须分别解释；观察异常下的失败不能一概归因为语言理解。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214051566)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214051566)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://huiqiongli.github.io/LIBERO-VPro](https://huiqiongli.github.io/LIBERO-VPro)（`found`）；本库使用论文 0 篇。
 
@@ -413,7 +415,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7214051566)**；观测日期
 
 **边界**：仅分析 GR00T-N1.5 和干净条件可完成的四个任务，存在明确的筛选边界。零扰动的非确定性必须从扰动效应中区分。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7223122581)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7223122581)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/HaochengWang23/RoboCasa-Shift](https://github.com/HaochengWang23/RoboCasa-Shift)（`found`）；本库使用论文 0 篇。
 
@@ -433,7 +435,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7223122581)**；观测日期
 
 **边界**：它首先是训练资源，不是独立的安全压力测试；跨数据源收益依赖任务、训练量和模型设置，不能把摘要中的百分比改写成未经确认的百分点。
 
-OpenAlex 被引次数：**[13](https://openalex.org/W4416748905)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[13](https://openalex.org/W4416748905)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://agibot-world.com/](https://agibot-world.com/)；[https://github.com/OpenDriveLab/AgiBot-World](https://github.com/OpenDriveLab/AgiBot-World)（`found`）；本库使用论文 0 篇。
 
@@ -453,7 +455,7 @@ OpenAlex 被引次数：**[13](https://openalex.org/W4416748905)**；观测日�
 
 **边界**：本次读的是 arXiv:2403.09227 的扩展论文；后续 ManiUnit 等使用的任务子集不能当成原始全集。某些基线使用抽象抓取，不能与全低层控制直接比较。
 
-OpenAlex 被引次数：**[6](https://openalex.org/W4392872989)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[7](https://openalex.org/W4392872989)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://behavior.stanford.edu/](https://behavior.stanford.edu/)（`platform_only`）；本库使用论文 1 篇。
 
@@ -473,7 +475,7 @@ OpenAlex 被引次数：**[6](https://openalex.org/W4392872989)**；观测日期
 
 **边界**：结果对应文中本体、训练设置及组合变化；进度分数和全部完成率不同。不可把模型家族结论推广至未测 checkpoint。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7223068191)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7223068191)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://robbyant-research.github.io/BiDex-100](https://robbyant-research.github.io/BiDex-100)（`found`）；本库使用论文 0 篇。
 
@@ -493,7 +495,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7223068191)**；观测日期
 
 **边界**：现代论文的 ABC→D 协议、数据量、历史窗口和模型与原始基线不同，引用原论文不能据此报告当前榜首；该基准主要测能力而非显式危险约束。
 
-OpenAlex 被引次数：**[189](https://openalex.org/W4226073959)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[189](https://openalex.org/W4226073959)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://calvin-robot.github.io/](https://calvin-robot.github.io/)；[https://github.com/mees/calvin](https://github.com/mees/calvin)（`platform_only`）；本库使用论文 3 篇。
 
@@ -513,7 +515,7 @@ OpenAlex 被引次数：**[189](https://openalex.org/W4226073959)**；观测日�
 
 **边界**：原底座不是 LIBERO。相对退化不能改写成成功率下降同等百分点；模拟／实机和不同扰动组合应分别报告。
 
-OpenAlex 被引次数：**[29](https://openalex.org/W4402354166)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[29](https://openalex.org/W4402354166)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://robot-colosseum.github.io](https://robot-colosseum.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -533,7 +535,7 @@ OpenAlex 被引次数：**[29](https://openalex.org/W4402354166)**；观测日�
 
 **边界**：它复用 LIBERO-Para，并非后者的提出论文。部分行只是近似复现或待核验，不能与严格协议行无差别排名；也没有证明真实工业部署安全。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214113903)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214113903)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/xiaoqi-7/IndustrialVLA-Bench](https://github.com/xiaoqi-7/IndustrialVLA-Bench)（`found`）；本库使用论文 0 篇。
 
@@ -553,7 +555,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7214113903)**；观测日期
 
 **边界**：后来常见的 40 任务成功率评测只覆盖特定组合，不能替代原始 130 任务的终身学习目的。原始来源应为 2306.03310，不应引用 MINERVA 作为提出者。
 
-OpenAlex 被引次数：**[136](https://openalex.org/W7133220882)**；观测日期：2026-11-03。这是所链接论文记录的计数，不是 benchmark 使用次数。
+OpenAlex 被引次数：**[136](https://openalex.org/W7133220882)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://libero-project.github.io/main.html](https://libero-project.github.io/main.html)（`platform_only`）；本库使用论文 29 篇。
 
@@ -573,7 +575,7 @@ OpenAlex 被引次数：**[136](https://openalex.org/W7133220882)**；观测日�
 
 **边界**：ManiSkill 与 ManiSkill2 属不同版本，此处引用量仅对应后者。控制空间、观察模态和对象划分不同的结果不能直接合并；训练对象分数不是泛化分数。
 
-OpenAlex 被引次数：**[23](https://openalex.org/W4320165654)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[24](https://openalex.org/W4320165654)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://maniskill2.github.io/](https://maniskill2.github.io/)（`platform_only`）；本库使用论文 1 篇。
 
@@ -593,7 +595,7 @@ OpenAlex 被引次数：**[23](https://openalex.org/W4320165654)**；观测日�
 
 **边界**：这是训练数据集合与研究项目，不是具有单一冻结测试集的安全 benchmark；不同论文使用的混合比例、过滤和版本必须注明。引用量对应论文记录，不等于每个子数据集的影响力。
 
-OpenAlex 被引次数：**[111](https://openalex.org/W4387764390)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[113](https://openalex.org/W4387764390)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://robotics-transformer-x.github.io/](https://robotics-transformer-x.github.io/)；[https://github.com/google-deepmind/open_x_embodiment](https://github.com/google-deepmind/open_x_embodiment)（`platform_only`）；本库使用论文 1 篇。
 
@@ -613,7 +615,7 @@ OpenAlex 被引次数：**[111](https://openalex.org/W4387764390)**；观测日�
 
 **边界**：原论文为 arXiv:2406.02523；不能用后续 RoboCasa-Shift 或 RoboCasa365 取代其来源，也不能把 365 版的任务和厨房规模写成原始版本。
 
-OpenAlex 被引次数：**未核验（查询失败／未匹配）**；观测日期：2026-11-03。本次未取得可核验计数，不按 0 处理。
+OpenAlex 被引次数：**[4](https://openalex.org/W4399424845)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://robocasa.ai/](https://robocasa.ai/)（`platform_only`）；本库使用论文 3 篇。
 
@@ -633,7 +635,7 @@ OpenAlex 被引次数：**未核验（查询失败／未匹配）**；观测日�
 
 **边界**：365 个任务不全都属于同一个测试拆分；上述退化来自指定训练流程，不代表所有持续学习算法。大规模合成训练收益也不能直接当安全改进。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7133954504)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7133954504)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://robocasa.ai/](https://robocasa.ai/)（`platform_only`）；本库使用论文 1 篇。
 
@@ -653,7 +655,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7133954504)**；观测日期
 
 **边界**：这是视频理解而非机器人控制成功率。成功示范视频不能代表失败恢复过程；人手与机器人视频、不同任务指标不宜无条件求平均。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214955540)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214955540)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://continuity3.github.io/robochrono](https://continuity3.github.io/robochrono)；[https://github.com/mfan-res/ROBOCHRONO](https://github.com/mfan-res/ROBOCHRONO)（`found`）；本库使用论文 0 篇。
 
@@ -673,7 +675,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7214955540)**；观测日期
 
 **边界**：仓库短名 RoboComb 对应正文 RoboCombine。组合微调与只用原子示范是不同训练设定；使用 oracle 交接的成绩不是端到端自主能力。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7221756428)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7221756428)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/AutoLab-SAI-SJTU/RoboCombine](https://github.com/AutoLab-SAI-SJTU/RoboCombine)（`found`）；本库使用论文 0 篇。
 
@@ -693,7 +695,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7221756428)**；观测日期
 
 **边界**：L0–L3 是因素组合，并非保证对每个模型单调变难；简化物体和动作有助于归因，却缩小了真实开放场景覆盖。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214246107)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214246107)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/AutoLab-SAI-SJTU/RoboFollow](https://github.com/AutoLab-SAI-SJTU/RoboFollow)（`found`）；本库使用论文 0 篇。
 
@@ -713,7 +715,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7214246107)**；观测日期
 
 **边界**：成绩同时受底层操作能力约束；比较的是特定 π0.5 配置，不是全部模型家族。显式指令对照很重要，不能把所有失败归因于记忆不足。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214772858)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214772858)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://aernar.github.io/RoboIRGBench](https://aernar.github.io/RoboIRGBench)（`found`）；本库使用论文 0 篇。
 
@@ -733,7 +735,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7214772858)**；观测日期
 
 **边界**：训练数据规模不是安全场景覆盖率。跨本体评测须注明保留／见过的任务和机器人，不可将全部轨迹既算训练又算独立测试。
 
-OpenAlex 被引次数：**[23](https://openalex.org/W4414050913)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[23](https://openalex.org/W4414050913)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://x-humanoid-robomind.github.io](https://x-humanoid-robomind.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -753,7 +755,7 @@ OpenAlex 被引次数：**[23](https://openalex.org/W4414050913)**；观测日�
 
 **边界**：包含配对机器人训练数据的设置不是纯粹从公开视频零样本学会操作；不同数据访问条件必须说明。相对趋势一致不等于模拟绝对成功率等于真机。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7212081197)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7212081197)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://roboreel.github.io](https://roboreel.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -773,7 +775,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7212081197)**；观测日期
 
 **边界**：这里的成功要求终点姿态达标且全程无碰撞。该版本不能与 RoboTwin 2.0 的任务规模或后来的 VLA 结果混用；单项示例不是全基准平均。
 
-OpenAlex 被引次数：**[31](https://openalex.org/W4413144615)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[31](https://openalex.org/W4413144615)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://robotwin-platform.github.io/](https://robotwin-platform.github.io/)；[https://github.com/robotwin-Platform/robotwin](https://github.com/robotwin-Platform/robotwin)（`platform_only`）；本库使用论文 7 篇。
 
@@ -793,7 +795,7 @@ OpenAlex 被引次数：**[31](https://openalex.org/W4413144615)**；观测日�
 
 **边界**：相关性证明的是所测任务／策略上的相对预测价值，不是任意物体动力学或绝对成功率的等价性。原论文以刚体、已知真实设置为主。
 
-OpenAlex 被引次数：**[4](https://openalex.org/W4396822572)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[4](https://openalex.org/W4396822572)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://simpler-env.github.io/](https://simpler-env.github.io/)（`platform_only`）；本库使用论文 2 篇。
 
@@ -813,7 +815,7 @@ OpenAlex 被引次数：**[4](https://openalex.org/W4396822572)**；观测日期
 
 **边界**：五个模型并非全部完成同样评测，主要比较限于三个完整策略。小型桌面机器人和有限物体不代表开放世界空间推理。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7221577967)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7221577967)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://justintiensmith.github.io/Spa-Bench](https://justintiensmith.github.io/Spa-Bench)（`found`）；本库使用论文 0 篇。
 
@@ -833,7 +835,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7221577967)**；观测日期
 
 **边界**：VLM 问答正确率、模块化流程成功率和端到端 VLA 成功率属于不同接口。未见类别设置比同类新实例更严格，跨论文比较必须统一。
 
-OpenAlex 被引次数：**[16](https://openalex.org/W4405783861)**；观测日期：2026-11-03。这是所链接论文记录的计数，不是 benchmark 使用次数。
+OpenAlex 被引次数：**[16](https://openalex.org/W4405783861)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://vlabench.github.io/](https://vlabench.github.io/)（`platform_only`）；本库使用论文 0 篇。
 
@@ -853,7 +855,7 @@ OpenAlex 被引次数：**[16](https://openalex.org/W4405783861)**；观测日�
 
 **边界**：其环境多数是软件／工具层，列入物理后果类别不代表运行了机器人动力学。适合借鉴 taxonomy 和安全／有用性双评价，不能直接当 VLA 物理安全分数。
 
-OpenAlex 被引次数：**[6](https://openalex.org/W4405627542)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[6](https://openalex.org/W4405627542)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/thu-coai/Agent-SafetyBench](https://github.com/thu-coai/Agent-SafetyBench)（`found`）；本库使用论文 0 篇。
 
@@ -873,7 +875,7 @@ OpenAlex 被引次数：**[6](https://openalex.org/W4405627542)**；观测日期
 
 **边界**：统一触觉是模拟接触表征，不是特定真实传感器的数字复制；主实验部分策略仅用 RGB 与关节，不能将所有成绩解释为触觉带来的收益。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7213308421)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7213308421)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://bench2dex.github.io](https://bench2dex.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -893,7 +895,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7213308421)**；观测日期
 
 **边界**：这是形式化规划验证，不是执行机器人关节轨迹；主结果来自按模型表现挑出的困难集，不能宣称是全部 12,279 任务的随机平均。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7155060036)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7155060036)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://despite-safety.github.io](https://despite-safety.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -913,7 +915,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7155060036)**；观测日期
 
 **边界**：它主要测能力，不是专门的安全约束基准；四种环境动作抽象不同，整体均值不能解释为真实机械臂安全成功率。模型结果是论文当时版本。
 
-OpenAlex 被引次数：**[1](https://openalex.org/W4407590542)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[1](https://openalex.org/W4407590542)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://embodiedbench.github.io](https://embodiedbench.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -933,7 +935,7 @@ OpenAlex 被引次数：**[1](https://openalex.org/W4407590542)**；观测日期
 
 **边界**：示例分数不能写成多模型实验成果。可解释运行轨迹是评测前提；不支持某一治理接口与实际治理失败应分别标注。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7154418749)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7154418749)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/s20sc/embodied-gov-bench](https://github.com/s20sc/embodied-gov-bench)（`found`）；本库使用论文 0 篇。
 
@@ -953,7 +955,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7154418749)**；观测日期
 
 **边界**：这里的 SR 包括正确拒绝不可行续接，不能当纯执行成功率。参考最优性只在声明的动作、时间界内成立，也不等于真实微生物传播验证。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7221007195)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7221007195)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://euron-zc.github.io/HygieneRoboBench](https://euron-zc.github.io/HygieneRoboBench)（`found`）；本库使用论文 0 篇。
 
@@ -973,7 +975,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7221007195)**；观测日期
 
 **边界**：并非所有任务都兼容所有风险情形，不能把 40×56×19 当实际样本数。适合借鉴长链评测与独立验证，不能用作具身碰撞或损伤结论。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7222558873)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7222558873)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/judydnguyen/infuse](https://github.com/judydnguyen/infuse)（`found`）；本库使用论文 0 篇。
 
@@ -993,7 +995,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7222558873)**；观测日期
 
 **边界**：提醒等级与输入场景表示不同会显著改变结果；不能拿有具体安全提示的设置与无提示设置直接排名。终点无事故不代表过程满足顺序要求。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W4417145625)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[2](https://openalex.org/W7138977141)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/AI45Lab/IS-Bench](https://github.com/AI45Lab/IS-Bench)（`found`）；本库使用论文 0 篇。
 
@@ -1013,7 +1015,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W4417145625)**；观测日期
 
 **边界**：五次重复规模小，抓取满分来自定位送料条件，不能外推到杂乱箱。低速真实运行影响时间，不应把用时直接视作算法效率上限。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7221815075)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7221815075)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://irp-hka.github.io/robotic-assembly-benchmark](https://irp-hka.github.io/robotic-assembly-benchmark)（`found`）；本库使用论文 0 篇。
 
@@ -1033,7 +1035,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7221815075)**；观测日期
 
 **边界**：残差案例同时调整目标与参考运动时序，收益不能单独归因于残差模块。肌肉仿真不是人类临床实验，也不是普通关节力矩控制的同条件榜单。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214208713)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214208713)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://zzongzheng0918.github.io/MSK-Bench](https://zzongzheng0918.github.io/MSK-Bench)（`found`）；本库使用论文 0 篇。
 
@@ -1053,7 +1055,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7214208713)**；观测日期
 
 **边界**：各模型 eligible 子集不同，因此这些范围不是相同测试分布上的直接安全排名；这是记忆机制诊断，不是物理机器人执行评测。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7221777130)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7221777130)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/opanhw/memform-code](https://github.com/opanhw/memform-code)（`found`）；本库使用论文 0 篇。
 
@@ -1073,7 +1075,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7221777130)**；观测日期
 
 **边界**：有明确隐藏角色目标的游戏行为不能直接证明模型在现实部署中自发产生恶意意图；胜率、行为标签一致率和现实安全性是不同概念。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7204938515)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7204938515)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://junseokim0103.github.io/Lies-We-Can-See](https://junseokim0103.github.io/Lies-We-Can-See)（`found`）；本库使用论文 0 篇。
 
@@ -1093,7 +1095,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7204938515)**；观测日期
 
 **边界**：论文只测试了完整配置空间的一个切片，支持某场景不等于已全面实测；多数任务不是机器人环境，应作为多代理评测设计参考。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214782110)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214782110)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/wlanderson0/orbit](https://github.com/wlanderson0/orbit)（`found`）；本库使用论文 0 篇。
 
@@ -1113,7 +1115,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7214782110)**；观测日期
 
 **边界**：材料、打印精度、公差测量和机器人接触控制都会影响复现。提供场景生成器并不等于论文已验证所有几何／公差组合。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7206171071)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7206171071)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/aistairc/peg-in-bench](https://github.com/aistairc/peg-in-bench)（`found`）；本库使用论文 0 篇。
 
@@ -1133,7 +1135,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7206171071)**；观测日期
 
 **边界**：它评估轨迹派生决策，不执行完整飞行闭环；标签与数据生成链影响有效性。配置选择集和最终测试集必须分清，准确率也不是碰撞率。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214012534)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214012534)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/maferrag/physai-bench](https://github.com/maferrag/physai-bench)（`found`）；本库使用论文 0 篇。
 
@@ -1153,7 +1155,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7214012534)**；观测日期
 
 **边界**：主要是静态图像／计划回答，不验证真实物理不可行性或实际执行结果。数据集中该弃权样本的识别率不能代表正常请求上的低误拒绝率。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7162010380)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7162010380)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://purseclab.github.io/RoboAbstention](https://purseclab.github.io/RoboAbstention)（`found`）；本库使用论文 0 篇。
 
@@ -1173,7 +1175,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7162010380)**；观测日期
 
 **边界**：本论文 SR 指 Security Rate，其他机器人论文常指 Success Rate。接受／拒绝计划不等于物理动作成功或安全，不可将不同条件表格混读。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7161775162)**；观测日期：2026-11-03。这是所链接论文记录的计数，不是 benchmark 使用次数。
+OpenAlex 被引次数：**[0](https://openalex.org/W7161775162)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://purseclab.github.io/benchmark-for-robotics-security](https://purseclab.github.io/benchmark-for-robotics-security)（`found`）；本库使用论文 0 篇。
 
@@ -1193,7 +1195,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7161775162)**；观测日期
 
 **边界**：保留此卡作为方法参考，不能计作新增 benchmark 的成果；F1 衡量下游分类，不是社交导航碰撞率或人类偏好因果效应。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7215077318)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7215077318)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://larg.github.io/stars](https://larg.github.io/stars)（`found`）；本库使用论文 0 篇。
 
@@ -1213,7 +1215,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7215077318)**；观测日期
 
 **边界**：高层动作接口和控制器可能承担部分运动能力，不能与端到端关节 VLA 同分比较；拒绝率低不等于所有任务都成功造成物理后果。
 
-OpenAlex 被引次数：**[2](https://openalex.org/W4405562840)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[2](https://openalex.org/W4405562840)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/shengyin1224/SafeAgentBench](https://github.com/shengyin1224/SafeAgentBench)（`found`）；本库使用论文 0 篇。
 
@@ -1233,7 +1235,7 @@ OpenAlex 被引次数：**[2](https://openalex.org/W4405562840)**；观测日期
 
 **边界**：这里的 skill 是软件代理技能包，不是机器人运动技能。风险达成与任务成功可同时发生，安全与效用不能用一个数字替代。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7161027243)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7161027243)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/AI45Lab/skill-safety-bench](https://github.com/AI45Lab/skill-safety-bench)（`found`）；本库使用论文 0 篇。
 
@@ -1253,7 +1255,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7161027243)**；观测日期
 
 **边界**：原实验允许忽略限速与信号灯，不能视为现代 Leaderboard 的规则。Leaderboard 是后续独立协议与版本，模拟器论文引用量不等于排行榜引用量。
 
-OpenAlex 被引次数：**未核验（查询失败／未匹配）**；观测日期：2026-11-03。本次未取得可核验计数，不按 0 处理。
+OpenAlex 被引次数：**[3759](https://openalex.org/W2767621168)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://carla.org/](https://carla.org/)；[https://github.com/carla-simulator/carla](https://github.com/carla-simulator/carla)（`platform_only`）；本库使用论文 4 篇。
 
@@ -1273,7 +1275,7 @@ OpenAlex 被引次数：**未核验（查询失败／未匹配）**；观测日�
 
 **边界**：非反应式模拟不包含他车对自车行为的真实反应，不能替代长期交互安全评估。比赛提交数是社区参与证据，不是论文被引数。
 
-OpenAlex 被引次数：**[63](https://openalex.org/W4415798424)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[63](https://openalex.org/W4415798424)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://github.com/autonomousvision/navsim](https://github.com/autonomousvision/navsim)（`found`）；本库使用论文 2 篇。
 
@@ -1293,7 +1295,7 @@ OpenAlex 被引次数：**[63](https://openalex.org/W4415798424)**；观测日�
 
 **边界**：综合分包含多种归一化指标和权重，不能当碰撞概率；实验主要是指定 RL 策略，不能直接推断当前全部端到端驾驶系统。
 
-OpenAlex 被引次数：**[48](https://openalex.org/W7133222348)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[48](https://openalex.org/W7133222348)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://safebench.github.io](https://safebench.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -1313,7 +1315,7 @@ OpenAlex 被引次数：**[48](https://openalex.org/W7133222348)**；观测日�
 
 **边界**：伪仿真的合成观察质量会影响排名，并非完全反应式交通闭环；原始 V2X-Real 数据集和本文新增地图／协议的成果应分别归属。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7207785702)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7207785702)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://vips2026.github.io](https://vips2026.github.io)（`found`）；本库使用论文 0 篇。
 
@@ -1333,7 +1335,7 @@ OpenAlex 被引次数：**[0](https://openalex.org/W7207785702)**；观测日期
 
 **边界**：23 类标注不等于检测榜单全部评价 23 类。后来的预测／规划扩展不应倒推为原论文已完成；检测高分不是闭环驾驶安全保证。
 
-OpenAlex 被引次数：**[7152](https://openalex.org/W2925148167)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[7179](https://openalex.org/W2925148167)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **复用入口**：[https://www.nuscenes.org/](https://www.nuscenes.org/)（`platform_only`）；本库使用论文 3 篇。
 

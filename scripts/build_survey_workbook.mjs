@@ -130,7 +130,7 @@ overview.getRange('F7:F12').format.font = { bold: true, size: 15, color: teal };
 overview.getRange('C7:C19').format.font = { size: 10, color: gray };
 wb.recalculate();
 const got = overview.getRange('B7:B12').values.flat();
-const expected = [122,62,60,48,59,18];
+const expected = [122,62,60,48,62,18];
 if (JSON.stringify(got) !== JSON.stringify(expected)) throw new Error(`Summary mismatch: ${JSON.stringify(got)}`);
 // Verify the totals are live dependencies, then restore the source cell.
 const original = entries.getRange('C2').values[0][0];

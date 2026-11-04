@@ -1,0 +1,900 @@
+{
+ "schema_version": 1,
+ "updated_at": "2026-11-04",
+ "rule": "每个词给三层：一句话解释（文档内直接显示）、详细解释（总表显示）、常见误读。英文缩写先给英文全称，再给中文名，最后说清它除以什么。",
+ "categories": {
+  "unit": "评测单位与统计",
+  "metric": "指标与缩写",
+  "model": "模型与方法",
+  "platform": "仿真平台、数据格式与硬件",
+  "protocol": "协议、难度与常见评价口径"
+ },
+ "terms": [
+  {
+   "term": "episode",
+   "en": "episode",
+   "zh": "回合",
+   "category": "unit",
+   "short": "一次从重置到终止（成功／失败／超时）的完整交互，是最常见的分母。",
+   "long": "评测时把场景重置，让策略从初态跑到终止条件，这一段完整交互叫一个 episode。成功率＝成功 episode 数 ÷ 全部 episode 数。一个任务跑 25 次就是 25 个 episode，不是 1 个。",
+   "pitfall": "把“任务数”“配置数”当 episode 分母，会让成功率虚高。"
+  },
+  {
+   "term": "rollout",
+   "en": "rollout",
+   "zh": "展开／推演",
+   "category": "unit",
+   "short": "用当前策略跑一次得到的完整轨迹，常与 episode 混用。",
+   "long": "强化学习与策略评测里，让策略在环境中实际执行并记录状态-动作序列，叫一次 rollout。多数论文 rollout 数＝episode 数，但涉及多次采样或多候选时两者不同，读表要看清。",
+   "pitfall": "rollout 数、episode 数、候选轨迹数三者混用。"
+  },
+  {
+   "term": "seed",
+   "en": "random seed",
+   "zh": "随机种子",
+   "category": "unit",
+   "short": "固定随机性的编号，换种子重跑可估计波动的来源。",
+   "long": "仿真里的物体初始位姿、相机噪声、策略采样都由随机数决定。固定 seed 让结果可复现；跑多个 seed 才能区分“方法更好”和“这次运气好”。只报一个 seed 的成绩不能当稳定结论。"
+  },
+  {
+   "term": "bootstrap",
+   "en": "bootstrap resampling",
+   "zh": "自助重采样（置信区间）",
+   "category": "unit",
+   "short": "通过对已有样本反复重采样来估计区间，比正态假设更稳。",
+   "long": "把 n 个 episode 的结果当作样本，反复有放回地抽 n 个算统计量，重复上千次得到分布，取 2.5%–97.5% 分位即 95% 区间。配对实验（同一初始状态跑基线与方法）应先算差值再 bootstrap，而不是各自算区间再比较。"
+  },
+  {
+   "term": "Wilson",
+   "en": "Wilson score interval",
+   "zh": "Wilson 区间",
+   "category": "unit",
+   "short": "小样本下估计比例置信区间的标准方法，比直接用正态近似可靠。",
+   "long": "成功率是 0–1 的比例，样本只有几十个 episode 时，正态近似的区间会越界或过窄。Wilson 区间在极端比例（接近 0 或 1）和小样本下仍表现稳定，因此评测论文常用它报成功率的不确定性。"
+  },
+  {
+   "term": "Pearson",
+   "en": "Pearson correlation coefficient",
+   "zh": "皮尔逊相关系数",
+   "category": "unit",
+   "short": "衡量两组数线性相关强度的指标，取值 −1 到 1。",
+   "long": "在仿真评测里常用于回答“仿真分数能不能预测真机分数”：把每个策略的仿真成功率与真机成功率配对，算 r。r 高说明排序一致，但不代表绝对分数相同。"
+  },
+  {
+   "term": "pp",
+   "en": "percentage point",
+   "zh": "百分点",
+   "category": "unit",
+   "short": "两个百分比相减的单位；30%→38% 是 +8pp，不是 +8%。",
+   "long": "百分点用于描述两个百分数之间的绝对差。写“提升 8%”会被理解成相对提升（30%×1.08），而实际是加了 8 个百分点。本库统一用 pp 表示差值。"
+  },
+  {
+   "term": "SR",
+   "en": "Success Rate",
+   "zh": "成功率",
+   "category": "metric",
+   "short": "成功 episode ÷ 全部 episode；但有的论文用它指 Security Rate，必须先看定义。",
+   "long": "最常见的指标：完成任务的比例。分母通常是全部 episode，不是成功数。本库至少四种 SR：任务成功率、RoboJailBench 的危险指令拒绝率（Security Rate）、SafeStage 的 SR=SSR+USR、HygieneRoboBench 的安全解决率。跨基准比较前必须先对齐定义与分母。",
+   "pitfall": "把 SR（Security Rate）当成功率，或把 /N 的比率当 /SR 的比率。"
+  },
+  {
+   "term": "SSR",
+   "en": "Safe Success Rate",
+   "zh": "安全成功率",
+   "category": "metric",
+   "short": "既完成任务又没违规的 episode ÷ 全部 episode。",
+   "long": "SSR 把“做完”和“没出事”同时计入，是安全基准的主指标之一。注意它的分母是全部 episode，而不是成功 episode；SR − SSR 就是“做完但违规”的那部分。"
+  },
+  {
+   "term": "USR",
+   "en": "Unsafe Success Rate",
+   "zh": "不安全成功率",
+   "category": "metric",
+   "short": "完成但违规的 episode ÷ 全部 episode；成功中的违规比例需按 USR ÷ SR 另算。",
+   "long": "USR 与 SSR 的分母都是全部 episode，所以 SR = SSR + USR。若想知道成功轨迹里有多大比例危险，要算 USR ÷ SR。两者相差可达数倍，混用会严重误判风险。",
+   "pitfall": "把 USR 直接当作“成功里的违规比例”，两者分母不同。"
+  },
+  {
+   "term": "VR",
+   "en": "Violation Rate",
+   "zh": "违规率",
+   "category": "metric",
+   "short": "发生约束违反的 episode ÷ 全部 episode，不看任务是否完成。",
+   "long": "VR 只统计“有没有踩线”，与任务完成解耦。一个策略可以 VR 很低但 SR 也很低（什么都不做），也可以 VR 高但 SR 高（为了完成任务冒险）。要和 SR/SSR 一起读。"
+  },
+  {
+   "term": "PR",
+   "en": "Preservation Rate（本库 ManiPhysicsBench 口径）",
+   "zh": "保全率",
+   "category": "metric",
+   "short": "Safe SR ÷ SR，即“成功的那些里，对象完好的比例”。",
+   "long": "用于物体保全类评测：SR 是完成率，Safe SR 是无损完成率，PR = Safe SR ÷ SR。SR 为 0 时 PR 无定义，所以论文通常同时给三个数。PR 不是精确率（precision），同名不同义。",
+   "pitfall": "把 PR 当 precision，或只报 PR 不报 SR。"
+  },
+  {
+   "term": "CC",
+   "en": "Cumulative safety Cost",
+   "zh": "累计安全代价",
+   "category": "metric",
+   "short": "一次 episode 内违规代价的累加，衡量“踩线有多重”而非“有没有踩线”。",
+   "long": "与只看是否违规的二值指标不同，CC 对每次违规按严重度累加，因此能区分“擦到一次”和“反复碰撞”。全称与权重按各论文定义，跨基准不可直接比较。"
+  },
+  {
+   "term": "RET",
+   "en": "Risk Exposure Time",
+   "zh": "风险暴露时间",
+   "category": "metric",
+   "short": "处于风险状态（如贴着人或物体）的时长。",
+   "long": "RET 描述“在危险区待了多久”，即使最终没碰撞，长时间贴边也说明控制不稳。与 CC 一起构成过程级风险，用来补终点是否成功的不足。"
+  },
+  {
+   "term": "CAR",
+   "en": "Collision Avoidance Rate",
+   "zh": "避碰率",
+   "category": "metric",
+   "short": "没有发生碰撞的 episode ÷ 全部 episode。",
+   "long": "SafeLIBERO 等安全约束类基准的主指标：衡量策略是否撞到障碍。它只看碰撞这一类违规，不覆盖拿错物体、顺序错误等语义风险。"
+  },
+  {
+   "term": "TSR",
+   "en": "Task Success Rate",
+   "zh": "任务成功率",
+   "category": "metric",
+   "short": "把任务做完的比例，与 CAR 一起用时表示“做完且没撞”。",
+   "long": "TSR 与普通 SR 同义，但在安全论文里常单独列出，以便和 CAR（避碰率）并列：一个策略可能 CAR 高（慢慢挪）而 TSR 低。两者要成对报告。"
+  },
+  {
+   "term": "ETS",
+   "en": "Execution Steps（本库 SafeLIBERO 口径）",
+   "zh": "执行步数",
+   "category": "metric",
+   "short": "完成任务所花的控制步数，用来发现“靠磨时间换安全”。",
+   "long": "约束层常通过减速或绕行来避免碰撞，代价是步数变多。ETS 把这种代价显式化：同样的 CAR/TSR，步数更少的策略更实用。"
+  },
+  {
+   "term": "PDMS",
+   "en": "Planning Driving Metric Score",
+   "zh": "规划综合分（自动驾驶）",
+   "category": "metric",
+   "short": "NAVSIM 的综合驾驶分：把碰撞、可行驶区域、舒适、进度按权重合成。",
+   "long": "PDMS 由若干子项加权得到，子项包括碰撞、偏离可行驶区域、行驶方向、速度舒适度、到达进度等。因为有权重，它不等于碰撞概率，也不能跨权重版本比较。"
+  },
+  {
+   "term": "EPDMS",
+   "en": "Extended PDMS / Pseudo-simulation Driving Metric Score",
+   "zh": "扩展规划综合分",
+   "category": "metric",
+   "short": "NAVSIM v2 在 PDMS 基础上加入更严格子项（含伪仿真两阶段）的分数。",
+   "long": "EPDMS 沿用 PDMS 的加权思路，但评分阶段更多、条件更严（如按两阶段伪仿真评估）。论文报 EPDMS 时通常同时说明是 navtest 还是 navhard 拆分，两者不可混读。"
+  },
+  {
+   "term": "NDS",
+   "en": "nuScenes Detection Score",
+   "zh": "nuScenes 检测综合分",
+   "category": "metric",
+   "short": "nuScenes 检测榜的综合分，由 mAP 与多项误差指标加权得到。",
+   "long": "NDS 不是单一 mAP，而是把 mAP 与位置、尺寸、朝向、速度、属性等误差项按权重合成，用于鼓励“框得准”而非只“框到”。因此 NDS 高不一定 mAP 高。"
+  },
+  {
+   "term": "AMOTA",
+   "en": "Average Multi-Object Tracking Accuracy",
+   "zh": "平均多目标跟踪准确率",
+   "category": "metric",
+   "short": "nuScenes 跟踪主指标，跨召回阈值对 MOTA 取平均。",
+   "long": "跟踪既要找到目标（recall）又要保持身份（ID switch），AMOTA 在多个召回阈值上取平均以减轻“只刷高分阈值”的问题。常与 AMOTP（位置误差）一起报告。"
+  },
+  {
+   "term": "AMOTP",
+   "en": "Average Multi-Object Tracking Precision",
+   "zh": "平均多目标跟踪精度",
+   "category": "metric",
+   "short": "跟踪框与真值的位置误差，越小越好。",
+   "long": "AMOTP 衡量“跟得准不准”，与 AMOTA 的“跟得全不全、身份稳不稳”互补。只看其中一个容易得出片面结论。"
+  },
+  {
+   "term": "mAP",
+   "en": "mean Average Precision",
+   "zh": "平均精度均值",
+   "category": "metric",
+   "short": "检测类任务的综合精度：各类别 AP 的平均。",
+   "long": "先在每个类别上算 precision-recall 曲线下面积（AP），再对类别取平均。mAP 对类别不平衡敏感，也依赖 IoU 阈值设定。"
+  },
+  {
+   "term": "mIoU",
+   "en": "mean Intersection over Union",
+   "zh": "平均交并比",
+   "category": "metric",
+   "short": "分割任务的准确度：预测区域与真值区域的重叠比，按类别平均。",
+   "long": "IoU = 交集 ÷ 并集。mIoU 对所有类别取平均，用于 BEV 地图分割等任务；它对小目标不友好，因此常另报 per-class 结果。"
+  },
+  {
+   "term": "MMRV",
+   "en": "Mean Maximum Rank Violation",
+   "zh": "平均最大排名违背",
+   "category": "metric",
+   "short": "衡量仿真分数与真机分数的排序不一致程度，越低越好。",
+   "long": "把若干策略按仿真分和按真机分各排一次序，看名次差多少，取最大／平均即 MMRV。它是“仿真能否替代真机做选型”的直接指标，与 Pearson r 互补。"
+  },
+  {
+   "term": "DTW",
+   "en": "Dynamic Time Warping",
+   "zh": "动态时间规整距离",
+   "category": "metric",
+   "short": "允许时间轴伸缩的轨迹距离，用来比较两条轨迹形状有多像。",
+   "long": "两条轨迹速度不同也能比较，算法通过非线性的时间对齐求最小累计距离。常被当成“偏离参考轨迹多少”的代理指标，但它不等于失败原因，只是轨迹层证据。"
+  },
+  {
+   "term": "nDTW",
+   "en": "normalized DTW",
+   "zh": "归一化 DTW",
+   "category": "metric",
+   "short": "把 DTW 距离归一化到 0–1，便于跨任务比较。",
+   "long": "DTW 的绝对值受轨迹长度与尺度影响，nDTW 除以路径长度或对齐代价上界后再比较。用于世界模型预测、导航轨迹相似度等。"
+  },
+  {
+   "term": "tIoU",
+   "en": "temporal Intersection over Union",
+   "zh": "时间交并比",
+   "category": "metric",
+   "short": "时间区间预测与真值的时间重叠比，用于动作定位。",
+   "long": "预测的动作起止时间与人工标注区间求交并比；常以“tIoU ≥ 0.5 的样本比例”报告，避免只报一个平均值的乐观偏差。"
+  },
+  {
+   "term": "R@1",
+   "en": "Recall at 1",
+   "zh": "首位命中率",
+   "category": "metric",
+   "short": "检索或定位时，第一名即为正确的比例。",
+   "long": "R@k 表示前 k 个结果里有正确答案的比例；R@1 最严格。常用于时序定位、检索式评测，与 tIoU 阈值搭配使用。"
+  },
+  {
+   "term": "F1",
+   "en": "F1 score",
+   "zh": "调和平均分",
+   "category": "metric",
+   "short": "精确率与召回率的调和平均，用于二分类式判定。",
+   "long": "F1 = 2PR ÷ (P+R)，在正负样本不平衡时比准确率更能反映真实水平。本库用它评价“评估器判定是否与人工一致”这类元评测，而不是策略本身。"
+  },
+  {
+   "term": "ASR",
+   "en": "Attack Success Rate",
+   "zh": "攻击成功率",
+   "category": "metric",
+   "short": "攻击达成目标的比例；与语音领域的“自动语音识别”缩写相同，看语境。",
+   "long": "在安全攻击评测中，ASR 表示攻击者让模型做出目标危险行为的比例，越低越安全；在语音相关论文里 ASR 指 automatic speech recognition。本库两种都出现，必须靠上下文区分。",
+   "pitfall": "把攻击成功率当成语音识别，或反过来。"
+  },
+  {
+   "term": "SU-HM",
+   "en": "Safety-Utility Harmonic Mean",
+   "zh": "安全—效用调和平均",
+   "category": "metric",
+   "short": "把危险拒绝率与正常接受率合成为一个分，防止只靠“全拒绝”刷安全。",
+   "long": "安全策略如果一律拒绝就能拿满安全分，但没有用。SU-HM 用调和平均把 Security Rate 与 Utility Rate 绑在一起，任一项过低都会拉低总分。"
+  },
+  {
+   "term": "OSR",
+   "en": "Optimal Safe Resolution",
+   "zh": "最优安全解决率",
+   "category": "metric",
+   "short": "在安全完成的前提下，还达到参考最优成本的比例。",
+   "long": "与 SR 相比多了“成本最优”这一层：既安全解决又在声明的时间／动作界内接近最优。参考最优由隐藏方案给出，因此只在声明边界内成立。"
+  },
+  {
+   "term": "TPS",
+   "en": "Task Progress Score",
+   "zh": "任务进展分",
+   "category": "metric",
+   "short": "把任务拆成阶段后，按完成到第几个阶段给的部分分。",
+   "long": "成功／失败是二值的，阶段进展分能区分“差一步”和“完全没动”。它依赖阶段划分与权重，不能与成功率互换。"
+  },
+  {
+   "term": "CVG",
+   "en": "Camera Visibility Gain",
+   "zh": "相机可见性增益",
+   "category": "metric",
+   "short": "主动移动相机后，目标可见性提升多少。",
+   "long": "用于主动视觉／遮挡恢复类基准：同一状态下比较移动相机前后目标被看到的程度，用来区分“真的在找”与“碰巧恢复”。增益不等于任务成功。"
+  },
+  {
+   "term": "LSCR",
+   "en": "Latched Stage Completion Rate",
+   "zh": "锁存阶段完成率",
+   "category": "metric",
+   "short": "阶段一旦完成就锁定、不因后续失败撤销的完成率。",
+   "long": "普通阶段分可能因为后段失败而被“回滚”，LSCR 强调“曾经做到过”这一事实，用于区分“从未完成”与“完成过但最后崩了”。"
+  },
+  {
+   "term": "MSE",
+   "en": "Mean Squared Error",
+   "zh": "均方误差",
+   "category": "metric",
+   "short": "预测值与真值差的平方的平均，用于回归与世界模型预测。",
+   "long": "世界模型类工作常用下一状态预测的 MSE 衡量拟合程度。MSE 小只说明拟合好，不代表规划可用；它与成功率不是同一件事。"
+  },
+  {
+   "term": "PSNR",
+   "en": "Peak Signal-to-Noise Ratio",
+   "zh": "峰值信噪比",
+   "category": "metric",
+   "short": "图像质量的常用指标，越高越接近原图。",
+   "long": "PSNR 用像素误差的对数变换衡量重建／生成图像质量。视频世界模型论文常报它，但它与人眼感知和任务可用性的相关性有限。"
+  },
+  {
+   "term": "VLA",
+   "match": [
+    "VLAs"
+   ],
+   "en": "Vision-Language-Action model",
+   "zh": "视觉—语言—动作模型",
+   "category": "model",
+   "short": "以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。",
+   "long": "VLA 把视觉编码器、语言模型与动作解码头连在一起，用机器人示教数据微调。它区别于“VLM 只回答文字”或“只做规划的 LLM 代理”。本库 62 条里大多数评测对象是 VLA。"
+  },
+  {
+   "term": "VLM",
+   "en": "Vision-Language Model",
+   "zh": "视觉语言模型",
+   "category": "model",
+   "short": "能同时理解图像和文字的模型，常被当作具身代理的高层决策器。",
+   "long": "VLM 输出文字（计划、判断、坐标），不直接输出关节或末端动作。IS-Bench、RoboAbstention 这类基准测的就是 VLM 作为规划器时的安全判断，而不是底层控制。"
+  },
+  {
+   "term": "LLM",
+   "en": "Large Language Model",
+   "zh": "大语言模型",
+   "category": "model",
+   "short": "纯文本大模型，常作为具身代理的规划或工具调用层。",
+   "long": "在具身系统里，LLM 通常负责把指令拆成步骤、选择工具或生成代码；它看不到图，需要 VLM 或感知模块提供状态。DESPITE、SafeAgentBench 测的是这一层的安全。"
+  },
+  {
+   "term": "MLLM",
+   "en": "Multimodal Large Language Model",
+   "zh": "多模态大模型",
+   "category": "model",
+   "short": "VLM 的另一种叫法，强调多模态输入。",
+   "long": "与 VLM 基本同义，论文习惯不同。本库按原文用词保留，指的都是“看图＋读文、输出文字”的模型。"
+  },
+  {
+   "term": "WAM",
+   "en": "World-Action Model",
+   "zh": "世界—动作模型",
+   "category": "model",
+   "short": "同时预测未来画面与动作的模型，用于规划或作为策略主干。",
+   "long": "WAM 把世界模型（预测下一帧状态）与动作生成联合训练，希望通过“想象后果”改善决策。本库有基准专门比较 WAM 与 VLA 的表现差异（如 LIBERO-VPro）。"
+  },
+  {
+   "term": "ACT",
+   "en": "Action Chunking with Transformers",
+   "zh": "动作分块 Transformer 策略",
+   "category": "model",
+   "short": "把连续多步动作一次性预测的模仿学习基线，常作为对照。",
+   "long": "ACT 每次输出一个动作块（chunk），以减少累积误差和推理频率，是 ALOHA 等工作提出的经典基线。它没有语言推理能力，但常被用来说明“简单方法也能拿到不错的成功率”。"
+  },
+  {
+   "term": "DP3",
+   "en": "3D Diffusion Policy",
+   "zh": "三维扩散策略",
+   "category": "model",
+   "short": "用点云输入的扩散策略基线，与 2D 版本对照说明三维表示的价值。",
+   "long": "DP3 把扩散策略（Diffusion Policy）的输入从图像换成点云，减少视角与纹理依赖。本库 RoboTwin 等条目用 DP3 与 2D DP 对比，说明输入模态的影响。"
+  },
+  {
+   "term": "SFT",
+   "en": "Supervised Fine-Tuning",
+   "zh": "监督微调",
+   "category": "model",
+   "short": "用示范数据做有监督训练，把通用模型变成任务模型。",
+   "long": "SFT 是最常见的适配方式：给定状态-动作对，最小化动作预测误差。它区别于 RL（用奖励优化）和预训练（大规模多任务数据）。本库描述用法时会明确是“SFT 微调”还是“预训练数据”。"
+  },
+  {
+   "term": "GRPO",
+   "en": "Group Relative Policy Optimization",
+   "zh": "组相对策略优化",
+   "category": "model",
+   "short": "一种不需要价值网络的强化学习算法，按组内相对优势更新策略。",
+   "long": "GRPO 对同一提示采样多条轨迹，用组内相对得分做基线来估计优势，省掉 critic 网络。VLA 的后训练常用它把成功率或安全率直接当奖励优化。"
+  },
+  {
+   "term": "RL",
+   "en": "Reinforcement Learning",
+   "zh": "强化学习",
+   "category": "model",
+   "short": "用奖励信号优化策略，区别于用示范做监督学习。",
+   "long": "在机器人里 RL 常用于微调策略或学习恢复行为。它的效果强依赖奖励设计与仿真保真度，因此本库会区分“RL 训练后评测”与“直接评测已有 checkpoint”。"
+  },
+  {
+   "term": "IL",
+   "en": "Imitation Learning",
+   "zh": "模仿学习",
+   "category": "model",
+   "short": "从人类示教中学习策略，是最主流的机器人训练范式。",
+   "long": "IL 把示教轨迹当作监督信号（行为克隆为其最简单形式），不需要奖励函数。它的经典弱点是分布偏移：一旦偏离示教分布，误差会累积。"
+  },
+  {
+   "term": "CBF",
+   "en": "Control Barrier Function",
+   "zh": "控制障碍函数",
+   "category": "model",
+   "short": "用数学约束保证系统不进入危险集合的安全层方法。",
+   "long": "CBF 定义一个“离危险有多远”的函数，并要求控制输入使该函数不下降过快，从而理论上保证安全集不被突破。它依赖动力学模型与状态估计，实际部署常与 QP（二次规划）一起求解，所以论文写 CBF-QP。"
+  },
+  {
+   "term": "QP",
+   "en": "Quadratic Programming",
+   "zh": "二次规划",
+   "category": "model",
+   "short": "求解带约束的二次目标优化，常用来在线修正动作。",
+   "long": "安全层需要在“尽量贴近原动作”和“满足安全约束”之间取平衡，这正是一个带线性约束的二次规划问题。求解失败或不可行时，通常退化为急停，这本身也是风险点。"
+  },
+  {
+   "term": "MPC",
+   "en": "Model Predictive Control",
+   "zh": "模型预测控制",
+   "category": "model",
+   "short": "滚动优化未来若干步的控制方法，需要动力学模型。",
+   "long": "MPC 在每个控制周期求解有限时域的最优控制问题，只执行第一步，然后重算。它对模型误差敏感，但在有明确约束（避障、限速）的场景里表现稳定。"
+  },
+  {
+   "term": "SOTA",
+   "en": "State of the Art",
+   "zh": "当前最佳水平",
+   "category": "protocol",
+   "short": "论文自称的最好成绩；对照条件不同则不可比。",
+   "long": "SOTA 只在同一协议、同一数据划分、同一评测版本下才有意义。本库引用时保留原文的“称 SOTA”，不把不同年份、不同预算的结果放在同一榜单里比较。"
+  },
+  {
+   "term": "OOD",
+   "en": "Out-of-Distribution",
+   "zh": "分布外",
+   "category": "protocol",
+   "short": "测试数据与训练分布不同，用来检验泛化。",
+   "long": "OOD 的具体做法差别很大：换物体、换纹理、换相机、换场景都算。基准必须说明 OOD 是怎么划的（类别、场景还是随机种子），否则“OOD 分数”无法比较。"
+  },
+  {
+   "term": "ID",
+   "en": "In-Distribution",
+   "zh": "分布内",
+   "category": "protocol",
+   "short": "测试与训练同分布，通常作为上限参照。",
+   "long": "ID 分数回答“在见过的条件下能做多好”，是 OOD 的对照。两者之差才是泛化能力的度量；只报 ID 会高估实际部署表现。"
+  },
+  {
+   "term": "leaderboard",
+   "en": "leaderboard",
+   "zh": "排行榜",
+   "category": "protocol",
+   "short": "公开提交与排名的榜单，反映社区参与度，不等于论文引用。",
+   "long": "榜单成绩受提交时间、评测版本、是否允许集成影响。同一 leaderboard 的不同版本（如 navtest 与 navhard）不可混排。"
+  },
+  {
+   "term": "L0",
+   "match": [
+    "L1",
+    "L2",
+    "L3",
+    "L4"
+   ],
+   "en": "difficulty level L0–L3",
+   "zh": "L0–L3 难度档",
+   "category": "protocol",
+   "short": "基准自定义的难度阶梯：常见是 L0 干净、L1 加扰动、L2 更强扰动或结构变化，L3 更难。",
+   "long": "档位名字各基准不同，重点是看它把训练放在哪一档、测试放到哪一档。多数 VLA 基准先在 L0 训练、再往 L1/L2 评测，所以 L0 与 L2 的分数差既是难度差也是分布差。"
+  },
+  {
+   "term": "cs.RO",
+   "match": [
+    "cs.CV",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "en": "arXiv category: cs.RO / cs.CV / cs.AI / cs.LG",
+   "zh": "arXiv 学科分类",
+   "category": "protocol",
+   "short": "arXiv 的学科标签：cs.RO 机器人、cs.CV 计算机视觉、cs.AI 人工智能、cs.LG 机器学习。",
+   "long": "论文提交时要选分类，决定它出现在哪个列表。本库的引文检索用 `cat:cs.RO 或 cat:cs.CV` 限定范围，因此“arXiv 摘要命中”只覆盖这两个分类里能检索到的论文，不等于全网提及。"
+  },
+  {
+   "term": "ABC→D",
+   "en": "train on A/B/C, test on D",
+   "zh": "三环境训练、第四环境测试",
+   "category": "protocol",
+   "short": "CALVIN 的经典协议：用三个环境训练，在没见过的第四个环境评测。",
+   "long": "该协议检验“换环境后的指令跟随”，与只看同环境成功率的差别很大。现代论文的数据量与历史窗口常与原设定不同，跨论文比较必须确认协议版本。",
+   "match": [
+    "ABC"
+   ]
+  },
+  {
+   "term": "privileged",
+   "en": "privileged information / privileged state",
+   "zh": "特权信息／特权状态",
+   "category": "protocol",
+   "short": "只有仿真或评测器能拿到的真值状态，用于判分但不给策略。",
+   "long": "仿真里可以读到物体精确位置、接触力、是否违规；真机只能估计。用特权状态判分是合理的，但若把特权信息也喂给策略，成绩就不能迁移到真机——读基准时要注意这一点。",
+   "match": [
+    "特权状态"
+   ]
+  },
+  {
+   "term": "sim-to-real",
+   "en": "sim-to-real transfer",
+   "zh": "仿真到真实的迁移",
+   "category": "protocol",
+   "short": "把仿真里训好的策略用到真机时出现的性能落差问题。",
+   "long": "落差来源包括渲染与光照、摩擦与接触、执行器延迟、传感器噪声。论文若只报仿真分数，必须单独说明是否有真机验证，否则不能推断部署表现。",
+   "match": [
+    "sim2real",
+    "仿真到真实"
+   ]
+  },
+  {
+   "term": "digital twin",
+   "en": "digital twin",
+   "zh": "数字孪生",
+   "category": "protocol",
+   "short": "按真实场景生成的可交互三维副本，用于批量造数据与评测。",
+   "long": "数字孪生强调“与真实场景对应”，通常由扫描或生成模型构建，再放机器人进去采数据。它的价值取决于保真度：几何对齐容易，物理与材质对齐难。",
+   "match": [
+    "数字孪生"
+   ]
+  },
+  {
+   "term": "BDDL",
+   "en": "Behavior Domain Definition Language",
+   "zh": "行为域定义语言",
+   "category": "platform",
+   "short": "用符号逻辑描述任务初态、目标与物体关系的任务定义语言。",
+   "long": "BDDL 把“把杯子放进洗碗机且水槽是空的”写成可解析的逻辑表达式，评测器据此判断任务是否完成。LIBERO、BEHAVIOR-1K 及其扩展（UBDDL）都用这一套；改动它就意味着改了任务定义。"
+  },
+  {
+   "term": "UBDDL",
+   "en": "Unified BDDL（本库 LIBERO-Safety 口径）",
+   "zh": "扩展版 BDDL",
+   "category": "platform",
+   "short": "在 BDDL 上加入随机化、动态交互与逐步安全检查的扩展。",
+   "long": "UBDDL 保留 BDDL 的对象与谓词，增加运行时状态与安全检查钩子，使评测能在执行过程中判断违规，而不只在终点判定。"
+  },
+  {
+   "term": "RLDS",
+   "en": "Reinforcement Learning Datasets format",
+   "zh": "RLDS 数据格式",
+   "category": "platform",
+   "short": "把机器人数据统一成 episode 序列的通用格式，便于跨数据集训练。",
+   "long": "RLDS 用嵌套的序列结构存 observation/action/reward，Open X-Embodiment 等多机构数据靠它对齐。格式统一不等于语义统一：动作空间、坐标系、控制频率仍需单独适配。"
+  },
+  {
+   "term": "SAPIEN",
+   "en": "SAPIEN",
+   "zh": "SAPIEN 仿真引擎",
+   "category": "platform",
+   "short": "面向铰接物体操作的物理仿真引擎，ManiSkill、SimplerEnv 的底座。",
+   "long": "SAPIEN 提供带关节的物体模型与物理仿真，适合开门、抽屉、装配这类任务。它比通用刚体引擎更强调可交互物体，但材质与接触模型仍是近似。"
+  },
+  {
+   "term": "MuJoCo",
+   "en": "MuJoCo",
+   "zh": "MuJoCo 物理引擎",
+   "category": "platform",
+   "short": "经典的高效刚体物理引擎，robosuite、LIBERO 的底层。",
+   "long": "MuJoCo 以稳定快速的接触求解著称，是机器人学习最常用的物理后端。它的接触参数（摩擦、软硬）会显著影响抓取成功率，因此同一任务在不同版本上的分数不可直接比。"
+  },
+  {
+   "term": "robosuite",
+   "en": "robosuite",
+   "zh": "robosuite 操作仿真库",
+   "category": "platform",
+   "short": "基于 MuJoCo 的机械臂操作环境库，LIBERO、RoboCasa 都建在上面。",
+   "long": "robosuite 提供机械臂、夹爪与标准任务，是很多操作基准的底座。基准之间的差异通常来自任务集、资产与控制接口，而不是物理引擎本身。"
+  },
+  {
+   "term": "OmniGibson",
+   "en": "OmniGibson",
+   "zh": "OmniGibson 仿真环境",
+   "category": "platform",
+   "short": "BEHAVIOR-1K 的仿真环境，支持软体、液体与烹饪等状态。",
+   "long": "OmniGibson 基于 Omniverse，扩展了刚体之外的软体、流体与温度／烹饪状态，用于长时程家务。代价是资产重、渲染与物理开销大，复现门槛高。"
+  },
+  {
+   "term": "Isaac",
+   "en": "Isaac Sim / Isaac Lab",
+   "zh": "Isaac 仿真与训练框架",
+   "category": "platform",
+   "short": "NVIDIA 的 GPU 加速仿真与并行训练框架，适合大规模域随机化。",
+   "long": "Isaac 系在 GPU 上并行跑上千环境，常用于高吞吐训练与域随机化。Bench2Dex、BiDex-100 等双臂灵巧操作基准建在其上。"
+  },
+  {
+   "term": "RLBench",
+   "en": "RLBench",
+   "zh": "RLBench 操作基准环境",
+   "category": "platform",
+   "short": "CoppeliaSim 上的机械臂任务集，常作泛化评测的底座。",
+   "long": "RLBench 提供大量带语言指令的桌面操作任务与演示，COLOSSEUM 等泛化基准在它上面施加扰动。它与 LIBERO 的任务集不同，分数不可互换。"
+  },
+  {
+   "term": "CoppeliaSim",
+   "en": "CoppeliaSim (V-REP)",
+   "zh": "CoppeliaSim 仿真器",
+   "category": "platform",
+   "short": "通用机器人仿真器，RLBench 的物理后端。",
+   "long": "CoppeliaSim 支持多种机器人模型与传感器，常与 RLBench 一起出现。它的接触与渲染精度不如专用引擎，因此多用于任务与扰动设计而非高保真接触评测。"
+  },
+  {
+   "term": "CARLA",
+   "en": "CARLA",
+   "zh": "CARLA 自动驾驶仿真器",
+   "category": "platform",
+   "short": "开放源码的城市驾驶仿真器，自动驾驶安全测试的事实底座。",
+   "long": "CARLA 提供城市地图、可控传感器与交通参与者，可编程构造危险场景。CARLA Leaderboard 是建在其上的独立评测协议，模拟器论文与排行榜成绩不能混为一谈。"
+  },
+  {
+   "term": "Mineflayer",
+   "en": "Mineflayer",
+   "zh": "Minecraft 机器人接口库",
+   "category": "platform",
+   "short": "用代码控制 Minecraft 角色的库，用于具身多代理实验。",
+   "long": "Mineflayer 让模型通过 API 在沙盒里移动、合成、交互，因此可以把“身体行为”当作可观测信号。MineAmongUs 用它研究语言之外的欺骗行为。"
+  },
+  {
+   "term": "Franka",
+   "match": [
+    "FR3"
+   ],
+   "en": "Franka Emika Panda / Franka Research 3",
+   "zh": "Franka 机械臂",
+   "category": "platform",
+   "short": "最常用的七自由度科研机械臂，真机实验的标准硬件。",
+   "long": "Franka 有成熟的 ROS／控制接口与力矩传感，因此大量真机评测用它。论文里“真机验证”若只写 Franka 而不写任务数与重复次数，证据强度有限。"
+  },
+  {
+   "term": "π0.5",
+   "match": [
+    "π0",
+    "pi0"
+   ],
+   "en": "pi-zero / pi-zero-point-five",
+   "zh": "π0／π0.5 策略模型",
+   "category": "model",
+   "short": "Physical Intelligence 的通用 VLA 策略家族，本库最常见的对照基线。",
+   "long": "π0 与 π0.5 是在大规模跨本体数据上训练的通用策略，常被当作“强基线”。注意它既是基线，也是很多工作微调的起点；引用它的分数时要说明是零样本还是微调后。"
+  },
+  {
+   "term": "OpenVLA",
+   "en": "OpenVLA（含 OpenVLA-oft 变体）",
+   "zh": "OpenVLA 开源策略",
+   "category": "model",
+   "short": "开源的 7B VLA 基线，安全基准里最常被拿来测“干净能力 vs 安全”的模型之一。",
+   "long": "OpenVLA 用公开机器人数据训练并开源权重，因此成为复现与安全评测的首选被测对象；oft 变体做了优化微调。报告它的安全分数时要注明是零样本还是微调、以及用哪一版 checkpoint。"
+  },
+  {
+   "term": "GR00T",
+   "en": "NVIDIA GR00T N1 / N1.5",
+   "zh": "GR00T 机器人基础模型",
+   "category": "model",
+   "short": "NVIDIA 的类人／通用操作基础模型家族，常作为强基线或微调起点。",
+   "long": "GR00T N1.5 是较新的通用操作策略，本库多条基准（Bench2Dex、RoboCasa-Shift、LIBERO-RECOVER 等）出现它的名字，通常是“在 X 上微调后评测”或“作为对照”。"
+  },
+  {
+   "term": "GO-1",
+   "en": "AgiBot GO-1",
+   "zh": "AgiBot 通用策略",
+   "category": "model",
+   "short": "AgiBot 随数据集一起发布的通用操作策略。",
+   "long": "GO-1 与 AgiBot World 数据配套发布，用于展示该数据训练出的通用能力。它不是第三方基准的基线，引用其成功率时要注意数据与评测是同源的。"
+  },
+  {
+   "term": "AEGIS",
+   "en": "AEGIS safety layer（SafeLIBERO 论文提出）",
+   "zh": "AEGIS 安全约束层",
+   "category": "model",
+   "short": "用控制障碍函数＋二次规划修正动作的安全层，SafeLIBERO 的基准方法。",
+   "long": "AEGIS 不是新策略，而是套在既有策略外面的“安全过滤器”：策略给出名义动作，AEGIS 用 CBF 约束和 QP 把它修到安全侧。后续工作在它之上比较避碰率，因此它同时是方法基线和对照对象。"
+  },
+  {
+   "term": "RDT",
+   "en": "Robotics Diffusion Transformer",
+   "zh": "机器人扩散 Transformer",
+   "category": "model",
+   "short": "基于扩散 Transformer 的机器人策略，常见对照模型之一。",
+   "long": "RDT-1B 用大规模机器人数据训练扩散式动作生成，是 2024–2026 年间常用的强基线。它没有语言推理层，比较时要注意输入模态与训练数据量。"
+  },
+  {
+   "term": "DP",
+   "en": "Diffusion Policy",
+   "zh": "扩散策略",
+   "category": "model",
+   "short": "用扩散模型生成动作序列的模仿学习基线，安全论文里常作“普通策略”对照。",
+   "long": "Diffusion Policy（DP）把动作序列当成要生成的样本，用扩散过程去噪得到动作块。它是最常见的“没有安全机制”的对照，因此能说明安全层或安全训练到底带来多少增益。"
+  },
+  {
+   "term": "RGB",
+   "en": "RGB image observation",
+   "zh": "彩色图像观测",
+   "category": "platform",
+   "short": "只用普通彩色相机画面作为输入，不含深度、触觉或本体状态。",
+   "long": "论文说“RGB-only”是指策略只看彩色图像，用来说明深度／触觉／点云的增益。这类行不能与多模态输入的行直接比较。"
+  },
+  {
+   "term": "V2X",
+   "en": "Vehicle-to-Everything",
+   "zh": "车联万物（车路协同）",
+   "category": "platform",
+   "short": "车与车、车与路侧设施的通信协同，用于减少盲区带来的事故。",
+   "long": "V2X 评测关心通信带宽、延迟与协同感知带来的规划收益。VIPS 这类基准用两阶段伪仿真评估：先用真实观察，再在专家轨迹附近用合成观察探测策略。"
+  },
+  {
+   "term": "UAV",
+   "en": "Unmanned Aerial Vehicle",
+   "zh": "无人机",
+   "category": "platform",
+   "short": "无人飞行器；本库中多为“轨迹派生决策”评测，不是完整飞行闭环。",
+   "long": "UAV 类基准（PhysAI-Bench 等）常把已有飞行日志转成“下一步该做什么”的选择题。它测决策，不测动力学与控制，因此准确率不等于飞行安全率。"
+  },
+  {
+   "term": "HRI",
+   "en": "Human-Robot Interaction",
+   "zh": "人机交互",
+   "category": "protocol",
+   "short": "研究人与机器人如何协作、沟通与共处的方向。",
+   "long": "HRI 评测常涉及社交规范、可读性与人类偏好，指标多为问卷或标注一致性，与任务成功率属于不同证据类型，不能互换。"
+  },
+  {
+   "term": "GUI",
+   "en": "Graphical User Interface",
+   "zh": "图形界面（软件代理）",
+   "category": "platform",
+   "short": "手机／桌面应用的图形界面，软件代理基准的操作对象。",
+   "long": "GUI 代理（如 Spa-Bench／SPA-Bench 一类）在屏幕上点击与输入，属于软件环境而非物理机器人。本库把它们作为“软件代理邻接研究”单列。"
+  },
+  {
+   "term": "HiL",
+   "en": "Hardware-in-the-Loop",
+   "zh": "硬件在环",
+   "category": "protocol",
+   "short": "把真实控制器接入仿真环境测试，介于纯仿真与实车之间。",
+   "long": "HiL 让真实 ECU 或控制器接收仿真的传感器信号并回传控制指令，用于验证时序与失效。它比纯仿真更接近实车，但仍不覆盖真实道路的多变性。"
+  },
+  {
+   "term": "PRIDE",
+   "en": "PRIDE（LIBERO-Para 论文提出的诊断指标）",
+   "zh": "改写难度加权成功率",
+   "category": "metric",
+   "short": "按改写难度给成功加权的指标：越难的改写，成功分越高。",
+   "long": "普通成功率把所有指令一视同仁，无法区分“只是扛住了同义替换”和“真的理解了改写”。PRIDE 用关键词差异与句式结构差异估计每条改写的难度，再对成功加权。权重由人工设定，因此它适合做诊断，不宜替代原始成功率。"
+  },
+  {
+   "term": "VLSA",
+   "en": "Vision-Language-Action with plug-and-play Safety constraint layer",
+   "zh": "带安全约束层的 VLA",
+   "category": "model",
+   "short": "SafeLIBERO 论文提出的方法名：在 VLA 外面挂一个可插拔安全层。",
+   "long": "VLSA 与 AEGIS 指同一套工作：VLSA 是整体方法（VLA + 安全层），AEGIS 是其中的安全约束层实现。后续论文有的引用 VLSA、有的引用 AEGIS，比较时要确认指的是同一基线。"
+  },
+  {
+   "term": "checkpoint",
+   "en": "model checkpoint",
+   "zh": "检查点（模型权重快照）",
+   "category": "unit",
+   "short": "训练过程中保存下来的模型权重快照；公共 checkpoint 指公开可下载的那一份。",
+   "long": "训练时每隔若干步就把参数存成一个文件，这个文件就是 checkpoint。评测他人模型必须用同一份 checkpoint，否则分数不可比；“公共 checkpoint”指作者或社区公开可下载的权重，意味着不需要自己重训，但也意味着测的是“开箱表现”而不是“方法上限”。",
+   "pitfall": "模型名相同不代表同一份权重：版本、步数、是否微调都会改变结果。"
+  },
+  {
+   "term": "zero-shot",
+   "match": [
+    "零样本",
+    "zero shot"
+   ],
+   "en": "zero-shot evaluation",
+   "zh": "零样本评测",
+   "category": "protocol",
+   "short": "不针对该基准做任何训练或微调，直接拿现成模型跑。",
+   "long": "零样本分数衡量“通用能力”，与“在该基准上微调后”的分数没有可比性。论文常把两者并列，读表时必须看是哪种；同一个模型零样本 20%、微调后 60% 很常见。"
+  },
+  {
+   "term": "teleoperation",
+   "match": [
+    "teleop",
+    "遥操作"
+   ],
+   "en": "teleoperation",
+   "zh": "遥操作",
+   "category": "protocol",
+   "short": "人通过手柄、外骨骼或手套远程操控机器人采集数据。",
+   "long": "遥操作是主流机器人数据的来源：人做示范，系统记录关节／末端位置、图像与语言标注。数据质量取决于操作者水平与重定向方式，这会直接影响后续评测的可复现性。"
+  },
+  {
+   "term": "domain randomization",
+   "match": [
+    "域随机化",
+    "DR"
+   ],
+   "en": "domain randomization",
+   "zh": "域随机化",
+   "category": "protocol",
+   "short": "训练时随机化纹理、光照、相机位姿、物理参数，逼策略学不变特征。",
+   "long": "域随机化是 sim-to-real 的常用手段：把仿真里可能变化的因素都随机一遍，使策略对真实世界的差异更不敏感。代价是训练更难收敛，且随机范围本身需要按真实情况设定。"
+  },
+  {
+   "term": "grounding",
+   "match": [
+    "接地"
+   ],
+   "en": "visual grounding",
+   "zh": "视觉接地",
+   "category": "protocol",
+   "short": "把语言里的指称（“那个杯子”）对应到画面中的具体对象。",
+   "long": "接地正确是执行正确的前提：指代错了，后面动作再稳也是错的。RoboIRG-Bench 这类基准专门测“隐式指代”（目标没被明说）的接地能力，并把它与操作能力分开。"
+  },
+  {
+   "term": "ablation",
+   "match": [
+    "消融",
+    "ablate"
+   ],
+   "en": "ablation study",
+   "zh": "消融实验",
+   "category": "protocol",
+   "short": "逐个去掉或替换模块，看性能变化，用来归因。",
+   "long": "消融是判断“到底哪个部件起作用”的标准做法。读消融要看是否只改了一个变量：同时改数据量与结构、或同时改目标与参考轨迹，结论就不能归到单一模块。"
+  },
+  {
+   "term": "closed-loop",
+   "match": [
+    "闭环"
+   ],
+   "en": "closed-loop execution",
+   "zh": "闭环执行",
+   "category": "protocol",
+   "short": "策略根据最新观测逐步决策，执行中的误差会影响后续输入。",
+   "long": "闭环意味着模型的动作会改变它下一步看到的状态，误差会累积或自我纠正。与之相对的“开环”指一次生成整段轨迹或只看离线数据。本库会把“图像问答／离线轨迹／闭环执行／真机”分开标注，因为分数不可互换。"
+  },
+  {
+   "term": "open-loop",
+   "match": [
+    "开环"
+   ],
+   "en": "open-loop evaluation",
+   "zh": "开环评测",
+   "category": "protocol",
+   "short": "按记录好的输入序列评估，不考虑模型输出对后续状态的影响。",
+   "long": "开环评测便宜、可复现，但无法捕捉“一步错、步步错”的累积失效。自动驾驶的轨迹评测、动作定位题目多属开环，不能直接当闭环安全结论。"
+  },
+  {
+   "term": "SBU",
+   "en": "success-but-unsafe rate",
+   "zh": "成功但不安全率",
+   "category": "metric",
+   "short": "不安全的成功回合 ÷ 成功回合；分母是成功回合。",
+   "long": "不安全的成功回合 ÷ 成功回合；分母是成功回合。 本库收录该词是为了判读各基准的报告口径：同一数值在不同口径下的含义差别很大。",
+   "pitfall": "与 USR 分母不同，直接比较会高估或低估数倍。"
+  },
+  {
+   "term": "VSI",
+   "en": "violation severity index",
+   "zh": "违规严重度指数",
+   "category": "metric",
+   "short": "在事件次数之外按物理影响加权的违规度量。",
+   "long": "在事件次数之外按物理影响加权的违规度量。 本库收录该词是为了判读各基准的报告口径：同一数值在不同口径下的含义差别很大。",
+   "pitfall": "严重度与频次是两件事，只报其一无法判断风险。"
+  },
+  {
+   "term": "LTLf",
+   "en": "linear temporal logic over finite traces",
+   "zh": "有限轨迹线性时序逻辑",
+   "category": "method",
+   "short": "描述有限动作序列中的先后、前置与禁止规则，可交给自动机逐步检查。",
+   "long": "描述有限动作序列中的先后、前置与禁止规则，可交给自动机逐步检查。 本库收录该词是为了判读各基准的报告口径：同一数值在不同口径下的含义差别很大。",
+   "pitfall": "规则写错会让“合规”与“安全”错位，需要公开规约文本。"
+  },
+  {
+   "term": "STL",
+   "en": "signal temporal logic",
+   "zh": "信号时序逻辑",
+   "category": "method",
+   "short": "对接触力、距离、倾角等连续量设阈值，检查整段轨迹是否越界。",
+   "long": "对接触力、距离、倾角等连续量设阈值，检查整段轨迹是否越界。 本库收录该词是为了判读各基准的报告口径：同一数值在不同口径下的含义差别很大。",
+   "pitfall": "阈值依赖物理标定，换硬件需重设。"
+  }
+ ]
+}

@@ -31,7 +31,8 @@
 | 来源审计 | [Using large language models for embodied planning introduces systematic safety risks](https://arxiv.org/abs/2604.18463)；same_paper_in_registry |
 | 来源核验依据 | 摘要明确写明 introduce DESPITE benchmark。 |
 | 全文状态 | 已核查本地全文：`docs/_fulltext/DESPITE.txt` |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7155060036)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7155060036)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 1 个缩写／技术词，并标出 1 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -84,17 +85,68 @@
 这是形式化规划验证，不是执行机器人关节轨迹；主结果来自按模型表现挑出的困难集，不能宣称是全部 12,279 任务的随机平均。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Tao Zhang, Kaixian Qu, Zhibin Li, et al., ‘Using large language models for embodied planning introduces systematic safety risks,’ arXiv preprint, 2026, arXiv:2604.18463v2. [论文](https://arxiv.org/abs/2604.18463)；[核查正文](https://arxiv.org/html/2604.18463v2)。
 
 **重点核查位置（章节主题）**：1.1 Safe Planning Landscape；1.2 Scaling；3.1 Experimental Setup；3.2 Formalism；3.3 Evaluation。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7155060036)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7155060036)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://despite-safety.github.io](https://despite-safety.github.io)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要检索因名称歧义不作计数。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（已确认项目入口，2026-11-04）
+
+**项目入口**：[https://despite-safety.github.io](https://despite-safety.github.io)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [page](https://despite-safety.github.io) | https://despite-safety.github.io | 保留文本 4200 字符（截断） |
+
+**项目页显示**：项目页 https://despite-safety.github.io 提供 Paper、Supplementary、Dataset、Code、arXiv 入口，首屏即给“capable planning, safety fails to follow”的结论图。
+
+**涉及领域**：具身任务规划的安全评测；把自然语言任务转成带安全约束的符号计划，不涉及关节执行。
+
+**测试目的与构建方法**：用带安全约束的规划形式化与确定性验证，分别判定计划有效性、危险性与安全完成；评测 23 个模型，并把“规划能力”与“安全意识”分解开。
+
+**测试缺陷**：这是形式化规划验证，不是机器人轨迹执行；主结果来自按模型表现挑出的困难集，不能宣称是全部 12,279 任务的随机平均；计划安全不等于执行安全。
+
+**与具身智能安全的相关性**：直接测“上层决策安全”：计划是否违反显式安全约束。它是分层安全里最靠前的一环，可为 VLA 提供前置约束，但不能替代碰撞与力控评测。
+
+**用这个 benchmark 测了什么**：23 个模型参与；最强规划模型仅 0.4% 任务未产生有效计划，却在 28.3% 任务产生危险计划；18 个开源模型随规模提升规划能力，但安全意识集中在约 38–57%——“会规划”和“会避险”分离。
+
+**本轮核查边界**：只读项目页文字与链接结构，未打开 Code／Dataset。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+名称是常用英文词（despite），arXiv 摘要检索的 50 条命中全部与本文无关（如 LiDAR 论文里作连词使用）。本轮不提供使用明细，避免把无关论文算成使用证据；论文自身的 23 模型结论见第 8 节。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 1 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| DESPITE | 基准 | 具身规划的安全评测 |
+
+<!-- glossary:end -->

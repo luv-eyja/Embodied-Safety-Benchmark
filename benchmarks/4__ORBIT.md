@@ -28,7 +28,8 @@
 | 基础平台线索 | 表内摘要未明确基础平台。 |
 | 规模线索 | 完整框架支持五类场景；论文实证切片主要是浏览器、编码、桌面、协作分配四类，结合不同威胁与防护配置。 |
 | 执行环境线索 | 多代理安全评测框架；邻接参考 |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7214782110)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7214782110)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 3 个缩写／技术词，并标出 3 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -40,7 +41,7 @@
 
 **核心场景与条目**：完整框架支持五类场景；论文实证切片主要是浏览器、编码、桌面、协作分配四类，结合不同威胁与防护配置。
 
-**实现与判分**：基于 UK AISI Inspect，以配置分离角色、拓扑、调度、记忆、风险和防护；在隔离环境中将风险运行与正常运行配对，报告 Wilson／bootstrap 区间。
+**实现与判分**：基于 UK AISI Inspect（工具／框架），以配置分离角色、拓扑、调度、记忆、风险和防护；在隔离环境中将风险运行与正常运行配对，报告 Wilson／bootstrap 区间。
 
 ## 3. 用这个基准测了什么
 
@@ -67,17 +68,72 @@
 论文只测试了完整配置空间的一个切片，支持某场景不等于已全面实测；多数任务不是机器人环境，应作为多代理评测设计参考。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Ben Hagag, William L. Anderson, Srija Chakraborty, et al., ‘ORBIT: A Framework for Multi-Agent Safety and Security Evaluations,’ arXiv preprint, 2026, arXiv:2609.33102v1. [论文](https://arxiv.org/abs/2609.33102)；[核查正文](https://arxiv.org/html/2609.33102v1)。
 
 **重点核查位置（章节主题）**：3.1 Design Principles；3.2 Experiment Layers；3.4 Metrics；4 Task Suite；5 Experiment Results。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214782110)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214782110)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://github.com/wlanderson0/orbit](https://github.com/wlanderson0/orbit)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要检索因名称歧义不作计数。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（已确认项目入口，2026-11-04）
+
+**项目入口**：[https://github.com/wlanderson0/orbit](https://github.com/wlanderson0/orbit)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [repo](https://github.com/wlanderson0/orbit) | https://raw.githubusercontent.com/wlanderson0/orbit/HEAD/README.md | stars 51，license Apache-2.0（开源许可证），最后推送 2026-10-26，保留文本 4200 字符（截断） |
+
+**项目页显示**：GitHub https://github.com/wlanderson0/orbit（51 stars，Apache-2.0，2026-10-26 推送，v1.0.4）说明 Orbit 负责多代理会话、调度、委派与通信，Inspect 负责模型、工具、沙盒、评分与日志。
+
+**涉及领域**：多代理系统的安全与安保评测框架；基于 UK AISI Inspect 的通用代理环境（多数任务非机器人）。
+
+**测试目的与构建方法**：以配置分离角色、拓扑、调度、记忆、风险与防护，在隔离环境中把“风险运行”与“正常运行”配对，报告 Wilson／bootstrap 区间。
+
+**测试缺陷**：论文只测了完整配置空间的一个切片，支持某场景不等于全面实测；多数任务不是机器人环境，只能当多代理评测设计参考；结论依赖 Inspect 的沙盒与评分。
+
+**与具身智能安全的相关性**：邻接：它测的是多代理协作／委派／通信中的风险，具身多机器人系统会继承这些问题；但没有物理执行，不能给碰撞或损伤结论。
+
+**用这个 benchmark 测了什么**：约 90 种实验条件形成可控比较矩阵；贡献在于“统一架构与安全因素的对照基础设施”，而非可概括所有系统的总分。
+
+**本轮核查边界**：只读 README 与版本说明，未运行。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+名称是常用名词（orbit／on-orbit，还有 ORBIT-Surgical 等同类缩写），命中的多数与多代理安全框架无关。本轮不给使用明细。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 3 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **Wilson** | Wilson score interval | Wilson 区间 | 小样本下估计比例置信区间的标准方法，比直接用正态近似可靠。 |
+| **bootstrap** | bootstrap resampling | 自助重采样（置信区间） | 通过对已有样本反复重采样来估计区间，比正态假设更稳。 |
+| **LLM** | Large Language Model | 大语言模型 | 纯文本大模型，常作为具身代理的规划或工具调用层。 |
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| ORBIT | 基准 | 多代理安全评测框架；邻接参考 |
+
+另有 2 个专有名称已在正文首次出现处加括号标注类别（例如 Inspect（工具／框架）、Apache-2.0（开源许可证）），不再重复解释。
+
+<!-- glossary:end -->

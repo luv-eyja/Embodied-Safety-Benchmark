@@ -30,7 +30,8 @@
 | 执行环境线索 | 机器人语义安全判断／数据与方法 |
 | 来源审计 | [Generating Robot Constitutions & Benchmarks for Semantic Safety](https://arxiv.org/abs/2503.08663)；same_paper_in_registry |
 | 来源核验依据 | 摘要明确写明发布 ASIMOV Benchmark；AGENTSAFE 是本库中的使用论文。 |
-| OpenAlex 引用快照 | [0](https://openalex.org/W4414578652)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W4414578652)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 3 个缩写／技术词，并标出 1 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -71,17 +72,78 @@
 一致率不等于闭环动作安全率；自动扩增规模不代表人工审查覆盖率。机器人案例数量小，不能据此声称对所有物理危险有保证。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Pierre Sermanet, Anirudha Majumdar, Alex Irpan, et al., ‘Generating Robot Constitutions & Benchmarks for Semantic Safety,’ arXiv preprint, 2025, arXiv:2503.08663v1. [论文](https://arxiv.org/abs/2503.08663)；[核查正文](https://arxiv.org/html/2503.08663v1)。
 
 **重点核查位置（章节主题）**：3 ASIMOV Datasets；4 Generating Constitutions；6 Empirical Evaluation。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W4414578652)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W4414578652)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://asimov-benchmark.github.io/](https://asimov-benchmark.github.io/)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 1 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要命中 1 篇。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（已确认项目入口，2026-11-04）
+
+**项目入口**：[https://asimov-benchmark.github.io/](https://asimov-benchmark.github.io/)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [page](https://asimov-benchmark.github.io/) | https://asimov-benchmark.github.io/ | 保留文本 98 字符（截断） |
+
+**项目页显示**：项目地址为 https://asimov-benchmark.github.io/，抓取时只返回跳转提示（Redirecting to ASIMOV Benchmark v1），未取到数据或代码说明。
+
+**涉及领域**：图像—动作的语义安全问答；数据来自真实图像与医院伤害报告，面向机器人在家庭／医疗场景的常识性伤害判断。
+
+**测试目的与构建方法**：把情境与候选动作转成可判别的问答对，用模型生成并增补“机器人 constitution”，再与人类判断比对；验证集 2,273 题，其中 1,140 题有人类标签。
+
+**测试缺陷**：一致率不等于闭环动作安全率；自动扩增的规模不代表人工审查覆盖；机器人案例数量少，不能据此声称对所有物理危险有保证；项目页已重定向到 v1，未提供可运行的评测脚本入口。
+
+**与具身智能安全的相关性**：直接测“伤害常识”这一层安全：模型能否识别会伤人的动作。它覆盖语义与后果判断，但不是执行层约束，不能回答碰撞、力控或轨迹越界问题。
+
+**用这个 benchmark 测了什么**：论文报告自动生成的准则与人类判断达到 84.3% 一致率，并给出少量机器人场景的防护验证；SciFi-Benchmark（2026）在同一基准上比较科幻作品衍生的 constitution，报告一致率提升。本轮未从项目页取得完整被测模型清单。
+
+**本轮核查边界**：项目页为纯跳转页，代码／数据可用性未在本轮核实。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+本轮判读 **1 篇**论文：下表逐篇写被测模型、用法、评测范围与指标、报告结果；“摘要未给数值”表示摘要里确实没写数，不是没跑。每行下方的引用块是摘要原文片段，可据此复核判读是否过度。
+
+| 论文（年份） | 被测模型 | 用法 | 评测范围与指标 | 报告结果 |
+|---|---|---|---|---|
+| SciFi-Benchmark: Leveraging Science Fiction To Improve Robot Behavior（2025） | 由科幻作品生成的 constitution（准则）驱动的模型 | 评测（安全准则比较） | ASIMOV 验证集（题目由真实图像与医院伤害报告派生），比较不同 constitution 的人类判断一致率 | 该文的 constitution 进入 ASIMOV 上的最优一组；摘要未给出具体数值 |
+
+**原文片段（摘要）**：
+
+- SciFi-Benchmark: Leveraging Science Fiction To Improve Robot…（2025，arXiv）：> 那些 constitution 在 ASIMOV Benchmark 上属于 top performers
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 3 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+| **VLM** | Vision-Language Model | 视觉语言模型 | 能同时理解图像和文字的模型，常被当作具身代理的高层决策器。 |
+| **closed-loop** | closed-loop execution | 闭环执行 | 策略根据最新观测逐步决策，执行中的误差会影响后续输入。 |
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| ASIMOV Benchmark | 基准 | 机器人语义安全判断／数据与方法 |
+
+<!-- glossary:end -->

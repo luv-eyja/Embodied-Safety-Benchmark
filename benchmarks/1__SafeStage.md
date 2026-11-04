@@ -29,7 +29,8 @@
 | 规模线索 | 97 个任务：初始危险 ISH 27、执行阶段 ETS 40、完成后 FSH 30；RoboLab／GPU PhysX 中的 Panda＋Robotiq 机械臂，完成后继续观察 5 秒。 |
 | 执行环境线索 | 仿真全流程操作安全 |
 | 全文状态 | 已核查本地全文：`docs/_fulltext/SafeStage.txt` |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7213988552)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7213988552)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 13 个缩写／技术词，并标出 1 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -82,17 +83,86 @@
 机器人硬件名称不意味着做了真机评测。成功中违规比例与全 episode 的 USR 分母不同，评估器准确度也不代表策略安全度。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Jinzhu Luo, Qi Zhang, Wei Wang, et al., ‘SafeStage: Evaluating Safety Before, During, and After Vision-Language-Conditioned Robot Manipulation,’ arXiv preprint, 2026, arXiv:2609.21223v1. [论文](https://arxiv.org/abs/2609.21223)；[核查正文](https://arxiv.org/html/2609.21223v1)。
 
 **重点核查位置（章节主题）**：Benchmark Construction；Evaluation Protocol；Experimental Results。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7213988552)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7213988552)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://github.com/reeta-042/safestage](https://github.com/reeta-042/safestage)。地址状态为 `candidate`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要未见命中。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（候选待确认，2026-11-04）
+
+**项目入口**：[https://github.com/reeta-042/safestage](https://github.com/reeta-042/safestage)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [repo](https://github.com/reeta-042/safestage) | https://raw.githubusercontent.com/reeta-042/safestage/HEAD/README.md | stars 0，最后推送 2026-08-31，保留文本 4200 字符（截断） |
+
+**项目页显示**：抓取到的 https://github.com/reeta-042/safestage（0 stars，2026-08-31 推送）README 内容是 FortyGuard 的热环境决策平台，与机器人安全基准无关；因此本条的代码与数据可用性仍为未知。
+
+**涉及领域**：分阶段安全评测（论文侧）：把危险状态、路径／接触约束与终态稳定性绑定到不同阶段；仿真中的操作任务。
+
+**测试目的与构建方法**：将危险状态、路径与接触约束、终态稳定性绑定到不同阶段，用仿真特权状态评分但不提供给策略；报告 SR、VR、SSR、USR，其中 SR=SSR+USR。
+
+**测试缺陷**：本库审计给出的项目地址（github.com/reeta-042/safestage）实际是一个同名但无关的“气候运营平台”，与论文基准无对应关系——**项目入口不可用**；评估器准确度不代表策略安全度；成功中违规比例与全 episode 的 USR 分母不同。
+
+**与具身智能安全的相关性**：直接：唯一按“执行前／中／后”分阶段给安全指标的设计之一，能区分“没出事”和“没违规”。但项目不可得，只能依赖论文。
+
+**用这个 benchmark 测了什么**：论文报告聚合 SR 33.74%、SSR 9.84%、USR 23.90%——成功轨迹中 70.84% 含不安全行为；评估器在 240 条核查轨迹上 F1 为 97.26%。
+
+**本轮核查边界**：项目地址疑为同名误配；本轮未能找到真正的 SafeStage 仓库。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 13 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **episode** | episode | 回合 | 一次从重置到终止（成功／失败／超时）的完整交互，是最常见的分母。 |
+| **rollout** | rollout | 展开／推演 | 用当前策略跑一次得到的完整轨迹，常与 episode 混用。 |
+| **ETS** | Execution Steps（本库 SafeLIBERO 口径） | 执行步数 | 完成任务所花的控制步数，用来发现“靠磨时间换安全”。 |
+| **SR** | Success Rate | 成功率 | 成功 episode ÷ 全部 episode；但有的论文用它指 Security Rate，必须先看定义。 |
+| **VR** | Violation Rate | 违规率 | 发生约束违反的 episode ÷ 全部 episode，不看任务是否完成。 |
+| **SSR** | Safe Success Rate | 安全成功率 | 既完成任务又没违规的 episode ÷ 全部 episode。 |
+| **USR** | Unsafe Success Rate | 不安全成功率 | 完成但违规的 episode ÷ 全部 episode；不是“成功中的违规比例”。 |
+| **F1** | F1 score | 调和平均分 | 精确率与召回率的调和平均，用于二分类式判定。 |
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+| **privileged** | privileged information / privileged state | 特权信息／特权状态 | 只有仿真或评测器能拿到的真值状态，用于判分但不给策略。 |
+| **closed-loop** | closed-loop execution | 闭环执行 | 策略根据最新观测逐步决策，执行中的误差会影响后续输入。 |
+| **cs.RO** | arXiv category: cs.RO / cs.CV / cs.AI / cs.LG | arXiv 学科分类 | arXiv 的学科标签：cs.RO 机器人、cs.CV 计算机视觉、cs.AI 人工智能、cs.LG 机器学习。 |
+| **Franka** | Franka Emika Panda / Franka Research 3 | Franka 机械臂 | 最常用的七自由度科研机械臂，真机实验的标准硬件。 |
+
+**本文最容易读错的地方**：
+- **episode**：把“任务数”“配置数”当 episode 分母，会让成功率虚高。
+- **rollout**：rollout 数、episode 数、候选轨迹数三者混用。
+- **SR**：把 SR（Security Rate）当成功率，或把 /N 的比率当 /SR 的比率。
+- **USR**：把 USR 直接说成“成功里的违规比例”。
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| SafeStage | 基准 | 分阶段安全评测基准 |
+
+<!-- glossary:end -->

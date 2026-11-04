@@ -251,7 +251,8 @@ def outputs(survey,registry):
 
     index=['# 调研条目索引','',
            f"共 {len(survey['entries'])} 个登记条目，62 个已分类、60 个非重点档案。类型和旧 VLA 分类属于不同维度，不再将所有登记项称为独立 benchmark。",'',
-           '当前比较入口：[统一矩阵](../analysis/benchmark-comparison.md) · [精读报告](../analysis/benchmark-paper-deep-read.md) · [调研方法](../docs/METHOD.md)。', '',
+           '当前比较入口：[统一矩阵](../analysis/benchmark-comparison.md) · [精读报告](../analysis/benchmark-paper-deep-read.md) · [调研方法](../docs/METHOD.md)。',
+           '缩写与技术词先查[全库术语表](../docs/GLOSSARY.md)；每个条目文档的第 10 节也会列出该文实际出现的词并解释。', '',
            '“原全文补录”保留历史标记；本轮 62 条另有正文重点章节核查。项目状态只表示入口查找结果。']
     cards={c['name']:c for c in read('benchmark_cards.json')['cards']}
     for t in TYPE:

@@ -1,0 +1,1761 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-11-04",
+  "scope": "62 classified entries; every entry has a project page or repository address in the project audit",
+  "method": "每条的领域、目的与构建、缺陷、安全相关性、被测对象与结论，均以已读正文笔记与项目页／README 文本为依据；项目页只作补充，不替代论文。未运行任何代码。",
+  "cache": "docs/_project_cache.json（本地缓存，未纳入版本库）",
+  "entry_count": 62,
+  "entries": [
+    {
+      "benchmark": "ASIMOV Benchmark",
+      "domain": "图像—动作的语义安全问答；数据来自真实图像与医院伤害报告，面向机器人在家庭／医疗场景的常识性伤害判断。",
+      "purpose_build": "把情境与候选动作转成可判别的问答对，用模型生成并增补“机器人 constitution”，再与人类判断比对；验证集 2,273 题，其中 1,140 题有人类标签。",
+      "defects": "一致率不等于闭环动作安全率；自动扩增的规模不代表人工审查覆盖；机器人案例数量少，不能据此声称对所有物理危险有保证；项目页已重定向到 v1，未提供可运行的评测脚本入口。",
+      "safety_relevance": "直接测“伤害常识”这一层安全：模型能否识别会伤人的动作。它覆盖语义与后果判断，但不是执行层约束，不能回答碰撞、力控或轨迹越界问题。",
+      "tested": "论文报告自动生成的准则与人类判断达到 84.3% 一致率，并给出少量机器人场景的防护验证；SciFi-Benchmark（2026）在同一基准上比较科幻作品衍生的 constitution，报告一致率提升。本轮未从项目页取得完整被测模型清单。",
+      "project_facts": "项目地址为 https://asimov-benchmark.github.io/，抓取时只返回跳转提示（Redirecting to ASIMOV Benchmark v1），未取到数据或代码说明。",
+      "limits_of_this_review": "项目页为纯跳转页，代码／数据可用性未在本轮核实。",
+      "document": "1__ASIMOV-Benchmark.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://asimov-benchmark.github.io/"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://asimov-benchmark.github.io/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 98
+        }
+      ]
+    },
+    {
+      "benchmark": "Agent-SafetyBench",
+      "domain": "软件代理（LLM agent）的多步工具交互；风险类别覆盖软件、数据、内容与文本化的物理后果，不含机器人动力学。",
+      "purpose_build": "汇总并去重既有代理安全测试，统一为 16 类风险、8 类失败模式的环境集合，人工质检后用脚本化评分器同时判安全性与有用性。",
+      "defects": "环境停在工具调用层，物理后果只是文本标签；评分器与任务模板强绑定，新工具难复用；安全／有用性权衡只在少量提示策略上验证。",
+      "safety_relevance": "直接测智能体安全（风险类别 × 失败模式），可作为具身代理“上层决策与工具使用”的邻接证据；不能替代关节级／接触级的物理安全评测。",
+      "tested": "论文测 16 个 LLM 代理，均未达到 60% 安全分数，问题归为鲁棒性与风险意识不足；SHE（2026）在此基准上做安全 harness 演化并报告提升；多篇 LLM 代理安全综述引用其分类法。",
+      "project_facts": "GitHub repo（167 stars，MIT，2025-08-11 最后推送）：提供数据集、环境与代码，数据同时发布在 HuggingFace，README 给出 Quick Start 与 News 时间线。",
+      "limits_of_this_review": "本轮只读 README 与仓库元数据，未运行任何环境。",
+      "document": "4__Agent-SafetyBench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/thu-coai/Agent-SafetyBench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/thu-coai/Agent-SafetyBench",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/thu-coai/Agent-SafetyBench/HEAD/README.md",
+          "stars": 167,
+          "license": "MIT",
+          "pushed_at": "2025-08-11",
+          "description": null,
+          "text_chars": 1811
+        }
+      ]
+    },
+    {
+      "benchmark": "AgiBot World",
+      "domain": "双臂移动操作的真机数据与训练／评测平台；场景为家庭、零售、工业等真实环境。",
+      "purpose_build": "基于 AgiBot G1 的标准化遥操作采集，配合采集前验证、本地完整性检查、云端质量审核与语言标注，并保留失败与恢复过程，用于训练 GO-1 等通用策略。",
+      "defects": "它首先是训练资源而非独立安全压力测试；跨数据源收益依赖任务、训练量与模型配置；数据许可为 CC BY-NC-SA 4.0，商用受限。",
+      "safety_relevance": "间接：提供真机失败／恢复样本，可用于学习纠错与安全恢复；本身不定义风险约束，也不产出安全率指标。",
+      "tested": "论文报告 GO-1 在复杂任务上的成功率超过 60%，并比较不同预训练数据来源；下游有 PointVLA、X-Distill 等 13 篇引用，2026 年 AgiBot World Challenge 的世界模型赛道有团队报告把动作缺陷率从 48.12% 降到 6.25%。",
+      "project_facts": "项目页 https://agibot-world.com/ 只返回站名；GitHub repo（3,223 stars，2026-05-29 最后推送）README 链向 HuggingFace 数据、GO-1 模型与 CC BY-NC-SA 4.0 许可。",
+      "limits_of_this_review": "数据规模、任务分布与评测协议均引自已发表论文，未下载数据核对。",
+      "document": "3__AgiBot-World.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://agibot-world.com/",
+        "https://github.com/OpenDriveLab/AgiBot-World"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://agibot-world.com/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 12
+        },
+        {
+          "url": "https://github.com/OpenDriveLab/AgiBot-World",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/OpenDriveLab/AgiBot-World/HEAD/README.md",
+          "stars": 3223,
+          "license": null,
+          "pushed_at": "2026-05-29",
+          "description": "[IROS 2025 Best Paper Award Finalist & IEEE TRO 2026] The Large-scale Manipulation Platform for Scalable and Intelligent Embodied Systems",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "BAVO-Bench",
+      "domain": "机械臂操作中的主动视觉与遮挡恢复（物理主动观察）；桌面操作场景。",
+      "purpose_build": "构造阶段相关的遮挡数据，训练并评测策略在外部遮挡下主动移动相机恢复可见性；指标为成功率 SR、任务进展 TPS 与相机运动带来的可见性增益 CVG。",
+      "defects": "可见性增益不能替代任务成功；ACT、ManiFlow、A-FAR 使用三种种子而 π0.5 训练设置不同，各行不是等预算比较；遮挡只在仿真中程序化生成。",
+      "safety_relevance": "间接但重要：遮挡导致的“看不见仍在动”是典型事故来源，该基准把“主动确认视野”作为可测能力；它不直接给碰撞或伤害指标。",
+      "tested": "A-FAR 在 Clean／Stage／随机遮挡下的 SR 为 51.3%／63.7%／18.7%，说明训练匹配的 Stage 可能比 Clean 更高、难度并不单调；被测策略含 ACT、ManiFlow、π0.5 与 A-FAR。",
+      "project_facts": "项目页 https://hcplab-sysu.github.io/BAVO-Bench 提供动机图、benchmark 与方法的整体示意及作者单位，未见独立代码仓库链接。",
+      "limits_of_this_review": "项目页是静态介绍页，代码与数据可获取性未核实。",
+      "document": "2__BAVO-Bench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://hcplab-sysu.github.io/BAVO-Bench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://hcplab-sysu.github.io/BAVO-Bench",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "BEHAVIOR-1K",
+      "domain": "家庭长时程移动操作；1,000 项基于人类需求调查的日常活动，仿真 + OmniGibson。",
+      "purpose_build": "先用问卷确定“人真正希望机器人代劳”的活动，再用 BDDL 逻辑描述初态与目标，在 OmniGibson 中支持刚体、软体、液体与热／烹饪状态，按活动完成检查评分。",
+      "defects": "部分基线使用抽象抓取，不能与全低层控制直接比较；任务极长导致失败归因困难；资产与仿真开销大，复现门槛高；后续工作使用的任务子集不等于原始全集。",
+      "safety_relevance": "间接：长时程家务是事故高发场景，但基准评的是完成度而非风险；可用其状态谓词扩展出安全约束，原始协议不含违规判罚。",
+      "tested": "论文给出多种仿真解法，并在 CollectTrash 上用真实 Tiago 与公寓孪生分析 sim-to-real 落差；2026 年有工作在此基准上研究“语义交接失败”（skill 交接状态不可用）；25 篇 arXiv 摘要命中含多篇长时程编排研究。",
+      "project_facts": "项目页 https://behavior.stanford.edu/ 为文档站：给 Getting Started、源码入口（StanfordVL/BEHAVIOR-1K）与 2026 Challenge 信息，强调“第一个基于真实人类需求的仿真基准”。",
+      "limits_of_this_review": "只读文档站首页，未核对资产下载与许可证条款。",
+      "document": "3__BEHAVIOR-1K.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://behavior.stanford.edu/"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://behavior.stanford.edu/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 2197
+        }
+      ]
+    },
+    {
+      "benchmark": "Bench2Dex",
+      "domain": "双臂灵巧手操作，带仿真指尖视触觉；桌面装配类任务。",
+      "purpose_build": "在 Isaac Lab 中录制手套／腕部遥操作，离线重放成同步 RGB-D、触觉、关节、动作与物体状态，把局部接触几何转成统一图像式触觉，用稳定成功率 SR 与锁存阶段完成 LSCR 判分。",
+      "defects": "统一触觉是模拟接触表征，不是特定真实传感器的数字复刻；主实验部分策略只用 RGB 与关节，不能把成绩解释为触觉收益；全部在仿真中完成。",
+      "safety_relevance": "间接：接触表征与力相关，但指标是成功与阶段完成，不含损伤、滑移或过载判罚；可作为触觉安全研究的前置平台。",
+      "tested": "四种策略在不同任务与扰动通道差异明显，例如 Gaming Desk Setup 上 GR00T-N1.5 四通道平均稳定成功率 59.5%、ACT 为 31.0%。",
+      "project_facts": "项目页 https://bench2dex.github.io 提供 Overview、Compare Embodiments、Teleop & Data、Tasks、Evaluation、Generalization、Leaderboard 与 Docs 入口，属完整发布页。",
+      "limits_of_this_review": "只读项目页导航与摘要，未进入 Leaderboard 或评测脚本。",
+      "document": "4__Bench2Dex.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://bench2dex.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://bench2dex.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "BiDex-100",
+      "domain": "双臂灵巧操作，100+ 仿真任务，按“能力边界”组织。",
+      "purpose_build": "声明式配置对象、区域、关节与目标，用逻辑完成条件和阶段进度判分；用匹配随机种子构造 ID/OOD 划分，每任务两种种子各 25 episode。",
+      "defects": "结果绑定特定本体与训练设置；进度分数与全部完成率不可互换；域外泛化只用种子匹配的 OOD 划分，未必覆盖真实分布偏移；纯仿真。",
+      "safety_relevance": "间接：多任务灵巧操作的能力边界可用来定位“哪些动作类别还没做稳”，但基准本身不定义风险或伤害。",
+      "tested": "LingBot-VLA-v2 的 ID 总成功率 52.21%、OOD 仅 1.68%；GR00T-N1.7 的 OOD 总成功率 5.45%，显示多任务成功与域外泛化差距巨大。",
+      "project_facts": "项目页 https://robbyant-research.github.io/BiDex-100 提供 Overview、Document、Setup、Domain Randomization、Tasks、Leaderboard 与 News，作者匿名（投稿中）。",
+      "limits_of_this_review": "只读项目页，未核对任务清单与评分实现。",
+      "document": "3__BiDex-100.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://robbyant-research.github.io/BiDex-100"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://robbyant-research.github.io/BiDex-100",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "CALVIN",
+      "domain": "语言条件的长时程机械臂操作；桌面仿真环境，含多模态 play 数据与人类语言标注。",
+      "purpose_build": "采集多模态示教与语言标注，按状态变化判定单任务完成；区分单环境、多环境、以及“训练三环境／测试第四环境”的 ABC→D 协议，报告不同指令链长的成功率与平均完成长度。",
+      "defects": "现代论文的 ABC→D 协议、数据量、历史窗口与模型均与原始基线不同，引用原论文不能据此报告当前榜首；任务与场景高度固定，容易过拟合；只测能力不测显式危险约束（有 2026 年工作专门审计其奖励／数据依赖）。",
+      "safety_relevance": "较弱：它是能力与长期指令跟随基准；可作为安全策略的前置能力门槛，但分数本身不反映风险。",
+      "tested": "原论文用 MCIL 等基线说明单任务表现不能代表未见环境与连续指令组合；其后 188 篇引文包括 Code as Policies、Visual Language Maps、Text2Motion 等；2026 年有审计工作以 CALVIN 为案例研究“并行策略评测的基准路径保真度”。",
+      "project_facts": "官网 https://calvin-robot.github.io/ 已 404（GitHub Pages Site not found）；代码在 https://github.com/mees/calvin（1,002 stars，MIT，2025-09-08 最后推送），README 指向原论文并说明获得 2022 RA-L 最佳论文。",
+      "limits_of_this_review": "官网失效，只能以代码仓库为准；未核验数据集下载。",
+      "document": "3__CALVIN.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://calvin-robot.github.io/",
+        "https://github.com/mees/calvin"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://calvin-robot.github.io/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 263
+        },
+        {
+          "url": "https://github.com/mees/calvin",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/mees/calvin/HEAD/README.md",
+          "stars": 1002,
+          "license": "MIT",
+          "pushed_at": "2025-09-08",
+          "description": "CALVIN - A benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "CARLA / CARLA Leaderboard",
+      "domain": "自动驾驶城市仿真平台与排行榜协议；开放城市资产、传感器与交通参与者。",
+      "purpose_build": "提供开放源码的城市驾驶仿真、数字资产与可控传感器／天气／交通配置，早期论文用固定路线比较模块化、模仿学习与强化学习方法，按到达目标、距离与违规评价；Leaderboard 是后续独立协议与版本。",
+      "defects": "原模拟器论文的实验允许忽略限速与信号灯，不能视为现代 Leaderboard 规则；仿真器引用量不等于排行榜引用量；渲染与物理开销大，结果受版本影响明显。",
+      "safety_relevance": "强：可编程构造危险场景（行人、恶劣天气、传感器失效），是自动驾驶安全测试的事实底座；但安全性取决于测试场景如何设计，平台本身不保证覆盖。",
+      "tested": "成果是 CARLA 平台与早期受控驾驶协议，展示方法在未见天气／城镇上的不同泛化；3,758 篇引文含 nuScenes、Argoverse 等数据集与大量安全测试框架，例如 ANTI-CARLA 用其做对抗测试。",
+      "project_facts": "官网 https://carla.org/ 与 GitHub https://github.com/carla-simulator/carla（14,566 stars，MIT，2026-11-03 推送）均活跃，README 指向 UE5 文档与发布页。",
+      "limits_of_this_review": "只读官网与仓库首页，未安装仿真器或运行 Leaderboard。",
+      "document": "5__CARLA-CARLA-Leaderboard.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://carla.org/",
+        "https://github.com/carla-simulator/carla"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://carla.org/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4179
+        },
+        {
+          "url": "https://github.com/carla-simulator/carla",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/carla-simulator/carla/HEAD/README.md",
+          "stars": 14566,
+          "license": "MIT",
+          "pushed_at": "2026-11-03",
+          "description": "Open-source simulator for autonomous driving research.",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "COLOSSEUM",
+      "domain": "机械臂操作的泛化评测；在 RLBench／CoppeliaSim 上施加系统扰动。",
+      "purpose_build": "分别施加单轴与组合扰动（纹理、光照、相机位姿、桌面颜色、干扰物等），用相同任务目标评价策略；比较五种操作方法，并在四项真实桌面任务检查模拟趋势。",
+      "defects": "原底座不是 LIBERO；相对退化不能改写成成功率下降同等百分点；模拟与实机、不同扰动组合须分别报告；扰动轴之间可能交互，单轴结果不能线性外推。",
+      "safety_relevance": "中等：扰动鲁棒性是安全的前置条件（分布变化下的失效常导致事故），但基准评的是成功率退化，不含风险约束或伤害度量。",
+      "tested": "论文报告常见变化造成约 30–50% 性能退化，组合变化可达至少 75% 相对退化；2026 年 Colosseum V2 扩展到 VLA 泛化评测；引文含多篇 VLA 与多模态综述。",
+      "project_facts": "项目页 https://robot-colosseum.github.io 提供 ArXiv、Code、Real World Setup、Leaderboard 与 Dataset 入口（RSS 2024）。",
+      "limits_of_this_review": "只读项目页导航，未核对 Leaderboard 数值或数据集许可。",
+      "document": "3__COLOSSEUM.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://robot-colosseum.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://robot-colosseum.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "DESPITE",
+      "domain": "具身任务规划的安全评测；把自然语言任务转成带安全约束的符号计划，不涉及关节执行。",
+      "purpose_build": "用带安全约束的规划形式化与确定性验证，分别判定计划有效性、危险性与安全完成；评测 23 个模型，并把“规划能力”与“安全意识”分解开。",
+      "defects": "这是形式化规划验证，不是机器人轨迹执行；主结果来自按模型表现挑出的困难集，不能宣称是全部 12,279 任务的随机平均；计划安全不等于执行安全。",
+      "safety_relevance": "直接测“上层决策安全”：计划是否违反显式安全约束。它是分层安全里最靠前的一环，可为 VLA 提供前置约束，但不能替代碰撞与力控评测。",
+      "tested": "23 个模型参与；最强规划模型仅 0.4% 任务未产生有效计划，却在 28.3% 任务产生危险计划；18 个开源模型随规模提升规划能力，但安全意识集中在约 38–57%——“会规划”和“会避险”分离。",
+      "project_facts": "项目页 https://despite-safety.github.io 提供 Paper、Supplementary、Dataset、Code、arXiv 入口，首屏即给“capable planning, safety fails to follow”的结论图。",
+      "limits_of_this_review": "只读项目页文字与链接结构，未打开 Code／Dataset。",
+      "document": "4__DESPITE.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://despite-safety.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://despite-safety.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "EmbodiedBench",
+      "domain": "视觉驱动具身代理的综合能力评测，跨 4 类环境（高层家务、导航、操作等），面向多模态大模型。",
+      "purpose_build": "统一视觉代理输入、历史与结构化动作输出；高层环境用离散技能，导航与操作采用更细粒度动作，并提供执行有效性反馈与语言／视觉消融。",
+      "defects": "主要测能力而非安全约束；四类环境的动作抽象不同，整体均值不能解释为真实机械臂安全成功率；模型结果对应当年版本；项目页无静态文本，复现入口需 JS 渲染。",
+      "safety_relevance": "较弱：它的价值是给出“能力门槛”与失败模式（低层操作明显弱于高层），为安全评测提供对照；本身不含风险约束或违规判罚。",
+      "tested": "24 个模型中，原论文最佳 GPT-4o 平均仅 28.9%，高层任务较强、低层操作明显困难；后续有 MemCompiler 等在此基准上评测记忆机制，Robocskbench 引用其能力划分。",
+      "project_facts": "项目页 https://embodiedbench.github.io 抓取后无有效文本（依赖前端渲染），本轮只能以论文与卡片记录为准。",
+      "limits_of_this_review": "项目页未取到内容，代码／数据可用性未核实。",
+      "document": "4__EmbodiedBench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://embodiedbench.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://embodiedbench.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 0
+        }
+      ]
+    },
+    {
+      "benchmark": "EmbodiedGovBench",
+      "domain": "具身代理系统的治理、恢复与升级安全；面向可解释运行轨迹的接口级评测。",
+      "purpose_build": "参数化场景与扰动经 adapter 注入系统，收集轨迹后由 governance judge 对照合法动作与权限边界；按 minimal／standard／fleet／full 四档报告覆盖，不以任务完成代替合规。",
+      "defects": "论文以指标体系、参与档位与 worked example 为主，没有大规模实证排行榜；可解释轨迹是评测前提，只支持已接入该接口的系统；仓库 0 stars、示例分数不能当多模型结论。",
+      "safety_relevance": "直接测治理层安全（权限边界、违规动作、恢复与升级），是最贴近“部署后运维安全”的一类；与物理层安全互补，但不能回答力学后果。",
+      "tested": "论文报告治理指标体系与两类原型目标的 worked example，另有 §8.5 的 SayCan 复现与 §8.6 的跨 LLM 对抗提示实验；本轮未发现可作排行榜的统一结果。",
+      "project_facts": "GitHub https://github.com/s20sc/embodied-gov-bench（0 stars，Apache-2.0，2026-05-05 推送）自称包含完整 harness、基线与原始实验数据，README 逐条对应论文 §8.4–8.6。",
+      "limits_of_this_review": "只读 README 的功能清单，未下载原始数据。",
+      "document": "4__EmbodiedGovBench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/s20sc/embodied-gov-bench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/s20sc/embodied-gov-bench",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/s20sc/embodied-gov-bench/HEAD/README.md",
+          "stars": 0,
+          "license": "Apache-2.0",
+          "pushed_at": "2026-05-05",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "ForesightSafety-VLA",
+      "domain": "VLA 模型的物理与语义安全诊断；仿真操作场景，含任务难度分级与语言／视觉扰动。",
+      "purpose_build": "用层级任务难度与语言／视觉扰动构造可控测试，结合任务完成与约束违反信号，报告 SR、约束违反 CC、风险暴露 RET，并把 episode 分成安全成功／不安全成功／安全失败／不安全失败四象限。",
+      "defects": "四象限分母是全部 episode，不能把“不安全成功”当成成功中的违规比；仿真风险触发与真实损伤仍有距离；扰动强度与任务难度耦合。",
+      "safety_relevance": "直接测执行层安全：动作是否违反约束，以及“成功”里有多少是危险的。四象限正好把能力与安全解耦，是本库中最贴近物理安全的评测之一。",
+      "tested": "原文示例 OpenVLA-oft 的 SR 0.48、不安全成功 0.06（即成功轨迹中约 12.5% 不安全）；常规措辞变化与结构性风险影响不同，说明“换个说法”不足以暴露风险。",
+      "project_facts": "GitHub https://github.com/tuotuoLyu/ForesightSafety-VLA（87 stars，2026-10-29 推送，许可标记 NOASSERTION），README 为论文首页信息与作者单位。",
+      "limits_of_this_review": "只读 README 头部，未核对代码与数据集。",
+      "document": "1__ForesightSafety-VLA.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/tuotuoLyu/ForesightSafety-VLA"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/tuotuoLyu/ForesightSafety-VLA",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/tuotuoLyu/ForesightSafety-VLA/HEAD/README.md",
+          "stars": 87,
+          "license": "NOASSERTION",
+          "pushed_at": "2026-10-29",
+          "description": "Official code for ForesightSafety-VLA (IROS 2026): a unified diagnostic safety benchmark for vision-language-action models on RoboTwin",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "HazardArena",
+      "domain": "VLA 的语义安全评测；用“电机匹配”的危险／安全孪生场景区分能力与安全。",
+      "purpose_build": "配对保持场景与操作模板可比，只改变动作参与者、目标关系与指令，构造 51 个可执行风险场景及其安全孪生；把 rollout 进度按 ATTEMPT／COMMIT／SUCCESS 三档记录，分别判定。",
+      "defects": "安全／危险配对并非只替换一个文本标签，仍存在混淆变量；ATTEMPT、COMMIT 与实际完成危险行为不可混用；改进只对应文中训练与评测分布。",
+      "safety_relevance": "直接测语义安全：模型是否正确理解“谁对谁做什么”并在危险意图下停止。它补的是“理解错→动作错”这条因果链，不是力学安全。",
+      "tested": "用拒绝示范训练的 VLA-Adapter 在报告设置中把危险任务成功率从 0.22 降到 0.01、COMMIT 从 0.44 降到 0.03，而安全任务成功率由 0.25 升到 0.26；另有真机验证。",
+      "project_facts": "GitHub https://github.com/HazardArena-Team/HazardArena（7 stars，2026-08-17 推送）说明仓库含 benchmark 实现、评测工具与数据转换脚本，并明确“released code scope”。",
+      "limits_of_this_review": "只读 README，未运行评测工具。",
+      "document": "1__HazardArena.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/HazardArena-Team/HazardArena"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/HazardArena-Team/HazardArena",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/HazardArena-Team/HazardArena/HEAD/README.md",
+          "stars": 7,
+          "license": "NOASSERTION",
+          "pushed_at": "2026-08-17",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "HygieneRoboBench",
+      "domain": "家庭机器人的“卫生感知”长时程规划；涉及接触传播与清洁顺序。",
+      "purpose_build": "规划器读取公开规则、结构化状态与历史；独立 evaluator 完整重放计划，用隐藏 reference 给出可行性与最优成本；配套 Hygiene-NSP 方法结合语言接地、历史重建与 CP-SAT 求解。",
+      "defects": "SR 包括“正确拒绝不可行续接”，不能当纯执行成功率；最优性只在声明的动作与时间界内成立；不验证真实微生物传播，卫生规则是人工设定。",
+      "safety_relevance": "直接测一类被忽视的安全：交叉污染与卫生顺序。它把“接触历史”变成可验证约束，对家庭／医疗场景有意义，但仍是规则层而非生物实验。",
+      "tested": "Hygiene-NSP 总体安全解决率 SR 94.4%、最优安全解决率 OSR 90.4%，显示“安全完成”与“按用户优先级最省成本”是两种能力；项目页同时展示真机案例与仿真。",
+      "project_facts": "项目页 https://euron-zc.github.io/HygieneRoboBench 是完整叙事页（问题／基准／发现／方法／真机案例），并链向 Paper、arXiv、Video 与 GitHub。",
+      "limits_of_this_review": "只读项目页叙事，未进入评测器实现。",
+      "document": "4__HygieneRoboBench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://euron-zc.github.io/HygieneRoboBench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://euron-zc.github.io/HygieneRoboBench",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "INFUSE",
+      "domain": "代理系统的间接提示注入（间接 prompt injection）安全；文件、工具与记忆表面的统一测试面。",
+      "purpose_build": "在隔离环境中用统一任务约定与确定性任务验证保持可比，把“正常效用”“行为风险（规则核验）”与“模型判分”分别记录，比较不同代理与防护条件。",
+      "defects": "并非所有任务都兼容所有风险情形，40×56×19 是配置空间而非实际样本数；裁判方式（规则 vs 模型）显著改变报告值；软件环境，不能推出机器人碰撞或损伤结论。",
+      "safety_relevance": "邻接：测的是“读到的内容能否劫持代理行为”。具身代理同样依赖记忆与工具，这一层风险会传导到物理动作，但基准本身没有物理执行。",
+      "tested": "19 个模型形成 41,824 条风险轨迹与 720 条正常参考运行；平均风险目标达成率在模型判分下 19.6%、规则核验下 15.4%，说明“谁当裁判”会改变结论。",
+      "project_facts": "GitHub https://github.com/judydnguyen/infuse（0 stars，MIT，2026-10-21 推送）含 tasks／attacks 目录、DEFENSES 文档与 tests。",
+      "limits_of_this_review": "只读 README 结构，未执行任何攻击任务。",
+      "document": "4__INFUSE.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/judydnguyen/infuse"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/judydnguyen/infuse",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/judydnguyen/infuse/HEAD/README.md",
+          "stars": 0,
+          "license": "MIT",
+          "pushed_at": "2026-10-21",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "IS-Bench",
+      "domain": "VLM 驱动具身代理在日常家庭任务中的“交互安全”；强调动作会改变风险状态。",
+      "purpose_build": "逐步执行动作并更新图像与历史，按风险相关步骤的前后关系核验安全行为；提供不同级别提醒与安全思维链，分开报告任务 SR、安全 SSR 与风险处置召回。",
+      "defects": "提醒等级与场景表示不同会显著改变结果，有提示与无提示设置不可直接排名；终点无事故不代表过程满足顺序要求；依赖 VLM 作被测评与裁判，存在闭环偏置。",
+      "safety_relevance": "直接测交互安全：危险是否由代理自己的动作引发、能否被及时处置。它是“动态风险”而非静态图文安全，但仍在图像—技能层，不涉及力。",
+      "tested": "L1 条件下 GPT-4o 的任务 SR 81.3% 而 SSR 仅 33.8%；加安全思维链能改善风险处置但可能牺牲任务完成——即安全与能力存在权衡。下游有 HomeGuard 与一篇跨层安全综述引用。",
+      "project_facts": "GitHub https://github.com/AI45Lab/IS-Bench（56 stars，2025-11-24 推送）README 记录 AAAI 2025 接收、2025-07 代码与数据集发布，并声明“代码整理中”。",
+      "limits_of_this_review": "README 自述代码仍在整理，实际可运行性未验证。",
+      "document": "4__IS-Bench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/AI45Lab/IS-Bench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/AI45Lab/IS-Bench",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/AI45Lab/IS-Bench/HEAD/README.md",
+          "stars": 56,
+          "license": null,
+          "pushed_at": "2025-11-24",
+          "description": "[AAAI 2026] Data and Code for Paper IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks",
+          "text_chars": 4184
+        }
+      ]
+    },
+    {
+      "benchmark": "IndustrialVLA-Bench",
+      "domain": "工业场景下的开放机器人策略模型评测；复用 LIBERO、LIBERO-Plus、LIBERO-Para 的多轴协议。",
+      "purpose_build": "固定 checkpoint 与推理配置，完整跑三个种子：LIBERO 每种子 2,000 episode，Plus 10,030 配置、Para 4,092 配置各一次；按“协议忠实度”标记结果，均值与标准差明确不混为置信区间。",
+      "defects": "它复用 LIBERO-Para 而非其提出者；部分行只是近似复现或待核验，不能与严格协议行无差别排名；全部仿真，未证明真实工业部署安全。",
+      "safety_relevance": "较弱偏间接：测的是干净／鲁棒／语言三轴的性能与可复现性，工业安全要靠额外风险协议；它的价值是把“评测可信度”本身做成可检查项。",
+      "tested": "六个系统的干净分数跨度仅 1.58 个百分点，而鲁棒性与语言分数跨度分别为 14.62 与 31.08 个百分点——说明只看干净分数会掩盖差异。",
+      "project_facts": "GitHub https://github.com/xiaoqi-7/IndustrialVLA-Bench（5 stars，2026-11-01 推送）README 给出 arXiv、逐种子结果与延迟测试的复现档案发布记录。",
+      "limits_of_this_review": "只读 README 的 News 与定位说明，未下载复现档案。",
+      "document": "3__IndustrialVLA-Bench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/xiaoqi-7/IndustrialVLA-Bench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/xiaoqi-7/IndustrialVLA-Bench",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/xiaoqi-7/IndustrialVLA-Bench/HEAD/README.md",
+          "stars": 5,
+          "license": null,
+          "pushed_at": "2026-11-01",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "LABIT",
+      "domain": "工业长时程装配；按装配原语组织，仿真 + 真实机器人基线。",
+      "purpose_build": "按装配原语的难度维度预先计分，报告每类原语、子装配与整体可靠性；同时发布零件、仿真与真实基线的位置和力矩记录。",
+      "defects": "真实基线只重复五次，规模小；抓取满分来自定位送料条件，不能外推到杂乱料箱；低速真实运行影响用时，不能把用时当算法效率上限；总分会掩盖局部瓶颈。",
+      "safety_relevance": "间接：装配涉及力与接触，位置／力矩记录可用于安全分析，但指标是装配可靠性与时间，没有损伤或越界判罚。",
+      "tested": "真实基线五次重复，平均完整装配约 32 分钟；抓取可靠性 100%、插入平均 82.3%，但部分重定向步骤为 0%——局部瓶颈被总分掩盖。",
+      "project_facts": "项目页 https://irp-hka.github.io/robotic-assembly-benchmark 提供 Paper、Code、Material Usage、Evaluation 与 Dataset 入口（HKA）。",
+      "limits_of_this_review": "只读项目页导航与摘要，未下载数据集。",
+      "document": "4__LABIT.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://irp-hka.github.io/robotic-assembly-benchmark"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://irp-hka.github.io/robotic-assembly-benchmark",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 2108
+        }
+      ]
+    },
+    {
+      "benchmark": "LIBERO-MAX",
+      "domain": "机械臂操作策略的“动态鲁棒性”；在策略已开始执行后改变环境，考察在线适应性。",
+      "purpose_build": "在确定性抓取前时刻触发一次持续事件，Base 与 Dynamic rollout 配对共享前缀、状态与种子；统计成对成功变化与已排队动作的过时暴露，用配对检验与 bootstrap。",
+      "defects": "单次、预定阶段事件与连续真实扰动不同；8,000 对不是 8,000 个独立任务，必须用配对统计；事件类型有限，未覆盖多事件叠加。",
+      "safety_relevance": "间接但贴近执行安全：动作分块与反馈时机决定了“世界变了之后还按旧计划动”的风险；基准量化这种过时暴露，但不判违规或损伤。",
+      "tested": "14 种策略出现约 11–25.7 个百分点的成功下降，没有一种架构家族在所有事件上占优；结论指向动作分块长度与反馈时机的重要性。",
+      "project_facts": "项目页 https://liberomax.github.io 说明“在机器人已经开始动作后改变环境”，并强调 Each Dynamic rollout 与 Base 共享任务、reset、策略种子与已执行前缀。",
+      "limits_of_this_review": "只读项目页正文，未取到代码仓库入口。",
+      "document": "2__LIBERO-MAX.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://liberomax.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://liberomax.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "LIBERO-Para",
+      "domain": "指令改写的鲁棒性诊断；在 LIBERO-Goal 等固定环境中只替换测试指令措辞。",
+      "purpose_build": "固定环境与策略，仅替换留出的改写指令；PRIDE 指标按改写难度（关键词／结构差异）加权，另用 DTW 相对成功轨迹的距离归类失败类型。",
+      "defects": "DTW 归类是轨迹层代理指标，不等于观察到内部规划；结论主要来自 LIBERO-Goal；PRIDE 的权重会影响诊断，不宜取代原始成功率；只测语言侧扰动，不测执行侧。",
+      "safety_relevance": "中等：措辞变化导致的行为偏移是“同一意图不同表述”下的失效来源，可解释部分语义安全失败，但基准不含风险约束。",
+      "tested": "7 种模型配置在改写下下降约 22–52 个百分点，失败中 79.5–95.5% 被归为远离参考轨迹的规划层偏离；EMNLP 2026 Main（Oral）；下游 WAVE-0 等报告在 LIBERO-Para 上的分数。",
+      "project_facts": "GitHub https://github.com/cau-hai-lab/LIBERO-Para（50 stars，MIT，2026-09-25 推送）与项目页并存，项目页给 Paper／arXiv／Code(Dataset)／HuggingFace 入口，并说明改写分类法（what to act on / how to act）。",
+      "limits_of_this_review": "只读 README 与项目页首页，未下载数据集。",
+      "document": "2__LIBERO-Para.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/cau-hai-lab/LIBERO-Para",
+        "https://cau-hai-lab.github.io/LIBERO-Para/"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/cau-hai-lab/LIBERO-Para",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/cau-hai-lab/LIBERO-Para/HEAD/README.md",
+          "stars": 50,
+          "license": "MIT",
+          "pushed_at": "2026-09-25",
+          "description": "Official code for \"LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models\" (EMNLP 2026 Main, Oral).",
+          "text_chars": 4200
+        },
+        {
+          "url": "https://cau-hai-lab.github.io/LIBERO-Para/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "LIBERO-RECOVER",
+      "domain": "机械臂操作的失败恢复；从存档失败状态继续执行原任务。",
+      "purpose_build": "从真实策略 rollout 中的失败状态续跑，报告 Recovery Success Rate、Recovery Degradation 与一致性，并按 L1–L4 恢复等级与能力分组比较，而不是只加随机初始扰动。",
+      "defects": "自然失败来自仿真策略 rollout，不是真实事故；失败状态由特定策略与筛选流程产生，分布随之变化；恢复集上的提升不等于所有失败都能自行纠正。",
+      "safety_relevance": "直接相关：事故后能否“止损并恢复”是安全工程的核心指标之一；它把安全从“不出事”扩展到“出事后的可控性”，但仍是仿真。",
+      "tested": "2,178 个恢复场景、130 个子任务、4 个 LIBERO 套件与 3,184 条人类恢复示教；表 2 中 GR00T-N1.5 在 LIBERO-Spatial 恢复集 RSR 由 0.057 升到 0.116（混合恢复数据训练），但收益未稳定转化为正常起点分数；更长动作块通常更难恢复。",
+      "project_facts": "项目页 https://liulin815.github.io/LIBERO-Recovery 明确 2,178 场景、4 个恢复等级、16 个评测维度、3,184 条人类示教（4 名遥操作者、625,731 帧 @20Hz，第三人称 + 腕部视角），并标注双盲评审中、代码将发布。",
+      "limits_of_this_review": "代码标注“soon／将发布”，本轮无法核实可运行性。",
+      "document": "2__LIBERO-RECOVER.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://liulin815.github.io/LIBERO-Recovery"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://liulin815.github.io/LIBERO-Recovery",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "LIBERO-Safety",
+      "domain": "VLA 的物理与语义安全；基于 LIBERO 生态的家庭操作任务，带渐进安全检查。",
+      "purpose_build": "用 UBDDL 扩展 BDDL 的随机化、动态交互与逐步安全检查，关键姿态与 CuRobo 用于示范生成；除终点成功外还记录碰撞与场景风险，分 L0／L1／L2 风险形态。",
+      "defects": "不能把 L1 高成功率解释为“更安全”，必须同时看安全指标；部分数据生成组件的公开状态需以仓库实现审计为准；风险定义仍由人工规则给出。",
+      "safety_relevance": "直接：把安全检查嵌进 LIBERO 的执行流程，能量化“成功但违规”。它是本库中最容易与现有 VLA 生态复用的安全评测之一。",
+      "tested": "表 3 中 OpenVLA-OFT 在 AAG 的 L0／L1／L2 成功率为 50.0%／79.3%／1.3%，显示训练分布与风险形态造成非单调表现；下游 FabriVLA 用它按风险给 rollout 排序，VLA-ULAP 在 latency-aware 版本上报告 +11.0／+15.5pp。",
+      "project_facts": "项目页 https://libero-safety.github.io 给出完整作者单位（清华 AIR、BAAI 等）与论文信息；实现细节见本库另一份拆解笔记。",
+      "limits_of_this_review": "项目页为介绍页，代码与数据仓库未在本轮直接核实。",
+      "document": "1__LIBERO-Safety.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://libero-safety.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://libero-safety.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "LIBERO-VPro",
+      "domain": "VLA 的闭环视觉鲁棒性；在闭环执行中控制遮挡、观察时效、多视角矛盾与场景变化。",
+      "purpose_build": "在闭环执行里系统改变视觉证据（遮挡位置、观察时效、多视角冲突、场景变化），对比三种 VLA 与三种 WAM，并分离目标区域与局部交互线索的作用。",
+      "defects": "3,296 是评测配置数而非独立任务数；模拟与真机规模不同须分别解释；观察异常下的失败不能一概归因为语言理解；扰动由程序注入。",
+      "safety_relevance": "间接但关键：感知缺失下仍继续动作是典型事故前兆，该基准量化“证据不足时的行为”；不含风险约束。",
+      "tested": "高标准成功率不保证视觉鲁棒性；目标被遮挡时仍成功，不能证明模型理解了目标，局部交互线索缺失可能更致命；WAM 的预测质量与实际执行可能脱节。项目页另给出 GPT-6 Astra 与六个机器人基础模型的对照。",
+      "project_facts": "项目页 https://huiqiongli.github.io/LIBERO-VPro 给 Paper 与 Dataset 入口，并附 GPT-6 Astra 评测对比页。",
+      "limits_of_this_review": "只读项目页文字，未进入数据集。",
+      "document": "2__LIBERO-VPro.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://huiqiongli.github.io/LIBERO-VPro"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://huiqiongli.github.io/LIBERO-VPro",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "LIBERO（基础套件）",
+      "domain": "终身学习与知识迁移的机械臂操作基础套件；robosuite／MuJoCo 中的 130 个任务、四个子套件。",
+      "purpose_build": "从活动语言提取任务模板，用 BDDL 表达对象、初态与目标，在 robosuite／MuJoCo 执行；比较不同任务顺序、预训练、架构与终身学习方法，指标为前向迁移 FWT、负向后向迁移 NBT 与成功曲线 AUC。",
+      "defects": "后来常见的“LIBERO 40 任务成功率”只覆盖特定组合，不能替代原始 130 任务的终身学习目的；任务数量与算力开销使完整评测昂贵；仿真动作抽象与真实机械臂有落差。",
+      "safety_relevance": "弱：它是能力与迁移基准，本身不含安全约束。但它是绝大多数 VLA 安全基准（LIBERO-Safety、LIBERO-Para、LIBERO-MAX、SafeLIBERO 等）的底座，安全性结论通常以此为对照。",
+      "tested": "原论文用多种终身学习基线展示“学新任务 vs 保旧任务”的权衡；后续 136 篇引文覆盖扩散策略综述、具身大模型综述；arXiv 摘要命中 ≥50 篇，例如 LaMP 在 LIBERO／LIBERO-Plus／SimplerEnv-WidowX 上评测，RoboDuo 用它做原子恢复。",
+      "project_facts": "项目页 https://libero-project.github.io/main.html 阐述终身学习（LLDM）动机与基准定位；未提供代码仓库入口（代码在 LIBERO 官方 repo）。",
+      "limits_of_this_review": "项目页只有介绍，未链到代码；代码可获取性沿用既有审计结论。",
+      "document": "3__LIBERO-基础套件.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://libero-project.github.io/main.html"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://libero-project.github.io/main.html",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 1018
+        }
+      ]
+    },
+    {
+      "benchmark": "MSK-Bench",
+      "domain": "全身肌肉骨骼驱动的类人控制；跨任务、控制范式与生理指标。",
+      "purpose_build": "统一任务与扰动，比较奖励式 RL、代理奖励调优、潜动作、模仿先验与残差适配；除成功率外，报告激活代价、关节平滑度与肌电包络相似度。",
+      "defects": "残差案例同时调整目标与参考运动时序，收益不能单独归因于残差模块；肌肉仿真不是临床实验，也不能与关节力矩控制同条件比较；生理指标的定义依赖所选肌骨模型。",
+      "safety_relevance": "间接但独特：肌肉激活、关节平滑与能耗是“生理代价”类安全指标，可用于评估动作是否对硬件／人体友好；基准不设碰撞或损伤判罚。",
+      "tested": "论文以“诊断→残差适配”的案例展示：任务完成改善与肌电一致性必须分别验证，生理指标能揭示只看奖励／成功看不到的问题。",
+      "project_facts": "项目页 https://zzongzheng0918.github.io/MSK-Bench 定位为“全身肌肉驱动类人控制基准”，作者来自清华 AIR、港大等。",
+      "limits_of_this_review": "只读项目页标题与摘要，未取到代码或数据入口。",
+      "document": "4__MSK-Bench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://zzongzheng0918.github.io/MSK-Bench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://zzongzheng0918.github.io/MSK-Bench",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "ManiPhysicsBench",
+      "domain": "VLA 操作中的物体保全（object preservation）；用外部力学求解器评估抓握是否造成损伤。",
+      "purpose_build": "刚体仿真记录接触位置、方向与力，外部 FEM 求解器（CalculiX／FEBio／OpenRadioss）结合几何与材料阈值判定每次抓握损伤，再汇总整段轨迹；SR 为完成率，Safe SR 为无损完成率，PR=Safe SR/SR。",
+      "defects": "损伤由求解器事后判定，不是仿真中真的断裂；材料与接触模型、连续夹爪设置会改变结论；SR 为零时 PR 未定义；计算成本高（需安装三个 FEM 后端）。",
+      "safety_relevance": "直接且少见的“物理后果”指标：它测的不是碰撞次数，而是物体是否被夹坏。补上了成功率无法反映的损伤维度，但仍是仿真近似。",
+      "tested": "SimplerEnv 的高／中难对象上，公共 checkpoint 平均 SR 48.3%、Safe SR 13.5%、PR 27.9%——多数模型能搬动却保不住物体。",
+      "project_facts": "GitHub https://github.com/sangwu99/ManiPhysicsBench_Arxiv（3 stars，2026-10-02 推送）README 给出目录结构、conda 环境与 FEM 安装脚本（CalculiX 2.23、FEBio 4.13、OpenRadioss），并说明需写入 runtime/fem.json。",
+      "limits_of_this_review": "仓库状态为 candidate（作者仓库，未完全确认官方）；未实际安装 FEM 后端。",
+      "document": "1__ManiPhysicsBench.md",
+      "project_status": "candidate",
+      "project_urls": [
+        "https://github.com/sangwu99/ManiPhysicsBench_Arxiv"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/sangwu99/ManiPhysicsBench_Arxiv",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/sangwu99/ManiPhysicsBench_Arxiv/HEAD/README.md",
+          "stars": 3,
+          "license": null,
+          "pushed_at": "2026-10-02",
+          "description": null,
+          "text_chars": 2520
+        }
+      ]
+    },
+    {
+      "benchmark": "ManiSkill / ManiSkill2",
+      "domain": "通用操作技能仿真与基准；基于 SAPIEN，覆盖抓取、装配、移动等多类任务与多种机器人。",
+      "purpose_build": "提供 RGB-D、点云与状态观察，多种动作控制接口与示范转换；区分训练对象与未见对象，支持规划、模仿学习与强化学习；pip 可装、可跑 Colab。",
+      "defects": "ManiSkill 与 ManiSkill2 属不同版本，引用量仅对应后者；控制空间、观察模态与对象划分不同的结果不能直接合并；训练对象上的分数不是泛化分数。",
+      "safety_relevance": "弱：这是能力与仿真基础设施，本身不测安全；但它是接触丰富任务的主要试验台，可承载力／接触类安全扩展。",
+      "tested": "论文的 Contact-GraspNet＋规划基线在 PickSingleYCB 的 74 个训练对象、各 5 次测试中成功率 43.24%，并提供模仿／强化学习与迁移案例；下游有 Orbit、PhyScene 等，2025 年 ManiSkill-ViTac 挑战赛把它扩展成触觉赛道。",
+      "project_facts": "项目页 https://maniskill2.github.io/ 提供 Get Started、Video、Paper、Code、Doc、Colab 与 Discord，并公告 ManiSkill 3 Beta 已开源。",
+      "limits_of_this_review": "只读官网首页，ManiSkill 3 与 ManiSkill2 的差异未逐项核对。",
+      "document": "3__ManiSkill-ManiSkill2.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://maniskill2.github.io/"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://maniskill2.github.io/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "MemForm",
+      "domain": "LLM 代理的持久记忆投毒；配对干预下的记忆形成与下游行为。",
+      "purpose_build": "对同一语义任务家族构造受控配对，只改变记忆构建环节，固定下游触发、动作空间与家族语义；分开检查形成的记忆与后续行为，只在满足正常条件的 eligible query 上统计风险目标达成率。",
+      "defects": "各模型的 eligible 子集不同，不是同一测试分布上的安全排名；这是记忆机制诊断，不是物理机器人执行；配对项由人工构造，覆盖的记忆表面有限。",
+      "safety_relevance": "邻接：具身代理的长期记忆一旦被污染，会在后续任务中持续产生错误决策。它测的是“记忆这一层的完整性”，可为具身代理的平台安全提供接口级证据。",
+      "tested": "主实现中，选择题格式的描述性宏平均风险达成率 35.2–84.0%，自由回答 49.0–87.1%；即使经历相同，整合次序仍可能改变行为。",
+      "project_facts": "GitHub https://github.com/opanhw/memform-code（1 star，MIT，2026-09-22 推送）自述为 evaluation release，强调“Every item is a paired intervention”。",
+      "limits_of_this_review": "只读 README 的定位与方法说明，未跑配对实验。",
+      "document": "4__MemForm.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/opanhw/memform-code"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/opanhw/memform-code",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/opanhw/memform-code/HEAD/README.md",
+          "stars": 1,
+          "license": "MIT",
+          "pushed_at": "2026-09-22",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "MineAmongUs",
+      "domain": "具身社交互动中的欺骗（语言 + 非语言行为）；Minecraft 沙盒中的多代理博弈。",
+      "purpose_build": "用 Minecraft／Mineflayer 沙盒与 Aria 框架分离“认知组件”和“框架”：固定模型做认知消融、固定框架比较模型；把行为标注为 23 类原子行为与跨时刻行为弧。",
+      "defects": "有明确隐藏角色目标的游戏行为不能直接证明模型在现实中自发产生恶意意图；胜率、行为标签一致率与现实安全性是三个概念；模型集合与游戏版本固定。",
+      "safety_relevance": "间接但独特：它把“欺骗”从文本扩展到动作，说明只看对话日志会漏掉用身体实施的欺骗。对具身代理的信任与监督机制有直接含义，但不含物理伤害。",
+      "tested": "论文发现非语言行为对胜负的贡献在多个设置中更突出，并提供接近人工一致性的自动行为标注验证；成果是可配置沙盒与多模态行为分析协议。",
+      "project_facts": "项目页 https://junseokim0103.github.io/Lies-We-Can-See（“Lies We Can See”）给出论文、作者（SNU、Inha、KAIST、Georgia Tech）与“Can an agent lie with its body, not just its words?”的定位。",
+      "limits_of_this_review": "只读项目页文字，未获取代码或数据。",
+      "document": "4__MineAmongUs.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://junseokim0103.github.io/Lies-We-Can-See"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://junseokim0103.github.io/Lies-We-Can-See",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "NAVSIM",
+      "domain": "自动驾驶的非反应式伪仿真评测；传感器数据驱动的规划与闭环相关性。",
+      "purpose_build": "把候选轨迹在非反应式环境中展开，用碰撞、可行驶区域、进度、碰撞时间等组成 PDMS 分数，并对照不同闭环设置检查相关性；公开 leaderboard 分 navtest 与 navhard。",
+      "defects": "非反应式模拟不含他车对自车行为的真实反应，不能替代长期交互安全评估；PDMS 权重影响排序；比赛提交数是社区参与证据，不是被引数。",
+      "safety_relevance": "中等偏强：碰撞与可行驶区域直接进入指标，所以它比纯开环规划基准更接近安全；但缺少交互反应，无法评估“逼他车避让”这类风险行为。",
+      "tested": "CVPR 2024 挑战赛 143 队、463 次提交，公开 LB 持续更新；论文发现中等算力的 TransFuser 可与部分更复杂架构竞争；下游 DriveFuture 报告 NAVSIM-v2 上 55.5 EPDMS。",
+      "project_facts": "GitHub https://github.com/autonomousvision/navsim（1,140 stars，Apache-2.0，2025-10-27 推送）README 给 Paper／Supplementary／Leaderboard v1、v2 入口与安装说明。",
+      "limits_of_this_review": "只读 README 与入口，未下载数据或跑评测。",
+      "document": "5__NAVSIM.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/autonomousvision/navsim"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/autonomousvision/navsim",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/autonomousvision/navsim/HEAD/README.md",
+          "stars": 1140,
+          "license": "Apache-2.0",
+          "pushed_at": "2025-10-27",
+          "description": "[CoRL '25] Pseudo-Simulation for Autonomous Driving; [NeurIPS '24] NAVSIM: Data-Driven Non-Reactive Autonomous Vehicle Simulation and Benchmarking",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "ORBIT",
+      "domain": "多代理系统的安全与安保评测框架；基于 UK AISI Inspect 的通用代理环境（多数任务非机器人）。",
+      "purpose_build": "以配置分离角色、拓扑、调度、记忆、风险与防护，在隔离环境中把“风险运行”与“正常运行”配对，报告 Wilson／bootstrap 区间。",
+      "defects": "论文只测了完整配置空间的一个切片，支持某场景不等于全面实测；多数任务不是机器人环境，只能当多代理评测设计参考；结论依赖 Inspect 的沙盒与评分。",
+      "safety_relevance": "邻接：它测的是多代理协作／委派／通信中的风险，具身多机器人系统会继承这些问题；但没有物理执行，不能给碰撞或损伤结论。",
+      "tested": "约 90 种实验条件形成可控比较矩阵；贡献在于“统一架构与安全因素的对照基础设施”，而非可概括所有系统的总分。",
+      "project_facts": "GitHub https://github.com/wlanderson0/orbit（51 stars，Apache-2.0，2026-10-26 推送，v1.0.4）说明 Orbit 负责多代理会话、调度、委派与通信，Inspect 负责模型、工具、沙盒、评分与日志。",
+      "limits_of_this_review": "只读 README 与版本说明，未运行。",
+      "document": "4__ORBIT.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/wlanderson0/orbit"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/wlanderson0/orbit",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/wlanderson0/orbit/HEAD/README.md",
+          "stars": 51,
+          "license": "Apache-2.0",
+          "pushed_at": "2026-10-26",
+          "description": "Orbit: A framework for multi-agent safety and security evaluations",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "Open X-Embodiment",
+      "domain": "跨本体机器人数据集合与 RT-X 模型；统一 RLDS 表示，覆盖多家机构与多种机器人。",
+      "purpose_build": "把各机构数据统一到 RLDS episode 格式并建立动作／观察适配，用 RT-X 等模型比较单来源与跨本体训练，分别测已有任务与域外能力。",
+      "defects": "它是训练数据集合与研究项目，不是有单一冻结测试集的安全 benchmark；不同论文的混合比例、过滤与版本必须注明；跨本体正迁移不代表任意混合都有效。",
+      "safety_relevance": "弱：提供的是数据底座，可支撑安全策略训练，但自身不定义风险；若用于安全微调，需另行标注数据来源与许可。",
+      "tested": "实验支持跨机器人数据存在正迁移，但不意味着任意混合都同样有效；113 篇引文含机器人基础模型综述；arXiv 命中含在 PushT 等子集上训练的小模型（如 68M 参数、0.008 MSE 的下一状态预测）。",
+      "project_facts": "官网 https://robotics-transformer-x.github.io/ 与 GitHub https://github.com/google-deepmind/open_x_embodiment（2,090 stars，Apache-2.0，2025-11-05 推送）并存，README 给 RLDS 结构与自包含 Colab。",
+      "limits_of_this_review": "只读官网与 README，未下载任何子数据集。",
+      "document": "3__Open-X-Embodiment.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://robotics-transformer-x.github.io/",
+        "https://github.com/google-deepmind/open_x_embodiment"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://robotics-transformer-x.github.io/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        },
+        {
+          "url": "https://github.com/google-deepmind/open_x_embodiment",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/google-deepmind/open_x_embodiment/HEAD/README.md",
+          "stars": 2090,
+          "license": "Apache-2.0",
+          "pushed_at": "2025-11-05",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "Peg-in-Bench",
+      "domain": "高精度轴孔装配（peg-in-hole）；模块化实体件 + 场景生成器，面向机器人与人类装配能力对比。",
+      "purpose_build": "提供 STL 文件与场景生成器，输出标准化配置与机器可读任务描述，在固定物理条件下控制几何、公差与方位因素。",
+      "defects": "材料、打印精度、公差测量与机器人接触控制都会影响复现；提供场景生成器不等于已用所有几何／公差组合验证；本轮未发现可作为统一排行榜的大规模成功率对照。",
+      "safety_relevance": "间接：装配接触是力相关风险场景，但基准关注装配成功与可靠性，没有损伤或过载判罚；实体件反而便于做真实接触测试。",
+      "tested": "成果是低门槛的模块化实体件与任务规范；未发现可引用的统一模型排行榜，因此不对代表分数作猜测。",
+      "project_facts": "GitHub https://github.com/aistairc/peg-in-bench（0 stars，2026-08-31 推送）为“Scenario Generator”，README 说明由 NEDO JPNP25015 项目支持，生成随机但可复现的装配场景。",
+      "limits_of_this_review": "仓库只有场景生成器，评测结果需回到论文；未打印实体件。",
+      "document": "4__Peg-in-Bench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/aistairc/peg-in-bench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/aistairc/peg-in-bench",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/aistairc/peg-in-bench/HEAD/README.md",
+          "stars": 0,
+          "license": null,
+          "pushed_at": "2026-08-31",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "PhysAI-Bench",
+      "domain": "UAV 任务中的 LLM 代理决策；把对话式飞行任务轨迹转成标准化选择题。",
+      "purpose_build": "只暴露“决策前上下文”构造标准问题；先做模型专属提示／温度配置选择，再按两阶段协议在测试集上评测，并分析少样本与零样本差异。",
+      "defects": "评估的是轨迹派生的决策，不执行完整飞行闭环；标签与数据生成链影响有效性；配置选择集与最终测试集必须分清；准确率不是碰撞率。",
+      "safety_relevance": "间接：UAV 决策错误直接对应飞行风险，但基准只在“选下一步动作”层面，无法覆盖动力学与控制失效。",
+      "tested": "配置选择阶段最佳准确率 70.48%，这一数值来自该阶段的配置比较，不能宣传为全部 10,178 实例的闭环飞行成功率。",
+      "project_facts": "GitHub https://github.com/maferrag/physai-bench（0 stars，Apache-2.0，2026-09-17 推送）README 给出 paper PDF、Benchmark at a glance、Main results 与 Citation，并标注 MCP/A2A、AI-native 6G 等关键词。",
+      "limits_of_this_review": "只读 README，未核对 10,178 实例的划分方式。",
+      "document": "4__PhysAI-Bench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/maferrag/physai-bench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/maferrag/physai-bench",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/maferrag/physai-bench/HEAD/README.md",
+          "stars": 0,
+          "license": "Apache-2.0",
+          "pushed_at": "2026-09-17",
+          "description": "A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboAbstention",
+      "domain": "具身代理的“该不该拒绝”判断；静态图像 × 弃权类别，面向 VLM 规划器。",
+      "purpose_build": "三阶段生成：结构化视觉接地 → 确定性约束推导 → 按类别生成指令；每图每类别抽单条以减少模板重复，并分析“错误却继续执行”的类型。",
+      "defects": "主要是静态图像与计划回答，不验证真实物理不可行性；该弃权样本上的识别率不能代表正常请求上的低误拒率；类别由规则生成，覆盖有限。",
+      "safety_relevance": "直接相关于安全的一个重要侧面：知道何时不该做。弃权机制是风险规避的最后一环，但基准不测执行后的后果。",
+      "tested": "论文中最佳模型 Gemini 2.5 Flash 的弃权率仅 39.0%，说明前沿 VLM 仍常在信息不足时给出计划；成果是可审计的弃权 taxonomy 与 6,069 图像／1,250 弃权类别的指令集。",
+      "project_facts": "项目页 https://purseclab.github.io/RoboAbstention 提供 arXiv、Dataset、Code、View Examples、View Results 与 BibTeX，并列出 6,069 图像、1,250 弃权类别、8 个源数据集、5 类抽象。",
+      "limits_of_this_review": "只读项目页统计与摘要，未下载数据。",
+      "document": "4__RoboAbstention.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://purseclab.github.io/RoboAbstention"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://purseclab.github.io/RoboAbstention",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboCasa",
+      "domain": "大规模家庭场景仿真与日常任务训练／评测；robosuite／MuJoCo 厨房环境。",
+      "purpose_build": "以 robosuite／MuJoCo 与大量厨房、物体资产构建交互场景，结合人类示范与自动数据生成，系统变化场景、对象与任务组合；发布复合任务与示范数据集。",
+      "defects": "原论文为 arXiv:2406.02523，不能用后续 RoboCasa-Shift 或 RoboCasa365 取代其来源，也不能把 365 版的厨房与任务规模写成原始版本；仿真资产与真实厨房仍有差距。",
+      "safety_relevance": "弱到中等：厨房是典型危险场景（火、刀、热表面），但基准指标是任务成功；其价值是提供可控场景，便于叠加安全约束。",
+      "tested": "论文比较场景／任务多样性与合成示范的训练作用，并给出向真机迁移的实验；下游 BOSS 用它研究长时程观察空间偏移，SeeTraceAct 用它做可见性感知规划，另发布 RoboCasa-DC 跨本体示范扩展。",
+      "project_facts": "项目页 https://robocasa.ai/ 汇总 Paper（RoboCasa 与 RoboCasa365）、Code、Documentation、Leaderboard 与 Updates，近期更新包括 leaderboard 接受 agentic 提交、发布 300 个复合任务的逐帧子任务标注。",
+      "limits_of_this_review": "项目页为 RoboCasa／RoboCasa365 共用，未逐项区分两版资源。",
+      "document": "3__RoboCasa.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://robocasa.ai/"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://robocasa.ai/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboCasa-Shift",
+      "domain": "长时程家庭操作的阶段感知鲁棒性；在 RoboCasa 上施加受控分布偏移。",
+      "purpose_build": "固定初始状态、指令与策略种子做配对，记录子目标与首次失败阶段；另做“零变化相机”控制实验以量化运行中的非确定性。",
+      "defects": "只分析 GR00T-N1.5 与“干净条件下可完成”的四个任务，筛选边界明确；零扰动下也有结果翻转，必须从扰动效应中扣除；任务与偏移类型有限。",
+      "safety_relevance": "间接：阶段级失效定位对安全诊断有用，但基准评成功与进度，不评违规；可作为安全失效分析的框架。",
+      "tested": "相机 L2 与模糊 L1 的成功下降同为 0.188，而首次阶段失败比例分别为 19% 与 36.4%；零变化相机控制仍有 8/80 次结果翻转——说明“同样的分数”背后失效机制不同。",
+      "project_facts": "GitHub https://github.com/HaochengWang23/RoboCasa-Shift（2 stars，MIT，2026-10-22 推送）README 给 arXiv、代码与 formal evaluation 记录，并说明使用 RoboCasa 官方成功判据与仿真状态里程碑。",
+      "limits_of_this_review": "只读 README，未跑配对评测。",
+      "document": "2__RoboCasa-Shift.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/HaochengWang23/RoboCasa-Shift"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/HaochengWang23/RoboCasa-Shift",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/HaochengWang23/RoboCasa-Shift/HEAD/README.md",
+          "stars": 2,
+          "license": "MIT",
+          "pushed_at": "2026-10-22",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboCasa365",
+      "domain": "大规模家庭操作训练／基准；365 个任务、多阶段终身学习协议。",
+      "purpose_build": "分别设置多任务训练、预训练后微调、四阶段终身学习；严格区分预训练数据与目标示范，按示范量、任务组合与场景划分比较。",
+      "defects": "365 个任务不都属于同一个测试拆分；遗忘结论来自指定训练流程，不代表所有持续学习算法；大规模合成训练的收益不能直接当安全改进。",
+      "safety_relevance": "弱：它是能力与规模基准；其“持续学习遗忘”结果对安全有间接含义（旧技能退化可能带来风险），但基准不测风险。",
+      "tested": "终身学习实验中原子任务成功率从第一阶段 41.5% 降至第四阶段 10.6%，显示明显遗忘；arXiv 摘要命中 ≥32 篇，多篇报告在 RoboCasa365 官方协议下的成功率（如 62.2%、62.32%）。",
+      "project_facts": "项目页 https://robocasa.ai/ 同时承载 RoboCasa 与 RoboCasa365；2026-10 更新说明 leaderboard 接受 agentic 提交，10-14 发布覆盖 300 个复合任务的子任务标注流水线。",
+      "limits_of_this_review": "两版共用站点，未单独下载 365 数据。",
+      "document": "3__RoboCasa365.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://robocasa.ai/"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://robocasa.ai/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboChrono",
+      "domain": "真实机器人的流式任务理解（视频时序推理）；含人类示教与两种真实机械臂数据。",
+      "purpose_build": "人工时间标注后生成问题，输入严格截断为“观察前缀”（不给未来帧）；六项选择题报告正确率，动作时间定位独立报告 R@1 与 tIoU≥0.5，未来信息只用于标签。",
+      "defects": "这是视频理解而非控制成功率；成功示范视频不能代表失败与恢复过程；人手视频与机器人视频、不同任务指标不宜无条件平均；题目由标注生成，风格集中。",
+      "safety_relevance": "间接：实时场景理解是“及时识别危险”的前提，但基准不含风险标注，也没有动作输出。",
+      "tested": "18 个多模态模型的结果显示跨帧识别、下一步预测与时间定位难度不同；论文最佳选择题聚合 0.805、时间定位 0.721，二者不是同一指标。",
+      "project_facts": "项目页 https://continuity3.github.io/robochrono（含 Tianji／GIM 两个数据集与在线预览）与 GitHub https://github.com/mfan-res/ROBOCHRONO（14 stars，Apache-2.0，2026-09-28 推送）并存，README 注明“独立排行榜即将发布”。",
+      "limits_of_this_review": "只读项目页与 README，未下载数据集。",
+      "document": "3__RoboChrono.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://continuity3.github.io/robochrono",
+        "https://github.com/mfan-res/ROBOCHRONO"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://continuity3.github.io/robochrono",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        },
+        {
+          "url": "https://github.com/mfan-res/ROBOCHRONO",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/mfan-res/ROBOCHRONO/HEAD/README.md",
+          "stars": 14,
+          "license": "Apache-2.0",
+          "pushed_at": "2026-09-28",
+          "description": "A temporal visual reasoning benchmark over egocentric robot manipulation video — 39 scenarios, 7 dimensions, 34,713 questions",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboComb",
+      "domain": "具身操作的组合泛化；19 个组合任务、3 条轨道（full_inst、oracle_hse、ordered_hse）。",
+      "purpose_build": "用 RoboCombine 框架比较 Oracle-HSE、Ordered-HSE 与整段指令执行，把高层调度、低层技能与交接状态分开诊断；用 PRTI 扩展原子技能的初始状态覆盖。",
+      "defects": "仓库短名 RoboComb 对应正文 RoboCombine；组合微调与只用原子示范是不同的训练设定；oracle 交接下的成绩不是端到端自主能力；只支持 Motus、pi05 两种适配器。",
+      "safety_relevance": "间接：组合任务的失败集中在“交接状态”，这类失败在真实流水线里往往表现为碰撞或掉落，但基准只记成功。",
+      "tested": "有限组合任务微调在已见组合达 40%，未见重组仅 7.7%；瓶颈不只是任务规划，还包括交接状态分布；NeurIPS 2026 接收。",
+      "project_facts": "GitHub https://github.com/AutoLab-SAI-SJTU/RoboCombine（10 stars，MIT，2026-10-15 推送）README 明确公开范围：19 个组合任务、3 条轨道、2 个策略适配器，2026-10 发布评测代码。",
+      "limits_of_this_review": "只读 README 的能力表，未跑评测代码。",
+      "document": "3__RoboComb.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/AutoLab-SAI-SJTU/RoboCombine"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/AutoLab-SAI-SJTU/RoboCombine",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/AutoLab-SAI-SJTU/RoboCombine/HEAD/README.md",
+          "stars": 10,
+          "license": "MIT",
+          "pushed_at": "2026-10-15",
+          "description": "[NeurIPS2026] RoboCombine",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboFollow",
+      "domain": "具身代理的指令遵循；基于 RoboTwin 的仿真基准，四类场景族。",
+      "purpose_build": "通过高场景熵让图像不能唯一确定任务，保持基础动作与物体能力可比；把“意图选择 Intent”和“执行 Execution”分开评分，评测九种 VLA／WAM，并做小规模真机试验。",
+      "defects": "L0–L3 是因素组合，不保证对每个模型单调变难；简化物体与动作有助归因，却缩小真实开放场景覆盖；真机部分规模小。",
+      "safety_relevance": "中等：指令遵循错误（选错对象／忽略空间关系）是语义安全的近因，但基准把“服从”当正确行为，不含拒绝或风险约束。",
+      "tested": "标准基准的高成功率不能稳定预测指令遵循能力；分阶段诊断能区分“选错目标”与“选对但做不成”。",
+      "project_facts": "GitHub https://github.com/AutoLab-SAI-SJTU/RoboFollow（7 stars，MIT，2026-10-17 推送）说明四类场景族、专家示范采集、L0–L3 协议与分阶段 Intent／Execution 评分。",
+      "limits_of_this_review": "只读 README，未取到九种模型的具体成绩表。",
+      "document": "3__RoboFollow.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/AutoLab-SAI-SJTU/RoboFollow"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/AutoLab-SAI-SJTU/RoboFollow",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/AutoLab-SAI-SJTU/RoboFollow/HEAD/README.md",
+          "stars": 7,
+          "license": "MIT",
+          "pushed_at": "2026-10-17",
+          "description": "[CoRL2026] RoboFollow: Unveiling the Instruction Following Mirage in Embodied Agents",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboHarm",
+      "domain": "VLA／LLM 代理的伤害识别与拒绝；五个固定场景（刀与玩偶、气雾罐与灶、螺丝刀与烤面包机等）。",
+      "purpose_build": "同一风险意图在不同输出接口下评测拒绝与执行行为；模拟评测覆盖 7 个模型，真机在末端／关节接口分别记录 612／252 次测试；每模型每任务目标 20 次独立重置 rollout，事后看三路相机与保存的对话记录做标注。",
+      "defects": "拒绝率低不能自动换算为伤害率；不同接口的可执行性与样本构成不同；仅五个场景、指定本体，外推受限；标注依赖人工。",
+      "safety_relevance": "直接测“会不会拒绝伤人指令”，而且跨文本与机器人接口对照——正说明安全表现取决于接口，是本库中最直接的语义安全对照之一。",
+      "tested": "论文报告文本接口拒绝率约 73%，机器人接口约 18–25%；真机末端接口约 18%、关节接口约 41%——“换个接口”就改变观测到的安全表现。",
+      "project_facts": "GitHub https://github.com/robocurve/roboharm（13 stars，2026-09-22 推送）基于 Inspect Robots 构建，README 列出五个任务、协议文档与三相机标注流程。",
+      "limits_of_this_review": "仓库状态为 candidate（作者仓库，未完全确认官方发布）；未运行。",
+      "document": "1__RoboHarm.md",
+      "project_status": "candidate",
+      "project_urls": [
+        "https://github.com/robocurve/roboharm"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/robocurve/roboharm",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/robocurve/roboharm/HEAD/README.md",
+          "stars": 13,
+          "license": "NOASSERTION",
+          "pushed_at": "2026-09-22",
+          "description": "Five fixed-scene robot refusal tasks, experiment tooling, and post-hoc labeling, built on Inspect Robots",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboIRG-Bench",
+      "domain": "VLA 的隐式指代接地（implicit referential grounding）；目标在指令中被隐去，需要记忆与推理补全。",
+      "purpose_build": "保持任务、状态与模型底座可比，比较五种基于 π0.5 的记忆／接地配置；每条件三个种子各 50 episode，用“显式 vs 隐式”表现差定位问题。",
+      "defects": "成绩同时受底层操作能力约束；只比较特定 π0.5 配置，不代表全部模型家族；必须用显式指令对照，否则会把操作失败误判为指代失败。",
+      "safety_relevance": "间接：指代错误会直接导致“对错的物体动手”，是语义安全的上游原因；基准不评风险。",
+      "tested": "FrameS 的显式、直接隐式与推理指代成功率分别为 45.82%、29.76%、16.85%——有记忆不等于会用记忆做指代推理。",
+      "project_facts": "项目页 https://aernar.github.io/RoboIRGBench 给 arXiv 与 Code 入口，并展示“显式接地 + 四种隐式设置”的平均成功对比图。",
+      "limits_of_this_review": "只读项目页，未进入代码。",
+      "document": "3__RoboIRG-Bench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://aernar.github.io/RoboIRGBench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://aernar.github.io/RoboIRGBench",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboJailBench",
+      "domain": "具身机器人的对抗攻击与防御；11 个子集、18 个安全类别。",
+      "purpose_build": "统一评测接口，分别报告危险目标拒绝的 Security Rate、正常目标接受的 Utility Rate 与调和均值 SU-HM；把“无风险干预基线”与“压力测试”分开。",
+      "defects": "本论文的 SR 指 Security Rate，与其他机器人论文的 Success Rate 同名异义，极易误读；接受／拒绝计划不等于物理动作成功；990 对指令与 1,408 张场景图仍是有限覆盖。",
+      "safety_relevance": "直接：测攻击条件下的拒绝能力，是安全评测里少见的“攻防”视角；但仍停在计划层，未测执行后的物理后果。",
+      "tested": "无额外干预的基线中 Claude Haiku 4.5 危险拒绝率 98.28%，GPT 5.4 Nano 正常接受率 99.49%、SU-HM 97.84%——这些是干净条件下的数字，不是受压力后的最终安全率。",
+      "project_facts": "项目页 https://purseclab.github.io/benchmark-for-robotics-security 提供 Metadata、Code、arXiv、View Examples、Leaderboard、BibTeX，标注 11 子集／18 类别／990 配对指令／1,408 场景图／428MB 数据。",
+      "limits_of_this_review": "只读项目页统计，未下载 428MB 数据。",
+      "document": "4__RoboJailBench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://purseclab.github.io/benchmark-for-robotics-security"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://purseclab.github.io/benchmark-for-robotics-security",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboMIND",
+      "domain": "多本体真实操作数据与训练基准；覆盖单臂、双臂、类人平台。",
+      "purpose_build": "统一遥操作、传感记录、质量筛选与语言标注，提供不同机器人动作格式的适配；论文分别评估模仿学习、基础模型与数据迁移，并发布 V2.0。",
+      "defects": "训练数据规模不等于安全场景覆盖率；跨本体评测须注明“保留／见过”的任务与机器人；不能把全部轨迹既当训练又当独立测试。",
+      "safety_relevance": "弱：它是数据资源，本身不定义风险；但失败信息与多本体覆盖可用于安全策略训练与失效分析。",
+      "tested": "成果是多本体、带任务语义与失败信息的真实数据平台与不同数据规模／来源的训练对照；V2.0 报告超过 310K 双臂操作数据；下游 Pelican-Sim 等用它做对照。",
+      "project_facts": "项目页 https://x-humanoid-robomind.github.io 说明 RSS 2025 接收、V2.0 发布于 ModelScope，并列作者与单位。",
+      "limits_of_this_review": "只读项目页，未下载 ModelScope 数据。",
+      "document": "3__RoboMIND.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://x-humanoid-robomind.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://x-humanoid-robomind.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboReel",
+      "domain": "从观察中学习（Learning from Observation）；配对真人视频与仿真机器人轨迹，十个操作任务。",
+      "purpose_build": "把人类观察与机器人动作数据对齐，比较“视频条件策略”与“从人体运动提取关键点的策略”，并用模拟／实机的相对表现检验基准有效性。",
+      "defects": "包含配对机器人训练数据的设置不是“从公开视频零样本学会”；不同数据访问条件必须说明；相对趋势一致不代表模拟绝对成功率等于真机；论文被 CoRL 2026 接收，代码与数据标注“Soon”。",
+      "safety_relevance": "弱：属能力基准；但“模仿人类视频”本身是安全风险来源（学会了不该学的动作），这一维度未被评测。",
+      "tested": "视频条件 π0.5 在部分长时程条件下更强；Point Policy 能较好完成推块、关抽屉，却更难处理精细抓取——方法优劣随技能类型改变。",
+      "project_facts": "项目页 https://roboreel.github.io 标注 CoRL 2026，代码与数据均为“Soon”，并说明“为什么还要另一个基准”。",
+      "limits_of_this_review": "代码／数据尚未发布，无法核实实现。",
+      "document": "3__RoboReel.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://roboreel.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://roboreel.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "RoboTwin",
+      "domain": "双臂操作的数据生成与基准；单图生成数字孪生，强域随机化（RoboTwin 2.0）。",
+      "purpose_build": "由单图生成物体孪生，为资产补充空间关系标注，再分解任务并生成专家运动；用 20／50／100 示范训练 2D Diffusion Policy 与不同点云输入的 DP3。",
+      "defects": "成功要求终点姿态达标且全程无碰撞；本卡对应 1.0，不能与 2.0 的任务规模或后来的 VLA 结果混用；单项示例不是全基准平均。",
+      "safety_relevance": "中等：成功判据含“全程无碰撞”，因此比纯成功率高一点安全含义；但没有损伤、力或违规类别。",
+      "tested": "同一任务随输入与示范量差异很大（100 示范的 Block Hammer Beat 上 DP3 XYZ+RGB 82.0%、2D DP 0%）；下游 PointVLA 等引用，RoboTwin 2.0（ICML 2026）成为主要基线。",
+      "project_facts": "项目页 https://robotwin-platform.github.io/ 为 2.0 版本；GitHub https://github.com/robotwin-Platform/robotwin（3,033 stars，MIT，2026-09-24 推送）README 汇总 Webpage／Doc／Paper／Talk／Leaderboard。",
+      "limits_of_this_review": "站内信息以 2.0 为主，1.0 与 2.0 的差异未逐条拆分。",
+      "document": "3__RoboTwin.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://robotwin-platform.github.io/",
+        "https://github.com/robotwin-Platform/robotwin"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://robotwin-platform.github.io/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        },
+        {
+          "url": "https://github.com/robotwin-Platform/robotwin",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/robotwin-Platform/robotwin/HEAD/README.md",
+          "stars": 3033,
+          "license": "MIT",
+          "pushed_at": "2026-09-24",
+          "description": "[ICML 2026] RoboTwin 2.0 Offical Code Repo",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "STARS",
+      "domain": "人机交互的时空动态表征方法；把多主体状态构成同构／异构时空图学习表征。",
+      "purpose_build": "将多主体状态建成时空图，用自监督消息传递图自编码器压缩物理动态为隐表征，再用线性探针评估不同标注量与跨数据迁移。",
+      "defects": "它是方法论文而非新基准（本库按“方法”归类）；F1 衡量下游分类，不是社交导航碰撞率或人类偏好因果效应；表征质量依赖图结构设计。",
+      "safety_relevance": "间接且偏弱：理解交互动态是社交安全的基础，但不产生风险度量。",
+      "tested": "SocialNav-SUB 上 STARS-He 的宏 F1 从 1% 标注的 0.362 到全标注的 0.503，同架构端到端监督对照为 0.445；CoRL 2026。",
+      "project_facts": "项目页 https://larg.github.io/stars 说明三阶段流程（构造时空图 → 图自编码器 → 下游探针），并给 arXiv 与 Code 入口，作者为 UT Austin 团队。",
+      "limits_of_this_review": "只读项目页流程说明，未取到代码细节。",
+      "document": "4__STARS.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://larg.github.io/stars"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://larg.github.io/stars",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "SafeAgentBench",
+      "domain": "具身 LLM 代理的安全任务规划；750 个危险任务、语义与执行两层评价。",
+      "purpose_build": "任务生成后筛选标注，在交互环境中执行高层计划；从执行结果与语义两方面评价，分别比较详细、抽象与长时程任务。",
+      "defects": "高层动作接口与控制器可能承担部分运动能力，不能与端到端关节 VLA 同分比较；拒绝率低不等于所有任务都真造成物理后果；底座 LLM 换模型并不能稳定改善安全意识。",
+      "safety_relevance": "直接测“会不会规划危险任务”，属规划层安全；对家庭服务机器人有意义，但不覆盖执行时的碰撞与力。",
+      "tested": "对详细危险任务，最有安全意识的基线拒绝率也只有 10%；仅替换底座 LLM 没有稳定解决安全意识不足。下游有语音误听（ASR 错误）研究把它与其他安全基准组合评测。",
+      "project_facts": "GitHub https://github.com/shengyin1224/SafeAgentBench（79 stars，2025-02-25 推送）README 明确 750 个任务、可执行的危险任务集与统一环境，并说明动机是“代理能完美执行危险任务”。",
+      "limits_of_this_review": "只读 README 的组成说明，未运行环境。",
+      "document": "4__SafeAgentBench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/shengyin1224/SafeAgentBench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/shengyin1224/SafeAgentBench",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/shengyin1224/SafeAgentBench/HEAD/README.md",
+          "stars": 79,
+          "license": null,
+          "pushed_at": "2025-02-25",
+          "description": "Codes for paper \"SafeAgentBench: A Benchmark for Safe Task Planning of \\\\ Embodied LLM Agents\"",
+          "text_chars": 4036
+        }
+      ]
+    },
+    {
+      "benchmark": "SafeBench",
+      "domain": "自动驾驶的安全关键场景评测；基于 CARLA 的场景化测试平台。",
+      "purpose_build": "统一场景、路线与控制接口，从安全、功能与驾驶礼仪三个层面评分；在同一地图上并行运行多场景以提高效率，比较正常场景与安全关键场景。",
+      "defects": "综合分包含多种归一化指标与权重，不能当碰撞概率；实验主要是指定 RL 策略，不能直接推断当前全部端到端系统；场景由生成器产生，覆盖受限于生成策略。",
+      "safety_relevance": "直接：场景本身就是安全关键构造（切入、遮挡、异常行为），指标含碰撞与偏离；是自动驾驶安全测试的常用底座。",
+      "tested": "4D 输入下 TD3 的综合分由正常场景 0.830 降到关键场景 0.518，且正常／关键场景的算法排名不同——平均分排序会掩盖安全短板；下游 ChatScene 等用它生成安全关键场景。",
+      "project_facts": "项目页 https://safebench.github.io 说明三大特点（并行运行、可扩展场景、综合指标）并明确基于 CARLA。",
+      "limits_of_this_review": "只读项目页介绍，未安装 CARLA 运行场景。",
+      "document": "5__SafeBench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://safebench.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://safebench.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 1460
+        }
+      ]
+    },
+    {
+      "benchmark": "SafeLIBERO",
+      "domain": "VLA 的避碰安全约束；在 LIBERO 生态上叠加 AEGIS 约束层（CBF + QP）。",
+      "purpose_build": "AEGIS 用控制障碍函数与二次规划修正名义动作；在平移／完整动作空间分别评价避碰率 CAR、任务成功率 TSR 与执行步数 ETS，并用两项真机任务验证。",
+      "defects": "属于受控障碍避碰，不覆盖语义风险（拿错物体、顺序错误）；CBF 的理论保证依赖状态估计、动力学模型与求解可行性；只修正动作，不改变策略的意图理解。",
+      "safety_relevance": "直接测执行层安全：动作是否撞到障碍。它是“外挂安全层”路线的代表，适合与端到端安全训练对比，但只覆盖几何避碰。",
+      "tested": "平移动作设置中 π0.5 的 CAR 由 18.7% 升到 AEGIS 的 77.9%，TSR 由 50.9% 升到 68.1%；下游 Route-Guided CBF-QP、SafeDojo、DetAug 等 7 篇在该基准上报告改善。",
+      "project_facts": "项目页 https://vlsa-aegis.github.io 为 VLSA 论文页（Tsinghua 自动化系等），提供 Paper／Benchmark／Code 入口，并给出 VLA 与 VLSA 的功能架构图。",
+      "limits_of_this_review": "只读项目页，未取到基准数据的具体发布状态。",
+      "document": "1__SafeLIBERO.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://vlsa-aegis.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://vlsa-aegis.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "SafeStage",
+      "domain": "分阶段安全评测（论文侧）：把危险状态、路径／接触约束与终态稳定性绑定到不同阶段；仿真中的操作任务。",
+      "purpose_build": "将危险状态、路径与接触约束、终态稳定性绑定到不同阶段，用仿真特权状态评分但不提供给策略；报告 SR、VR、SSR、USR，其中 SR=SSR+USR。",
+      "defects": "本库审计给出的项目地址（github.com/reeta-042/safestage）实际是一个同名但无关的“气候运营平台”，与论文基准无对应关系——**项目入口不可用**；评估器准确度不代表策略安全度；成功中违规比例与全 episode 的 USR 分母不同。",
+      "safety_relevance": "直接：唯一按“执行前／中／后”分阶段给安全指标的设计之一，能区分“没出事”和“没违规”。但项目不可得，只能依赖论文。",
+      "tested": "论文报告聚合 SR 33.74%、SSR 9.84%、USR 23.90%——成功轨迹中 70.84% 含不安全行为；评估器在 240 条核查轨迹上 F1 为 97.26%。",
+      "project_facts": "抓取到的 https://github.com/reeta-042/safestage（0 stars，2026-08-31 推送）README 内容是 FortyGuard 的热环境决策平台，与机器人安全基准无关；因此本条的代码与数据可用性仍为未知。",
+      "limits_of_this_review": "项目地址疑为同名误配；本轮未能找到真正的 SafeStage 仓库。",
+      "document": "1__SafeStage.md",
+      "project_status": "candidate",
+      "project_urls": [
+        "https://github.com/reeta-042/safestage"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/reeta-042/safestage",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/reeta-042/safestage/HEAD/README.md",
+          "stars": 0,
+          "license": null,
+          "pushed_at": "2026-08-31",
+          "description": "FortyGuard Hackathon Submission",
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "SimplerEnv",
+      "domain": "真实机器人策略的仿真评测；SAPIEN 中复现 WidowX 与 Google Robot 的真实设置。",
+      "purpose_build": "以 SAPIEN 搭建环境、缩小控制与视觉差距；用 Visual Matching 匹配真实画面、Variant Aggregation 汇总环境变体，报告排序违背 MMRV 与 Pearson 相关。",
+      "defects": "相关性证明的是“所测任务／策略上的相对预测价值”，不是任意物体动力学或绝对成功率的等价性；原论文以刚体、已知真实设置为主；视觉匹配依赖人工调参。",
+      "safety_relevance": "弱：本身是能力评测，价值在于提供“廉价代理指标”；若用于安全评测，须先证明相关性在风险场景下仍成立。",
+      "tested": "Google Robot 六个 checkpoint 的任务平均 Pearson r：验证 MSE 0.308、VarAgg 0.778、VisMatch 0.924（MMRV 0.056）——说明评测协议设计本身决定相关性；下游 PhysBrain、CronusVLA 等报告在 SimplerEnv-WidowX 上的结果。",
+      "project_facts": "项目页 https://simpler-env.github.io/ 给 Paper／Video／Code／CoLab 入口，作者来自 UCSD、Stanford、Berkeley、Google DeepMind。",
+      "limits_of_this_review": "只读项目页，未运行仿真。",
+      "document": "3__SimplerEnv.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://simpler-env.github.io/"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://simpler-env.github.io/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "SkillSafetyBench",
+      "domain": "软件代理的“技能面”攻击安全；把攻击放在技能包、脚本、模板与工作区文件中。",
+      "purpose_build": "每个案例保持用户任务普通，把攻击置于代理执行时会查阅的本地技能／辅助文件；每个案例附可执行任务环境与独立规则验证器，把正常任务完成与风险行为分开评分。",
+      "defects": "这里的 skill 是软件代理技能包，不是机器人运动技能；风险达成与任务成功可同时发生，安全与效用不能用一个数字替代；比较的是“框架 + 模型”组合，难以孤立机制。",
+      "safety_relevance": "邻接：具身代理同样依赖技能库与工具链，这条攻击面会传导到物理动作；但基准不含机器人执行。",
+      "tested": "同一 GLM-5.1 在两种代理框架下的风险达成率分别为 50.3% 与 33.5%——框架上下文显著影响结果，但该对照不足以解释具体机制。",
+      "project_facts": "GitHub https://github.com/AI45Lab/skill-safety-bench（33 stars，Apache-2.0，2026-05-14 推送）自称“fully materialized benchmark”，并把案例浏览器、排行榜与实验分析放在独立网站。",
+      "limits_of_this_review": "只读 README，未进入案例浏览器。",
+      "document": "4__SkillSafetyBench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://github.com/AI45Lab/skill-safety-bench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://github.com/AI45Lab/skill-safety-bench",
+          "kind": "repo",
+          "readme_url": "https://raw.githubusercontent.com/AI45Lab/skill-safety-bench/HEAD/README.md",
+          "stars": 33,
+          "license": "Apache-2.0",
+          "pushed_at": "2026-05-14",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "Spa-Bench",
+      "domain": "VLA 的空间接地（spatial grounding）；真机桌面机器人，仅留出空间配置。",
+      "purpose_build": "保留对象、概念与动作的训练支持，只留出空间配置；在相同场景下比较空间指令与直接操作指令，另测改写、跨任务对象与“无需动作”条件。",
+      "defects": "五个模型并非全部完成同样评测，主要比较限于三个完整策略；小型桌面机器人与有限物体不代表开放世界空间推理；空间配置的留出方式影响难度。",
+      "safety_relevance": "中等：空间接地错误会导致“够错位置／撞到旁边的物体”，是物理安全的上游原因；基准本身评成功率。",
+      "tested": "三个完整评测策略 ID 成功率 67.5–73.3%、OOD 40.7–52.0%；匹配场景中直接指令比空间指令高 28.3–40.0 个百分点，说明接地错误不是纯运动问题。",
+      "project_facts": "项目页 https://justintiensmith.github.io/Spa-Bench 为 Imperial College London 的真机基准页，含摘要与视频；本轮未取到独立代码仓库。",
+      "limits_of_this_review": "只读项目页，代码入口未确认。",
+      "document": "3__Spa-Bench.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://justintiensmith.github.io/Spa-Bench"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://justintiensmith.github.io/Spa-Bench",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "Trap-LIBERO / Trap-RoboTwin",
+      "domain": "VLA 的后门攻击与失效注入；在 LIBERO 与 RoboTwin 上构造文本触发器与指定失效模式。",
+      "purpose_build": "把“正常任务效用”与“特定失效目标的达成程度”分开统计，结合轨迹与动作层信号检查失效是否符合指定类型；提供两套受控评测任务与攻击方法 TrapVLA。",
+      "defects": "结果依赖特定威胁假设、模型与任务，不能推断任意部署模型都有此问题；正常成功与配置失效指标不是同一分母；代码与数据标注“Coming soon”。",
+      "safety_relevance": "直接：这是“策略完整性”问题——干净成功率很高仍可能被触发器操纵，标准成功率筛查不出来；属安全评测中少见的攻防视角。",
+      "tested": "论文展示干净成功率保持较高时仍可出现定向失效，说明标准成功率不足以筛查完整性；两套任务分别建立在 LIBERO 与 RoboTwin 上。",
+      "project_facts": "项目页 https://john-liua.github.io/TrapVLA 标注 Code & Dataset “Coming soon”，页面主题为“Stealthy textual triggers / Configured robot failures”。",
+      "limits_of_this_review": "代码／数据未发布，无法核实攻击实现与复现条件。",
+      "document": "1__Trap-LIBERO-Trap-RoboTwin.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://john-liua.github.io/TrapVLA"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://john-liua.github.io/TrapVLA",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "VIPS",
+      "domain": "车路协同（V2X）规划基准；用两阶段伪仿真评测协同规划。",
+      "purpose_build": "Stage 1 用真实观察评估自车轨迹；Stage 2 在专家轨迹附近用合成观察探测策略，给出合成 EPDMS；提出稀疏协同表示 CoS-V2X 并比较通信量与规划表现。",
+      "defects": "伪仿真的合成观察质量会影响排名；不是完全反应式交通闭环；原始 V2X-Real 数据集与本文新增地图／协议应分别归属；基础设施侧真实性依赖数据采集。",
+      "safety_relevance": "中等：碰撞与可行驶区域进指标，且协同感知可减少盲区事故；但两阶段伪仿真仍无法覆盖真实通信延迟与失效。",
+      "tested": "论文中多数方法在 Stage 2 下降，协同方法整体较强；CoS-V2X 在所测方法中综合最佳，通信带宽需求低于 Uni-V2X；ECCV 2026 Spotlight。",
+      "project_facts": "项目页 https://vips2026.github.io（KAIST）声明 Paper、Code、Dataset 均已发布，并给两阶段 V2X 伪仿真示意图。",
+      "limits_of_this_review": "只读项目页，未下载数据集。",
+      "document": "5__VIPS.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://vips2026.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://vips2026.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "VLA-Arena",
+      "domain": "VLA 的分难度基准；170 个任务、L0–L2 三档，覆盖 Safety、Distractor、Extrapolation、Long Horizon 四类。",
+      "purpose_build": "扩展约束式 BDDL，提供不同规模示范集；仅在 L0 训练、向 L1／L2 评估，并对任务结构、语言与视觉变化分别计分；同时报告完成与安全代价。",
+      "defects": "难度、扰动与训练预算必须分开报告；较高 SR 不自动意味着约束代价更低；局部真机结果不能覆盖全部 170 个任务；Safety 只是四类之一。",
+      "safety_relevance": "直接（部分）：Safety 类任务显式包含约束违反，是本库中“能力 + 安全”同表报告的少数基准；其余三类是能力／鲁棒性。",
+      "tested": "不同诊断维度会改变模型相对排序；下游 FreqFM、LoopVLA、ActionPiece 等在 VLA-Arena 上报告结果（如 FreqFM 在 VLA-Arena L0–L2 达 51.5%）；ICML 2026。",
+      "project_facts": "项目页 https://vla-arena.github.io 含模型排行榜、任务商店与开源框架入口，作者为北大 AI 研究院团队。",
+      "limits_of_this_review": "只读项目页与排行榜入口，未进入任务商店。",
+      "document": "1__VLA-Arena.md",
+      "project_status": "found",
+      "project_urls": [
+        "https://vla-arena.github.io"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://vla-arena.github.io",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "VLABench",
+      "domain": "语言条件的机器人操作与长时程推理；100 个任务，强调未见物体类别泛化。",
+      "purpose_build": "任务技能库结合运动规划自动生成轨迹，语言扩增描述对象与意图；分别评估 VLA、基础模型工作流与 VLM，未见物体按不同类别（而非仅换纹理）划分。",
+      "defects": "VLM 问答正确率、模块化流程成功率与端到端 VLA 成功率属于不同接口，不可混比；未见类别设置更严格，跨论文比较必须统一；仿真资产与真实场景仍有差距。",
+      "safety_relevance": "弱到中等：长时程推理失败会放大风险，但基准指标是成功率，不含安全约束。",
+      "tested": "评测显示低层技能获取、目标语义解析与长任务推理需要分开分析；16 篇引文含扩散策略综述，TAG 等在其上报告杂乱场景下的鲁棒性改善。",
+      "project_facts": "项目页 https://vlabench.github.io/ 提供 Paper／Arxiv／Dataset／Code／Twitter 入口，作者为复旦团队。",
+      "limits_of_this_review": "只读项目页摘要，未下载数据集。",
+      "document": "3__VLABench.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://vlabench.github.io/"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://vlabench.github.io/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 4200
+        }
+      ]
+    },
+    {
+      "benchmark": "nuScenes",
+      "domain": "自动驾驶多模态数据集与感知基准；同步相机、激光雷达、毫米波雷达、定位与地图。",
+      "purpose_build": "同步传感器、定位与地图，人工标注三维框；定义检测与跟踪的时间信息边界，提供 NDS、误差分量与 AMOTA／AMOTP 等指标，而不只算框重叠。",
+      "defects": "23 类标注不等于榜单全部评价 23 类；后来的预测／规划扩展不应倒推为原论文已完成；检测高分不是闭环驾驶安全保证；站点依赖 JS，静态抓取无内容。",
+      "safety_relevance": "弱到中等：感知是安全的前置，但数据集本身不含风险标注或违规定义；安全性取决于下游如何用它构造场景。",
+      "tested": "成果是多模态真实驾驶数据、开发工具与检测／跟踪基线，成为多任务驾驶研究的数据底座；7,151 篇引文覆盖 Waymo Open Dataset、3D 点云综述等；2026 年有工作专门“重访 nuScenes”总结其进展与挑战。",
+      "project_facts": "官网 https://www.nuscenes.org/ 需启用 JavaScript 才能渲染，抓取只得到提示文本；数据与工具通过该站发布。",
+      "limits_of_this_review": "站点为前端渲染，未取到数据下载与许可证细节。",
+      "document": "5__nuScenes.md",
+      "project_status": "platform_only",
+      "project_urls": [
+        "https://www.nuscenes.org/"
+      ],
+      "sources_checked": [
+        {
+          "url": "https://www.nuscenes.org/",
+          "kind": "page",
+          "readme_url": null,
+          "stars": null,
+          "license": null,
+          "pushed_at": "",
+          "description": null,
+          "text_chars": 46
+        }
+      ]
+    }
+  ]
+}

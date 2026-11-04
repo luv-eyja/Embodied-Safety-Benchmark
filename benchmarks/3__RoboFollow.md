@@ -28,7 +28,8 @@
 | 基础平台线索 | 表内摘要未明确基础平台。 |
 | 规模线索 | 同一视觉场景包含多个都可执行的分支，围绕空间、属性、轨迹、逻辑四类任务；L0 基础、L1 布局变化、L2 语义重组、L3 二者组合。 |
 | 执行环境线索 | 语言驱动的操作分支选择 |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7214246107)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7214246107)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 4 个缩写／技术词，并标出 3 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -67,17 +68,74 @@
 L0–L3 是因素组合，并非保证对每个模型单调变难；简化物体和动作有助于归因，却缩小了真实开放场景覆盖。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Chang Guo, Yukun Xie, Bohan Tan, et al., ‘RoboFollow: Unveiling the Instruction Following Mirage in Embodied Agents,’ arXiv preprint, 2026, arXiv:2609.25636v1. [论文](https://arxiv.org/abs/2609.25636)；[核查正文](https://arxiv.org/html/2609.25636v1)。
 
 **重点核查位置（章节主题）**：Benchmark Construction；Evaluation Protocol；Experiments。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214246107)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214246107)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://github.com/AutoLab-SAI-SJTU/RoboFollow](https://github.com/AutoLab-SAI-SJTU/RoboFollow)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要未见命中。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（已确认项目入口，2026-11-04）
+
+**项目入口**：[https://github.com/AutoLab-SAI-SJTU/RoboFollow](https://github.com/AutoLab-SAI-SJTU/RoboFollow)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [repo](https://github.com/AutoLab-SAI-SJTU/RoboFollow) | https://raw.githubusercontent.com/AutoLab-SAI-SJTU/RoboFollow/HEAD/README.md | stars 7，license MIT（开源许可证），最后推送 2026-10-17，保留文本 4200 字符（截断） |
+
+**项目页显示**：GitHub https://github.com/AutoLab-SAI-SJTU/RoboFollow（7 stars，MIT，2026-10-17 推送）说明四类场景族、专家示范采集、L0–L3 协议与分阶段 Intent／Execution 评分。
+
+**涉及领域**：具身代理的指令遵循；基于 RoboTwin 的仿真基准，四类场景族。
+
+**测试目的与构建方法**：通过高场景熵让图像不能唯一确定任务，保持基础动作与物体能力可比；把“意图选择 Intent”和“执行 Execution”分开评分，评测九种 VLA／WAM，并做小规模真机试验。
+
+**测试缺陷**：L0–L3 是因素组合，不保证对每个模型单调变难；简化物体与动作有助归因，却缩小真实开放场景覆盖；真机部分规模小。
+
+**与具身智能安全的相关性**：中等：指令遵循错误（选错对象／忽略空间关系）是语义安全的近因，但基准把“服从”当正确行为，不含拒绝或风险约束。
+
+**用这个 benchmark 测了什么**：标准基准的高成功率不能稳定预测指令遵循能力；分阶段诊断能区分“选错目标”与“选对但做不成”。
+
+**本轮核查边界**：只读 README，未取到九种模型的具体成绩表。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 4 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+| **WAM** | World-Action Model | 世界—动作模型 | 同时预测未来画面与动作的模型，用于规划或作为策略主干。 |
+| **L0** | difficulty level L0–L3 | L0–L3 难度档 | 基准自定义的难度阶梯：常见是 L0 干净、L1 加扰动、L2 更强扰动或结构变化，L3 更难。 |
+| **cs.RO** | arXiv category: cs.RO / cs.CV / cs.AI / cs.LG | arXiv 学科分类 | arXiv 的学科标签：cs.RO 机器人、cs.CV 计算机视觉、cs.AI 人工智能、cs.LG 机器学习。 |
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| RoboFollow | 基准 | 语言驱动的操作分支选择 |
+| RoboTwin | 基准 | 双臂操作数据生成与评测 |
+
+另有 1 个专有名称已在正文首次出现处加括号标注类别（例如 MIT（开源许可证）），不再重复解释。
+
+<!-- glossary:end -->

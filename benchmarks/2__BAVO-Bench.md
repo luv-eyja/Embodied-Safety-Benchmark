@@ -30,7 +30,8 @@
 | 执行环境线索 | 仿真双臂主动视觉 |
 | 来源审计 | [Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation](https://arxiv.org/abs/2609.37292)；same_paper_in_registry |
 | 来源核验依据 | 摘要明确写明 introduce BAVO-Bench。 |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7214940409)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7214940409)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 8 个缩写／技术词，并标出 1 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -69,17 +70,78 @@
 ACT、ManiFlow、A-FAR 使用三种种子，π0.5 的训练设置不同，不能将所有行当等预算比较；可见性增益也不能替代任务成功。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Kaijun Luo, Yudi Huang, Qijun Zhong, et al., ‘Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation,’ arXiv preprint, 2026, arXiv:2609.37292v1. [论文](https://arxiv.org/abs/2609.37292)；[核查正文](https://arxiv.org/html/2609.37292v1)。
 
 **重点核查位置（章节主题）**：3.2 Benchmark；5.1 Experimental Setup；5.2 Main Results。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214940409)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214940409)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://hcplab-sysu.github.io/BAVO-Bench](https://hcplab-sysu.github.io/BAVO-Bench)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要未见命中。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（已确认项目入口，2026-11-04）
+
+**项目入口**：[https://hcplab-sysu.github.io/BAVO-Bench](https://hcplab-sysu.github.io/BAVO-Bench)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [page](https://hcplab-sysu.github.io/BAVO-Bench) | https://hcplab-sysu.github.io/BAVO-Bench | 保留文本 4200 字符（截断） |
+
+**项目页显示**：项目页 https://hcplab-sysu.github.io/BAVO-Bench 提供动机图、benchmark 与方法的整体示意及作者单位，未见独立代码仓库链接。
+
+**涉及领域**：机械臂操作中的主动视觉与遮挡恢复（物理主动观察）；桌面操作场景。
+
+**测试目的与构建方法**：构造阶段相关的遮挡数据，训练并评测策略在外部遮挡下主动移动相机恢复可见性；指标为成功率 SR、任务进展 TPS 与相机运动带来的可见性增益 CVG。
+
+**测试缺陷**：可见性增益不能替代任务成功；ACT、ManiFlow、A-FAR 使用三种种子而 π0.5 训练设置不同，各行不是等预算比较；遮挡只在仿真中程序化生成。
+
+**与具身智能安全的相关性**：间接但重要：遮挡导致的“看不见仍在动”是典型事故来源，该基准把“主动确认视野”作为可测能力；它不直接给碰撞或伤害指标。
+
+**用这个 benchmark 测了什么**：A-FAR 在 Clean／Stage／随机遮挡下的 SR 为 51.3%／63.7%／18.7%，说明训练匹配的 Stage 可能比 Clean 更高、难度并不单调；被测策略含 ACT、ManiFlow、π0.5 与 A-FAR。
+
+**本轮核查边界**：项目页是静态介绍页，代码与数据可获取性未核实。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 8 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **VR** | Violation Rate | 违规率 | 发生约束违反的 episode ÷ 全部 episode，不看任务是否完成。 |
+| **SR** | Success Rate | 成功率 | 成功 episode ÷ 全部 episode；但有的论文用它指 Security Rate，必须先看定义。 |
+| **TPS** | Task Progress Score | 任务进展分 | 把任务拆成阶段后，按完成到第几个阶段给的部分分。 |
+| **CVG** | Camera Visibility Gain | 相机可见性增益 | 主动移动相机后，目标可见性提升多少。 |
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+| **ACT** | Action Chunking with Transformers | 动作分块 Transformer 策略 | 把连续多步动作一次性预测的模仿学习基线，常作为对照。 |
+| **π0.5** | pi-zero / pi-zero-point-five | π0／π0.5 策略模型 | Physical Intelligence 的通用 VLA 策略家族，本库最常见的对照基线。 |
+| **cs.RO** | arXiv category: cs.RO / cs.CV / cs.AI / cs.LG | arXiv 学科分类 | arXiv 的学科标签：cs.RO 机器人、cs.CV 计算机视觉、cs.AI 人工智能、cs.LG 机器学习。 |
+
+**本文最容易读错的地方**：
+- **SR**：把 SR（Security Rate）当成功率，或把 /N 的比率当 /SR 的比率。
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| BAVO-Bench | 基准 | 仿真双臂主动视觉 |
+
+<!-- glossary:end -->

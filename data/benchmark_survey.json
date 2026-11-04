@@ -89,7 +89,7 @@
       "candidate": 3,
       "platform_only": 12
     },
-    "citation_observations": 59,
+    "citation_observations": 62,
     "real_execution_confirmed_entries": 18,
     "note": "按条目去重统计；多选目标／场景之间有重叠。未知不等于否定；统计仅描述本库样本。"
   },
@@ -515,13 +515,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Generating Robot Constitutions & Benchmarks for Semantic Safety",
         "source_link": "https://arxiv.org/abs/2503.08663",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W4414578652",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -608,13 +608,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "ForesightSafety-VLA: A Unified Diagnostic Safety Benchmark for Vision-Language-Action Models",
         "source_link": "https://arxiv.org/abs/2606.27079",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7166132482",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -696,7 +696,7 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "HazardArena: Evaluating Semantic Safety in Vision-Language-Action Models",
         "source_link": "https://arxiv.org/abs/2604.12447",
         "status": "matched",
@@ -784,7 +784,7 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models",
         "source_link": "https://arxiv.org/abs/2606.23686",
         "status": "matched",
@@ -910,13 +910,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "ManiPhysicsBench: Physics-Based Assessment of Object Preservation in VLA Manipulation",
         "source_link": "https://arxiv.org/abs/2610.02802",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7220458345",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "candidate",
@@ -994,13 +994,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control",
         "source_link": "https://arxiv.org/abs/2610.14043",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7221820979",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "candidate",
@@ -1082,13 +1082,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer",
         "source_link": "https://arxiv.org/abs/2512.11891",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W4417446096",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -1169,13 +1169,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "SafeStage: Evaluating Safety Before, During, and After Vision-Language-Conditioned Robot Manipulation",
         "source_link": "https://arxiv.org/abs/2609.21223",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7213988552",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "candidate",
@@ -1295,13 +1295,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes",
         "source_link": "https://arxiv.org/abs/2608.26578",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7204530163",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -1384,13 +1384,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "VLA-Arena: An Open-Source Framework for Benchmarking Vision-Language-Action Models",
         "source_link": "https://arxiv.org/abs/2512.22539",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7117763818",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -1473,13 +1473,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Recovering the View: Benchmarking Physical Active Vision for Occlusion Recovery in Robotic Manipulation",
         "source_link": "https://arxiv.org/abs/2609.37292",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7214940409",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -1635,13 +1635,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "LIBERO-MAX: Do Robot Policies Adapt When the World Changes?",
         "source_link": "https://arxiv.org/abs/2609.36518",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7214921693",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -1727,12 +1727,12 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models",
         "source_link": "https://arxiv.org/abs/2603.28301",
-        "status": "query_failed",
-        "cited_by_count": null,
-        "openalex_id": null,
+        "status": "matched",
+        "cited_by_count": 0,
+        "openalex_id": "https://openalex.org/W7147537669",
         "retained_prior_observation": false
       },
       "resources": {
@@ -1893,13 +1893,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "LIBERO-RECOVER: Beyond Task Success Towards Failure Recovery in Robotic Manipulation Models",
         "source_link": "https://arxiv.org/abs/2609.05178",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7211887144",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -2014,13 +2014,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "LIBERO-VPro: Benchmarking Closed-Loop Visual Robustness of Robotic Foundation Models",
         "source_link": "https://arxiv.org/abs/2609.24350",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7214051566",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -2139,13 +2139,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation",
         "source_link": "https://arxiv.org/abs/2610.27861",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7223122581",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -2376,13 +2376,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "AgiBot World Colosseo: A Large-scale Manipulation Platform for Scalable and Intelligent Embodied Systems",
         "source_link": "https://doi.org/10.1109/IROS60139.2025.11247088",
         "status": "matched",
         "cited_by_count": 13,
         "openalex_id": "https://openalex.org/W4416748905",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -2459,13 +2459,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation",
         "source_link": "https://arxiv.org/abs/2403.09227",
         "status": "matched",
-        "cited_by_count": 6,
+        "cited_by_count": 7,
         "openalex_id": "https://openalex.org/W4392872989",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "platform_only",
@@ -2542,13 +2542,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks",
         "source_link": "https://arxiv.org/abs/2610.25459",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7223068191",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -2624,13 +2624,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks",
         "source_link": "https://arxiv.org/abs/2112.03227",
         "status": "matched",
         "cited_by_count": 189,
         "openalex_id": "https://openalex.org/W4226073959",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "platform_only",
@@ -2707,13 +2707,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "THE COLOSSEUM: A Benchmark for Evaluating Generalization for Robotic Manipulation",
         "source_link": "https://arxiv.org/abs/2402.08191",
         "status": "matched",
         "cited_by_count": 29,
         "openalex_id": "https://openalex.org/W4402354166",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -2833,13 +2833,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "IndustrialVLA-Bench: A Traceable Multi-Axis Evaluation of Open Robot Policy Models",
         "source_link": "https://arxiv.org/abs/2609.25562",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7214113903",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -2914,7 +2914,7 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning",
         "source_link": "https://arxiv.org/abs/2306.03310",
         "status": "matched",
@@ -3036,13 +3036,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "ManiSkill2: A Unified Benchmark for Generalizable Manipulation Skills",
         "source_link": "https://arxiv.org/abs/2302.04659",
         "status": "matched",
-        "cited_by_count": 23,
+        "cited_by_count": 24,
         "openalex_id": "https://openalex.org/W4320165654",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "platform_only",
@@ -3157,13 +3157,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
         "source_link": "https://arxiv.org/abs/2310.08864",
         "status": "matched",
-        "cited_by_count": 111,
+        "cited_by_count": 113,
         "openalex_id": "https://openalex.org/W4387764390",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "platform_only",
@@ -3316,12 +3316,12 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots",
         "source_link": "https://arxiv.org/abs/2406.02523",
-        "status": "query_failed",
-        "cited_by_count": null,
-        "openalex_id": null,
+        "status": "matched",
+        "cited_by_count": 4,
+        "openalex_id": "https://openalex.org/W4399424845",
         "retained_prior_observation": false
       },
       "resources": {
@@ -3397,13 +3397,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots",
         "source_link": "https://arxiv.org/abs/2603.04356",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7133954504",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "platform_only",
@@ -3486,13 +3486,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "RoboChrono: A Real Robot Benchmark for Streaming Task Understanding",
         "source_link": "https://arxiv.org/abs/2609.36605",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7214955540",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -3607,13 +3607,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Exploring the Limits of Combinatorial Generalization in Embodied Manipulation",
         "source_link": "https://arxiv.org/abs/2610.15425",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7221756428",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -3768,13 +3768,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "RoboFollow: Unveiling the Instruction Following Mirage in Embodied Agents",
         "source_link": "https://arxiv.org/abs/2609.25636",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7214246107",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -3850,13 +3850,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "RoboIRGBench: Benchmarking Implicit Referential Grounding in Vision-Language-Action Models",
         "source_link": "https://arxiv.org/abs/2609.34384",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7214772858",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -3931,13 +3931,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "RoboMIND: Benchmark on Multi-embodiment Intelligence Normative Data for Robot Manipulation",
         "source_link": "https://arxiv.org/abs/2412.13877",
         "status": "matched",
         "cited_by_count": 23,
         "openalex_id": "https://openalex.org/W4414050913",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -4015,13 +4015,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
         "source_link": "https://arxiv.org/abs/2609.08209",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7212081197",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -4098,13 +4098,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins",
         "source_link": "https://doi.org/10.1109/CVPR52734.2025.02575",
         "status": "matched",
         "cited_by_count": 31,
         "openalex_id": "https://openalex.org/W4413144615",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "platform_only",
@@ -4222,13 +4222,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Evaluating Real-World Robot Manipulation Policies in Simulation",
         "source_link": "https://arxiv.org/abs/2405.05941",
         "status": "matched",
         "cited_by_count": 4,
         "openalex_id": "https://openalex.org/W4396822572",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "platform_only",
@@ -4310,13 +4310,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Spa-Bench: A Real-Robot Benchmark for Spatial Grounding in Vision-Language-Action Models",
         "source_link": "https://arxiv.org/abs/2610.12696",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7221577967",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -4392,7 +4392,7 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks",
         "source_link": "https://doi.org/10.1109/ICCV51701.2025.01037",
         "status": "matched",
@@ -4588,13 +4588,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Agent-SafetyBench: Evaluating the Safety of LLM Agents",
         "source_link": "https://arxiv.org/abs/2412.14470",
         "status": "matched",
         "cited_by_count": 6,
         "openalex_id": "https://openalex.org/W4405627542",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -4714,13 +4714,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Bench2Dex: Benchmarking Visuo-Tactile Bimanual Dexterous Manipulation Across Dexterous Hands",
         "source_link": "https://arxiv.org/abs/2609.15726",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7213308421",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -4836,13 +4836,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Using large language models for embodied planning introduces systematic safety risks",
         "source_link": "https://arxiv.org/abs/2604.18463",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7155060036",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -4997,13 +4997,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents",
         "source_link": "https://arxiv.org/abs/2502.09560",
         "status": "matched",
         "cited_by_count": 1,
         "openalex_id": "https://openalex.org/W4407590542",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -5080,13 +5080,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "EmbodiedGovBench: A Benchmark for Governance, Recovery, and Upgrade Safety in Embodied Agent Systems",
         "source_link": "https://arxiv.org/abs/2604.11174",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7154418749",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -5283,13 +5283,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots",
         "source_link": "https://arxiv.org/abs/2610.08642",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7221007195",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -5371,13 +5371,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "INFUSE: A Unified Surface Benchmark for Indirect Prompt Injection in Agentic Systems",
         "source_link": "https://arxiv.org/abs/2610.20776",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7222558873",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -5460,13 +5460,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks",
         "source_link": "https://arxiv.org/abs/2506.16402",
         "status": "matched",
-        "cited_by_count": 0,
-        "openalex_id": "https://openalex.org/W4417145625",
-        "retained_prior_observation": true
+        "cited_by_count": 2,
+        "openalex_id": "https://openalex.org/W7138977141",
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -5581,13 +5581,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "LABIT: Long-Horizon Robotic Assembly Benchmark for Industrial Tasks",
         "source_link": "https://arxiv.org/abs/2610.16398",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7221815075",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -5745,13 +5745,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "MSK-Bench: Benchmarking Full-Body Musculoskeletal Motor Control Across Tasks, Control Paradigms, and Physiological Metrics",
         "source_link": "https://arxiv.org/abs/2609.26872",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7214208713",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -5826,13 +5826,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "MemForm: Benchmarking Memory Formation Poisoning in LLM Agents",
         "source_link": "https://arxiv.org/abs/2610.14431",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7221777130",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -5947,13 +5947,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions",
         "source_link": "https://arxiv.org/abs/2608.30428",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7204938515",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -6068,13 +6068,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "ORBIT: A Framework for Multi-Agent Safety and Security Evaluations",
         "source_link": "https://arxiv.org/abs/2609.33102",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7214782110",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -6266,13 +6266,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "Peg-in-Bench: A Modular Benchmark for High-Precision Robotic Insertion",
         "source_link": "https://arxiv.org/abs/2609.00906",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7206171071",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -6348,13 +6348,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "PhysAI-Bench: A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
         "source_link": "https://arxiv.org/abs/2609.23695",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7214012534",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -6507,13 +6507,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "The Yes-Man Syndrome: Benchmarking Abstention in Embodied Robotic Agents",
         "source_link": "https://arxiv.org/abs/2605.20544",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7162010380",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -6595,7 +6595,7 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "RoboJailBench: Benchmarking Adversarial Attacks and Defenses in Embodied Robotic Agents",
         "source_link": "https://arxiv.org/abs/2605.19328",
         "status": "matched",
@@ -6717,13 +6717,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "STARS: From Spatiotemporal Dynamics to Social Representations in Human-Robot Interaction",
         "source_link": "https://arxiv.org/abs/2609.40245",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7215077318",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -6802,13 +6802,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "SafeAgentBench: A Benchmark for Safe Task Planning of Embodied LLM Agents",
         "source_link": "https://arxiv.org/abs/2412.13178",
         "status": "matched",
         "cited_by_count": 2,
         "openalex_id": "https://openalex.org/W4405562840",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -6963,13 +6963,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "SkillSafetyBench: Evaluating Agent Safety under Skill-Facing Attack Surfaces",
         "source_link": "https://arxiv.org/abs/2605.12015",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7161027243",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -7274,12 +7274,12 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "CARLA: An Open Urban Driving Simulator",
         "source_link": "https://arxiv.org/abs/1711.03938",
-        "status": "query_failed",
-        "cited_by_count": null,
-        "openalex_id": null,
+        "status": "matched",
+        "cited_by_count": 3759,
+        "openalex_id": "https://openalex.org/W2767621168",
         "retained_prior_observation": false
       },
       "resources": {
@@ -7550,13 +7550,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "NAVSIM: Data-Driven Non-Reactive Autonomous Vehicle Simulation and Benchmarking",
         "source_link": "https://doi.org/10.52202/079017-0902",
         "status": "matched",
         "cited_by_count": 63,
         "openalex_id": "https://openalex.org/W4415798424",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -7786,13 +7786,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "SafeBench: A Benchmarking Platform for Safety Evaluation of Autonomous Vehicles",
         "source_link": "https://arxiv.org/abs/2206.09682",
         "status": "matched",
         "cited_by_count": 48,
         "openalex_id": "https://openalex.org/W7133222348",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -7914,13 +7914,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "VIPS: Vehicle-Infrastructure Cooperative Planning Benchmark via Pseudo-Simulation",
         "source_link": "https://arxiv.org/abs/2609.02462",
         "status": "matched",
         "cited_by_count": 0,
         "openalex_id": "https://openalex.org/W7207785702",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "found",
@@ -8000,13 +8000,13 @@
       },
       "citation": {
         "source": "OpenAlex",
-        "snapshot_date": "2026-11-03",
+        "snapshot_date": "2026-11-04",
         "paper": "nuScenes: A multimodal dataset for autonomous driving",
         "source_link": "https://arxiv.org/abs/1903.11027",
         "status": "matched",
-        "cited_by_count": 7152,
+        "cited_by_count": 7179,
         "openalex_id": "https://openalex.org/W2925148167",
-        "retained_prior_observation": true
+        "retained_prior_observation": false
       },
       "resources": {
         "entry_status": "platform_only",

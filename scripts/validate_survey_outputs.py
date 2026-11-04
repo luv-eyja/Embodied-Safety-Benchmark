@@ -96,7 +96,7 @@ def main():
                 assert pane is not None and pane.attrib.get('xSplit') == '2' and pane.attrib.get('ySplit') == '1'
         summary = ET.fromstring(z.read('xl/worksheets/sheet1.xml'))
         assert len(summary.findall('.//s:f', ns)) >= 10
-        for cell, value in {'B7':122, 'B8':62, 'B9':60, 'B10':48, 'B11':59, 'B12':18,
+        for cell, value in {'B7':122, 'B8':62, 'B9':60, 'B10':48, 'B11':62, 'B12':18,
                             'F7':52, 'F8':3, 'F9':2, 'F10':4, 'F11':1,
                             'B16':193, 'B17':6, 'B18':199}.items():
             node = summary.find('.//s:c[@r="%s"]/s:v' % cell, ns)

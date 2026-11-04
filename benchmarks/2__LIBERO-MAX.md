@@ -28,7 +28,8 @@
 | 基础平台线索 | LIBERO |
 | 规模线索 | 8 类事件含目标／容器位移、相机、光照、噪声、外观、干扰物和障碍；8,000 对干净／变化轨迹，完整版每模型 16,000 rollout，Lite 为 800 对。 |
 | 执行环境线索 | 仿真执行中途变化鲁棒性 |
-| OpenAlex 引用快照 | [0](https://openalex.org/W7214921693)；2026-11-03 |
+| OpenAlex 引用快照 | [0](https://openalex.org/W7214921693)；2026-11-04 |
+| 术语说明 | 第 10 节解释本文出现的 4 个缩写／技术词，并标出 2 个专有名称的类别；全库词表见[术语表](../docs/GLOSSARY.md) |
 
 ## 1. 测什么问题（内容与所测环节）
 
@@ -67,17 +68,75 @@
 单次、预定阶段事件与连续真实扰动不同；8,000 对不是 8,000 个独立原始任务，成对统计不能改用不配对置信区间。
 
 <!-- paper-review:start -->
-## 7. 原始来源、引用量与可复用成果（2026-11-03）
+## 7. 原始来源、引用量与可复用成果（引用观测 2026-11-04）
 
 **本次核查来源**：[1] Yunbei Zhang, Zijian Jin, Yuanzhe Liu, et al., ‘LIBERO-MAX: Do Robot Policies Adapt When the World Changes?,’ arXiv preprint, 2026, arXiv:2609.36518v1. [论文](https://arxiv.org/abs/2609.36518)；[核查正文](https://arxiv.org/html/2609.36518v1)。
 
 **重点核查位置（章节主题）**：3.1 Benchmark Construction；3.2 Paired Evaluation；4 Experiments。
 
-OpenAlex 被引次数：**[0](https://openalex.org/W7214921693)**；观测日期：2026-11-03。后续查询受限，沿用同日较早、来源一致的快照；尚未确认预印本与正式版已合并。
+OpenAlex 被引次数：**[0](https://openalex.org/W7214921693)**；观测日期：2026-11-04。这是所链接论文记录的计数，不是 benchmark 使用次数。
 
 **项目与成果入口**：[https://liberomax.github.io](https://liberomax.github.io)。地址状态为 `found`；找到页面不等于已验证安装、数据下载和复现。
 
 **后续使用证据**：原表内有 0 篇标为使用的论文（见第 3、5 节）；这是本库收录下界，不能当全网使用量，也不能与被引数相加。
 
+**引文清单**：在 OpenAlex 引文图中暂无可列出的引文论文；arXiv 摘要未见命中。两者来自不同更新流程、允许相差几条，均不等于独立采用或实际运行；清单与命中片段见[引文与摘要命中清单](../analysis/benchmark-citing-papers.md)。
+
 完整比较及计数口径见[论文精读报告](../analysis/benchmark-paper-deep-read.md)；结构化笔记见[精读数据](../data/benchmark_paper_reviews.json)。
 <!-- paper-review:end -->
+
+<!-- project-review:start -->
+## 8. 项目源核查（已确认项目入口，2026-11-04）
+
+**项目入口**：[https://liberomax.github.io](https://liberomax.github.io)
+
+| 抓取对象 | 实际读取的地址 | 抓取时状态 |
+|---|---|---|
+| [page](https://liberomax.github.io) | https://liberomax.github.io | 保留文本 4200 字符（截断） |
+
+**项目页显示**：项目页 https://liberomax.github.io 说明“在机器人已经开始动作后改变环境”，并强调 Each Dynamic rollout 与 Base 共享任务、reset、策略种子与已执行前缀。
+
+**涉及领域**：机械臂操作策略的“动态鲁棒性”；在策略已开始执行后改变环境，考察在线适应性。
+
+**测试目的与构建方法**：在确定性抓取前时刻触发一次持续事件，Base 与 Dynamic rollout 配对共享前缀、状态与种子；统计成对成功变化与已排队动作的过时暴露，用配对检验与 bootstrap。
+
+**测试缺陷**：单次、预定阶段事件与连续真实扰动不同；8,000 对不是 8,000 个独立任务，必须用配对统计；事件类型有限，未覆盖多事件叠加。
+
+**与具身智能安全的相关性**：间接但贴近执行安全：动作分块与反馈时机决定了“世界变了之后还按旧计划动”的风险；基准量化这种过时暴露，但不判违规或损伤。
+
+**用这个 benchmark 测了什么**：14 种策略出现约 11–25.7 个百分点的成功下降，没有一种架构家族在所有事件上占优；结论指向动作分块长度与反馈时机的重要性。
+
+**本轮核查边界**：只读项目页正文，未取到代码仓库入口。 本节只读项目页与 README 文本，未运行代码、未下载数据集。
+
+<!-- project-review:end -->
+
+<!-- usage-review:start -->
+## 9. 使用明细：谁在用什么、怎么用
+
+本轮未取到任何论文提到该基准的原文片段：OpenAlex 引文 0 篇，arXiv cs.RO／cs.CV 摘要检索 0 命中。这表示“没查到”，不等于“没人用”；论文自身的被测模型与结论见第 8 节。
+
+<!-- usage-review:end -->
+
+<!-- glossary:start -->
+## 10. 术语说明（本文出现的词）
+
+正文出现的缩写与技术词按下表解释，共 4 个。每个词都写清它除以什么、和哪些指标配套——不同基准对同一缩写（尤其 SR）的定义并不相同。详细解释与常见误读见[全库术语表](../docs/GLOSSARY.md)。
+
+| 术语 | 英文全称 | 中文 | 一句话解释 |
+|---|---|---|---|
+| **rollout** | rollout | 展开／推演 | 用当前策略跑一次得到的完整轨迹，常与 episode 混用。 |
+| **bootstrap** | bootstrap resampling | 自助重采样（置信区间） | 通过对已有样本反复重采样来估计区间，比正态假设更稳。 |
+| **VLA** | Vision-Language-Action model | 视觉—语言—动作模型 | 以图像＋语言为输入、直接输出机器人动作的模型，本库的主要被测对象。 |
+| **cs.RO** | arXiv category: cs.RO / cs.CV / cs.AI / cs.LG | arXiv 学科分类 | arXiv 的学科标签：cs.RO 机器人、cs.CV 计算机视觉、cs.AI 人工智能、cs.LG 机器学习。 |
+
+**本文最容易读错的地方**：
+- **rollout**：rollout 数、episode 数、候选轨迹数三者混用。
+
+**本文出现的基准／数据集／仿真平台**（只标它是什么，不展开解释）：
+
+| 名称 | 是什么 | 说明 |
+|---|---|---|
+| LIBERO | 基准 | 本库最常用的终身学习操作基准套件 |
+| LIBERO-MAX | 基准 | 执行中改变环境的动态鲁棒性基准 |
+
+<!-- glossary:end -->
